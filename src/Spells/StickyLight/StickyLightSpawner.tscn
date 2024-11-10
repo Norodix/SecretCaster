@@ -1,0 +1,6 @@
+[gd_scene load_steps=2 format=3 uid="uid://cjws3vt5ts3tw"]
+
+[ext_resource type="Script" path="res://Spells/StickyLight/sticky_light_spawner.gd" id="1_rlssw"]
+
+[node name="StickyLightSpawner" type="Node3D"]
+script = ExtResource("1_rlssw")

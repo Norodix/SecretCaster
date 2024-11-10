@@ -1,10 +1,11 @@
-[gd_scene load_steps=8 format=3 uid="uid://dl2vuwabcukwp"]
+[gd_scene load_steps=9 format=3 uid="uid://dl2vuwabcukwp"]
 
 [ext_resource type="Script" path="res://player.gd" id="1_q4vdp"]
 [ext_resource type="PackedScene" uid="uid://cqctc5q0a4orf" path="res://Spells/Burn.tscn" id="2_f00fj"]
 [ext_resource type="PackedScene" uid="uid://bmwg7beyffcb2" path="res://Spells/Highjump.tscn" id="3_eycb3"]
 [ext_resource type="PackedScene" uid="uid://cq5pk5lbvd77g" path="res://Spells/Fireball/FireballSpawner.tscn" id="4_27jl0"]
 [ext_resource type="PackedScene" uid="uid://ug7j6pbqwqfd" path="res://Spells/Colt/PistolThrow.tscn" id="5_d36p1"]
+[ext_resource type="PackedScene" uid="uid://cjws3vt5ts3tw" path="res://Spells/StickyLight/StickyLightSpawner.tscn" id="6_1hvy0"]
 
 [sub_resource type="CylinderShape3D" id="CylinderShape3D_nakrb"]
 height = 1.8
@@ -35,3 +36,5 @@ mesh = SubResource("CylinderMesh_20hgg")
 [node name="FireballSpawner" parent="Spells" instance=ExtResource("4_27jl0")]
 
 [node name="Colt" parent="Spells" instance=ExtResource("5_d36p1")]
+
+[node name="StickyLightSpawner" parent="Spells" instance=ExtResource("6_1hvy0")]

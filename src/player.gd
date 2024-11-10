@@ -12,8 +12,9 @@ var action_history = PackedStringArray()
 var historysize = 10
 
 var activespell = null
-const cooldown_time_ms = 2000
-var last_activate = - cooldown_time_ms * 1000
+const cooldown_time_ms_default = 2000
+var cooldown_time_ms = cooldown_time_ms_default
+var last_activate = - cooldown_time_ms_default * 1000
 
 func _ready() -> void:
 	Input.mouse_mode = Input.MOUSE_MODE_CAPTURED
@@ -60,6 +61,10 @@ func _process(delta: float) -> void:
 			if activespell.has_method("use_spell"):
 				activespell.use_spell(self)
 				last_activate = Time.get_ticks_msec()
+				if "cooldown" in activespell:
+					cooldown_time_ms = activespell.cooldown
+				else:
+					cooldown_time_ms = cooldown_time_ms_default
 			
 	return
 
