@@ -95,3 +95,7 @@ transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, -1.66673)
 amount = 15
 process_material = SubResource("ParticleProcessMaterial_1mk5x")
 draw_pass_1 = SubResource("CapsuleMesh_hbeum")
+
+[node name="OmniLight3D" type="OmniLight3D" parent="."]
+light_color = Color(1, 0.513726, 0, 1)
+light_energy = 3.0
