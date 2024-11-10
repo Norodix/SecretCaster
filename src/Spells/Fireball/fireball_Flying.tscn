@@ -1,7 +1,7 @@
 [gd_scene load_steps=12 format=4 uid="uid://de27h0u0r183d"]
 
-[ext_resource type="Shader" uid="uid://0owhrheyokhj" path="res://Fireball/Fireball_Ball_Shader.tres" id="1_kbn1a"]
-[ext_resource type="Shader" uid="uid://drtye41ma3rhg" path="res://Fireball/Fireball_Flame_Shader.tres" id="2_bn7nh"]
+[ext_resource type="Shader" uid="uid://0owhrheyokhj" path="res://Spells/Fireball/Fireball_Ball_Shader.tres" id="1_kbn1a"]
+[ext_resource type="Shader" uid="uid://drtye41ma3rhg" path="res://Spells/Fireball/Fireball_Flame_Shader.tres" id="2_bn7nh"]
 
 [sub_resource type="ShaderMaterial" id="ShaderMaterial_vajoe"]
 render_priority = 0

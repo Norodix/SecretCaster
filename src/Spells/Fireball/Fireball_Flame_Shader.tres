@@ -1,7 +1,7 @@
 [gd_resource type="VisualShader" load_steps=17 format=3 uid="uid://drtye41ma3rhg"]
 
-[ext_resource type="Texture2D" uid="uid://dn6tqyqstgsk0" path="res://Fireball/Fireball_Gradient.png" id="1_ukoiq"]
-[ext_resource type="Texture2D" uid="uid://dbihtb7jeyanq" path="res://Fireball/Fireball_Flame.png" id="2_xuu5e"]
+[ext_resource type="Texture2D" uid="uid://dn6tqyqstgsk0" path="res://Spells/Fireball/Fireball_Gradient.png" id="1_ukoiq"]
+[ext_resource type="Texture2D" uid="uid://dbihtb7jeyanq" path="res://Spells/Fireball/Fireball_Flame.png" id="2_xuu5e"]
 
 [sub_resource type="VisualShaderNodeColorConstant" id="VisualShaderNodeColorConstant_0fyme"]
 constant = Color(1, 0, 0, 1)

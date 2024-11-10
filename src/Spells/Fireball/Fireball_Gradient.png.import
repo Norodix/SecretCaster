@@ -2,8 +2,8 @@
 
 importer="texture"
 type="CompressedTexture2D"
-uid="uid://dbihtb7jeyanq"
-path.s3tc="res://.godot/imported/Fireball_Flame.png-f0073d71eb241c0225e5d9e2cd9a0e56.s3tc.ctex"
+uid="uid://dn6tqyqstgsk0"
+path.s3tc="res://.godot/imported/Fireball_Gradient.png-02296a57e0ae93030120f8101a87bdf9.s3tc.ctex"
 metadata={
 "imported_formats": ["s3tc_bptc"],
 "vram_texture": true
@@ -11,8 +11,8 @@ metadata={
 
 [deps]
 
-source_file="res://Fireball/Fireball_Flame.png"
-dest_files=["res://.godot/imported/Fireball_Flame.png-f0073d71eb241c0225e5d9e2cd9a0e56.s3tc.ctex"]
+source_file="res://Spells/Fireball/Fireball_Gradient.png"
+dest_files=["res://.godot/imported/Fireball_Gradient.png-02296a57e0ae93030120f8101a87bdf9.s3tc.ctex"]
 
 [params]
 

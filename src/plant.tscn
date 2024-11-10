@@ -1,0 +1,30 @@
+[gd_scene load_steps=6 format=3 uid="uid://cxex75sqcbgr1"]
+
+[ext_resource type="Script" path="res://plant.gd" id="1_8phqy"]
+
+[sub_resource type="CapsuleMesh" id="CapsuleMesh_0trvj"]
+
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_4xvsx"]
+albedo_color = Color(0.239216, 0.686275, 0.00392157, 1)
+
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_5mc35"]
+albedo_color = Color(0.239216, 0.156863, 0.00392157, 1)
+
+[sub_resource type="CapsuleShape3D" id="CapsuleShape3D_ubmik"]
+
+[node name="Plant" type="StaticBody3D"]
+collision_layer = 4
+collision_mask = 0
+script = ExtResource("1_8phqy")
+
+[node name="normal" type="MeshInstance3D" parent="."]
+mesh = SubResource("CapsuleMesh_0trvj")
+surface_material_override/0 = SubResource("StandardMaterial3D_4xvsx")
+
+[node name="burnt" type="MeshInstance3D" parent="."]
+visible = false
+mesh = SubResource("CapsuleMesh_0trvj")
+surface_material_override/0 = SubResource("StandardMaterial3D_5mc35")
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="."]
+shape = SubResource("CapsuleShape3D_ubmik")

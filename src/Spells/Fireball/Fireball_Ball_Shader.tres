@@ -1,6 +1,6 @@
 [gd_resource type="VisualShader" load_steps=14 format=3 uid="uid://0owhrheyokhj"]
 
-[ext_resource type="Texture2D" uid="uid://dbihtb7jeyanq" path="res://Fireball/Fireball_Flame.png" id="1_rpne4"]
+[ext_resource type="Texture2D" uid="uid://dbihtb7jeyanq" path="res://Spells/Fireball/Fireball_Flame.png" id="1_rpne4"]
 
 [sub_resource type="VisualShaderNodeTexture" id="VisualShaderNodeTexture_77e6l"]
 texture = ExtResource("1_rpne4")
@@ -95,7 +95,7 @@ void fragment() {
 
 
 // ColorConstant:4
-	vec4 n_out4p0 = vec4(0.980392, 0.086275, 0.000000, 1.000000);
+	vec4 n_out4p0 = vec4(0.980392, 0.086274, 0.000000, 1.000000);
 
 
 // VectorOp:11
