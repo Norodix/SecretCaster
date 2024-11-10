@@ -4,7 +4,7 @@ const speed = 10
 const lifetime_ms = 5000
 
 @onready var birthtime = Time.get_ticks_msec()
-@onready var explosion_scene : Resource = preload("res://Spells/Fireball/Explosion_VFX.tscn")
+@onready var explosion_scene : Resource = preload("res://Spells/Fireball/Explosion.tscn")
 
 func _process(delta: float) -> void:
 	self.global_transform.origin += speed * delta * self.global_transform.basis.z * -1
