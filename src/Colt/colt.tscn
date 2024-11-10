@@ -1,4 +1,4 @@
-[gd_scene load_steps=29 format=4 uid="uid://bewc1hnbc3rf5"]
+[gd_scene load_steps=34 format=4 uid="uid://bewc1hnbc3rf5"]
 
 [sub_resource type="StandardMaterial3D" id="StandardMaterial3D_cejvs"]
 
@@ -259,7 +259,75 @@ albedo_color = Color(0.473976, 0.473976, 0.473976, 1)
 metallic_specular = 1.0
 roughness = 0.3
 
+[sub_resource type="Animation" id="Animation_7wcky"]
+length = 0.001
+tracks/0/type = "position_3d"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("slide")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = PackedFloat32Array(0, 1, 0, 0, 0)
+tracks/1/type = "value"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath(".:rotation")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Vector3(3.14159, 0, 0)]
+}
+
+[sub_resource type="Animation" id="Animation_dl6ul"]
+resource_name = "colt_empty"
+length = 0.001
+tracks/0/type = "position_3d"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("slide")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = PackedFloat32Array(0, 1, 0, 0, -0.045)
+
+[sub_resource type="Animation" id="Animation_egmpv"]
+resource_name = "colt_shoot"
+length = 0.1
+tracks/0/type = "position_3d"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("slide")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = PackedFloat32Array(0, 1, 0, 0, 0, 0.05, 1, 0, 0, -0.045, 0.1, 1, 0, 0, 0)
+
+[sub_resource type="Animation" id="Animation_vgn0l"]
+resource_name = "colt_reload"
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath(".:rotation")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 0.5, 1),
+"transitions": PackedFloat32Array(1, 1, 1),
+"update": 0,
+"values": [Vector3(0, 0, 0), Vector3(3.14159, 0, 0), Vector3(6.28319, 0, 0)]
+}
+
+[sub_resource type="AnimationLibrary" id="AnimationLibrary_i6nod"]
+_data = {
+"RESET": SubResource("Animation_7wcky"),
+"colt_empty": SubResource("Animation_dl6ul"),
+"colt_reload": SubResource("Animation_vgn0l"),
+"colt_shoot": SubResource("Animation_egmpv")
+}
+
 [node name="colt" type="Node3D"]
+transform = Transform3D(1, 0, 0, 0, -1, 8.74228e-08, 0, -8.74228e-08, -1, 0, 0, 0)
 
 [node name="slide" type="MeshInstance3D" parent="."]
 transform = Transform3D(10, 0, 0, 0, -1.19209e-06, 10, 0, -10, -1.19209e-06, 0, 0, 0)
@@ -302,3 +370,8 @@ transform = Transform3D(10, 0, 0, 0, -1.19209e-06, 10, 0, -10, -1.19209e-06, 0, 
 mesh = SubResource("ArrayMesh_pj5vl")
 skeleton = NodePath("")
 surface_material_override/0 = SubResource("StandardMaterial3D_nglc5")
+
+[node name="AnimationPlayer" type="AnimationPlayer" parent="."]
+libraries = {
+"": SubResource("AnimationLibrary_i6nod")
+}
