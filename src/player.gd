@@ -12,6 +12,8 @@ var action_history = PackedStringArray()
 var historysize = 10
 
 var activespell = null
+const cooldown_time_ms = 2000
+var last_activate = - cooldown_time_ms * 1000
 
 func _ready() -> void:
 	Input.mouse_mode = Input.MOUSE_MODE_CAPTURED
@@ -24,6 +26,9 @@ func _physics_process(delta: float) -> void:
 	
 	vy -= 10 * delta # gravity
 	vy *= 0.9999
+	
+	if Input.is_action_just_pressed("jump") and is_on_floor():
+		vy += 5
 	
 	if inputvector.length() < 0.1:
 		vh *= vh_damping
@@ -49,8 +54,12 @@ func _process(delta: float) -> void:
 				print("Selecting: " + spell.name)
 	
 	if Input.is_action_just_pressed("use_spell") and activespell != null:
-		if activespell.has_method("use_spell"):
-			activespell.use_spell(self)
+		if Time.get_ticks_msec() < last_activate + cooldown_time_ms:
+			print("Spells on cooldown")
+		else:
+			if activespell.has_method("use_spell"):
+				activespell.use_spell(self)
+				last_activate = Time.get_ticks_msec()
 			
 	return
 
