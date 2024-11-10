@@ -11,6 +11,7 @@ var mousespeed = 0.001
 var action_history = PackedStringArray()
 var historysize = 10
 
+var activespell = null
 
 func _ready() -> void:
 	Input.mouse_mode = Input.MOUSE_MODE_CAPTURED
@@ -40,6 +41,17 @@ func _process(delta: float) -> void:
 	b = b.rotated(Vector3.UP, facing_angle)
 	b = b.rotated(b.x, tilt)
 	$Camera3D.basis = b
+	
+	for spell in $Spells.get_children():
+		if match_action_history(spell.pattern):
+			if spell != activespell:
+				activespell = spell
+				print("Selecting: " + spell.name)
+	
+	if Input.is_action_just_pressed("use_spell") and activespell != null:
+		if activespell.has_method("use_spell"):
+			activespell.use_spell(self)
+			
 	return
 
 
@@ -71,8 +83,8 @@ func get_action_from_event(event: InputEvent):
 
 func _input(event: InputEvent) -> void:
 	if event is InputEventMouseMotion:
-		print(event.relative)
-		print(tilt)
+		#print(event.relative)
+		#print(tilt)
 		facing_angle += event.relative.x * mousespeed * -1
 		tilt += event.relative.y * mousespeed * -1
 		var maxtilt = 0.9 * PI * 0.5
