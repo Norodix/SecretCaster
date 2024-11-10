@@ -8,9 +8,13 @@ var vh_damping = 0.9
 var vh_acc = 100
 var mousespeed = 0.001
 
+var action_history = PackedStringArray()
+var historysize = 10
+
+
 func _ready() -> void:
 	Input.mouse_mode = Input.MOUSE_MODE_CAPTURED
-	
+
 
 func _physics_process(delta: float) -> void:
 	var inputvector = Input.get_vector("left", "right", "forwards", "backwards")
@@ -28,8 +32,8 @@ func _physics_process(delta: float) -> void:
 	
 	velocity = vh + Vector3(0, vy, 0)
 	move_and_slide()
-	
 	return
+
 
 func _process(delta: float) -> void:
 	var b = Basis()
@@ -37,16 +41,35 @@ func _process(delta: float) -> void:
 	b = b.rotated(b.x, tilt)
 	$Camera3D.basis = b
 	return
-	var facing = Vector3(0, 0, -1).rotated(Vector3.UP, facing_angle)
-	var right = Vector3(1, 0, 0).rotated(Vector3.UP, facing_angle)
-	facing = facing.rotated(right, tilt)
-	var up = Vector3(0, 1, 0).rotated(right, tilt)
-	$Camera3D.basis.x = right
-	$Camera3D.basis.y = up
-	$Camera3D.basis.z = -facing
-	$Camera3D.basis
 
-func _unhandled_input(event: InputEvent) -> void:
+
+# Check if the action history's last actions match the given pattern
+# Only the last actions are checked, any new action invalidates the pattern
+# eg. match_action_history(["right", "left", "right", "right"])
+func match_action_history(pattern: PackedStringArray):
+	if pattern.size() < 1 or pattern.size() > historysize:
+		return false
+	if pattern.size() > action_history.size():
+		return false
+	var ps = pattern.size()
+	for i in ps:
+		var ai = action_history.size() - i - 1
+		var pi = ps - i - 1
+		if action_history[ai] != pattern[pi]:
+			return false
+	return true
+
+
+# Look for the first occurence of the specified event in the action map
+func get_action_from_event(event: InputEvent):
+	var actions = InputMap.get_actions()
+	for a in actions:
+		if InputMap.action_has_event(a, event):
+			return a
+	return null
+
+
+func _input(event: InputEvent) -> void:
 	if event is InputEventMouseMotion:
 		print(event.relative)
 		print(tilt)
@@ -54,4 +77,12 @@ func _unhandled_input(event: InputEvent) -> void:
 		tilt += event.relative.y * mousespeed * -1
 		var maxtilt = 0.9 * PI * 0.5
 		tilt = clamp(tilt, -maxtilt, maxtilt)
-		
+	if event.is_action_type() and event.is_pressed() and not event.is_echo():
+		#print(event.action)
+		var action = get_action_from_event(event)
+		if action:
+			#print(action)
+			action_history.append(action)
+			if action_history.size() > historysize:
+				action_history.remove_at(0)
+		#print(action_history)
