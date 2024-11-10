@@ -72,3 +72,10 @@ draw_pass_1 = SubResource("SphereMesh_cpfub")
 light_color = Color(0.869637, 0.547863, 1.92523e-06, 1)
 light_energy = 5.0
 omni_range = 10.0
+
+[node name="FlashTimer" type="Timer" parent="."]
+wait_time = 0.2
+one_shot = true
+autostart = true
+
+[connection signal="timeout" from="FlashTimer" to="." method="_on_flash_timer_timeout"]
