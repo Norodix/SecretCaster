@@ -1,0 +1,13 @@
+[gd_resource type="StandardMaterial3D" load_steps=3 format=3 uid="uid://bw7rcq4qfvjvo"]
+
+[ext_resource type="Texture2D" uid="uid://ba8r5jq6juhpo" path="res://Stonewall_Tex.png" id="1_y47o5"]
+[ext_resource type="Texture2D" uid="uid://c2qg5dh5xxmc8" path="res://Stonewall_Nrm.png" id="2_i4rs4"]
+
+[resource]
+albedo_texture = ExtResource("1_y47o5")
+metallic = 0.3
+roughness = 0.5
+normal_enabled = true
+normal_texture = ExtResource("2_i4rs4")
+uv1_scale = Vector3(0.2, 0.2, 0.2)
+uv1_triplanar = true
