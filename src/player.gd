@@ -3,7 +3,7 @@ extends CharacterBody3D
 # facing angle in radians relative to facing the -z direction
 var facing_angle = 0.0
 var tilt = 0.0
-var speed = 5
+var speed = 7
 var vh_damping = 0.9
 var vh_acc = 100
 var mousespeed = 0.001
