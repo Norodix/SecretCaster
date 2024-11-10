@@ -1,6 +1,9 @@
-[gd_resource type="VisualShader" load_steps=9 format=3 uid="uid://c06d0axf8nimo"]
+[gd_resource type="VisualShader" load_steps=10 format=3 uid="uid://c06d0axf8nimo"]
 
 [ext_resource type="Texture2D" uid="uid://dbihtb7jeyanq" path="res://Spells/Fireball/Fireball_Flame.png" id="1_y2vx6"]
+
+[sub_resource type="VisualShaderNodeFloatConstant" id="VisualShaderNodeFloatConstant_nf3xi"]
+constant = 0.5
 
 [sub_resource type="VisualShaderNodeColorConstant" id="VisualShaderNodeColorConstant_u5eaw"]
 constant = Color(0.853359, 0.565844, 0.0168795, 1)
@@ -63,9 +66,14 @@ void fragment() {
 	vec3 n_out8p0 = mix(vec3(n_out3p0.xyz), vec3(n_out9p0.xyz), vec3(n_out7p0));
 
 
+// FloatConstant:10
+	float n_out10p0 = 0.500000;
+
+
 // Output:0
 	ALBEDO = n_out8p0;
 	ALPHA = n_out7p0;
+	ALPHA_SCISSOR_THRESHOLD = n_out10p0;
 
 
 }
@@ -88,4 +96,6 @@ nodes/fragment/8/node = SubResource("VisualShaderNodeMix_nnqa4")
 nodes/fragment/8/position = Vector2(-20, 0)
 nodes/fragment/9/node = SubResource("VisualShaderNodeColorConstant_5secd")
 nodes/fragment/9/position = Vector2(-340, -20)
-nodes/fragment/connections = PackedInt32Array(6, 0, 4, 0, 5, 0, 6, 2, 4, 0, 7, 0, 7, 0, 0, 1, 3, 0, 8, 0, 8, 0, 0, 0, 7, 0, 8, 2, 9, 0, 8, 1)
+nodes/fragment/10/node = SubResource("VisualShaderNodeFloatConstant_nf3xi")
+nodes/fragment/10/position = Vector2(140, 860)
+nodes/fragment/connections = PackedInt32Array(6, 0, 4, 0, 5, 0, 6, 2, 4, 0, 7, 0, 7, 0, 0, 1, 3, 0, 8, 0, 8, 0, 0, 0, 7, 0, 8, 2, 9, 0, 8, 1, 10, 0, 0, 19)
