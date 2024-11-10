@@ -8,8 +8,8 @@
 particle_flag_align_y = true
 direction = Vector3(0, 1, 0)
 spread = 180.0
-initial_velocity_min = 15.0
-initial_velocity_max = 45.0
+initial_velocity_min = 1.0
+initial_velocity_max = 3.0
 gravity = Vector3(0, 0, 0)
 sub_emitter_mode = 2
 sub_emitter_amount_at_end = 1
@@ -20,8 +20,8 @@ shader = ExtResource("1_vmtge")
 
 [sub_resource type="SphereMesh" id="SphereMesh_60kte"]
 material = SubResource("ShaderMaterial_4t7nt")
-radius = 3.0
-height = 6.0
+radius = 0.3
+height = 0.6
 radial_segments = 16
 rings = 4
 
@@ -31,8 +31,8 @@ shader = ExtResource("2_l3cll")
 
 [sub_resource type="SphereMesh" id="SphereMesh_cpfub"]
 material = SubResource("ShaderMaterial_7p4mh")
-radius = 10.0
-height = 20.0
+radius = 0.7
+height = 1.4
 radial_segments = 16
 rings = 4
 
