@@ -1,0 +1,61 @@
+[gd_resource type="VisualShader" load_steps=6 format=3 uid="uid://dqjcdgqfaakdi"]
+
+[ext_resource type="Texture2D" uid="uid://dbihtb7jeyanq" path="res://Spells/Fireball/Fireball_Flame.png" id="1_splnx"]
+
+[sub_resource type="VisualShaderNodeTexture" id="VisualShaderNodeTexture_p17wt"]
+texture = ExtResource("1_splnx")
+
+[sub_resource type="VisualShaderNodeInput" id="VisualShaderNodeInput_hv75o"]
+input_name = "time"
+
+[sub_resource type="VisualShaderNodeUVFunc" id="VisualShaderNodeUVFunc_cpgmo"]
+default_input_values = [1, Vector2(0.5, 0.5), 2, Vector2(0, 0)]
+
+[sub_resource type="VisualShaderNodeFloatOp" id="VisualShaderNodeFloatOp_h0ecw"]
+default_input_values = [0, 0.0, 1, 15.0]
+operator = 5
+
+[resource]
+code = "shader_type spatial;
+render_mode blend_mix, depth_draw_opaque, cull_back, diffuse_lambert, specular_schlick_ggx;
+
+uniform sampler2D tex_frg_2;
+
+
+
+void fragment() {
+// Input:3
+	float n_out3p0 = TIME;
+
+
+// UVFunc:4
+	vec2 n_in4p1 = vec2(0.50000, 0.50000);
+	vec2 n_out4p0 = vec2(n_out3p0) * n_in4p1 + UV;
+
+
+// Texture2D:2
+	vec4 n_out2p0 = texture(tex_frg_2, n_out4p0);
+
+
+// FloatOp:5
+	float n_in5p1 = 15.00000;
+	float n_out5p0 = pow(n_out2p0.x, n_in5p1);
+
+
+// Output:0
+	ALBEDO = vec3(n_out5p0);
+	ALPHA = n_out5p0;
+
+
+}
+"
+graph_offset = Vector2(-869.901, 54.874)
+nodes/fragment/2/node = SubResource("VisualShaderNodeTexture_p17wt")
+nodes/fragment/2/position = Vector2(-420, 160)
+nodes/fragment/3/node = SubResource("VisualShaderNodeInput_hv75o")
+nodes/fragment/3/position = Vector2(-1380, 360)
+nodes/fragment/4/node = SubResource("VisualShaderNodeUVFunc_cpgmo")
+nodes/fragment/4/position = Vector2(-1060, 280)
+nodes/fragment/5/node = SubResource("VisualShaderNodeFloatOp_h0ecw")
+nodes/fragment/5/position = Vector2(-140, 260)
+nodes/fragment/connections = PackedInt32Array(3, 0, 4, 2, 2, 0, 5, 0, 5, 0, 0, 0, 5, 0, 0, 1, 4, 0, 2, 0)

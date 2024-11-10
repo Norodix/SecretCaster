@@ -1,0 +1,57 @@
+[gd_scene load_steps=9 format=3 uid="uid://bh67b4puflnkx"]
+
+[ext_resource type="Script" path="res://Spells/Fireball/explosion_vfx.gd" id="1_5qosj"]
+[ext_resource type="Shader" uid="uid://c06d0axf8nimo" path="res://Spells/Fireball/Explosion_Flame_Shader.tres" id="1_vmtge"]
+[ext_resource type="Shader" uid="uid://dqjcdgqfaakdi" path="res://Spells/Fireball/Explosion_Smoke_Shader.tres" id="2_l3cll"]
+
+[sub_resource type="ParticleProcessMaterial" id="ParticleProcessMaterial_m7c25"]
+particle_flag_align_y = true
+direction = Vector3(0, 1, 0)
+spread = 180.0
+initial_velocity_min = 15.0
+initial_velocity_max = 45.0
+gravity = Vector3(0, 0, 0)
+sub_emitter_mode = 2
+sub_emitter_amount_at_end = 1
+
+[sub_resource type="ShaderMaterial" id="ShaderMaterial_4t7nt"]
+render_priority = 0
+shader = ExtResource("1_vmtge")
+
+[sub_resource type="SphereMesh" id="SphereMesh_60kte"]
+material = SubResource("ShaderMaterial_4t7nt")
+radius = 3.0
+height = 6.0
+radial_segments = 16
+rings = 4
+
+[sub_resource type="ShaderMaterial" id="ShaderMaterial_7p4mh"]
+render_priority = 0
+shader = ExtResource("2_l3cll")
+
+[sub_resource type="SphereMesh" id="SphereMesh_cpfub"]
+material = SubResource("ShaderMaterial_7p4mh")
+radius = 10.0
+height = 20.0
+radial_segments = 16
+rings = 4
+
+[node name="Explosion_VFX" type="Node3D"]
+script = ExtResource("1_5qosj")
+
+[node name="GPUParticles3D" type="GPUParticles3D" parent="."]
+emitting = false
+amount = 150
+sub_emitter = NodePath("../GPUParticles3D2")
+lifetime = 0.3
+one_shot = true
+process_material = SubResource("ParticleProcessMaterial_m7c25")
+draw_pass_1 = SubResource("SphereMesh_60kte")
+
+[node name="GPUParticles3D2" type="GPUParticles3D" parent="."]
+emitting = false
+amount = 150
+lifetime = 0.5
+one_shot = true
+process_material = SubResource("ParticleProcessMaterial_m7c25")
+draw_pass_1 = SubResource("SphereMesh_cpfub")
