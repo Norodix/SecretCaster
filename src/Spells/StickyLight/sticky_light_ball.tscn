@@ -1,15 +1,25 @@
-[gd_scene load_steps=5 format=3 uid="uid://d1gqwjnh8rvnv"]
+[gd_scene load_steps=7 format=3 uid="uid://d1gqwjnh8rvnv"]
 
 [ext_resource type="Script" path="res://Spells/StickyLight/sticky_light_ball.gd" id="1_38vcp"]
 
-[sub_resource type="SphereMesh" id="SphereMesh_yh4lf"]
-radius = 0.05
-height = 0.1
+[sub_resource type="QuadMesh" id="QuadMesh_gtnlp"]
+
+[sub_resource type="Gradient" id="Gradient_y2gnp"]
+colors = PackedColorArray(1, 1, 1, 1, 0, 0, 0, 0)
+
+[sub_resource type="GradientTexture2D" id="GradientTexture2D_h1id1"]
+gradient = SubResource("Gradient_y2gnp")
+fill = 1
+fill_from = Vector2(0.5, 0.5)
+fill_to = Vector2(1, 0.5)
 
 [sub_resource type="StandardMaterial3D" id="StandardMaterial3D_kww3e"]
+transparency = 1
 albedo_color = Color(1, 1, 0.666667, 1)
+albedo_texture = SubResource("GradientTexture2D_h1id1")
 emission_enabled = true
 emission = Color(1, 1, 0.666667, 1)
+billboard_mode = 1
 
 [sub_resource type="SphereShape3D" id="SphereShape3D_lx2ad"]
 radius = 0.05
@@ -19,7 +29,7 @@ collision_layer = 0
 script = ExtResource("1_38vcp")
 
 [node name="MeshInstance3D" type="MeshInstance3D" parent="."]
-mesh = SubResource("SphereMesh_yh4lf")
+mesh = SubResource("QuadMesh_gtnlp")
 surface_material_override/0 = SubResource("StandardMaterial3D_kww3e")
 
 [node name="CollisionShape3D" type="CollisionShape3D" parent="."]
