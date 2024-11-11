@@ -36,56 +36,56 @@ collision_mask = 2
 size = Vector3(100, 1, 100)
 
 [node name="CSGBox3D2" type="CSGBox3D" parent="CSGCombiner3D"]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 5.48694, -1.30127)
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 15, -1.301)
 material_override = ExtResource("1_n7x1j")
 use_collision = true
 collision_mask = 2
 size = Vector3(100, 1, 100)
 
 [node name="CSGBox3D3" type="CSGBox3D" parent="CSGCombiner3D"]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -30.3483, 2.49234, -17.4662)
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -30.3483, 7.78897, -17.4662)
 material_override = ExtResource("1_n7x1j")
-size = Vector3(38.0159, 7, 1)
+size = Vector3(38.0159, 18, 1)
 
 [node name="CSGBox3D8" type="CSGBox3D" parent="CSGCombiner3D"]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 6.87243, 2.49234, -23.2212)
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 6.87243, 7.78897, -23.2212)
 material_override = ExtResource("1_n7x1j")
-size = Vector3(38.0159, 7, 1)
+size = Vector3(38.0159, 18, 1)
 
 [node name="CSGBox3D4" type="CSGBox3D" parent="CSGCombiner3D"]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -30.3483, 2.49234, -2.04756)
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -30.3483, 7.78897, -2.04756)
 material_override = ExtResource("1_n7x1j")
-size = Vector3(38.0159, 7, 1)
+size = Vector3(38.0159, 18, 1)
 
 [node name="CSGBox3D11" type="CSGBox3D" parent="CSGCombiner3D"]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.879494, 2.49234, 15.3676)
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.879494, 7.78897, 15.3676)
 material_override = ExtResource("1_n7x1j")
-size = Vector3(38.0159, 7, 1)
+size = Vector3(38.0159, 18, 1)
 
 [node name="CSGBox3D5" type="CSGBox3D" parent="CSGCombiner3D"]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -11.9384, 2.49234, 13.1793)
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -11.9384, 7.78897, 13.1793)
 material_override = ExtResource("1_n7x1j")
-size = Vector3(1, 7, 30)
+size = Vector3(1, 18, 30)
 
 [node name="CSGBox3D9" type="CSGBox3D" parent="CSGCombiner3D"]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 18.7136, 2.49234, -3.64731)
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 18.7136, 7.78897, -3.64731)
 material_override = ExtResource("1_n7x1j")
-size = Vector3(1, 7, 42.0509)
+size = Vector3(1, 18, 42.0509)
 
 [node name="CSGBox3D10" type="CSGBox3D" parent="CSGCombiner3D"]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 7.20075, 2.49234, 14.8623)
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 7.20075, 7.78897, 14.8623)
 material_override = ExtResource("1_n7x1j")
-size = Vector3(1, 7, 30)
+size = Vector3(1, 18, 30)
 
 [node name="CSGBox3D6" type="CSGBox3D" parent="CSGCombiner3D"]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -43.8493, 2.49234, -8.87184)
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -43.8493, 7.78897, -8.87184)
 material_override = ExtResource("1_n7x1j")
-size = Vector3(1, 7, 30)
+size = Vector3(1, 18, 30)
 
 [node name="CSGBox3D7" type="CSGBox3D" parent="CSGCombiner3D"]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -11.7005, 2.49234, -24.6224)
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -11.7005, 7.78897, -24.6224)
 material_override = ExtResource("1_n7x1j")
-size = Vector3(1, 7, 30)
+size = Vector3(1, 18, 30)
 
 [node name="WorldEnvironment" type="WorldEnvironment" parent="."]
 environment = SubResource("Environment_2vp05")
