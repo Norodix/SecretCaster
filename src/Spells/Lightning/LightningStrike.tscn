@@ -1,6 +1,7 @@
-[gd_scene load_steps=6 format=3 uid="uid://d00sgnbmj8mae"]
+[gd_scene load_steps=8 format=3 uid="uid://d00sgnbmj8mae"]
 
 [ext_resource type="Script" path="res://Spells/Lightning/lightning_strike.gd" id="1_fsoxa"]
+[ext_resource type="Texture2D" uid="uid://bi7ssho1pk8jj" path="res://Spells/Lightning/Lightning_Tex.png" id="2_km1en"]
 
 [sub_resource type="Gradient" id="Gradient_71jxk"]
 colors = PackedColorArray(1, 1, 1, 1, 1, 1, 1, 0)
@@ -11,10 +12,21 @@ fill = 1
 fill_from = Vector2(0.510753, 0.505376)
 fill_to = Vector2(1, 0.505376)
 
-[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_sn7cv"]
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_v4eod"]
+transparency = 1
 cull_mode = 2
 shading_mode = 0
-albedo_color = Color(0.717285, 1, 0.44338, 1)
+albedo_color = Color(0.947926, 0.896615, 0.451389, 1)
+albedo_texture = ExtResource("2_km1en")
+
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_sn7cv"]
+next_pass = SubResource("StandardMaterial3D_v4eod")
+transparency = 3
+alpha_hash_scale = 2.0
+alpha_antialiasing_mode = 0
+cull_mode = 2
+shading_mode = 0
+albedo_color = Color(0.602303, 0.947941, 0.920105, 1)
 albedo_texture = SubResource("GradientTexture2D_3u5k6")
 
 [sub_resource type="ImmediateMesh" id="ImmediateMesh_j8hk1"]
