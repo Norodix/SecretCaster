@@ -1,0 +1,6 @@
+[gd_scene load_steps=2 format=3 uid="uid://bdl3aa3dar438"]
+
+[ext_resource type="Script" path="res://Spells/Snowing/snow_spawner.gd" id="1_tlehb"]
+
+[node name="SnowSpawner" type="Node3D"]
+script = ExtResource("1_tlehb")

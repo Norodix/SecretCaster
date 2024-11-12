@@ -1,0 +1,134 @@
+[gd_scene load_steps=13 format=3 uid="uid://dy0f4m588grj6"]
+
+[ext_resource type="Script" path="res://Spells/Snowing/snow_patch.gd" id="1_ch76f"]
+
+[sub_resource type="Gradient" id="Gradient_24joh"]
+offsets = PackedFloat32Array(0, 0.190141)
+
+[sub_resource type="FastNoiseLite" id="FastNoiseLite_dfpkt"]
+frequency = 0.072
+
+[sub_resource type="NoiseTexture2D" id="NoiseTexture2D_r53ry"]
+color_ramp = SubResource("Gradient_24joh")
+noise = SubResource("FastNoiseLite_dfpkt")
+
+[sub_resource type="ParticleProcessMaterial" id="ParticleProcessMaterial_syttd"]
+emission_shape = 6
+emission_ring_axis = Vector3(0, 1, 0)
+emission_ring_height = 0.2
+emission_ring_radius = 1.0
+emission_ring_inner_radius = 0.0
+direction = Vector3(0, -1, 0)
+spread = 0.0
+initial_velocity_min = 1.35
+initial_velocity_max = 1.35
+gravity = Vector3(0, -1.285, 0)
+turbulence_enabled = true
+turbulence_noise_strength = 0.75
+turbulence_noise_scale = 0.705
+
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_snkys"]
+shading_mode = 0
+
+[sub_resource type="QuadMesh" id="QuadMesh_cxnds"]
+material = SubResource("StandardMaterial3D_snkys")
+size = Vector2(0.055, 0.065)
+
+[sub_resource type="Animation" id="Animation_o6aeh"]
+resource_name = "VisibilityFade"
+length = 5.0
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("Decal:albedo_mix")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 0.5, 1.5, 4, 5),
+"transitions": PackedFloat32Array(1, 1, 1, 1, 1),
+"update": 0,
+"values": [0.0, 0.0, 1.0, 1.0, 0.0]
+}
+tracks/1/type = "value"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath("GPUParticles3D:emitting")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(0, 3.5),
+"transitions": PackedFloat32Array(1, 1),
+"update": 1,
+"values": [true, false]
+}
+
+[sub_resource type="Animation" id="Animation_mds7c"]
+length = 0.001
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("Decal:albedo_mix")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [1.0]
+}
+tracks/1/type = "value"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath("GPUParticles3D:emitting")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [false]
+}
+
+[sub_resource type="AnimationLibrary" id="AnimationLibrary_huqhs"]
+_data = {
+"RESET": SubResource("Animation_mds7c"),
+"VisibilityFade": SubResource("Animation_o6aeh")
+}
+
+[sub_resource type="SphereMesh" id="SphereMesh_imwxt"]
+radius = 1.0
+height = 0.4
+
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_oxidw"]
+emission_enabled = true
+emission = Color(1, 1, 1, 1)
+
+[node name="SnowPatch" type="Node3D"]
+script = ExtResource("1_ch76f")
+
+[node name="Decal" type="Decal" parent="."]
+texture_albedo = SubResource("NoiseTexture2D_r53ry")
+normal_fade = 0.709
+
+[node name="GPUParticles3D" type="GPUParticles3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 1.99149, 0)
+emitting = false
+amount = 211
+lifetime = 1.5
+process_material = SubResource("ParticleProcessMaterial_syttd")
+draw_pass_1 = SubResource("QuadMesh_cxnds")
+
+[node name="AnimationPlayer" type="AnimationPlayer" parent="."]
+libraries = {
+"": SubResource("AnimationLibrary_huqhs")
+}
+
+[node name="Cloud" type="MeshInstance3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 2, 0)
+mesh = SubResource("SphereMesh_imwxt")
+surface_material_override/0 = SubResource("StandardMaterial3D_oxidw")
+
+[node name="SpotLight3D" type="SpotLight3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, -4.37114e-08, 1, 0, -1, -4.37114e-08, 0, 1.99204, 0)
+
+[connection signal="animation_finished" from="AnimationPlayer" to="." method="_on_animation_player_animation_finished"]
