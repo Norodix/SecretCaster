@@ -1,0 +1,21 @@
+[gd_scene load_steps=4 format=3 uid="uid://cnpc47mm4wul4"]
+
+[ext_resource type="Shader" uid="uid://klf75i7epsx3" path="res://Spells/Lightning/Lightning_Ball_Shader.tres" id="1_kxvjf"]
+
+[sub_resource type="SphereMesh" id="SphereMesh_xjyov"]
+radius = 0.2
+height = 0.4
+
+[sub_resource type="ShaderMaterial" id="ShaderMaterial_es44y"]
+render_priority = 0
+shader = ExtResource("1_kxvjf")
+
+[node name="Lightning-In-hand" type="Node3D"]
+
+[node name="MeshInstance3D" type="MeshInstance3D" parent="."]
+mesh = SubResource("SphereMesh_xjyov")
+surface_material_override/0 = SubResource("ShaderMaterial_es44y")
+
+[node name="OmniLight3D" type="OmniLight3D" parent="."]
+omni_range = 15.0
+omni_attenuation = 2.0

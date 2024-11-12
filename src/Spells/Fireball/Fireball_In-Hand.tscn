@@ -58,3 +58,8 @@ transform = Transform3D(0.4, 0, 0, 0, -1.74846e-08, -0.3, 0, 0.4, -1.31134e-08, 
 mesh = SubResource("ArrayMesh_18ph0")
 skeleton = NodePath("")
 surface_material_override/0 = SubResource("ShaderMaterial_4qes1")
+
+[node name="OmniLight3D" type="OmniLight3D" parent="."]
+light_color = Color(0.983738, 0.78783, 0.34145, 1)
+omni_range = 15.0
+omni_attenuation = 2.0
