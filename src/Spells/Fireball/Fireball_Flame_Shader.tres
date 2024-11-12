@@ -1,4 +1,4 @@
-[gd_resource type="VisualShader" load_steps=17 format=3 uid="uid://drtye41ma3rhg"]
+[gd_resource type="VisualShader" load_steps=20 format=3 uid="uid://drtye41ma3rhg"]
 
 [ext_resource type="Texture2D" uid="uid://dn6tqyqstgsk0" path="res://Spells/Fireball/Fireball_Gradient.png" id="1_ukoiq"]
 [ext_resource type="Texture2D" uid="uid://dbihtb7jeyanq" path="res://Spells/Fireball/Fireball_Flame.png" id="2_xuu5e"]
@@ -34,20 +34,30 @@ operator = 5
 texture = ExtResource("2_xuu5e")
 
 [sub_resource type="VisualShaderNodeUVFunc" id="VisualShaderNodeUVFunc_hpvkg"]
-default_input_values = [1, Vector2(0.5, 0.5), 2, Vector2(0, 0)]
+default_input_values = [1, Vector2(0.5, -0.5), 2, Vector2(0, 0)]
 
 [sub_resource type="VisualShaderNodeUVFunc" id="VisualShaderNodeUVFunc_mc5bm"]
 default_input_values = [1, Vector2(2, 2), 2, Vector2(0, 0)]
 function = 1
 
+[sub_resource type="VisualShaderNodeUVFunc" id="VisualShaderNodeUVFunc_xxnmx"]
+default_input_values = [1, Vector2(-0.5, -0.5), 2, Vector2(0, 0)]
+
+[sub_resource type="VisualShaderNodeUVFunc" id="VisualShaderNodeUVFunc_l68ej"]
+default_input_values = [1, Vector2(2, 2), 2, Vector2(0, 0)]
+function = 1
+
+[sub_resource type="VisualShaderNodeTexture" id="VisualShaderNodeTexture_hnf4e"]
+texture = ExtResource("2_xuu5e")
+
+[sub_resource type="VisualShaderNodeFloatOp" id="VisualShaderNodeFloatOp_kue0t"]
+operator = 2
+
 [sub_resource type="VisualShaderNodeInput" id="VisualShaderNodeInput_phu5f"]
 input_name = "time"
 
-[sub_resource type="VisualShaderNodeFloatFunc" id="VisualShaderNodeFloatFunc_dq6jv"]
-function = 31
-
 [sub_resource type="VisualShaderNodeFloatOp" id="VisualShaderNodeFloatOp_f7vtp"]
-default_input_values = [0, 0.0, 1, 5.0]
+default_input_values = [0, 0.0, 1, 3.0]
 operator = 5
 
 [resource]
@@ -55,6 +65,7 @@ code = "shader_type spatial;
 render_mode blend_mix, depth_draw_opaque, cull_disabled, diffuse_lambert, specular_schlick_ggx, unshaded, shadows_disabled;
 
 uniform sampler2D tex_frg_2;
+uniform sampler2D tex_frg_24;
 uniform sampler2D tex_frg_13;
 
 
@@ -64,13 +75,9 @@ void fragment() {
 	float n_out5p0 = TIME;
 
 
-// FloatFunc:8
-	float n_out8p0 = 1.0 - n_out5p0;
-
-
 // UVFunc:20
-	vec2 n_in20p1 = vec2(0.50000, 0.50000);
-	vec2 n_out20p0 = vec2(n_out8p0) * n_in20p1 + UV;
+	vec2 n_in20p1 = vec2(0.50000, -0.50000);
+	vec2 n_out20p0 = vec2(n_out5p0) * n_in20p1 + UV;
 
 
 // UVFunc:21
@@ -83,9 +90,28 @@ void fragment() {
 	vec4 n_out2p0 = texture(tex_frg_2, n_out21p0);
 
 
+// UVFunc:22
+	vec2 n_in22p1 = vec2(-0.50000, -0.50000);
+	vec2 n_out22p0 = vec2(n_out5p0) * n_in22p1 + UV;
+
+
+// UVFunc:23
+	vec2 n_in23p1 = vec2(2.00000, 2.00000);
+	vec2 n_in23p2 = vec2(0.00000, 0.00000);
+	vec2 n_out23p0 = (n_out22p0 - n_in23p2) * n_in23p1 + n_in23p2;
+
+
+// Texture2D:24
+	vec4 n_out24p0 = texture(tex_frg_24, n_out23p0);
+
+
+// FloatOp:25
+	float n_out25p0 = n_out2p0.x * n_out24p0.x;
+
+
 // FloatOp:9
-	float n_in9p1 = 5.00000;
-	float n_out9p0 = pow(n_out2p0.x, n_in9p1);
+	float n_in9p1 = 3.00000;
+	float n_out9p0 = pow(n_out25p0, n_in9p1);
 
 
 // ColorConstant:11
@@ -129,17 +155,15 @@ void fragment() {
 
 }
 "
-graph_offset = Vector2(-1537.8, 243.282)
+graph_offset = Vector2(-473.175, -120.068)
 modes/cull = 2
 flags/unshaded = true
 flags/shadows_disabled = true
 nodes/fragment/0/position = Vector2(400, 160)
 nodes/fragment/2/node = SubResource("VisualShaderNodeTexture_abbsy")
-nodes/fragment/2/position = Vector2(-800, 260)
+nodes/fragment/2/position = Vector2(-1020, 560)
 nodes/fragment/5/node = SubResource("VisualShaderNodeInput_phu5f")
-nodes/fragment/5/position = Vector2(-2020, 640)
-nodes/fragment/8/node = SubResource("VisualShaderNodeFloatFunc_dq6jv")
-nodes/fragment/8/position = Vector2(-1660, 640)
+nodes/fragment/5/position = Vector2(-2080, 540)
 nodes/fragment/9/node = SubResource("VisualShaderNodeFloatOp_f7vtp")
 nodes/fragment/9/position = Vector2(-220, 280)
 nodes/fragment/11/node = SubResource("VisualShaderNodeColorConstant_0fyme")
@@ -147,11 +171,11 @@ nodes/fragment/11/position = Vector2(-540, -140)
 nodes/fragment/12/node = SubResource("VisualShaderNodeVectorOp_aanf8")
 nodes/fragment/12/position = Vector2(20, -60)
 nodes/fragment/13/node = SubResource("VisualShaderNodeTexture_h3vpl")
-nodes/fragment/13/position = Vector2(-800, 580)
+nodes/fragment/13/position = Vector2(-1040, 220)
 nodes/fragment/14/node = SubResource("VisualShaderNodeFloatOp_c0ip0")
 nodes/fragment/14/position = Vector2(80, 400)
 nodes/fragment/15/node = SubResource("VisualShaderNodeFloatOp_s6gls")
-nodes/fragment/15/position = Vector2(-160, 620)
+nodes/fragment/15/position = Vector2(-220, 540)
 nodes/fragment/16/node = SubResource("VisualShaderNodeColorConstant_8ujjf")
 nodes/fragment/16/position = Vector2(-540, -20)
 nodes/fragment/17/node = SubResource("VisualShaderNodeMix_0knov")
@@ -159,7 +183,15 @@ nodes/fragment/17/position = Vector2(-280.345, -48.7163)
 nodes/fragment/19/node = SubResource("VisualShaderNodeFloatOp_fhkb5")
 nodes/fragment/19/position = Vector2(-480, 120)
 nodes/fragment/20/node = SubResource("VisualShaderNodeUVFunc_hpvkg")
-nodes/fragment/20/position = Vector2(-1400, 540)
+nodes/fragment/20/position = Vector2(-1700, 540)
 nodes/fragment/21/node = SubResource("VisualShaderNodeUVFunc_mc5bm")
-nodes/fragment/21/position = Vector2(-1089.92, 539.352)
-nodes/fragment/connections = PackedInt32Array(5, 0, 8, 0, 2, 0, 9, 0, 9, 0, 12, 0, 12, 0, 0, 0, 9, 0, 14, 0, 14, 0, 0, 1, 13, 0, 15, 0, 15, 0, 14, 1, 11, 0, 17, 0, 16, 0, 17, 1, 17, 0, 12, 1, 13, 0, 19, 0, 19, 0, 17, 2, 8, 0, 20, 2, 20, 0, 21, 0, 21, 0, 2, 0)
+nodes/fragment/21/position = Vector2(-1420, 540)
+nodes/fragment/22/node = SubResource("VisualShaderNodeUVFunc_xxnmx")
+nodes/fragment/22/position = Vector2(-1720, 880)
+nodes/fragment/23/node = SubResource("VisualShaderNodeUVFunc_l68ej")
+nodes/fragment/23/position = Vector2(-1440, 880)
+nodes/fragment/24/node = SubResource("VisualShaderNodeTexture_hnf4e")
+nodes/fragment/24/position = Vector2(-1040, 900)
+nodes/fragment/25/node = SubResource("VisualShaderNodeFloatOp_kue0t")
+nodes/fragment/25/position = Vector2(-697.988, 817.264)
+nodes/fragment/connections = PackedInt32Array(9, 0, 12, 0, 12, 0, 0, 0, 9, 0, 14, 0, 14, 0, 0, 1, 13, 0, 15, 0, 15, 0, 14, 1, 11, 0, 17, 0, 16, 0, 17, 1, 17, 0, 12, 1, 13, 0, 19, 0, 19, 0, 17, 2, 20, 0, 21, 0, 21, 0, 2, 0, 5, 0, 20, 2, 22, 0, 23, 0, 23, 0, 24, 0, 5, 0, 22, 2, 24, 0, 25, 1, 25, 0, 9, 0, 2, 0, 25, 0)
