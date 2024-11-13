@@ -1,72 +1,87 @@
-[gd_scene load_steps=10 format=3 uid="uid://bh67b4puflnkx"]
+[gd_scene load_steps=15 format=3 uid="uid://bh67b4puflnkx"]
 
 [ext_resource type="Script" path="res://Spells/Fireball/explosion_vfx.gd" id="1_5qosj"]
-[ext_resource type="Shader" uid="uid://c06d0axf8nimo" path="res://Spells/Fireball/Explosion_Flame_Shader.tres" id="1_vmtge"]
-[ext_resource type="Shader" uid="uid://dqjcdgqfaakdi" path="res://Spells/Fireball/Explosion_Smoke_Shader.tres" id="2_l3cll"]
+[ext_resource type="Shader" uid="uid://n0imfhr0c2qy" path="res://Spells/Fireball/Flame_Plane_Shader.tres" id="2_3xbhg"]
+
+[sub_resource type="Gradient" id="Gradient_x7f8b"]
+colors = PackedColorArray(1, 1, 0, 1, 1, 0, 0, 1)
+
+[sub_resource type="GradientTexture1D" id="GradientTexture1D_ycqcv"]
+gradient = SubResource("Gradient_x7f8b")
+
+[sub_resource type="Curve" id="Curve_aixau"]
+_data = [Vector2(0, 0), 0.0, 0.0, 0, 0, Vector2(0.202899, 0.703297), 2.50549, 2.50549, 0, 0, Vector2(0.5, 1), 0.0, 0.0, 0, 0, Vector2(0.789855, 0.659341), -2.14835, -2.14835, 0, 0, Vector2(1, 0), 0.0, 0.0, 0, 0]
+point_count = 5
+
+[sub_resource type="CurveTexture" id="CurveTexture_5a8u3"]
+curve = SubResource("Curve_aixau")
 
 [sub_resource type="ParticleProcessMaterial" id="ParticleProcessMaterial_m7c25"]
 particle_flag_align_y = true
 direction = Vector3(0, 1, 0)
 spread = 180.0
-initial_velocity_min = 7.0
-initial_velocity_max = 9.0
+initial_velocity_min = 15.0
+initial_velocity_max = 15.0
 gravity = Vector3(0, 0, 0)
+scale_curve = SubResource("CurveTexture_5a8u3")
+color_ramp = SubResource("GradientTexture1D_ycqcv")
 sub_emitter_mode = 2
 sub_emitter_amount_at_end = 1
 
-[sub_resource type="ShaderMaterial" id="ShaderMaterial_4t7nt"]
+[sub_resource type="ShaderMaterial" id="ShaderMaterial_anwbu"]
 render_priority = 0
-shader = ExtResource("1_vmtge")
+shader = ExtResource("2_3xbhg")
 
-[sub_resource type="SphereMesh" id="SphereMesh_60kte"]
-material = SubResource("ShaderMaterial_4t7nt")
-radius = 0.3
-height = 0.6
-radial_segments = 16
-rings = 4
+[sub_resource type="QuadMesh" id="QuadMesh_5n1xo"]
+material = SubResource("ShaderMaterial_anwbu")
+size = Vector2(2, 2)
+
+[sub_resource type="Curve" id="Curve_ggwcq"]
+_data = [Vector2(0, 0.648352), 0.0, 1.20055, 0, 0, Vector2(0.507246, 1), 0.0, 0.0, 0, 0, Vector2(1, 0.648352), 0.0, 0.0, 0, 0]
+point_count = 3
+
+[sub_resource type="CurveTexture" id="CurveTexture_1dms2"]
+curve = SubResource("Curve_ggwcq")
 
 [sub_resource type="ParticleProcessMaterial" id="ParticleProcessMaterial_7rkht"]
 particle_flag_align_y = true
 direction = Vector3(0, 1, 0)
 spread = 180.0
-initial_velocity_min = 2.0
-initial_velocity_max = 2.0
+initial_velocity_min = 0.5
+initial_velocity_max = 0.5
 gravity = Vector3(0, 0, 0)
-scale_min = 0.5
-scale_max = 1.5
+scale_curve = SubResource("CurveTexture_1dms2")
+color = Color(0.288518, 0.288518, 0.288518, 1)
 sub_emitter_mode = 2
 sub_emitter_amount_at_end = 1
 
-[sub_resource type="ShaderMaterial" id="ShaderMaterial_7p4mh"]
+[sub_resource type="ShaderMaterial" id="ShaderMaterial_rfwex"]
 render_priority = 0
-shader = ExtResource("2_l3cll")
+shader = ExtResource("2_3xbhg")
 
-[sub_resource type="SphereMesh" id="SphereMesh_cpfub"]
-material = SubResource("ShaderMaterial_7p4mh")
-radius = 0.7
-height = 1.4
-radial_segments = 16
-rings = 4
+[sub_resource type="QuadMesh" id="QuadMesh_kqre0"]
+material = SubResource("ShaderMaterial_rfwex")
+size = Vector2(5, 5)
 
 [node name="Explosion_VFX" type="Node3D"]
 script = ExtResource("1_5qosj")
 
 [node name="GPUParticles3D" type="GPUParticles3D" parent="."]
 emitting = false
-amount = 150
+amount = 15
 sub_emitter = NodePath("../GPUParticles3D2")
-lifetime = 0.15
+lifetime = 0.1
 one_shot = true
 process_material = SubResource("ParticleProcessMaterial_m7c25")
-draw_pass_1 = SubResource("SphereMesh_60kte")
+draw_pass_1 = SubResource("QuadMesh_5n1xo")
 
 [node name="GPUParticles3D2" type="GPUParticles3D" parent="."]
 emitting = false
-amount = 30
-lifetime = 0.3
+amount = 10
+lifetime = 0.5
 one_shot = true
 process_material = SubResource("ParticleProcessMaterial_7rkht")
-draw_pass_1 = SubResource("SphereMesh_cpfub")
+draw_pass_1 = SubResource("QuadMesh_kqre0")
 
 [node name="OmniLight3D" type="OmniLight3D" parent="."]
 light_color = Color(0.869637, 0.547863, 1.92523e-06, 1)

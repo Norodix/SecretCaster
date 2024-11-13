@@ -1,7 +1,8 @@
-[gd_scene load_steps=9 format=4 uid="uid://dibxmvly5elpn"]
+[gd_scene load_steps=17 format=4 uid="uid://dibxmvly5elpn"]
 
 [ext_resource type="Shader" uid="uid://0owhrheyokhj" path="res://Spells/Fireball/Fireball_Ball_Shader.tres" id="1_6ag84"]
 [ext_resource type="Shader" uid="uid://drtye41ma3rhg" path="res://Spells/Fireball/Fireball_Flame_Shader.tres" id="2_r7aly"]
+[ext_resource type="Shader" uid="uid://n0imfhr0c2qy" path="res://Spells/Fireball/Flame_Plane_Shader.tres" id="3_b6lac"]
 
 [sub_resource type="SphereMesh" id="SphereMesh_0tkq7"]
 
@@ -47,6 +48,37 @@ shadow_mesh = SubResource("ArrayMesh_w4t3h")
 render_priority = 0
 shader = ExtResource("2_r7aly")
 
+[sub_resource type="Gradient" id="Gradient_nhjt3"]
+offsets = PackedFloat32Array(0, 0.345455, 0.918182)
+colors = PackedColorArray(1, 0.639216, 0, 1, 0.752941, 0.0862745, 0, 1, 0, 0, 0, 1)
+
+[sub_resource type="GradientTexture1D" id="GradientTexture1D_uklf3"]
+gradient = SubResource("Gradient_nhjt3")
+
+[sub_resource type="Curve" id="Curve_myb53"]
+_data = [Vector2(0, 0.516483), 0.0, 0.0, 0, 0, Vector2(0.144928, 0.923077), 0.0, 0.0, 0, 0, Vector2(0.318841, 1), 0.0, 0.0, 0, 0, Vector2(0.615942, 0.923077), 0.0, 0.0, 0, 0, Vector2(1, 0.395604), 0.0, 0.0, 0, 0]
+point_count = 5
+
+[sub_resource type="CurveTexture" id="CurveTexture_wmpmh"]
+curve = SubResource("Curve_myb53")
+
+[sub_resource type="ParticleProcessMaterial" id="ParticleProcessMaterial_l04ea"]
+direction = Vector3(0, 1, 0)
+spread = 15.0
+initial_velocity_min = 1.0
+initial_velocity_max = 1.0
+gravity = Vector3(0, 0, 0)
+scale_curve = SubResource("CurveTexture_wmpmh")
+color_ramp = SubResource("GradientTexture1D_uklf3")
+
+[sub_resource type="ShaderMaterial" id="ShaderMaterial_wb2l8"]
+render_priority = 0
+shader = ExtResource("3_b6lac")
+
+[sub_resource type="QuadMesh" id="QuadMesh_rpvcj"]
+material = SubResource("ShaderMaterial_wb2l8")
+size = Vector2(1.2, 1.2)
+
 [node name="Fireball-In-hand" type="Node3D"]
 
 [node name="MeshInstance3D" type="MeshInstance3D" parent="."]
@@ -63,3 +95,12 @@ surface_material_override/0 = SubResource("ShaderMaterial_4qes1")
 light_color = Color(0.983738, 0.78783, 0.34145, 1)
 omni_range = 15.0
 omni_attenuation = 2.0
+
+[node name="GPUParticles3D" type="GPUParticles3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.0560553, 0)
+amount = 5
+amount_ratio = 0.719
+lifetime = 0.5
+explosiveness = 0.16
+process_material = SubResource("ParticleProcessMaterial_l04ea")
+draw_pass_1 = SubResource("QuadMesh_rpvcj")
