@@ -1,8 +1,8 @@
 [gd_scene load_steps=5 format=3 uid="uid://cvwiv70suv503"]
 
-[ext_resource type="Material" uid="uid://bw7rcq4qfvjvo" path="res://StoneWall_Mat.tres" id="1_n7x1j"]
+[ext_resource type="Material" path="res://StoneWall_Mat.tres" id="1_n7x1j"]
 [ext_resource type="PackedScene" uid="uid://dl2vuwabcukwp" path="res://player.tscn" id="2_n2gvy"]
-[ext_resource type="PackedScene" path="res://plant.tscn" id="3_iopg7"]
+[ext_resource type="PackedScene" uid="uid://cxex75sqcbgr1" path="res://plant.tscn" id="3_iopg7"]
 
 [sub_resource type="Environment" id="Environment_2vp05"]
 background_energy_multiplier = 0.0

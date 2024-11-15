@@ -292,17 +292,6 @@ tracks/0/interp = 1
 tracks/0/loop_wrap = true
 tracks/0/keys = PackedFloat32Array(0, 1, 0, 0, -0.045)
 
-[sub_resource type="Animation" id="Animation_egmpv"]
-resource_name = "colt_shoot"
-length = 0.1
-tracks/0/type = "position_3d"
-tracks/0/imported = false
-tracks/0/enabled = true
-tracks/0/path = NodePath("slide")
-tracks/0/interp = 1
-tracks/0/loop_wrap = true
-tracks/0/keys = PackedFloat32Array(0, 1, 0, 0, 0, 0.05, 1, 0, 0, -0.045, 0.1, 1, 0, 0, 0)
-
 [sub_resource type="Animation" id="Animation_vgn0l"]
 resource_name = "colt_reload"
 tracks/0/type = "value"
@@ -318,6 +307,17 @@ tracks/0/keys = {
 "values": [Vector3(6.28319, 0, 0), Vector3(3.14159, 0, 0), Vector3(0, 0, 0)]
 }
 
+[sub_resource type="Animation" id="Animation_egmpv"]
+resource_name = "colt_shoot"
+length = 0.1
+tracks/0/type = "position_3d"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("slide")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = PackedFloat32Array(0, 1, 0, 0, 0, 0.05, 1, 0, 0, -0.045, 0.1, 1, 0, 0, 0)
+
 [sub_resource type="AnimationLibrary" id="AnimationLibrary_i6nod"]
 _data = {
 "RESET": SubResource("Animation_7wcky"),
@@ -327,7 +327,7 @@ _data = {
 }
 
 [node name="colt" type="Node3D"]
-transform = Transform3D(1, 0, 0, 0, -1, 8.74228e-08, 0, -8.74228e-08, -1, 0, 0, 0)
+transform = Transform3D(1, 0, 0, 0, -1, -2.53518e-06, 0, 2.53518e-06, -1, 0, 0, 0)
 
 [node name="slide" type="MeshInstance3D" parent="."]
 transform = Transform3D(10, 0, 0, 0, -1.19209e-06, 10, 0, -10, -1.19209e-06, 0, 0, 0)
