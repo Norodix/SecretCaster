@@ -1,6 +1,7 @@
-[gd_scene load_steps=12 format=3 uid="uid://dl2vuwabcukwp"]
+[gd_scene load_steps=13 format=3 uid="uid://dl2vuwabcukwp"]
 
 [ext_resource type="Script" path="res://player.gd" id="1_q4vdp"]
+[ext_resource type="PackedScene" uid="uid://cf64v5ohrm125" path="res://Hands/Magic_Hands.tscn" id="2_2eniw"]
 [ext_resource type="PackedScene" uid="uid://cqctc5q0a4orf" path="res://Spells/Burn.tscn" id="2_f00fj"]
 [ext_resource type="PackedScene" uid="uid://bmwg7beyffcb2" path="res://Spells/Highjump.tscn" id="3_eycb3"]
 [ext_resource type="PackedScene" uid="uid://cq5pk5lbvd77g" path="res://Spells/Fireball/FireballSpawner.tscn" id="4_27jl0"]
@@ -23,6 +24,9 @@ script = ExtResource("1_q4vdp")
 [node name="Camera3D" type="Camera3D" parent="."]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.85, 0)
 current = true
+
+[node name="Magic_Hands" parent="Camera3D" instance=ExtResource("2_2eniw")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, -0.13, -0.25)
 
 [node name="CollisionShape3D" type="CollisionShape3D" parent="."]
 shape = SubResource("CylinderShape3D_nakrb")

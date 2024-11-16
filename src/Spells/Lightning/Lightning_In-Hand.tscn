@@ -1,6 +1,8 @@
-[gd_scene load_steps=4 format=3 uid="uid://cnpc47mm4wul4"]
+[gd_scene load_steps=12 format=3 uid="uid://cnpc47mm4wul4"]
 
+[ext_resource type="Script" path="res://Spells/Lightning/lightning_inhand_visual.gd" id="1_j3wok"]
 [ext_resource type="Shader" uid="uid://klf75i7epsx3" path="res://Spells/Lightning/Lightning_Ball_Shader.tres" id="1_kxvjf"]
+[ext_resource type="Texture2D" uid="uid://bi7ssho1pk8jj" path="res://Spells/Lightning/Lightning_Tex.png" id="3_ro7br"]
 
 [sub_resource type="SphereMesh" id="SphereMesh_xjyov"]
 radius = 0.2
@@ -10,12 +12,64 @@ height = 0.4
 render_priority = 0
 shader = ExtResource("1_kxvjf")
 
-[node name="Lightning-In-hand" type="Node3D"]
+[sub_resource type="Gradient" id="Gradient_71jxk"]
+colors = PackedColorArray(1, 1, 1, 1, 1, 1, 1, 0)
 
-[node name="MeshInstance3D" type="MeshInstance3D" parent="."]
-mesh = SubResource("SphereMesh_xjyov")
-surface_material_override/0 = SubResource("ShaderMaterial_es44y")
+[sub_resource type="GradientTexture2D" id="GradientTexture2D_3u5k6"]
+gradient = SubResource("Gradient_71jxk")
+fill = 1
+fill_from = Vector2(0.510753, 0.505376)
+fill_to = Vector2(1, 0.505376)
+
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_v4eod"]
+transparency = 1
+cull_mode = 2
+shading_mode = 0
+albedo_color = Color(0.947926, 0.896615, 0.451389, 1)
+albedo_texture = ExtResource("3_ro7br")
+
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_il1ev"]
+next_pass = SubResource("StandardMaterial3D_v4eod")
+transparency = 3
+alpha_hash_scale = 2.0
+alpha_antialiasing_mode = 0
+cull_mode = 2
+shading_mode = 0
+albedo_color = Color(0.602303, 0.947941, 0.920105, 1)
+albedo_texture = SubResource("GradientTexture2D_3u5k6")
+
+[sub_resource type="ImmediateMesh" id="ImmediateMesh_8mam7"]
+
+[sub_resource type="ImmediateMesh" id="ImmediateMesh_5vfna"]
+
+[node name="Lightning-In-hand" type="Node3D"]
+script = ExtResource("1_j3wok")
 
 [node name="OmniLight3D" type="OmniLight3D" parent="."]
 omni_range = 15.0
 omni_attenuation = 2.0
+
+[node name="Lightning_Ball" type="MeshInstance3D" parent="."]
+mesh = SubResource("SphereMesh_xjyov")
+surface_material_override/0 = SubResource("ShaderMaterial_es44y")
+
+[node name="Lightning_01" type="MeshInstance3D" parent="."]
+material_override = SubResource("StandardMaterial3D_il1ev")
+mesh = SubResource("ImmediateMesh_8mam7")
+
+[node name="Lightning_02" type="MeshInstance3D" parent="."]
+mesh = SubResource("ImmediateMesh_5vfna")
+
+[node name="Lightning_03" type="MeshInstance3D" parent="."]
+
+[node name="Lightning01_Start_Mark" type="Marker3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.171426, 0, 0)
+
+[node name="Lightning01_End_Mark" type="Marker3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.5, 0, 0)
+
+[node name="Timer" type="Timer" parent="."]
+one_shot = true
+autostart = true
+
+[connection signal="timeout" from="Timer" to="." method="_on_timer_timeout"]

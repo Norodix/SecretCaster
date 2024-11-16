@@ -79,7 +79,7 @@ shader = ExtResource("3_b6lac")
 
 [sub_resource type="QuadMesh" id="QuadMesh_rpvcj"]
 material = SubResource("ShaderMaterial_wb2l8")
-size = Vector2(0.12, 0.12)
+size = Vector2(0.1, 0.1)
 
 [node name="Fireball-In-hand" type="Node3D"]
 
@@ -103,5 +103,7 @@ amount = 5
 amount_ratio = 0.719
 lifetime = 0.5
 explosiveness = 0.16
+local_coords = true
+draw_order = 2
 process_material = SubResource("ParticleProcessMaterial_l04ea")
 draw_pass_1 = SubResource("QuadMesh_rpvcj")
