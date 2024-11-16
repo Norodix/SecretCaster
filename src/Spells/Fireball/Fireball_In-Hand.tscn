@@ -5,6 +5,8 @@
 [ext_resource type="Shader" uid="uid://n0imfhr0c2qy" path="res://Spells/Fireball/Flame_Plane_Shader.tres" id="3_b6lac"]
 
 [sub_resource type="SphereMesh" id="SphereMesh_0tkq7"]
+radius = 0.05
+height = 0.1
 
 [sub_resource type="ShaderMaterial" id="ShaderMaterial_aeba1"]
 render_priority = 0
@@ -65,8 +67,8 @@ curve = SubResource("Curve_myb53")
 [sub_resource type="ParticleProcessMaterial" id="ParticleProcessMaterial_l04ea"]
 direction = Vector3(0, 1, 0)
 spread = 15.0
-initial_velocity_min = 1.0
-initial_velocity_max = 1.0
+initial_velocity_min = 0.1
+initial_velocity_max = 0.1
 gravity = Vector3(0, 0, 0)
 scale_curve = SubResource("CurveTexture_wmpmh")
 color_ramp = SubResource("GradientTexture1D_uklf3")
@@ -77,7 +79,7 @@ shader = ExtResource("3_b6lac")
 
 [sub_resource type="QuadMesh" id="QuadMesh_rpvcj"]
 material = SubResource("ShaderMaterial_wb2l8")
-size = Vector2(1.2, 1.2)
+size = Vector2(0.12, 0.12)
 
 [node name="Fireball-In-hand" type="Node3D"]
 
@@ -86,18 +88,17 @@ mesh = SubResource("SphereMesh_0tkq7")
 surface_material_override/0 = SubResource("ShaderMaterial_aeba1")
 
 [node name="Sphere" type="MeshInstance3D" parent="."]
-transform = Transform3D(0.4, 0, 0, 0, -1.74846e-08, -0.3, 0, 0.4, -1.31134e-08, 0, -0.116254, 0)
+transform = Transform3D(0.04, 0, 0, 0, -1.74846e-09, -0.03, 0, 0.04, -1.31134e-09, 0, -0.00262228, 0)
 mesh = SubResource("ArrayMesh_18ph0")
 skeleton = NodePath("")
 surface_material_override/0 = SubResource("ShaderMaterial_4qes1")
 
 [node name="OmniLight3D" type="OmniLight3D" parent="."]
 light_color = Color(0.983738, 0.78783, 0.34145, 1)
-omni_range = 15.0
-omni_attenuation = 2.0
+omni_range = 1.0
 
 [node name="GPUParticles3D" type="GPUParticles3D" parent="."]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.0560553, 0)
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.00573888, 0)
 amount = 5
 amount_ratio = 0.719
 lifetime = 0.5
