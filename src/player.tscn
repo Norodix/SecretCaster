@@ -24,6 +24,7 @@ script = ExtResource("1_q4vdp")
 [node name="Camera3D" type="Camera3D" parent="."]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.85, 0)
 current = true
+fov = 60.0
 
 [node name="Magic_Hands" parent="Camera3D" instance=ExtResource("2_2eniw")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, -0.2, -0.3)

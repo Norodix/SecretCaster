@@ -18,7 +18,7 @@ var last_activate = - cooldown_time_ms_default * 1000
 
 @onready var playerAnim = $Camera3D/Magic_Hands/AnimationTree
 @onready var playerAnimState = $Camera3D/Magic_Hands/AnimationTree.get("parameters/StateMachine/playback")
-#@onready var playerAnimMotion = $Camera3D/Magic_Hands/AnimationTree.get("parameters/MotionBlend/blend_amount")
+@onready var pistolAnim = $Camera3D/Magic_Hands/Armature/Skeleton3D/BoneAttachment3D2/colt/AnimationPlayer
 
 func _ready() -> void:
 	Input.mouse_mode = Input.MOUSE_MODE_CAPTURED
@@ -73,7 +73,9 @@ func _process(delta: float) -> void:
 					cooldown_time_ms = activespell.cooldown
 				else:
 					cooldown_time_ms = cooldown_time_ms_default
-					playerAnimState.travel("Hands_Magic_Cast")
+					playerAnimState.travel("Hands_Pistol_Fire")
+					pistolAnim.play("colt_shoot")
+					pistolAnim.set_speed_scale(3.0)
 			
 	return
 
