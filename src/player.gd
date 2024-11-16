@@ -16,9 +16,13 @@ const cooldown_time_ms_default = 2000
 var cooldown_time_ms = cooldown_time_ms_default
 var last_activate = - cooldown_time_ms_default * 1000
 
+@onready var playerAnim = $Camera3D/Magic_Hands/AnimationTree
+@onready var playerAnimState = $Camera3D/Magic_Hands/AnimationTree.get("parameters/StateMachine/playback")
+#@onready var playerAnimMotion = $Camera3D/Magic_Hands/AnimationTree.get("parameters/MotionBlend/blend_amount")
+
 func _ready() -> void:
 	Input.mouse_mode = Input.MOUSE_MODE_CAPTURED
-
+	
 
 func _physics_process(delta: float) -> void:
 	var inputvector = Input.get_vector("left", "right", "forwards", "backwards")
@@ -38,6 +42,10 @@ func _physics_process(delta: float) -> void:
 	vh = vh.limit_length(speed)
 	
 	velocity = vh + Vector3(0, vy, 0)
+	
+	if velocity.length() > 0.1:
+		playerAnim.set("parameters/MotionBlend/blend_amount", velocity.length() * 0.1)
+	
 	move_and_slide()
 	return
 
@@ -65,6 +73,7 @@ func _process(delta: float) -> void:
 					cooldown_time_ms = activespell.cooldown
 				else:
 					cooldown_time_ms = cooldown_time_ms_default
+					playerAnimState.travel("Hands_Magic_Cast")
 			
 	return
 
