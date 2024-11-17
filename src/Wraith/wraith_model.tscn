@@ -45,7 +45,7 @@ animation = &"Wraith_Movement"
 advance_mode = 2
 
 [sub_resource type="AnimationNodeStateMachineTransition" id="AnimationNodeStateMachineTransition_maeye"]
-xfade_time = 0.1
+xfade_time = 1.0
 
 [sub_resource type="AnimationNodeStateMachineTransition" id="AnimationNodeStateMachineTransition_lr01g"]
 xfade_time = 0.1
@@ -62,7 +62,7 @@ xfade_time = 0.1
 xfade_time = 0.1
 
 [sub_resource type="AnimationNodeStateMachineTransition" id="AnimationNodeStateMachineTransition_jp3jg"]
-xfade_time = 0.1
+xfade_time = 1.0
 
 [sub_resource type="AnimationNodeStateMachine" id="AnimationNodeStateMachine_t2dqk"]
 states/Wraith_Attack/node = SubResource("AnimationNodeAnimation_nnxl8")
@@ -75,7 +75,7 @@ transitions = ["Start", "Wraith_Idle", SubResource("AnimationNodeStateMachineTra
 graph_offset = Vector2(-229, -33)
 
 [sub_resource type="AnimationNodeBlendTree" id="AnimationNodeBlendTree_borp5"]
-graph_offset = Vector2(-447, 2)
+graph_offset = Vector2(-457, -31)
 nodes/Animation/node = SubResource("AnimationNodeAnimation_7pmwl")
 nodes/Animation/position = Vector2(-80, 180)
 nodes/Blend2/node = SubResource("AnimationNodeBlend2_vapar")
@@ -88,17 +88,17 @@ node_connections = [&"Blend2", 0, &"StateMachine", &"Blend2", 1, &"Animation", &
 [node name="Wraith2" instance=ExtResource("1_h34gq")]
 
 [node name="Skeleton3D" parent="Armature" index="0"]
-bones/1/position = Vector3(0.0285239, 0.36902, -1.76283e-09)
-bones/4/rotation = Quaternion(0.0207511, 0, 0.0675938, 0.997497)
-bones/5/rotation = Quaternion(0.777572, -0.00648259, -0.0709236, 0.624748)
-bones/6/position = Vector3(0.0965784, 0.656412, 0.26975)
-bones/6/rotation = Quaternion(0.158582, 0.041586, 0.294461, 0.941496)
+bones/1/position = Vector3(0.0214066, 0.398709, -6.59435e-11)
+bones/4/rotation = Quaternion(0.00850183, -0.0012017, 0.027622, 0.999582)
+bones/5/rotation = Quaternion(0.707107, -3.09086e-08, -3.09086e-08, 0.707107)
+bones/6/position = Vector3(0.0800958, 0.689775, 0.269638)
+bones/6/rotation = Quaternion(0.124538, 0.164733, 0.276382, 0.938598)
 
 [node name="Wraith" parent="Armature/Skeleton3D" index="0"]
 surface_material_override/0 = ExtResource("2_cntme")
 
 [node name="BoneAttachment3D" type="BoneAttachment3D" parent="Armature/Skeleton3D" index="1"]
-transform = Transform3D(0.990862, -0.134849, 0.00280529, 0.134849, 0.990001, -0.0413983, 0.00280529, 0.0413983, 0.999139, 0.0285239, 1.54994, -1.76283e-09)
+transform = Transform3D(0.998471, -0.0552414, -0.00193272, 0.0552005, 0.998329, -0.0170629, 0.00287207, 0.0169302, 0.999853, 0.0214066, 1.57963, -6.59435e-11)
 bone_name = "Head"
 bone_idx = 4
 
@@ -112,4 +112,4 @@ draw_pass_1 = SubResource("SphereMesh_sc4gc")
 [node name="AnimationTree" type="AnimationTree" parent="." index="2"]
 tree_root = SubResource("AnimationNodeBlendTree_borp5")
 anim_player = NodePath("../AnimationPlayer")
-parameters/Blend2/blend_amount = 1.0
+parameters/Blend2/blend_amount = 0.0
