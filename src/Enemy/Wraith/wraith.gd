@@ -28,8 +28,19 @@ func _physics_process(delta: float) -> void:
 	velocity = (nextpos - global_position).normalized() * speed
 	if $NavigationAgent3D.is_navigation_finished():
 		velocity = Vector3.ZERO
-	#print(velocity)
 	move_and_slide()
+	
+	# Generate a new transform that looks in movement direction
+	if velocity.length() > 0.1:
+		var z = - velocity
+		z.y = 0
+		z = z.normalized()
+		var y = Vector3.UP
+		var x = y.cross(z)
+		var new_basis = Basis(x, y, z).orthonormalized()
+		global_basis = global_basis.slerp(new_basis, 0.1)
+	else:
+		look_at(player.global_position)
 	
 	if abs(velocity) > Vector3(0.1,0.1,0.1):
 		animState.travel("Wraith_Movement")
