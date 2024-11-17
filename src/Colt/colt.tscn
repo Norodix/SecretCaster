@@ -1,4 +1,4 @@
-[gd_scene load_steps=34 format=4 uid="uid://bewc1hnbc3rf5"]
+[gd_scene load_steps=27 format=4 uid="uid://bewc1hnbc3rf5"]
 
 [sub_resource type="StandardMaterial3D" id="StandardMaterial3D_cejvs"]
 
@@ -34,9 +34,6 @@ _surfaces = [{
 blend_shape_mode = 0
 shadow_mesh = SubResource("ArrayMesh_mxcgn")
 
-[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_4s0yo"]
-albedo_color = Color(0.352941, 0.352941, 0.352941, 1)
-
 [sub_resource type="StandardMaterial3D" id="StandardMaterial3D_m6mke"]
 
 [sub_resource type="ArrayMesh" id="ArrayMesh_nbi6q"]
@@ -70,9 +67,6 @@ _surfaces = [{
 }]
 blend_shape_mode = 0
 shadow_mesh = SubResource("ArrayMesh_nbi6q")
-
-[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_uunrv"]
-albedo_color = Color(0.352941, 0.352941, 0.352941, 1)
 
 [sub_resource type="StandardMaterial3D" id="StandardMaterial3D_6q31n"]
 
@@ -108,9 +102,6 @@ _surfaces = [{
 blend_shape_mode = 0
 shadow_mesh = SubResource("ArrayMesh_ehhy7")
 
-[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_7q6g0"]
-albedo_color = Color(0.352941, 0.352941, 0.352941, 1)
-
 [sub_resource type="StandardMaterial3D" id="StandardMaterial3D_yqoap"]
 
 [sub_resource type="ArrayMesh" id="ArrayMesh_1kiep"]
@@ -144,9 +135,6 @@ _surfaces = [{
 }]
 blend_shape_mode = 0
 shadow_mesh = SubResource("ArrayMesh_1kiep")
-
-[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_fm8fd"]
-albedo_color = Color(0.388235, 0.152941, 0.0196078, 1)
 
 [sub_resource type="StandardMaterial3D" id="StandardMaterial3D_biriu"]
 
@@ -182,9 +170,6 @@ _surfaces = [{
 blend_shape_mode = 0
 shadow_mesh = SubResource("ArrayMesh_qdw2i")
 
-[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_0p1nv"]
-albedo_color = Color(0.388721, 0.15257, 0.0205079, 1)
-
 [sub_resource type="StandardMaterial3D" id="StandardMaterial3D_h5j8u"]
 
 [sub_resource type="ArrayMesh" id="ArrayMesh_wxrna"]
@@ -219,9 +204,6 @@ _surfaces = [{
 blend_shape_mode = 0
 shadow_mesh = SubResource("ArrayMesh_wxrna")
 
-[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_bpwyj"]
-albedo_color = Color(0.352941, 0.352941, 0.352941, 1)
-
 [sub_resource type="StandardMaterial3D" id="StandardMaterial3D_1ddrw"]
 
 [sub_resource type="ArrayMesh" id="ArrayMesh_h0ut0"]
@@ -253,11 +235,6 @@ _surfaces = [{
 }]
 blend_shape_mode = 0
 shadow_mesh = SubResource("ArrayMesh_h0ut0")
-
-[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_nglc5"]
-albedo_color = Color(0.473976, 0.473976, 0.473976, 1)
-metallic_specular = 1.0
-roughness = 0.3
 
 [sub_resource type="Animation" id="Animation_7wcky"]
 length = 0.001
@@ -340,43 +317,36 @@ _data = {
 transform = Transform3D(10, 0, 0, 0, -1.19209e-06, 10, 0, -10, -1.19209e-06, 0, 0, 0)
 mesh = SubResource("ArrayMesh_hlyhj")
 skeleton = NodePath("")
-surface_material_override/0 = SubResource("StandardMaterial3D_4s0yo")
 
 [node name="Cube_001" type="MeshInstance3D" parent="."]
 transform = Transform3D(10, 0, 0, 0, -1.19209e-06, 10, 0, -10, -1.19209e-06, 0, 0, 0)
 mesh = SubResource("ArrayMesh_4hbb1")
 skeleton = NodePath("")
-surface_material_override/0 = SubResource("StandardMaterial3D_uunrv")
 
 [node name="Cube_002" type="MeshInstance3D" parent="."]
 transform = Transform3D(10, 0, 0, 0, -1.19209e-06, 10, 0, -10, -1.19209e-06, 0, 0, 0)
 mesh = SubResource("ArrayMesh_nhtb7")
 skeleton = NodePath("")
-surface_material_override/0 = SubResource("StandardMaterial3D_7q6g0")
 
 [node name="Cube_003" type="MeshInstance3D" parent="."]
 transform = Transform3D(10, 0, 0, 0, -1.19209e-06, 10, 0, -10, -1.19209e-06, 0, 0, 0)
 mesh = SubResource("ArrayMesh_p5w2y")
 skeleton = NodePath("")
-surface_material_override/0 = SubResource("StandardMaterial3D_fm8fd")
 
 [node name="Cube_004" type="MeshInstance3D" parent="."]
 transform = Transform3D(10, 0, 0, 0, -1.19209e-06, 10, 0, -10, -1.19209e-06, 0, 0, 0)
 mesh = SubResource("ArrayMesh_6vs6l")
 skeleton = NodePath("")
-surface_material_override/0 = SubResource("StandardMaterial3D_0p1nv")
 
 [node name="Cube_005" type="MeshInstance3D" parent="."]
 transform = Transform3D(10, 0, 0, 0, -1.19209e-06, 10, 0, -10, -1.19209e-06, 0, 0, 0)
 mesh = SubResource("ArrayMesh_ktwtd")
 skeleton = NodePath("")
-surface_material_override/0 = SubResource("StandardMaterial3D_bpwyj")
 
 [node name="Cylinder_002" type="MeshInstance3D" parent="."]
 transform = Transform3D(10, 0, 0, 0, -1.19209e-06, 10, 0, -10, -1.19209e-06, 0, 0, 0)
 mesh = SubResource("ArrayMesh_pj5vl")
 skeleton = NodePath("")
-surface_material_override/0 = SubResource("StandardMaterial3D_nglc5")
 
 [node name="AnimationPlayer" type="AnimationPlayer" parent="."]
 libraries = {

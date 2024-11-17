@@ -115,7 +115,7 @@ transitions = ["Start", "Hands_Magic_Idle", SubResource("AnimationNodeStateMachi
 graph_offset = Vector2(-179, 154.209)
 
 [sub_resource type="AnimationNodeBlendTree" id="AnimationNodeBlendTree_q5xbq"]
-graph_offset = Vector2(-429.385, -1.46055)
+graph_offset = Vector2(-595, -6)
 nodes/Animation/node = SubResource("AnimationNodeAnimation_dndj7")
 nodes/Animation/position = Vector2(-80, 220)
 nodes/MotionBlend/node = SubResource("AnimationNodeBlend2_36fn2")
@@ -128,7 +128,7 @@ node_connections = [&"MotionBlend", 0, &"StateMachine", &"MotionBlend", 1, &"Ani
 [node name="Magic_Hands" instance=ExtResource("1_uxeip")]
 
 [node name="Skeleton3D" parent="Armature" index="0"]
-bones/1/position = Vector3(0.100173, -0.0764331, 0.218022)
+bones/1/position = Vector3(0.0997641, -0.0785306, 0.218022)
 bones/1/rotation = Quaternion(-0.405432, -0.715935, 0.278202, 0.495646)
 bones/2/rotation = Quaternion(0.0136651, 0.119349, 0.344177, 0.931188)
 bones/3/rotation = Quaternion(0.874873, 0.296334, -0.140335, 0.356497)
@@ -150,7 +150,7 @@ bones/18/rotation = Quaternion(-0.638458, -0.113545, -0.169418, 0.742143)
 bones/19/rotation = Quaternion(0.187782, 0.421904, -0.457121, 0.760115)
 bones/20/rotation = Quaternion(0.00812629, 0.0477269, -0.333231, 0.941602)
 bones/21/rotation = Quaternion(0.0308485, 0.0268719, -0.171559, 0.984324)
-bones/22/position = Vector3(0.209355, 0.0287011, 0.197068)
+bones/22/position = Vector3(0.208946, 0.0266036, 0.197065)
 bones/22/rotation = Quaternion(-0.69099, 0.15894, 0.159823, 0.686824)
 bones/23/rotation = Quaternion(0.010293, -0.000820996, -0.248921, 0.968469)
 bones/24/rotation = Quaternion(0.899946, -0.208119, 0.104292, 0.368656)
@@ -173,20 +173,20 @@ bones/40/rotation = Quaternion(0.577593, -0.321118, 0.220566, 0.71737)
 bones/41/rotation = Quaternion(0.30466, 0.069163, 0.628915, 0.711945)
 bones/42/rotation = Quaternion(0.244642, -0.0547068, 0.41807, 0.873141)
 bones/43/position = Vector3(-0.0204478, 0.0990713, 0.00822233)
-bones/44/scale = Vector3(0, 0, 0)
+bones/44/position = Vector3(0, -0.41, 0)
 
 [node name="magichands" parent="Armature/Skeleton3D" index="0"]
 surface_material_override/0 = SubResource("StandardMaterial3D_qupw8")
 
 [node name="BoneAttachment3D" type="BoneAttachment3D" parent="Armature/Skeleton3D" index="1"]
-transform = Transform3D(0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0.09, 0)
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, -0.41, 0)
 bone_name = "Magic_Pos"
 bone_idx = 44
 
 [node name="Fireball-In-hand" parent="Armature/Skeleton3D/BoneAttachment3D" index="0" instance=ExtResource("4_pcsau")]
 
 [node name="BoneAttachment3D2" type="BoneAttachment3D" parent="Armature/Skeleton3D" index="2"]
-transform = Transform3D(1, -2.08393e-09, 1.33643e-08, 1.84054e-08, 1, 4.56348e-08, 1.33328e-08, 2.79397e-08, 1, 0.14783, 0.037796, 0.00337403)
+transform = Transform3D(1, -2.08393e-09, 1.33643e-08, 1.84054e-08, 1, 4.56348e-08, 1.33328e-08, 2.79397e-08, 1, 0.147422, 0.0356985, 0.00337182)
 bone_name = "Weapon_Pos"
 bone_idx = 43
 
