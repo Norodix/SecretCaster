@@ -19,10 +19,18 @@ var last_activate = - cooldown_time_ms_default * 1000
 @onready var playerAnim = $Camera3D/Magic_Hands/AnimationTree
 @onready var playerAnimState = $Camera3D/Magic_Hands/AnimationTree.get("parameters/StateMachine/playback")
 @onready var pistolAnim = $Camera3D/Magic_Hands/Armature/Skeleton3D/BoneAttachment3D2/colt/AnimationPlayer
+@onready var pistol = $Camera3D/Magic_Hands/Armature/Skeleton3D/BoneAttachment3D2/colt
+
+enum ATTACK_MODE {
+	PISTOL,
+	MAGIC,
+	MAX, # must be last and unused
+}
+var attack_mode = ATTACK_MODE.MAGIC
 
 func _ready() -> void:
 	Input.mouse_mode = Input.MOUSE_MODE_CAPTURED
-	
+	$Pistol_Visibility_Timer.wait_time =  playerAnim.get_animation("Hands_Swap").length / 2.0
 
 func _physics_process(delta: float) -> void:
 	var inputvector = Input.get_vector("left", "right", "forwards", "backwards")
@@ -62,21 +70,33 @@ func _process(delta: float) -> void:
 				activespell = spell
 				print("Selecting: " + spell.name)
 	
-	if Input.is_action_just_pressed("use_spell") and activespell != null:
-		if Time.get_ticks_msec() < last_activate + cooldown_time_ms:
-			print("Spells on cooldown")
-		else:
-			if activespell.has_method("use_spell"):
-				activespell.use_spell(self)
-				last_activate = Time.get_ticks_msec()
-				if "cooldown" in activespell:
-					cooldown_time_ms = activespell.cooldown
-				else:
-					cooldown_time_ms = cooldown_time_ms_default
-					playerAnimState.travel("Hands_Pistol_Fire")
-					pistolAnim.play("colt_shoot")
-					pistolAnim.set_speed_scale(3.0)
+	if attack_mode == ATTACK_MODE.MAGIC:
+		if Input.is_action_just_pressed("use_spell") and activespell != null:
+			if Time.get_ticks_msec() < last_activate + cooldown_time_ms:
+				print("Spells on cooldown")
+			else:
+				if activespell.has_method("use_spell"):
+					activespell.use_spell(self)
+					last_activate = Time.get_ticks_msec()
+					if "cooldown" in activespell:
+						cooldown_time_ms = activespell.cooldown
+					else:
+						cooldown_time_ms = cooldown_time_ms_default
+				playerAnimState.travel("Hands_Magic_Cast")
+	
+	if attack_mode == ATTACK_MODE.PISTOL:
+		if Input.is_action_just_pressed("use_spell"):
+			pistolAnim.play("colt_shoot")
+			pistolAnim.set_speed_scale(3.0)
+			playerAnimState.travel("Hands_Pistol_Fire")
 			
+	if Input.is_action_just_pressed("attack_mode"):
+		attack_mode = (attack_mode + 1) % ATTACK_MODE.MAX
+		if attack_mode == ATTACK_MODE.MAGIC:
+			playerAnimState.travel("Hands_Magic_Idle")
+		if attack_mode == ATTACK_MODE.PISTOL:
+			playerAnimState.travel("Hands_Pistol_Idle")
+		$Pistol_Visibility_Timer.start()
 	return
 
 
@@ -123,3 +143,11 @@ func _input(event: InputEvent) -> void:
 			if action_history.size() > historysize:
 				action_history.remove_at(0)
 		#print(action_history)
+
+
+func _on_timer_timeout() -> void:
+	if attack_mode == ATTACK_MODE.PISTOL:
+		pistol.visible = true
+	else:
+		pistol.visible = false
+	pass # Replace with function body.

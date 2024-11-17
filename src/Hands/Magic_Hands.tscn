@@ -192,6 +192,7 @@ bone_idx = 43
 
 [node name="colt" parent="Armature/Skeleton3D/BoneAttachment3D2" index="0" instance=ExtResource("5_fjyl6")]
 transform = Transform3D(-1, 8.74228e-08, -1.50996e-07, 8.74228e-08, 1, 8.74228e-08, 1.50996e-07, 8.74228e-08, -1, 0.00188565, 0.016, -0.085)
+visible = false
 
 [node name="AnimationTree" type="AnimationTree" parent="." index="2"]
 tree_root = SubResource("AnimationNodeBlendTree_q5xbq")

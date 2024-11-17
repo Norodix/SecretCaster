@@ -38,6 +38,7 @@ mesh = SubResource("CylinderMesh_20hgg")
 [node name="Spells" type="Node3D" parent="."]
 
 [node name="Burn" parent="Spells" instance=ExtResource("2_f00fj")]
+visible = false
 
 [node name="Highjump" parent="Spells" instance=ExtResource("3_eycb3")]
 
@@ -52,3 +53,9 @@ mesh = SubResource("CylinderMesh_20hgg")
 [node name="SnowSpawner" parent="Spells" instance=ExtResource("8_foarl")]
 
 [node name="WindSpell" parent="Spells" instance=ExtResource("9_bi7b6")]
+
+[node name="Pistol_Visibility_Timer" type="Timer" parent="."]
+wait_time = 0.25
+one_shot = true
+
+[connection signal="timeout" from="Pistol_Visibility_Timer" to="." method="_on_timer_timeout"]
