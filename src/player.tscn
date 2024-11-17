@@ -58,4 +58,12 @@ visible = false
 wait_time = 0.25
 one_shot = true
 
+[node name="Pistol_Shoot_Cooldown" type="Timer" parent="."]
+wait_time = 0.3
+one_shot = true
+
+[node name="Pistol_Reload_Cooldown" type="Timer" parent="."]
+wait_time = 1.5
+one_shot = true
+
 [connection signal="timeout" from="Pistol_Visibility_Timer" to="." method="_on_timer_timeout"]

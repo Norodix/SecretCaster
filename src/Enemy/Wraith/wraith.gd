@@ -2,6 +2,7 @@ extends CharacterBody3D
 
 var target = Vector3.ZERO
 var speed = 5
+var health = 10
 @onready var player = get_tree().root.find_child("Player", true, false)
 enum STRATEGY {
 	DIRECT,
@@ -15,8 +16,14 @@ var strat = STRATEGY.DIRECT
 @onready var animState = $Wraith_Model/AnimationTree.get("parameters/StateMachine/playback")
 
 
-func burn():
-	destroy()
+func damage(type : String):
+	match type:
+		"fire":
+			health -= 5
+		"colt":
+			health -= 2
+	if health <= 0:
+		destroy()
 
 
 func destroy():
@@ -33,10 +40,12 @@ func _physics_process(delta: float) -> void:
 	# Generate a new transform that looks in movement direction
 	var z = Vector3.ZERO
 	if velocity.length() > 0.1:
+		animState.travel("Wraith_Movement")
 		z = - velocity
 		z.y = 0
 		z = z.normalized()
 	else:
+		animState.travel("Wraith_Idle")
 		z =  global_position - player.global_position
 		z.y = 0
 		z = z.normalized()
@@ -44,11 +53,6 @@ func _physics_process(delta: float) -> void:
 	var x = y.cross(z).normalized()
 	var new_basis = Basis(x, y, z).orthonormalized()
 	global_basis = global_basis.slerp(new_basis, 0.1)
-	
-	if abs(velocity) > Vector3(0.1,0.1,0.1):
-		animState.travel("Wraith_Movement")
-	else:
-		animState.travel("Wraith_Idle")
 
 
 func _on_timer_timeout() -> void:

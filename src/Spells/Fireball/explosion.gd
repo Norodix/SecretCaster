@@ -10,6 +10,8 @@ func _ready() -> void:
 	for burnable in burnables:
 		if burnable.has_method("burn"):
 			burnable.burn()
+		if burnable.has_method("damage"):
+			burnable.damage("fire")
 
 
 func _on_timeout_timeout() -> void:

@@ -16,9 +16,9 @@ const cooldown_time_ms_default = 2000
 var cooldown_time_ms = cooldown_time_ms_default
 var last_activate = - cooldown_time_ms_default * 1000
 
-@onready var playerAnim = $Camera3D/Magic_Hands/AnimationTree
+@onready var playerAnim : AnimationTree = $Camera3D/Magic_Hands/AnimationTree
 @onready var playerAnimState = $Camera3D/Magic_Hands/AnimationTree.get("parameters/StateMachine/playback")
-@onready var pistolAnim = $Camera3D/Magic_Hands/Armature/Skeleton3D/BoneAttachment3D2/colt/AnimationPlayer
+@onready var pistolAnim : AnimationPlayer  = $Camera3D/Magic_Hands/Armature/Skeleton3D/BoneAttachment3D2/colt/AnimationPlayer
 @onready var pistol = $Camera3D/Magic_Hands/Armature/Skeleton3D/BoneAttachment3D2/colt
 
 enum ATTACK_MODE {
@@ -27,6 +27,9 @@ enum ATTACK_MODE {
 	MAX, # must be last and unused
 }
 var attack_mode = ATTACK_MODE.MAGIC
+
+const bullet_count = 7
+var bullets = bullet_count
 
 func _ready() -> void:
 	Input.mouse_mode = Input.MOUSE_MODE_CAPTURED
@@ -86,9 +89,9 @@ func _process(delta: float) -> void:
 	
 	if attack_mode == ATTACK_MODE.PISTOL:
 		if Input.is_action_just_pressed("use_spell"):
-			pistolAnim.play("colt_shoot")
-			pistolAnim.set_speed_scale(3.0)
-			playerAnimState.travel("Hands_Pistol_Fire")
+			shoot_pistol()
+		if Input.is_action_just_pressed("reload"):
+			reload_pistol()
 			
 	if Input.is_action_just_pressed("attack_mode"):
 		attack_mode = (attack_mode + 1) % ATTACK_MODE.MAX
@@ -97,6 +100,57 @@ func _process(delta: float) -> void:
 		if attack_mode == ATTACK_MODE.PISTOL:
 			playerAnimState.travel("Hands_Pistol_Idle")
 		$Pistol_Visibility_Timer.start()
+	return
+
+
+func pistol_busy():
+	if not $Pistol_Shoot_Cooldown.is_stopped():
+		return true
+	if not $Pistol_Reload_Cooldown.is_stopped():
+		return true
+	return false
+
+# Bingibungel shoots the pistol in the comment
+func shoot_pistol():
+	if bullets == 0:
+		print("Bangol says haha")
+		# Play clicky sound
+		return
+	if pistol_busy():
+		return
+	bullets -= 1
+	pistolAnim.set_speed_scale(3.0)
+	pistolAnim.play("colt_shoot")
+	playerAnimState.travel("Hands_Pistol_Fire")
+	$Pistol_Shoot_Cooldown.start()
+	
+	# Do the hitscan stuff
+	var mouse_pos = get_viewport().get_mouse_position()
+	var ray_length = 100
+	var camera = get_viewport().get_camera_3d()
+	var from = camera.project_ray_origin(mouse_pos)
+	var to = from + camera.project_ray_normal(mouse_pos) * ray_length
+	var space = get_world_3d().direct_space_state
+	var ray_query = PhysicsRayQueryParameters3D.new()
+	ray_query.from = from
+	ray_query.to = to
+	ray_query.collision_mask = 1 | 1 << 3
+	var raycast_result = space.intersect_ray(ray_query)
+	if not raycast_result.is_empty():
+		#print(raycast_result.collider)
+		var body = raycast_result.collider
+		if body.has_method("damage"):
+			body.damage("colt")
+
+
+# Bingibungel reloads using a comment
+func reload_pistol():
+	if pistol_busy():
+		return
+	bullets = bullet_count
+	pistolAnim.play("colt_reload")
+	playerAnimState.travel("Hands_Pistol_Reload")
+	$Pistol_Reload_Cooldown.start()
 	return
 
 
