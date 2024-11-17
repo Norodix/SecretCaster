@@ -1,4 +1,6 @@
-[gd_scene load_steps=27 format=4 uid="uid://bewc1hnbc3rf5"]
+[gd_scene load_steps=39 format=4 uid="uid://bewc1hnbc3rf5"]
+
+[ext_resource type="Texture2D" uid="uid://6jnxya7dpijr" path="res://Colt/Muzzleflash_Tex.png" id="1_utavs"]
 
 [sub_resource type="StandardMaterial3D" id="StandardMaterial3D_cejvs"]
 
@@ -34,6 +36,11 @@ _surfaces = [{
 blend_shape_mode = 0
 shadow_mesh = SubResource("ArrayMesh_mxcgn")
 
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_e06tb"]
+albedo_color = Color(0.481789, 0.481789, 0.481789, 1)
+metallic = 1.0
+roughness = 0.4
+
 [sub_resource type="StandardMaterial3D" id="StandardMaterial3D_m6mke"]
 
 [sub_resource type="ArrayMesh" id="ArrayMesh_nbi6q"]
@@ -67,6 +74,11 @@ _surfaces = [{
 }]
 blend_shape_mode = 0
 shadow_mesh = SubResource("ArrayMesh_nbi6q")
+
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_tvnaq"]
+albedo_color = Color(0.481789, 0.481789, 0.481789, 1)
+metallic = 1.0
+roughness = 0.4
 
 [sub_resource type="StandardMaterial3D" id="StandardMaterial3D_6q31n"]
 
@@ -136,6 +148,11 @@ _surfaces = [{
 blend_shape_mode = 0
 shadow_mesh = SubResource("ArrayMesh_1kiep")
 
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_kxs6w"]
+albedo_color = Color(0.341967, 0.142236, 0.0270343, 1)
+metallic = 0.3
+roughness = 0.8
+
 [sub_resource type="StandardMaterial3D" id="StandardMaterial3D_biriu"]
 
 [sub_resource type="ArrayMesh" id="ArrayMesh_qdw2i"]
@@ -169,6 +186,11 @@ _surfaces = [{
 }]
 blend_shape_mode = 0
 shadow_mesh = SubResource("ArrayMesh_qdw2i")
+
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_ixpo4"]
+albedo_color = Color(0.341967, 0.142236, 0.0270343, 1)
+metallic = 0.3
+roughness = 0.8
 
 [sub_resource type="StandardMaterial3D" id="StandardMaterial3D_h5j8u"]
 
@@ -257,6 +279,30 @@ tracks/1/keys = {
 "update": 0,
 "values": [Vector3(0, 0, 0)]
 }
+tracks/2/type = "value"
+tracks/2/imported = false
+tracks/2/enabled = true
+tracks/2/path = NodePath("Particle_Muzzle:emitting")
+tracks/2/interp = 1
+tracks/2/loop_wrap = true
+tracks/2/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [false]
+}
+tracks/3/type = "value"
+tracks/3/imported = false
+tracks/3/enabled = true
+tracks/3/path = NodePath("Muzzle_Light:visible")
+tracks/3/interp = 1
+tracks/3/loop_wrap = true
+tracks/3/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [false]
+}
 
 [sub_resource type="Animation" id="Animation_dl6ul"]
 resource_name = "colt_empty"
@@ -286,10 +332,10 @@ tracks/1/path = NodePath("slide:position")
 tracks/1/interp = 1
 tracks/1/loop_wrap = true
 tracks/1/keys = {
-"times": PackedFloat32Array(0, 1.2, 1.33333, 1.6),
-"transitions": PackedFloat32Array(1, 1, 1, 1),
+"times": PackedFloat32Array(0, 1.2, 1.3, 1.43333, 1.6),
+"transitions": PackedFloat32Array(1, 1, 1, 1, 1),
 "update": 0,
-"values": [Vector3(0, 0, 0), Vector3(0, 0, 0), Vector3(0, 0, -0.05), Vector3(0, 0, 0)]
+"values": [Vector3(0, 0, 0), Vector3(0, 0, 0), Vector3(0, 0, -0.05), Vector3(0, 0, 0), Vector3(0, 0, 0)]
 }
 
 [sub_resource type="Animation" id="Animation_egmpv"]
@@ -302,6 +348,30 @@ tracks/0/path = NodePath("slide")
 tracks/0/interp = 1
 tracks/0/loop_wrap = true
 tracks/0/keys = PackedFloat32Array(0, 1, 0, 0, 0, 0.1, 1, 0, 0, -0.045, 0.3, 1, 0, 0, 0)
+tracks/1/type = "value"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath("Particle_Muzzle:emitting")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [true]
+}
+tracks/2/type = "value"
+tracks/2/imported = false
+tracks/2/enabled = true
+tracks/2/path = NodePath("Muzzle_Light:visible")
+tracks/2/interp = 1
+tracks/2/loop_wrap = true
+tracks/2/keys = {
+"times": PackedFloat32Array(0, 0.0666667, 0.166667),
+"transitions": PackedFloat32Array(1, 1, 1),
+"update": 1,
+"values": [false, true, false]
+}
 
 [sub_resource type="AnimationLibrary" id="AnimationLibrary_i6nod"]
 _data = {
@@ -311,44 +381,101 @@ _data = {
 "colt_shoot": SubResource("Animation_egmpv")
 }
 
+[sub_resource type="Gradient" id="Gradient_xjcfx"]
+colors = PackedColorArray(0.798871, 0.548393, 0.148593, 1, 0.959469, 0.774627, 0, 1)
+
+[sub_resource type="GradientTexture1D" id="GradientTexture1D_ghu78"]
+gradient = SubResource("Gradient_xjcfx")
+
+[sub_resource type="Curve" id="Curve_1u13s"]
+_data = [Vector2(0, 0), 0.0, 0.0, 0, 0, Vector2(0.246377, 0.56044), -12.1319, -12.1319, 0, 0, Vector2(0.528986, 0.923077), 0.0184936, 0.0184936, 0, 0, Vector2(0.84058, 0.582418), -3.12775, -3.12775, 0, 0, Vector2(1, 0), 0.0, 0.0, 0, 0]
+point_count = 5
+
+[sub_resource type="CurveTexture" id="CurveTexture_j58qx"]
+curve = SubResource("Curve_1u13s")
+
+[sub_resource type="ParticleProcessMaterial" id="ParticleProcessMaterial_g3p25"]
+angle_min = -532.5
+angle_max = 45.0
+direction = Vector3(0, 0, -1)
+spread = 0.0
+initial_velocity_min = 1.0
+initial_velocity_max = 1.0
+gravity = Vector3(0, 0, 0)
+scale_curve = SubResource("CurveTexture_j58qx")
+color_initial_ramp = SubResource("GradientTexture1D_ghu78")
+
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_0sgny"]
+transparency = 4
+vertex_color_use_as_albedo = true
+albedo_texture = ExtResource("1_utavs")
+
+[sub_resource type="QuadMesh" id="QuadMesh_labht"]
+material = SubResource("StandardMaterial3D_0sgny")
+size = Vector2(0.05, 0.05)
+
 [node name="colt" type="Node3D"]
 
 [node name="slide" type="MeshInstance3D" parent="."]
 transform = Transform3D(10, 0, 0, 0, -1.19209e-06, 10, 0, -10, -1.19209e-06, 0, 0, 0)
 mesh = SubResource("ArrayMesh_hlyhj")
 skeleton = NodePath("")
+surface_material_override/0 = SubResource("StandardMaterial3D_e06tb")
 
 [node name="Cube_001" type="MeshInstance3D" parent="."]
 transform = Transform3D(10, 0, 0, 0, -1.19209e-06, 10, 0, -10, -1.19209e-06, 0, 0, 0)
 mesh = SubResource("ArrayMesh_4hbb1")
 skeleton = NodePath("")
+surface_material_override/0 = SubResource("StandardMaterial3D_tvnaq")
 
 [node name="Cube_002" type="MeshInstance3D" parent="."]
 transform = Transform3D(10, 0, 0, 0, -1.19209e-06, 10, 0, -10, -1.19209e-06, 0, 0, 0)
 mesh = SubResource("ArrayMesh_nhtb7")
 skeleton = NodePath("")
+surface_material_override/0 = SubResource("StandardMaterial3D_e06tb")
 
 [node name="Cube_003" type="MeshInstance3D" parent="."]
 transform = Transform3D(10, 0, 0, 0, -1.19209e-06, 10, 0, -10, -1.19209e-06, 0, 0, 0)
 mesh = SubResource("ArrayMesh_p5w2y")
 skeleton = NodePath("")
+surface_material_override/0 = SubResource("StandardMaterial3D_kxs6w")
 
 [node name="Cube_004" type="MeshInstance3D" parent="."]
 transform = Transform3D(10, 0, 0, 0, -1.19209e-06, 10, 0, -10, -1.19209e-06, 0, 0, 0)
 mesh = SubResource("ArrayMesh_6vs6l")
 skeleton = NodePath("")
+surface_material_override/0 = SubResource("StandardMaterial3D_ixpo4")
 
 [node name="Cube_005" type="MeshInstance3D" parent="."]
 transform = Transform3D(10, 0, 0, 0, -1.19209e-06, 10, 0, -10, -1.19209e-06, 0, 0, 0)
 mesh = SubResource("ArrayMesh_ktwtd")
 skeleton = NodePath("")
+surface_material_override/0 = SubResource("StandardMaterial3D_e06tb")
 
 [node name="Cylinder_002" type="MeshInstance3D" parent="."]
 transform = Transform3D(10, 0, 0, 0, -1.19209e-06, 10, 0, -10, -1.19209e-06, 0, 0, 0)
 mesh = SubResource("ArrayMesh_pj5vl")
 skeleton = NodePath("")
+surface_material_override/0 = SubResource("StandardMaterial3D_e06tb")
 
 [node name="AnimationPlayer" type="AnimationPlayer" parent="."]
 libraries = {
 "": SubResource("AnimationLibrary_i6nod")
 }
+
+[node name="Particle_Muzzle" type="GPUParticles3D" parent="."]
+transform = Transform3D(-1, 0, -8.74228e-08, 0, 1, 0, 8.74228e-08, 0, -1, 0, 0.0557561, 0.0987032)
+emitting = false
+amount = 500
+lifetime = 0.05
+one_shot = true
+local_coords = true
+process_material = SubResource("ParticleProcessMaterial_g3p25")
+draw_pass_1 = SubResource("QuadMesh_labht")
+
+[node name="Muzzle_Light" type="OmniLight3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.0686209, 0.132468)
+visible = false
+light_color = Color(0.96167, 0.897709, 0.638196, 1)
+light_size = 0.05
+omni_range = 1.0

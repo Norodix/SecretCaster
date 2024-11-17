@@ -148,6 +148,7 @@ func reload_pistol():
 	if pistol_busy():
 		return
 	bullets = bullet_count
+	pistolAnim.set_speed_scale(1.0)
 	pistolAnim.play("colt_reload")
 	playerAnimState.travel("Hands_Pistol_Reload")
 	$Pistol_Reload_Cooldown.start()
