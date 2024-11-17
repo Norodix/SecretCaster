@@ -88,17 +88,17 @@ node_connections = [&"Blend2", 0, &"StateMachine", &"Blend2", 1, &"Animation", &
 [node name="Wraith2" instance=ExtResource("1_h34gq")]
 
 [node name="Skeleton3D" parent="Armature" index="0"]
-bones/1/position = Vector3(-0.0334103, 0.388853, 2.49135e-10)
-bones/4/rotation = Quaternion(-0.00752874, -0.00145935, -0.0246106, 0.999668)
-bones/5/rotation = Quaternion(0.707107, -3.09086e-08, -3.09086e-08, 0.707107)
-bones/6/position = Vector3(-0.0268484, 0.77003, 0.269703)
-bones/6/rotation = Quaternion(0.123008, 0.168854, 0.28257, 0.936222)
+bones/1/position = Vector3(0.0285239, 0.36902, -1.76283e-09)
+bones/4/rotation = Quaternion(0.0207511, 0, 0.0675938, 0.997497)
+bones/5/rotation = Quaternion(0.777572, -0.00648259, -0.0709236, 0.624748)
+bones/6/position = Vector3(0.0965784, 0.656412, 0.26975)
+bones/6/rotation = Quaternion(0.158582, 0.041586, 0.294461, 0.941496)
 
 [node name="Wraith" parent="Armature/Skeleton3D" index="0"]
 surface_material_override/0 = ExtResource("2_cntme")
 
 [node name="BoneAttachment3D" type="BoneAttachment3D" parent="Armature/Skeleton3D" index="1"]
-transform = Transform3D(0.998784, 0.0492269, -0.00254716, -0.0491829, 0.998675, 0.0151243, 0.00328831, -0.0149806, 0.999882, -0.0334103, 1.56978, 2.49135e-10)
+transform = Transform3D(0.990862, -0.134849, 0.00280529, 0.134849, 0.990001, -0.0413983, 0.00280529, 0.0413983, 0.999139, 0.0285239, 1.54994, -1.76283e-09)
 bone_name = "Head"
 bone_idx = 4
 

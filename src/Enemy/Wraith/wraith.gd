@@ -12,6 +12,8 @@ enum STRATEGY {
 }
 var strat = STRATEGY.DIRECT
 
+@onready var animState = $Wraith_Model/AnimationTree.get("parameters/StateMachine/playback")
+
 
 func burn():
 	destroy()
@@ -28,6 +30,11 @@ func _physics_process(delta: float) -> void:
 		velocity = Vector3.ZERO
 	#print(velocity)
 	move_and_slide()
+	
+	if abs(velocity) > Vector3(0.1,0.1,0.1):
+		animState.travel("Wraith_Movement")
+	else:
+		animState.travel("Wraith_Idle")
 
 
 func _on_timer_timeout() -> void:
