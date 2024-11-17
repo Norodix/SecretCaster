@@ -1,0 +1,115 @@
+[gd_scene load_steps=21 format=3 uid="uid://gx88hjnj8obd"]
+
+[ext_resource type="PackedScene" uid="uid://r1rlbaulsag" path="res://Wraith/Wraith.glb" id="1_h34gq"]
+[ext_resource type="Material" uid="uid://dfgbimwco8vo7" path="res://Wraith/wraith_mat.tres" id="2_cntme"]
+[ext_resource type="Texture2D" uid="uid://dbihtb7jeyanq" path="res://Spells/Fireball/Fireball_Flame.png" id="5_jmb7i"]
+
+[sub_resource type="ParticleProcessMaterial" id="ParticleProcessMaterial_u70s2"]
+direction = Vector3(0, -1, 0)
+spread = 30.0
+initial_velocity_min = 0.7
+initial_velocity_max = 0.8
+gravity = Vector3(0, -0.3, 0)
+
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_nhqvg"]
+transparency = 3
+alpha_hash_scale = 1.0
+alpha_antialiasing_mode = 0
+diffuse_mode = 3
+specular_mode = 1
+albedo_color = Color(0.243137, 0.243137, 0.243137, 0.368627)
+albedo_texture = ExtResource("5_jmb7i")
+
+[sub_resource type="SphereMesh" id="SphereMesh_sc4gc"]
+material = SubResource("StandardMaterial3D_nhqvg")
+radius = 0.1
+height = 0.2
+
+[sub_resource type="AnimationNodeAnimation" id="AnimationNodeAnimation_7pmwl"]
+animation = &"Wraith_Eye_Thingy"
+
+[sub_resource type="AnimationNodeBlend2" id="AnimationNodeBlend2_vapar"]
+filter_enabled = true
+filters = ["Armature/Skeleton3D:Eye"]
+
+[sub_resource type="AnimationNodeAnimation" id="AnimationNodeAnimation_nnxl8"]
+animation = &"Wraith_Attack"
+
+[sub_resource type="AnimationNodeAnimation" id="AnimationNodeAnimation_cy4i5"]
+animation = &"Wraith_Idle"
+
+[sub_resource type="AnimationNodeAnimation" id="AnimationNodeAnimation_0tj8x"]
+animation = &"Wraith_Movement"
+
+[sub_resource type="AnimationNodeStateMachineTransition" id="AnimationNodeStateMachineTransition_s34oh"]
+advance_mode = 2
+
+[sub_resource type="AnimationNodeStateMachineTransition" id="AnimationNodeStateMachineTransition_maeye"]
+xfade_time = 0.1
+
+[sub_resource type="AnimationNodeStateMachineTransition" id="AnimationNodeStateMachineTransition_lr01g"]
+xfade_time = 0.1
+
+[sub_resource type="AnimationNodeStateMachineTransition" id="AnimationNodeStateMachineTransition_37ids"]
+xfade_time = 0.1
+switch_mode = 2
+advance_mode = 2
+
+[sub_resource type="AnimationNodeStateMachineTransition" id="AnimationNodeStateMachineTransition_ppkq4"]
+xfade_time = 0.1
+
+[sub_resource type="AnimationNodeStateMachineTransition" id="AnimationNodeStateMachineTransition_mmpxc"]
+xfade_time = 0.1
+
+[sub_resource type="AnimationNodeStateMachineTransition" id="AnimationNodeStateMachineTransition_jp3jg"]
+xfade_time = 0.1
+
+[sub_resource type="AnimationNodeStateMachine" id="AnimationNodeStateMachine_t2dqk"]
+states/Wraith_Attack/node = SubResource("AnimationNodeAnimation_nnxl8")
+states/Wraith_Attack/position = Vector2(521, 208)
+states/Wraith_Idle/node = SubResource("AnimationNodeAnimation_cy4i5")
+states/Wraith_Idle/position = Vector2(416, 100)
+states/Wraith_Movement/node = SubResource("AnimationNodeAnimation_0tj8x")
+states/Wraith_Movement/position = Vector2(628, 100)
+transitions = ["Start", "Wraith_Idle", SubResource("AnimationNodeStateMachineTransition_s34oh"), "Wraith_Idle", "Wraith_Movement", SubResource("AnimationNodeStateMachineTransition_maeye"), "Wraith_Movement", "Wraith_Attack", SubResource("AnimationNodeStateMachineTransition_lr01g"), "Wraith_Attack", "Wraith_Idle", SubResource("AnimationNodeStateMachineTransition_37ids"), "Wraith_Idle", "Wraith_Attack", SubResource("AnimationNodeStateMachineTransition_ppkq4"), "Wraith_Attack", "Wraith_Movement", SubResource("AnimationNodeStateMachineTransition_mmpxc"), "Wraith_Movement", "Wraith_Idle", SubResource("AnimationNodeStateMachineTransition_jp3jg")]
+graph_offset = Vector2(-229, -33)
+
+[sub_resource type="AnimationNodeBlendTree" id="AnimationNodeBlendTree_borp5"]
+graph_offset = Vector2(-447, 2)
+nodes/Animation/node = SubResource("AnimationNodeAnimation_7pmwl")
+nodes/Animation/position = Vector2(-80, 180)
+nodes/Blend2/node = SubResource("AnimationNodeBlend2_vapar")
+nodes/Blend2/position = Vector2(280, 40)
+nodes/StateMachine/node = SubResource("AnimationNodeStateMachine_t2dqk")
+nodes/StateMachine/position = Vector2(-60, -40)
+nodes/output/position = Vector2(520, 120)
+node_connections = [&"Blend2", 0, &"StateMachine", &"Blend2", 1, &"Animation", &"output", 0, &"Blend2"]
+
+[node name="Wraith2" instance=ExtResource("1_h34gq")]
+
+[node name="Skeleton3D" parent="Armature" index="0"]
+bones/1/position = Vector3(-0.0334103, 0.388853, 2.49135e-10)
+bones/4/rotation = Quaternion(-0.00752874, -0.00145935, -0.0246106, 0.999668)
+bones/5/rotation = Quaternion(0.707107, -3.09086e-08, -3.09086e-08, 0.707107)
+bones/6/position = Vector3(-0.0268484, 0.77003, 0.269703)
+bones/6/rotation = Quaternion(0.123008, 0.168854, 0.28257, 0.936222)
+
+[node name="Wraith" parent="Armature/Skeleton3D" index="0"]
+surface_material_override/0 = ExtResource("2_cntme")
+
+[node name="BoneAttachment3D" type="BoneAttachment3D" parent="Armature/Skeleton3D" index="1"]
+transform = Transform3D(0.998784, 0.0492269, -0.00254716, -0.0491829, 0.998675, 0.0151243, 0.00328831, -0.0149806, 0.999882, -0.0334103, 1.56978, 2.49135e-10)
+bone_name = "Head"
+bone_idx = 4
+
+[node name="GPUParticles3D" type="GPUParticles3D" parent="Armature/Skeleton3D/BoneAttachment3D" index="0"]
+amount = 250
+lifetime = 1.5
+local_coords = true
+process_material = SubResource("ParticleProcessMaterial_u70s2")
+draw_pass_1 = SubResource("SphereMesh_sc4gc")
+
+[node name="AnimationTree" type="AnimationTree" parent="." index="2"]
+tree_root = SubResource("AnimationNodeBlendTree_borp5")
+anim_player = NodePath("../AnimationPlayer")
+parameters/Blend2/blend_amount = 1.0
