@@ -30,7 +30,7 @@ func set_active_mode(mode):
 	if mode == ATTACK_MODE.PISTOL:
 		$Control/Spell_Frame_R/Selected_Tex.visible = true
 	if mode == ATTACK_MODE.MAGIC:
-		$Control/Speel_Frame_L/Selected_Tex.visible = true
+		$Control/Spell_Frame_L/Selected_Tex.visible = true
 
 func damage():
 	$Control/Damage_fade.seek(0, true)
