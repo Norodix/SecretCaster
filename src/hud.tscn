@@ -1,4 +1,4 @@
-[gd_scene load_steps=18 format=3 uid="uid://b55rhd44fks7"]
+[gd_scene load_steps=22 format=3 uid="uid://cvba5sgdncr8q"]
 
 [ext_resource type="Script" path="res://hud.gd" id="1_0n6rd"]
 [ext_resource type="Texture2D" uid="uid://blb6rjpwj6v0c" path="res://Textures/HUD/HUD_Spell_Selected.png" id="1_e7vvy"]
@@ -10,7 +10,11 @@
 [ext_resource type="Texture2D" uid="uid://bms2pofk10gul" path="res://Textures/HUD/HUD_Feedback_Damage.png" id="5_yt1fo"]
 [ext_resource type="Texture2D" uid="uid://dmj5yegf7xpi" path="res://Textures/HUD/HUD_Feedback_Fireball.png" id="6_866la"]
 [ext_resource type="Texture2D" uid="uid://1bpprt3hwwde" path="res://Textures/HUD/HUD_Feedback_Wind.png" id="8_npk1c"]
+[ext_resource type="Texture2D" uid="uid://bvuqp0y6dkj8c" path="res://Textures/HUD/HUD_Spell_Highjump.png" id="8_rosmi"]
 [ext_resource type="Texture2D" uid="uid://b3gx8jvaqkys7" path="res://Textures/HUD/HUD_Feedback_Lightning.png" id="9_10ud5"]
+[ext_resource type="Texture2D" uid="uid://ctrr43dl7txia" path="res://Textures/HUD/HUD_Spell_StickyLight.png" id="9_xigtq"]
+[ext_resource type="Texture2D" uid="uid://bheu11ige543" path="res://Textures/HUD/HUD_Feedback_Highjump.png" id="13_0c8d3"]
+[ext_resource type="Texture2D" uid="uid://h8thu3omf7r5" path="res://Textures/HUD/HUD_Feedback_StickyLight.png" id="14_ujx24"]
 
 [sub_resource type="Animation" id="Animation_rcuaw"]
 resource_name = "Fade"
@@ -134,7 +138,7 @@ texture = ExtResource("1_e7vvy")
 expand_mode = 4
 stretch_mode = 4
 
-[node name="Speel_Frame_L" type="PanelContainer" parent="Control"]
+[node name="Spell_Frame_L" type="PanelContainer" parent="Control"]
 self_modulate = Color(1, 1, 1, 0)
 layout_mode = 1
 anchors_preset = -1
@@ -149,21 +153,22 @@ offset_bottom = 29.9999
 grow_horizontal = 2
 grow_vertical = 2
 
-[node name="Frame_Tex" type="TextureRect" parent="Control/Speel_Frame_L"]
+[node name="Frame_Tex" type="TextureRect" parent="Control/Spell_Frame_L"]
 self_modulate = Color(0, 1, 1, 0.627451)
 layout_mode = 2
 texture = ExtResource("1_tkq8k")
 expand_mode = 4
 stretch_mode = 4
 
-[node name="Frame_Fireball_Tex" type="TextureRect" parent="Control/Speel_Frame_L"]
+[node name="Frame_Fireball_Tex" type="TextureRect" parent="Control/Spell_Frame_L"]
+visible = false
 self_modulate = Color(0, 1, 1, 0.627451)
 layout_mode = 2
 texture = ExtResource("4_sdbw8")
 expand_mode = 4
 stretch_mode = 4
 
-[node name="Frame_Lightning_Tex" type="TextureRect" parent="Control/Speel_Frame_L"]
+[node name="Frame_Lightning_Tex" type="TextureRect" parent="Control/Spell_Frame_L"]
 visible = false
 self_modulate = Color(0, 1, 1, 0.627451)
 layout_mode = 2
@@ -171,7 +176,7 @@ texture = ExtResource("5_sy32u")
 expand_mode = 4
 stretch_mode = 4
 
-[node name="Frame_Wind_Tex" type="TextureRect" parent="Control/Speel_Frame_L"]
+[node name="Frame_Wind_Tex" type="TextureRect" parent="Control/Spell_Frame_L"]
 visible = false
 self_modulate = Color(0, 1, 1, 0.627451)
 layout_mode = 2
@@ -179,7 +184,23 @@ texture = ExtResource("5_2em1o")
 expand_mode = 4
 stretch_mode = 4
 
-[node name="Selected_Tex" type="TextureRect" parent="Control/Speel_Frame_L"]
+[node name="Frame_Highjump_Tex" type="TextureRect" parent="Control/Spell_Frame_L"]
+visible = false
+self_modulate = Color(0, 1, 1, 0.627451)
+layout_mode = 2
+texture = ExtResource("8_rosmi")
+expand_mode = 4
+stretch_mode = 4
+
+[node name="Frame_StickyLight_Tex" type="TextureRect" parent="Control/Spell_Frame_L"]
+visible = false
+self_modulate = Color(0, 1, 1, 0.627451)
+layout_mode = 2
+texture = ExtResource("9_xigtq")
+expand_mode = 4
+stretch_mode = 4
+
+[node name="Selected_Tex" type="TextureRect" parent="Control/Spell_Frame_L"]
 self_modulate = Color(0.141199, 0.456723, 1, 1)
 layout_mode = 2
 texture = ExtResource("1_e7vvy")
@@ -223,6 +244,20 @@ visible = false
 self_modulate = Color(1, 1, 1, 0.235294)
 layout_mode = 2
 texture = ExtResource("8_npk1c")
+expand_mode = 4
+
+[node name="Highjump_Feedback" type="TextureRect" parent="Control/ScreenSpace_Effects"]
+visible = false
+self_modulate = Color(1, 1, 1, 0.235294)
+layout_mode = 2
+texture = ExtResource("13_0c8d3")
+expand_mode = 4
+
+[node name="StickyLight_Feedback" type="TextureRect" parent="Control/ScreenSpace_Effects"]
+visible = false
+self_modulate = Color(1, 1, 1, 0.235294)
+layout_mode = 2
+texture = ExtResource("14_ujx24")
 expand_mode = 4
 
 [node name="Damage_fade" type="AnimationPlayer" parent="Control"]
