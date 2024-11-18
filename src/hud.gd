@@ -31,3 +31,7 @@ func set_active_mode(mode):
 		$Control/Spell_Frame_R/Selected_Tex.visible = true
 	if mode == ATTACK_MODE.MAGIC:
 		$Control/Speel_Frame_L/Selected_Tex.visible = true
+
+func damage():
+	$Control/Damage_fade.seek(0, true)
+	$Control/Damage_fade.play("Fade")
