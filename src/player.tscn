@@ -1,4 +1,4 @@
-[gd_scene load_steps=13 format=3 uid="uid://dl2vuwabcukwp"]
+[gd_scene load_steps=14 format=3 uid="uid://dl2vuwabcukwp"]
 
 [ext_resource type="Script" path="res://player.gd" id="1_q4vdp"]
 [ext_resource type="PackedScene" uid="uid://cf64v5ohrm125" path="res://Hands/Magic_Hands.tscn" id="2_2eniw"]
@@ -10,6 +10,7 @@
 [ext_resource type="PackedScene" uid="uid://c4o2o7sakqjc1" path="res://Spells/Lightning/LightningSpawner.tscn" id="7_dta5t"]
 [ext_resource type="PackedScene" uid="uid://bdl3aa3dar438" path="res://Spells/Snowing/SnowSpawner.tscn" id="8_foarl"]
 [ext_resource type="PackedScene" uid="uid://b73q46no704v7" path="res://Spells/Wind/WindSpell.tscn" id="9_bi7b6"]
+[ext_resource type="PackedScene" uid="uid://cvba5sgdncr8q" path="res://hud.tscn" id="11_ntyv5"]
 
 [sub_resource type="CylinderShape3D" id="CylinderShape3D_nakrb"]
 height = 1.8
@@ -65,5 +66,7 @@ one_shot = true
 [node name="Pistol_Reload_Cooldown" type="Timer" parent="."]
 wait_time = 1.5
 one_shot = true
+
+[node name="HUD" parent="." instance=ExtResource("11_ntyv5")]
 
 [connection signal="timeout" from="Pistol_Visibility_Timer" to="." method="_on_timer_timeout"]

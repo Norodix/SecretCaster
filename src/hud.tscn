@@ -1,0 +1,149 @@
+[gd_scene load_steps=11 format=3 uid="uid://cvba5sgdncr8q"]
+
+[ext_resource type="Texture2D" uid="uid://blb6rjpwj6v0c" path="res://Textures/HUD/HUD_Spell_Selected.png" id="1_e7vvy"]
+[ext_resource type="Texture2D" uid="uid://dbv013ab4xhim" path="res://Textures/HUD/HUD_Spell_Frame.png" id="1_tkq8k"]
+[ext_resource type="Texture2D" uid="uid://dax2xq4qkxcq" path="res://Textures/HUD/HUD_Spell_Colt.png" id="3_d7hq6"]
+[ext_resource type="Texture2D" uid="uid://bp7ebic5k2ovo" path="res://Textures/HUD/HUD_Spell_Fireball.png" id="4_sdbw8"]
+[ext_resource type="Texture2D" uid="uid://def5k81bn5sgp" path="res://Textures/HUD/HUD_Spell_Wind.png" id="5_2em1o"]
+[ext_resource type="Texture2D" uid="uid://dgy1ft32wvyn6" path="res://Textures/HUD/HUD_Spell_Lightning.png" id="5_sy32u"]
+[ext_resource type="Texture2D" uid="uid://bms2pofk10gul" path="res://Textures/HUD/HUD_Feedback_Damage.png" id="5_yt1fo"]
+[ext_resource type="Texture2D" uid="uid://dmj5yegf7xpi" path="res://Textures/HUD/HUD_Feedback_Fireball.png" id="6_866la"]
+[ext_resource type="Texture2D" uid="uid://1bpprt3hwwde" path="res://Textures/HUD/HUD_Feedback_Wind.png" id="8_npk1c"]
+[ext_resource type="Texture2D" uid="uid://b3gx8jvaqkys7" path="res://Textures/HUD/HUD_Feedback_Lightning.png" id="9_10ud5"]
+
+[node name="HUD" type="CanvasLayer"]
+
+[node name="Control" type="Control" parent="."]
+layout_mode = 3
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+
+[node name="Spell_Frame_R" type="PanelContainer" parent="Control"]
+self_modulate = Color(1, 1, 1, 0)
+layout_mode = 1
+anchors_preset = -1
+anchor_left = 0.929
+anchor_top = 0.875
+anchor_right = 0.929
+anchor_bottom = 0.875
+offset_left = -30.208
+offset_top = -30.0001
+offset_right = 29.792
+offset_bottom = 29.9999
+grow_horizontal = 2
+grow_vertical = 2
+
+[node name="Frame_Tex" type="TextureRect" parent="Control/Spell_Frame_R"]
+self_modulate = Color(0, 1, 1, 0.627451)
+layout_mode = 2
+texture = ExtResource("1_tkq8k")
+expand_mode = 4
+stretch_mode = 4
+
+[node name="Pistol_Tex" type="TextureRect" parent="Control/Spell_Frame_R"]
+self_modulate = Color(0, 1, 1, 0.627451)
+layout_mode = 2
+texture = ExtResource("3_d7hq6")
+expand_mode = 4
+stretch_mode = 4
+
+[node name="Selected_Tex" type="TextureRect" parent="Control/Spell_Frame_R"]
+self_modulate = Color(0.141199, 0.456723, 1, 1)
+layout_mode = 2
+texture = ExtResource("1_e7vvy")
+expand_mode = 4
+stretch_mode = 4
+
+[node name="Speel_Frame_L" type="PanelContainer" parent="Control"]
+self_modulate = Color(1, 1, 1, 0)
+layout_mode = 1
+anchors_preset = -1
+anchor_left = 0.867
+anchor_top = 0.875
+anchor_right = 0.867
+anchor_bottom = 0.875
+offset_left = -29.7841
+offset_top = -30.0001
+offset_right = 30.2159
+offset_bottom = 29.9999
+grow_horizontal = 2
+grow_vertical = 2
+
+[node name="Frame_Tex" type="TextureRect" parent="Control/Speel_Frame_L"]
+self_modulate = Color(0, 1, 1, 0.627451)
+layout_mode = 2
+texture = ExtResource("1_tkq8k")
+expand_mode = 4
+stretch_mode = 4
+
+[node name="Frame_Fireball_Tex" type="TextureRect" parent="Control/Speel_Frame_L"]
+visible = false
+self_modulate = Color(0, 1, 1, 0.627451)
+layout_mode = 2
+texture = ExtResource("4_sdbw8")
+expand_mode = 4
+stretch_mode = 4
+
+[node name="Frame_Lightning_Tex" type="TextureRect" parent="Control/Speel_Frame_L"]
+self_modulate = Color(0, 1, 1, 0.627451)
+layout_mode = 2
+texture = ExtResource("5_sy32u")
+expand_mode = 4
+stretch_mode = 4
+
+[node name="Frame_Wind_Tex" type="TextureRect" parent="Control/Speel_Frame_L"]
+visible = false
+self_modulate = Color(0, 1, 1, 0.627451)
+layout_mode = 2
+texture = ExtResource("5_2em1o")
+expand_mode = 4
+stretch_mode = 4
+
+[node name="Selected_Tex" type="TextureRect" parent="Control/Speel_Frame_L"]
+visible = false
+self_modulate = Color(0.141199, 0.456723, 1, 1)
+layout_mode = 2
+texture = ExtResource("1_e7vvy")
+expand_mode = 4
+stretch_mode = 4
+
+[node name="ScreenSpace_Effects" type="PanelContainer" parent="Control"]
+self_modulate = Color(1, 1, 1, 0)
+layout_mode = 1
+anchors_preset = 13
+anchor_left = 0.5
+anchor_right = 0.5
+anchor_bottom = 1.0
+offset_left = -324.0
+offset_right = 324.0
+grow_horizontal = 2
+grow_vertical = 2
+
+[node name="Damage_Feedback" type="TextureRect" parent="Control/ScreenSpace_Effects"]
+visible = false
+layout_mode = 2
+texture = ExtResource("5_yt1fo")
+expand_mode = 4
+
+[node name="Fireball_Feedback" type="TextureRect" parent="Control/ScreenSpace_Effects"]
+visible = false
+self_modulate = Color(1, 1, 1, 0.235294)
+layout_mode = 2
+texture = ExtResource("6_866la")
+expand_mode = 4
+
+[node name="Lightning_Feedback" type="TextureRect" parent="Control/ScreenSpace_Effects"]
+self_modulate = Color(1, 1, 1, 0.235294)
+layout_mode = 2
+texture = ExtResource("9_10ud5")
+expand_mode = 4
+
+[node name="Wind_Feedback" type="TextureRect" parent="Control/ScreenSpace_Effects"]
+visible = false
+self_modulate = Color(1, 1, 1, 0.235294)
+layout_mode = 2
+texture = ExtResource("8_npk1c")
+expand_mode = 4
