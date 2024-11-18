@@ -1,0 +1,53 @@
+[gd_scene load_steps=7 format=3 uid="uid://3a6yst3bfvdh"]
+
+[sub_resource type="Gradient" id="Gradient_awr75"]
+offsets = PackedFloat32Array(0, 0.345455, 0.727273, 1)
+colors = PackedColorArray(0, 0, 0, 0, 0.525437, 0.807043, 0.901812, 1, 0.52549, 0.807843, 0.901961, 1, 1, 1, 1, 0)
+
+[sub_resource type="GradientTexture1D" id="GradientTexture1D_75yub"]
+gradient = SubResource("Gradient_awr75")
+
+[sub_resource type="ParticleProcessMaterial" id="ParticleProcessMaterial_2jt6l"]
+emission_shape = 6
+emission_ring_axis = Vector3(0, 1, 0)
+emission_ring_height = 0.05
+emission_ring_radius = 0.03
+emission_ring_inner_radius = 0.02
+direction = Vector3(0, 1, 0)
+spread = 0.0
+initial_velocity_min = 0.5
+initial_velocity_max = 0.5
+gravity = Vector3(0, 0, 0)
+color_ramp = SubResource("GradientTexture1D_75yub")
+turbulence_enabled = true
+turbulence_noise_strength = 6.17
+turbulence_noise_scale = 3.944
+turbulence_noise_speed = Vector3(1, 1, 1)
+
+[sub_resource type="Curve" id="Curve_qrphj"]
+_data = [Vector2(0, 1), 0.0, 0.0, 0, 0, Vector2(0.5, 1), -0.0511817, -0.0511817, 0, 0, Vector2(1, 1), 0.0, 0.0, 0, 0]
+point_count = 3
+
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_ofi7q"]
+transparency = 1
+cull_mode = 2
+shading_mode = 0
+vertex_color_use_as_albedo = true
+albedo_color = Color(1, 1, 1, 0.196078)
+use_particle_trails = true
+
+[sub_resource type="RibbonTrailMesh" id="RibbonTrailMesh_1sy61"]
+material = SubResource("StandardMaterial3D_ofi7q")
+size = 0.003
+sections = 3
+curve = SubResource("Curve_qrphj")
+
+[node name="Wind_In-hand" type="Node3D"]
+
+[node name="GPUParticles3D" type="GPUParticles3D" parent="."]
+amount = 5
+lifetime = 0.3
+local_coords = true
+trail_enabled = true
+process_material = SubResource("ParticleProcessMaterial_2jt6l")
+draw_pass_1 = SubResource("RibbonTrailMesh_1sy61")
