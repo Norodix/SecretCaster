@@ -19,7 +19,7 @@ constant = Color(0.44879, 1, 0.997055, 1)
 function = 1
 
 [sub_resource type="VisualShaderNodeFloatOp" id="VisualShaderNodeFloatOp_shc1c"]
-default_input_values = [0, 0.0, 1, 30.0]
+default_input_values = [0, 0.0, 1, 50.0]
 operator = 5
 
 [sub_resource type="VisualShaderNodeInput" id="VisualShaderNodeInput_nkaio"]
@@ -43,7 +43,7 @@ operator = 2
 [sub_resource type="VisualShaderNodeVectorOp" id="VisualShaderNodeVectorOp_kmkar"]
 
 [sub_resource type="VisualShaderNodeFloatOp" id="VisualShaderNodeFloatOp_mb0hv"]
-default_input_values = [0, 0.0, 1, 0.05]
+default_input_values = [0, 0.0, 1, 0.01]
 operator = 2
 
 [resource]
@@ -83,12 +83,12 @@ void vertex() {
 
 
 // FloatOp:11
-	float n_in11p1 = 30.00000;
+	float n_in11p1 = 50.00000;
 	float n_out11p0 = pow(n_out4p0.x, n_in11p1);
 
 
 // FloatOp:9
-	float n_in9p1 = 0.05000;
+	float n_in9p1 = 0.01000;
 	float n_out9p0 = n_out11p0 * n_in9p1;
 
 
@@ -131,6 +131,7 @@ void fragment() {
 
 }
 "
+graph_offset = Vector2(-1349.75, 69.3926)
 modes/cull = 2
 flags/unshaded = true
 flags/shadows_disabled = true
