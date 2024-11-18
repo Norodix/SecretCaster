@@ -21,6 +21,8 @@ var last_activate = - cooldown_time_ms_default * 1000
 @onready var pistolAnim : AnimationPlayer  = $Camera3D/Magic_Hands/Armature/Skeleton3D/BoneAttachment3D2/colt/AnimationPlayer
 @onready var pistol = $Camera3D/Magic_Hands/Armature/Skeleton3D/BoneAttachment3D2/colt
 
+var pistol_trail = preload("res://Colt/TrailRender.tscn")
+
 enum ATTACK_MODE {
 	PISTOL,
 	MAGIC,
@@ -125,11 +127,14 @@ func shoot_pistol():
 	$Pistol_Shoot_Cooldown.start()
 	
 	# Do the hitscan stuff
+	var trail_start = pistol.find_child("Particle_Muzzle").global_position
+	var trail_end
 	var mouse_pos = get_viewport().get_mouse_position()
 	var ray_length = 100
 	var camera = get_viewport().get_camera_3d()
 	var from = camera.project_ray_origin(mouse_pos)
 	var to = from + camera.project_ray_normal(mouse_pos) * ray_length
+	trail_end = to
 	var space = get_world_3d().direct_space_state
 	var ray_query = PhysicsRayQueryParameters3D.new()
 	ray_query.from = from
@@ -141,6 +146,13 @@ func shoot_pistol():
 		var body = raycast_result.collider
 		if body.has_method("damage"):
 			body.damage("colt")
+		trail_end = raycast_result.position
+	# draw pistol trail
+	var pt = pistol_trail.instantiate()
+	pt.global_basis = camera.global_basis
+	pt.start = trail_start
+	pt.end = trail_end
+	get_tree().root.add_child(pt)
 
 
 # Bingibungel reloads using a comment

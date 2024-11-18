@@ -1,0 +1,23 @@
+[gd_scene load_steps=6 format=3 uid="uid://b3rtvbxyq5dja"]
+
+[ext_resource type="Script" path="res://Colt/trail_render.gd" id="1_p5753"]
+
+[sub_resource type="Gradient" id="Gradient_slpsh"]
+offsets = PackedFloat32Array(0, 0.5, 1)
+colors = PackedColorArray(0, 0, 0, 0, 1, 1, 1, 1, 0.188235, 0.188235, 0.188235, 0)
+
+[sub_resource type="GradientTexture1D" id="GradientTexture1D_kx8c8"]
+gradient = SubResource("Gradient_slpsh")
+
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_xlfo7"]
+cull_mode = 2
+shading_mode = 0
+albedo_color = Color(1, 1, 0, 1)
+albedo_texture = SubResource("GradientTexture1D_kx8c8")
+
+[sub_resource type="ImmediateMesh" id="ImmediateMesh_hq2dv"]
+
+[node name="TrailRender" type="MeshInstance3D"]
+material_override = SubResource("StandardMaterial3D_xlfo7")
+mesh = SubResource("ImmediateMesh_hq2dv")
+script = ExtResource("1_p5753")
