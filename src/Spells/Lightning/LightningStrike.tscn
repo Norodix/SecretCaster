@@ -1,8 +1,9 @@
-[gd_scene load_steps=7 format=3 uid="uid://d00sgnbmj8mae"]
+[gd_scene load_steps=11 format=3 uid="uid://d00sgnbmj8mae"]
 
 [ext_resource type="Script" path="res://Spells/Lightning/lightning_strike.gd" id="1_fsoxa"]
 [ext_resource type="Texture2D" uid="uid://bi7ssho1pk8jj" path="res://Spells/Lightning/Lightning_Tex.png" id="2_km1en"]
-[ext_resource type="Shader" uid="uid://byvds8e7qvdkj" path="res://Spells/Lightning/Lightning_Discharge_Shader.tres" id="3_tucbk"]
+[ext_resource type="Shader" uid="uid://7jmfxn7seekq" path="res://Spells/Lightning/Lightning_Discharge_Shader.tres" id="3_tucbk"]
+[ext_resource type="PackedScene" uid="uid://cnpc47mm4wul4" path="res://Spells/Lightning/Lightning_In-Hand.tscn" id="4_1sl7d"]
 
 [sub_resource type="ShaderMaterial" id="ShaderMaterial_xm8l4"]
 render_priority = 0
@@ -19,16 +20,87 @@ albedo_texture = ExtResource("2_km1en")
 
 [sub_resource type="ImmediateMesh" id="ImmediateMesh_j8hk1"]
 
+[sub_resource type="Animation" id="Animation_cc24i"]
+resource_name = "Grow"
+length = 0.3
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("Lightning-In-hand:scale")
+tracks/0/interp = 2
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 0.3),
+"transitions": PackedFloat32Array(1, 1),
+"update": 0,
+"values": [Vector3(0.1, 0.1, 0.1), Vector3(5, 5, 5)]
+}
+tracks/1/type = "value"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath("MeshInstance3D:visible")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(0, 0.166667),
+"transitions": PackedFloat32Array(1, 1),
+"update": 1,
+"values": [false, true]
+}
+
+[sub_resource type="Animation" id="Animation_e64gw"]
+length = 0.001
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("Lightning-In-hand:scale")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Vector3(0.1, 0.1, 0.1)]
+}
+tracks/1/type = "value"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath("MeshInstance3D:visible")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [false]
+}
+
+[sub_resource type="AnimationLibrary" id="AnimationLibrary_rg75t"]
+_data = {
+"Grow": SubResource("Animation_cc24i"),
+"RESET": SubResource("Animation_e64gw")
+}
+
 [node name="LightningStrike" type="Node3D"]
 script = ExtResource("1_fsoxa")
 offset_scale = 1.65
 
 [node name="MeshInstance3D" type="MeshInstance3D" parent="."]
+visible = false
 material_override = SubResource("StandardMaterial3D_sn7cv")
 mesh = SubResource("ImmediateMesh_j8hk1")
 
 [node name="Timer" type="Timer" parent="."]
+wait_time = 3.0
 one_shot = true
 autostart = true
+
+[node name="Lightning-In-hand" parent="." instance=ExtResource("4_1sl7d")]
+transform = Transform3D(0.1, 0, 0, 0, 0.1, 0, 0, 0, 0.1, 0, 0, 0)
+
+[node name="AnimationPlayer" type="AnimationPlayer" parent="."]
+libraries = {
+"": SubResource("AnimationLibrary_rg75t")
+}
 
 [connection signal="timeout" from="Timer" to="." method="_on_timer_timeout"]

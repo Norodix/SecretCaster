@@ -1,4 +1,4 @@
-[gd_resource type="VisualShader" load_steps=30 format=3 uid="uid://byvds8e7qvdkj"]
+[gd_resource type="VisualShader" load_steps=30 format=3 uid="uid://7jmfxn7seekq"]
 
 [ext_resource type="Texture2D" uid="uid://bi7ssho1pk8jj" path="res://Spells/Lightning/Lightning_Tex.png" id="1_nqtso"]
 [ext_resource type="Texture2D" uid="uid://dbihtb7jeyanq" path="res://Spells/Fireball/Fireball_Flame.png" id="2_x0dyx"]

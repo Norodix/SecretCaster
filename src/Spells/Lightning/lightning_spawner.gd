@@ -7,7 +7,6 @@ var feedback_name = "Lightning_Feedback"
 
 func use_spell(player: CharacterBody3D):
 	var instance = resource.instantiate()
-	
 	var mouse_pos = get_viewport().get_mouse_position()
 	var ray_length = 100
 	var camera = get_viewport().get_camera_3d()
@@ -21,7 +20,11 @@ func use_spell(player: CharacterBody3D):
 	var raycast_result = space.intersect_ray(ray_query)
 	if not raycast_result.is_empty():
 		get_tree().root.add_child(instance, true)
-		instance.global_transform.basis = player.find_child("Camera3D").global_transform.basis
-		instance.global_transform.origin = player.global_transform.origin
+		instance.global_transform.basis = camera.global_transform.basis
+		var randomoffset = Vector3(0.2, 0.2, 0).rotated(Vector3(0, 0, 1), randf()*10000)
+		var offset = randomoffset + Vector3(0, 0, -1)
+		instance.global_transform.origin = camera.global_transform * offset
 		instance.end = instance.global_transform.inverse() * raycast_result.position
+		instance.end_node = raycast_result.collider
+		instance.end_loc = raycast_result.collider.global_transform.inverse() * raycast_result.position
 	
