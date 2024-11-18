@@ -20,6 +20,7 @@ var last_activate = - cooldown_time_ms_default * 1000
 @onready var playerAnimState = $Camera3D/Magic_Hands/AnimationTree.get("parameters/StateMachine/playback")
 @onready var pistolAnim : AnimationPlayer  = $Camera3D/Magic_Hands/Armature/Skeleton3D/BoneAttachment3D2/colt/AnimationPlayer
 @onready var pistol = $Camera3D/Magic_Hands/Armature/Skeleton3D/BoneAttachment3D2/colt
+@onready var hud = $HUD
 
 var pistol_trail = preload("res://Colt/TrailRender.tscn")
 
@@ -72,8 +73,7 @@ func _process(delta: float) -> void:
 	for spell in $Spells.get_children():
 		if match_action_history(spell.pattern):
 			if spell != activespell:
-				activespell = spell
-				print("Selecting: " + spell.name)
+				activate_spell(spell)
 	
 	if attack_mode == ATTACK_MODE.MAGIC:
 		if Input.is_action_just_pressed("use_spell") and activespell != null:
@@ -102,7 +102,14 @@ func _process(delta: float) -> void:
 		if attack_mode == ATTACK_MODE.PISTOL:
 			playerAnimState.travel("Hands_Pistol_Idle")
 		$Pistol_Visibility_Timer.start()
+		hud.set_active_mode(attack_mode)
 	return
+
+
+func activate_spell(spell : Node):
+	activespell = spell
+	print("Selecting: " + spell.name)
+	hud.select(spell)
 
 
 func pistol_busy():

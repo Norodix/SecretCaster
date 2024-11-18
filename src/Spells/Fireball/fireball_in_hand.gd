@@ -1,6 +1,6 @@
 extends Node3D
 
-var bufferPos = self.global_position
+@onready var bufferPos = self.global_position
 @onready var attractor = $GPUParticlesAttractorSphere3D
 
 # Called every frame. 'delta' is the elapsed time since the previous frame.

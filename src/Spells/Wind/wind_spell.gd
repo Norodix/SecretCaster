@@ -4,6 +4,8 @@ var pattern = ["forwards", "right", "backwards", "left", "forwards", "right", "b
 var cooldown = 1000
 @onready var player = get_parent().get_parent()
 @onready var cam = player.find_child("Camera3D")
+var select_name = "Frame_Wind_Tex"
+var feedback_name = "Wind_Feedback"
 
 func use_spell(player: CharacterBody3D):
 	$GPUParticlesAttractorSphere3D.visible = true

@@ -2,6 +2,8 @@ extends Node3D
 
 var pattern = ["forwards", "right", "forwards", "left", "forwards"]
 @onready var fireball_resource = preload("res://Spells/Fireball/Fireball.tscn")
+var select_name = "Frame_Fireball_Tex"
+var feedback_name = "Fireball_Feedback"
 
 func use_spell(player: CharacterBody3D):
 	var fireball_instance = fireball_resource.instantiate()

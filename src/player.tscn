@@ -10,7 +10,7 @@
 [ext_resource type="PackedScene" uid="uid://c4o2o7sakqjc1" path="res://Spells/Lightning/LightningSpawner.tscn" id="7_dta5t"]
 [ext_resource type="PackedScene" uid="uid://bdl3aa3dar438" path="res://Spells/Snowing/SnowSpawner.tscn" id="8_foarl"]
 [ext_resource type="PackedScene" uid="uid://b73q46no704v7" path="res://Spells/Wind/WindSpell.tscn" id="9_bi7b6"]
-[ext_resource type="PackedScene" uid="uid://cvba5sgdncr8q" path="res://hud.tscn" id="11_ntyv5"]
+[ext_resource type="PackedScene" uid="uid://b55rhd44fks7" path="res://hud.tscn" id="11_ntyv5"]
 
 [sub_resource type="CylinderShape3D" id="CylinderShape3D_nakrb"]
 height = 1.8
