@@ -19,15 +19,22 @@ func _process(delta: float) -> void:
 	m.clear_surfaces()
 	m.surface_begin(Mesh.PRIMITIVE_TRIANGLE_STRIP)
 	for i in sections:
+		var rel = float(i)/float(sections)
 		var pos = global_position - float(i)/float(sections) * dir * length
 		var pos_local = global_transform.inverse() * pos
 		if not is_between_points(start, end, pos):
 			continue
-		var offset = (1-(float(i)/sections))*thickness / 2.0 * Vector3.UP
-		m.surface_set_uv(Vector2(0, i))
+		var offset = (1 - rel) * thickness / 2.0 * Vector3.UP
+		m.surface_set_uv(Vector2(0, rel))
 		m.surface_add_vertex(pos_local + offset)
-		m.surface_set_uv(Vector2(1, i))
+		m.surface_set_uv(Vector2(1, rel))
 		m.surface_add_vertex(pos_local - offset)
+	# Add new vertices at the very end to make sure that the surface is always valid
+	var pos = global_position - dir * length
+	m.surface_set_uv(Vector2(0.5, 1))
+	m.surface_add_vertex(Vector3(0, 0, 0))
+	m.surface_add_vertex(Vector3(0, 0, 0))
+	m.surface_add_vertex(Vector3(0, 0, 0))
 	m.surface_end()
 	if not is_between_points(start, end + dir * length, global_position):
 		self.queue_free()

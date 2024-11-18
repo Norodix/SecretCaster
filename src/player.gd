@@ -156,10 +156,10 @@ func shoot_pistol():
 		trail_end = raycast_result.position
 	# draw pistol trail
 	var pt = pistol_trail.instantiate()
-	pt.global_basis = camera.global_basis
 	pt.start = trail_start
 	pt.end = trail_end
 	get_tree().root.add_child(pt)
+	pt.global_basis = camera.global_basis
 
 
 # Bingibungel reloads using a comment

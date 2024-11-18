@@ -19,12 +19,13 @@ func _process(delta: float) -> void:
 		var end_global = end_node.global_transform * end_loc
 		end = global_transform.inverse() * end_global
 	var sections = round((end-start).length() * 0.5)
+	sections = max(sections, 5)
 	var im : ImmediateMesh = $MeshInstance3D.mesh
 	im.clear_surfaces()
 	for j in 3:
 		im.surface_begin(Mesh.PRIMITIVE_TRIANGLE_STRIP)
 		for i in sections + 1:
-			var rel = i / sections
+			var rel = float(i) / float(sections)
 			var randomOffset = Vector3(randf(), randf(), randf()) - Vector3.ONE * 0.5
 			var width_mult = (0.5 - abs(0.5-rel))
 			randomOffset *= width_mult
