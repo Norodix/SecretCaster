@@ -1,6 +1,6 @@
 extends MeshInstance3D
 
-var speed = 150
+var speed = 300
 var start = Vector3.ZERO # start in global space
 var end = Vector3.ZERO # end in global space
 const thickness = 0.05

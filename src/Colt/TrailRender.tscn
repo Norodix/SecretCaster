@@ -1,4 +1,4 @@
-[gd_scene load_steps=6 format=3 uid="uid://b3rtvbxyq5dja"]
+[gd_scene load_steps=6 format=3 uid="uid://daeuu02qyaad0"]
 
 [ext_resource type="Script" path="res://Colt/trail_render.gd" id="1_p5753"]
 
@@ -12,7 +12,7 @@ gradient = SubResource("Gradient_slpsh")
 [sub_resource type="StandardMaterial3D" id="StandardMaterial3D_xlfo7"]
 cull_mode = 2
 shading_mode = 0
-albedo_color = Color(1, 1, 0, 1)
+albedo_color = Color(0.980354, 0.988052, 0.593911, 1)
 albedo_texture = SubResource("GradientTexture1D_kx8c8")
 
 [sub_resource type="ImmediateMesh" id="ImmediateMesh_hq2dv"]
