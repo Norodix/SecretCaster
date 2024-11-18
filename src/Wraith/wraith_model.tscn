@@ -75,7 +75,7 @@ transitions = ["Start", "Wraith_Idle", SubResource("AnimationNodeStateMachineTra
 graph_offset = Vector2(-229, -33)
 
 [sub_resource type="AnimationNodeBlendTree" id="AnimationNodeBlendTree_borp5"]
-graph_offset = Vector2(-457, -31)
+graph_offset = Vector2(-138, 3)
 nodes/Animation/node = SubResource("AnimationNodeAnimation_7pmwl")
 nodes/Animation/position = Vector2(-80, 180)
 nodes/Blend2/node = SubResource("AnimationNodeBlend2_vapar")
@@ -88,17 +88,17 @@ node_connections = [&"Blend2", 0, &"StateMachine", &"Blend2", 1, &"Animation", &
 [node name="Wraith2" instance=ExtResource("1_h34gq")]
 
 [node name="Skeleton3D" parent="Armature" index="0"]
-bones/1/position = Vector3(0.0214066, 0.398709, -6.59435e-11)
-bones/4/rotation = Quaternion(0.00850183, -0.0012017, 0.027622, 0.999582)
-bones/5/rotation = Quaternion(0.707107, -3.09086e-08, -3.09086e-08, 0.707107)
-bones/6/position = Vector3(0.0800958, 0.689775, 0.269638)
-bones/6/rotation = Quaternion(0.124538, 0.164733, 0.276382, 0.938598)
+bones/1/position = Vector3(0.0224336, 0.353136, -5.34859e-09)
+bones/4/rotation = Quaternion(0.00892174, 2.98007e-12, 0.0290613, 0.999538)
+bones/5/rotation = Quaternion(0.704385, -0.00183205, 0.00285336, 0.70981)
+bones/6/position = Vector3(0.0107053, 0.711655, 0.26977)
+bones/6/rotation = Quaternion(0.137673, 0.00496044, 0.31841, 0.93789)
 
 [node name="Wraith" parent="Armature/Skeleton3D" index="0"]
 surface_material_override/0 = ExtResource("2_cntme")
 
 [node name="BoneAttachment3D" type="BoneAttachment3D" parent="Armature/Skeleton3D" index="1"]
-transform = Transform3D(0.998471, -0.0552414, -0.00193272, 0.0552005, 0.998329, -0.0170629, 0.00287207, 0.0169302, 0.999853, 0.0214066, 1.57963, -6.59435e-11)
+transform = Transform3D(0.998311, -0.0580958, 0.000518555, 0.0580958, 0.998152, -0.0178352, 0.000518555, 0.0178352, 0.999841, 0.0224336, 1.53406, -5.34859e-09)
 bone_name = "Head"
 bone_idx = 4
 
@@ -112,4 +112,4 @@ draw_pass_1 = SubResource("SphereMesh_sc4gc")
 [node name="AnimationTree" type="AnimationTree" parent="." index="2"]
 tree_root = SubResource("AnimationNodeBlendTree_borp5")
 anim_player = NodePath("../AnimationPlayer")
-parameters/Blend2/blend_amount = 0.0
+parameters/Blend2/blend_amount = 1.0
