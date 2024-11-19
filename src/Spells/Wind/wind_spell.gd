@@ -6,6 +6,7 @@ var cooldown = 1000
 @onready var cam = player.find_child("Camera3D")
 var select_name = "Frame_Wind_Tex"
 var feedback_name = "Wind_Feedback"
+var hand_name = "Wind_In-hand"
 
 func use_spell(player: CharacterBody3D):
 	$GPUParticlesAttractorSphere3D.visible = true

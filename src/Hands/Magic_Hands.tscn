@@ -209,6 +209,7 @@ visible = false
 visible = false
 
 [node name="Wind_In-hand" parent="Armature/Skeleton3D/BoneAttachment3D" index="2" instance=ExtResource("6_hjw5w")]
+visible = false
 
 [node name="BoneAttachment3D2" type="BoneAttachment3D" parent="Armature/Skeleton3D" index="2"]
 transform = Transform3D(1, -2.08393e-09, 1.33643e-08, 1.84054e-08, 1, 4.56348e-08, 1.33328e-08, 2.79397e-08, 1, 0.146355, 0.0376877, 0.00336884)

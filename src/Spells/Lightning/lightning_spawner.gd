@@ -4,6 +4,7 @@ var pattern = ["backwards", "backwards", "backwards"]
 @onready var resource = preload("res://Spells/Lightning/LightningStrike.tscn")
 var select_name = "Frame_Lightning_Tex"
 var feedback_name = "Lightning_Feedback"
+var hand_name = "Lightning-In-hand"
 
 func use_spell(player: CharacterBody3D):
 	var instance = resource.instantiate()

@@ -21,6 +21,7 @@ var last_activate = - cooldown_time_ms_default * 1000
 @onready var pistolAnimState = $Camera3D/Magic_Hands/Armature/Skeleton3D/BoneAttachment3D2/colt/AnimationTree.get("parameters/playback")
 @onready var pistol = $Camera3D/Magic_Hands/Armature/Skeleton3D/BoneAttachment3D2/colt
 @onready var hud = $HUD
+@onready var handspell_parent = $Camera3D/Magic_Hands/Armature/Skeleton3D/BoneAttachment3D
 
 var pistol_trail = preload("res://Colt/TrailRender.tscn")
 
@@ -110,6 +111,11 @@ func activate_spell(spell : Node):
 	activespell = spell
 	print("Selecting: " + spell.name)
 	hud.select(spell)
+	for child in handspell_parent.get_children():
+		child.visible = false
+	if "hand_name" in spell:
+		var handspell = handspell_parent.find_child(spell.hand_name)
+		handspell.visible = true
 
 
 func pistol_busy():
