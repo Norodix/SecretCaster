@@ -23,6 +23,8 @@ func damage(type : String):
 			health -= 5
 		"colt":
 			health -= 2
+		"shock":
+			health -= 0.5
 	if health <= 0:
 		destroy()
 

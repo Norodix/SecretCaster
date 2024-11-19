@@ -6,6 +6,7 @@ var end = Vector3(0, 0, 10)
 var end_node : Node3D = null
 var end_loc = Vector3(0, 0, 0)
 var sections = 10.0
+var damage_time = true
 @export var offset_scale = 0.3
 
 func _ready() -> void:
@@ -38,7 +39,27 @@ func _process(delta: float) -> void:
 			im.surface_set_uv(Vector2(1, rel))
 			im.surface_add_vertex(p + sideOffset)
 		im.surface_end()
+	if is_instance_valid(end_node) and damage_time:
+		damage_time = false
+		if end_node.has_method("damage"):
+			end_node.damage("shock")
 
 
 func _on_timer_timeout() -> void:
 	self.queue_free()
+
+
+func _on_retarget_timeout() -> void:
+	var space = get_world_3d().direct_space_state
+	var ray_query = PhysicsRayQueryParameters3D.new()
+	ray_query.from = global_position
+	ray_query.to = global_transform * (end.normalized() * 100)
+	ray_query.collision_mask = 1 | 1 << 3
+	var raycast_result = space.intersect_ray(ray_query)
+	if not raycast_result.is_empty():
+		end_node = raycast_result.collider
+		end_loc = raycast_result.collider.global_transform.inverse() * raycast_result.position
+
+
+func _on_damage_tick_timeout() -> void:
+	damage_time = true

@@ -2,7 +2,7 @@
 
 [ext_resource type="Script" path="res://Spells/Lightning/lightning_strike.gd" id="1_fsoxa"]
 [ext_resource type="Texture2D" uid="uid://bi7ssho1pk8jj" path="res://Spells/Lightning/Lightning_Tex.png" id="2_km1en"]
-[ext_resource type="Shader" uid="uid://7jmfxn7seekq" path="res://Spells/Lightning/Lightning_Discharge_Shader.tres" id="3_tucbk"]
+[ext_resource type="Shader" uid="uid://byvds8e7qvdkj" path="res://Spells/Lightning/Lightning_Discharge_Shader.tres" id="3_tucbk"]
 [ext_resource type="PackedScene" uid="uid://cnpc47mm4wul4" path="res://Spells/Lightning/Lightning_In-Hand.tscn" id="4_1sl7d"]
 
 [sub_resource type="ShaderMaterial" id="ShaderMaterial_xm8l4"]
@@ -103,4 +103,14 @@ libraries = {
 "": SubResource("AnimationLibrary_rg75t")
 }
 
+[node name="Retarget" type="Timer" parent="."]
+wait_time = 0.1
+autostart = true
+
+[node name="DamageTick" type="Timer" parent="."]
+wait_time = 0.2
+autostart = true
+
 [connection signal="timeout" from="Timer" to="." method="_on_timer_timeout"]
+[connection signal="timeout" from="Retarget" to="." method="_on_retarget_timeout"]
+[connection signal="timeout" from="DamageTick" to="." method="_on_damage_tick_timeout"]

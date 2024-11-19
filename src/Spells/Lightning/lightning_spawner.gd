@@ -17,7 +17,7 @@ func use_spell(player: CharacterBody3D):
 	var ray_query = PhysicsRayQueryParameters3D.new()
 	ray_query.from = from
 	ray_query.to = to
-	ray_query.collision_mask = 1
+	ray_query.collision_mask = 1 | 1 << 3
 	var raycast_result = space.intersect_ray(ray_query)
 	if not raycast_result.is_empty():
 		get_tree().root.add_child(instance, true)
