@@ -20,7 +20,15 @@ func use_spell(player: CharacterBody3D):
 
 
 func _process(delta: float) -> void:
-	$GPUParticlesAttractorSphere3D.transform.basis = cam.global_transform.basis
+	var b : Basis = Basis.IDENTITY.rotated(Vector3(1, 0, 0), deg_to_rad(35))
+	var camb : Basis = cam.global_transform.basis
+	camb.z.y=0
+	camb.z = camb.z.normalized()
+	camb.y.x = 0
+	camb.y.z = 0
+	camb.y = camb.y.normalized()
+	camb = camb.orthonormalized()
+	$GPUParticlesAttractorSphere3D.transform.basis = camb * b
 
 
 func _on_timeout_timeout() -> void:

@@ -315,7 +315,7 @@ void process() {
 		float slide_to_bounce_trigger = step(2.0 / clamp(collision_bounce + 1.0, 1.0, 2.0), abs(collision_response));
 		TRANSFORM[3].xyz += COLLISION_NORMAL * COLLISION_DEPTH;
 		// Remove all components of VELOCITY that are not tangential to COLLISION_NORMAL.
-		VELOCITY -= COLLISION_NORMAL * collision_response;
+		if (collision_response < 0.0) VELOCITY -= COLLISION_NORMAL * collision_response;
 		// Apply friction only to VELOCITY across the surface (effectively decouples friction and bounce behavior).
 		VELOCITY = mix(VELOCITY, vec3(0.0), clamp(collision_friction, 0.0, 1.0));
 		// Add bounce velocity to VELOCITY.
