@@ -62,11 +62,10 @@ wait_time = 0.25
 one_shot = true
 
 [node name="Pistol_Shoot_Cooldown" type="Timer" parent="."]
-wait_time = 0.35
+wait_time = 0.25
 one_shot = true
 
 [node name="Pistol_Reload_Cooldown" type="Timer" parent="."]
-wait_time = 1.5
 one_shot = true
 
 [node name="HUD" parent="." instance=ExtResource("11_ntyv5")]

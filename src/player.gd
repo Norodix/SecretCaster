@@ -136,7 +136,7 @@ func shoot_pistol():
 	bullets -= 1
 	playerAnimState.travel("Hands_Pistol_Fire")
 	if bullets == 0:
-		pistolAnimState.travel("colt_empty")
+		pistolAnimState.travel("colt_lastshot")
 	else:
 		pistolAnimState.travel("colt_shoot")
 	$Pistol_Shoot_Cooldown.start()
@@ -174,14 +174,12 @@ func shoot_pistol():
 func reload_pistol():
 	if pistol_busy():
 		return
-	if bullets > 0:
-		pistolAnimState.travel("colt_reload")
-		playerAnimState.travel("Hands_Pistol_Reload")
-		bullets = bullet_count + 1
-	else:
-		pistolAnimState.travel("RESET")
-		playerAnimState.travel("Hands_Pistol_Reload_Empty")
+	pistolAnimState.travel("RESET")
+	playerAnimState.travel("Hands_Pistol_Reload")
+	if bullets == 0:
 		bullets = bullet_count
+	else:
+		bullets = bullet_count + 1
 	$Pistol_Reload_Cooldown.start()
 	return
 
