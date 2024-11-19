@@ -18,7 +18,7 @@ var last_activate = - cooldown_time_ms_default * 1000
 
 @onready var playerAnim : AnimationTree = $Camera3D/Magic_Hands/AnimationTree
 @onready var playerAnimState = $Camera3D/Magic_Hands/AnimationTree.get("parameters/StateMachine/playback")
-@onready var pistolAnim : AnimationPlayer  = $Camera3D/Magic_Hands/Armature/Skeleton3D/BoneAttachment3D2/colt/AnimationPlayer
+@onready var pistolAnimState = $Camera3D/Magic_Hands/Armature/Skeleton3D/BoneAttachment3D2/colt/AnimationTree.get("parameters/playback")
 @onready var pistol = $Camera3D/Magic_Hands/Armature/Skeleton3D/BoneAttachment3D2/colt
 @onready var hud = $HUD
 
@@ -127,9 +127,13 @@ func shoot_pistol():
 		return
 	if pistol_busy():
 		return
+	if bullets == 1:
+		bullets -= 1
+		pistolAnimState.travel("colt_empty")
+		playerAnimState.travel("Hands_Pistol_Fire")
+		return
 	bullets -= 1
-	pistolAnim.set_speed_scale(3.0)
-	pistolAnim.play("colt_shoot")
+	pistolAnimState.travel("colt_shoot")
 	playerAnimState.travel("Hands_Pistol_Fire")
 	$Pistol_Shoot_Cooldown.start()
 	
@@ -166,10 +170,14 @@ func shoot_pistol():
 func reload_pistol():
 	if pistol_busy():
 		return
-	bullets = bullet_count
-	pistolAnim.set_speed_scale(1.0)
-	pistolAnim.play("colt_reload")
-	playerAnimState.travel("Hands_Pistol_Reload")
+	if bullets > 0:
+		pistolAnimState.travel("colt_reload")
+		playerAnimState.travel("Hands_Pistol_Reload")
+		bullets = bullet_count + 1
+	else:
+		pistolAnimState.travel("RESET")
+		playerAnimState.travel("Hands_Pistol_Reload_Empty")
+		bullets = bullet_count
 	$Pistol_Reload_Cooldown.start()
 	return
 
