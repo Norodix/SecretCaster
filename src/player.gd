@@ -127,14 +127,12 @@ func shoot_pistol():
 		return
 	if pistol_busy():
 		return
-	if bullets == 1:
-		bullets -= 1
-		pistolAnimState.travel("colt_empty")
-		playerAnimState.travel("Hands_Pistol_Fire")
-		return
 	bullets -= 1
-	pistolAnimState.travel("colt_shoot")
 	playerAnimState.travel("Hands_Pistol_Fire")
+	if bullets == 0:
+		pistolAnimState.travel("colt_empty")
+	else:
+		pistolAnimState.travel("colt_shoot")
 	$Pistol_Shoot_Cooldown.start()
 	
 	# Do the hitscan stuff
