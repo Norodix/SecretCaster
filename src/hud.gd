@@ -28,9 +28,9 @@ func set_active_mode(mode):
 	for child in find_children("Selected_Tex"):
 		child.visible = false
 	if mode == ATTACK_MODE.PISTOL:
-		$Control/Spell_Frame_R/Selected_Tex.visible = true
+		$Control/AspectRatioContainer2/BoxContainer/Spell_Frame_R/Selected_Tex.visible = true
 	if mode == ATTACK_MODE.MAGIC:
-		$Control/Spell_Frame_L/Selected_Tex.visible = true
+		$Control/AspectRatioContainer2/BoxContainer/Spell_Frame_L/Selected_Tex.visible = true
 
 func damage():
 	$Control/Damage_fade.seek(0, true)

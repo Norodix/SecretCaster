@@ -22,7 +22,7 @@ length = 0.5
 tracks/0/type = "value"
 tracks/0/imported = false
 tracks/0/enabled = true
-tracks/0/path = NodePath("ScreenSpace_Effects:modulate")
+tracks/0/path = NodePath("AspectRatioContainer/ScreenSpace_Effects:modulate")
 tracks/0/interp = 1
 tracks/0/loop_wrap = true
 tracks/0/keys = {
@@ -37,7 +37,7 @@ length = 0.001
 tracks/0/type = "value"
 tracks/0/imported = false
 tracks/0/enabled = true
-tracks/0/path = NodePath("ScreenSpace_Effects:modulate")
+tracks/0/path = NodePath("AspectRatioContainer/ScreenSpace_Effects:modulate")
 tracks/0/interp = 1
 tracks/0/loop_wrap = true
 tracks/0/keys = {
@@ -59,7 +59,7 @@ length = 0.5
 tracks/0/type = "value"
 tracks/0/imported = false
 tracks/0/enabled = true
-tracks/0/path = NodePath("ScreenSpace_Effects2:modulate")
+tracks/0/path = NodePath("AspectRatioContainer/ScreenSpace_Effects2:modulate")
 tracks/0/interp = 1
 tracks/0/loop_wrap = true
 tracks/0/keys = {
@@ -74,7 +74,7 @@ length = 0.001
 tracks/0/type = "value"
 tracks/0/imported = false
 tracks/0/enabled = true
-tracks/0/path = NodePath("ScreenSpace_Effects2:modulate")
+tracks/0/path = NodePath("AspectRatioContainer/ScreenSpace_Effects2:modulate")
 tracks/0/interp = 1
 tracks/0/loop_wrap = true
 tracks/0/keys = {
@@ -100,67 +100,137 @@ anchor_right = 1.0
 anchor_bottom = 1.0
 grow_horizontal = 2
 grow_vertical = 2
+size_flags_horizontal = 3
+size_flags_vertical = 3
 
-[node name="Spell_Frame_R" type="PanelContainer" parent="Control"]
-self_modulate = Color(1, 1, 1, 0)
+[node name="AspectRatioContainer" type="AspectRatioContainer" parent="Control"]
 layout_mode = 1
-anchors_preset = -1
-anchor_left = 0.929
-anchor_top = 0.875
-anchor_right = 0.929
-anchor_bottom = 0.875
-offset_left = -30.208
-offset_top = -30.0001
-offset_right = 29.792
-offset_bottom = 29.9999
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
 grow_horizontal = 2
 grow_vertical = 2
 
-[node name="Frame_Tex" type="TextureRect" parent="Control/Spell_Frame_R"]
-self_modulate = Color(0, 1, 1, 0.627451)
+[node name="ScreenSpace_Effects" type="PanelContainer" parent="Control/AspectRatioContainer"]
+modulate = Color(1, 1, 1, 0)
+self_modulate = Color(1, 1, 1, 0)
 layout_mode = 2
-texture = ExtResource("1_tkq8k")
-expand_mode = 4
-stretch_mode = 4
 
-[node name="Pistol_Tex" type="TextureRect" parent="Control/Spell_Frame_R"]
-self_modulate = Color(0, 1, 1, 0.627451)
-layout_mode = 2
-texture = ExtResource("3_d7hq6")
-expand_mode = 4
-stretch_mode = 4
-
-[node name="Selected_Tex" type="TextureRect" parent="Control/Spell_Frame_R"]
+[node name="Fireball_Feedback" type="TextureRect" parent="Control/AspectRatioContainer/ScreenSpace_Effects"]
 visible = false
-self_modulate = Color(0.141199, 0.456723, 1, 1)
+self_modulate = Color(1, 1, 1, 0.235294)
 layout_mode = 2
-texture = ExtResource("1_e7vvy")
+texture = ExtResource("6_866la")
 expand_mode = 4
-stretch_mode = 4
 
-[node name="Spell_Frame_L" type="PanelContainer" parent="Control"]
+[node name="Lightning_Feedback" type="TextureRect" parent="Control/AspectRatioContainer/ScreenSpace_Effects"]
+visible = false
+self_modulate = Color(1, 1, 1, 0.235294)
+layout_mode = 2
+texture = ExtResource("9_10ud5")
+expand_mode = 4
+
+[node name="Wind_Feedback" type="TextureRect" parent="Control/AspectRatioContainer/ScreenSpace_Effects"]
+visible = false
+self_modulate = Color(1, 1, 1, 0.235294)
+layout_mode = 2
+texture = ExtResource("8_npk1c")
+expand_mode = 4
+
+[node name="Highjump_Feedback" type="TextureRect" parent="Control/AspectRatioContainer/ScreenSpace_Effects"]
+visible = false
+self_modulate = Color(1, 1, 1, 0.235294)
+layout_mode = 2
+texture = ExtResource("13_0c8d3")
+expand_mode = 4
+
+[node name="StickyLight_Feedback" type="TextureRect" parent="Control/AspectRatioContainer/ScreenSpace_Effects"]
+visible = false
+self_modulate = Color(1, 1, 1, 0.235294)
+layout_mode = 2
+texture = ExtResource("14_ujx24")
+expand_mode = 4
+
+[node name="ScreenSpace_Effects2" type="PanelContainer" parent="Control/AspectRatioContainer"]
+modulate = Color(1, 1, 1, 0)
 self_modulate = Color(1, 1, 1, 0)
+layout_mode = 2
+
+[node name="Damage_Feedback" type="TextureRect" parent="Control/AspectRatioContainer/ScreenSpace_Effects2"]
+visible = false
+layout_mode = 2
+texture = ExtResource("5_yt1fo")
+expand_mode = 4
+
+[node name="ColorRect" type="ColorRect" parent="Control/AspectRatioContainer"]
+custom_minimum_size = Vector2(3, 3)
+layout_mode = 2
+size_flags_horizontal = 4
+size_flags_vertical = 4
+color = Color(1, 1, 1, 0.313726)
+
+[node name="AspectRatioContainer2" type="AspectRatioContainer" parent="Control"]
 layout_mode = 1
-anchors_preset = -1
-anchor_left = 0.867
-anchor_top = 0.875
-anchor_right = 0.867
-anchor_bottom = 0.875
-offset_left = -29.7841
-offset_top = -30.0001
-offset_right = 30.2159
-offset_bottom = 29.9999
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
 grow_horizontal = 2
 grow_vertical = 2
+ratio = 1.7778
 
-[node name="Frame_Tex" type="TextureRect" parent="Control/Spell_Frame_L"]
+[node name="BoxContainer" type="BoxContainer" parent="Control/AspectRatioContainer2"]
+custom_minimum_size = Vector2(300, 256)
+layout_mode = 2
+size_flags_vertical = 8
+alignment = 2
+
+[node name="ProgressBar" type="ProgressBar" parent="Control/AspectRatioContainer2/BoxContainer"]
+layout_mode = 2
+size_flags_horizontal = 3
+size_flags_vertical = 4
+size_flags_stretch_ratio = 7.0
+theme_override_font_sizes/font_size = 50
+value = 26.51
+
+[node name="Magazine" type="RichTextLabel" parent="Control/AspectRatioContainer2/BoxContainer"]
+layout_mode = 2
+size_flags_horizontal = 3
+theme_override_font_sizes/normal_font_size = 50
+text = "7"
+
+[node name="Slash" type="RichTextLabel" parent="Control/AspectRatioContainer2/BoxContainer"]
+layout_mode = 2
+size_flags_horizontal = 3
+theme_override_font_sizes/normal_font_size = 50
+text = "/"
+
+[node name="Ammo" type="RichTextLabel" parent="Control/AspectRatioContainer2/BoxContainer"]
+layout_mode = 2
+size_flags_horizontal = 3
+theme_override_font_sizes/normal_font_size = 50
+text = "769"
+
+[node name="PanelContainer" type="PanelContainer" parent="Control/AspectRatioContainer2/BoxContainer"]
+self_modulate = Color(1, 1, 1, 0)
+layout_mode = 2
+size_flags_horizontal = 3
+size_flags_stretch_ratio = 6.0
+
+[node name="Spell_Frame_L" type="PanelContainer" parent="Control/AspectRatioContainer2/BoxContainer"]
+self_modulate = Color(1, 1, 1, 0)
+custom_minimum_size = Vector2(128, 128)
+layout_mode = 2
+size_flags_horizontal = 10
+size_flags_vertical = 4
+
+[node name="Frame_Tex" type="TextureRect" parent="Control/AspectRatioContainer2/BoxContainer/Spell_Frame_L"]
 self_modulate = Color(0, 1, 1, 0.627451)
 layout_mode = 2
 texture = ExtResource("1_tkq8k")
 expand_mode = 4
 stretch_mode = 4
 
-[node name="Frame_Fireball_Tex" type="TextureRect" parent="Control/Spell_Frame_L"]
+[node name="Frame_Fireball_Tex" type="TextureRect" parent="Control/AspectRatioContainer2/BoxContainer/Spell_Frame_L"]
 visible = false
 self_modulate = Color(0, 1, 1, 0.627451)
 layout_mode = 2
@@ -168,7 +238,7 @@ texture = ExtResource("4_sdbw8")
 expand_mode = 4
 stretch_mode = 4
 
-[node name="Frame_Lightning_Tex" type="TextureRect" parent="Control/Spell_Frame_L"]
+[node name="Frame_Lightning_Tex" type="TextureRect" parent="Control/AspectRatioContainer2/BoxContainer/Spell_Frame_L"]
 visible = false
 self_modulate = Color(0, 1, 1, 0.627451)
 layout_mode = 2
@@ -176,7 +246,7 @@ texture = ExtResource("5_sy32u")
 expand_mode = 4
 stretch_mode = 4
 
-[node name="Frame_Wind_Tex" type="TextureRect" parent="Control/Spell_Frame_L"]
+[node name="Frame_Wind_Tex" type="TextureRect" parent="Control/AspectRatioContainer2/BoxContainer/Spell_Frame_L"]
 visible = false
 self_modulate = Color(0, 1, 1, 0.627451)
 layout_mode = 2
@@ -184,7 +254,7 @@ texture = ExtResource("5_2em1o")
 expand_mode = 4
 stretch_mode = 4
 
-[node name="Frame_Highjump_Tex" type="TextureRect" parent="Control/Spell_Frame_L"]
+[node name="Frame_Highjump_Tex" type="TextureRect" parent="Control/AspectRatioContainer2/BoxContainer/Spell_Frame_L"]
 visible = false
 self_modulate = Color(0, 1, 1, 0.627451)
 layout_mode = 2
@@ -192,7 +262,7 @@ texture = ExtResource("8_rosmi")
 expand_mode = 4
 stretch_mode = 4
 
-[node name="Frame_StickyLight_Tex" type="TextureRect" parent="Control/Spell_Frame_L"]
+[node name="Frame_StickyLight_Tex" type="TextureRect" parent="Control/AspectRatioContainer2/BoxContainer/Spell_Frame_L"]
 visible = false
 self_modulate = Color(0, 1, 1, 0.627451)
 layout_mode = 2
@@ -200,7 +270,36 @@ texture = ExtResource("9_xigtq")
 expand_mode = 4
 stretch_mode = 4
 
-[node name="Selected_Tex" type="TextureRect" parent="Control/Spell_Frame_L"]
+[node name="Selected_Tex" type="TextureRect" parent="Control/AspectRatioContainer2/BoxContainer/Spell_Frame_L"]
+self_modulate = Color(0.141199, 0.456723, 1, 1)
+layout_mode = 2
+texture = ExtResource("1_e7vvy")
+expand_mode = 4
+stretch_mode = 4
+
+[node name="Spell_Frame_R" type="PanelContainer" parent="Control/AspectRatioContainer2/BoxContainer"]
+self_modulate = Color(1, 1, 1, 0)
+custom_minimum_size = Vector2(128, 128)
+layout_mode = 2
+size_flags_horizontal = 10
+size_flags_vertical = 4
+
+[node name="Frame_Tex" type="TextureRect" parent="Control/AspectRatioContainer2/BoxContainer/Spell_Frame_R"]
+self_modulate = Color(0, 1, 1, 0.627451)
+layout_mode = 2
+texture = ExtResource("1_tkq8k")
+expand_mode = 4
+stretch_mode = 4
+
+[node name="Pistol_Tex" type="TextureRect" parent="Control/AspectRatioContainer2/BoxContainer/Spell_Frame_R"]
+self_modulate = Color(0, 1, 1, 0.627451)
+layout_mode = 2
+texture = ExtResource("3_d7hq6")
+expand_mode = 4
+stretch_mode = 4
+
+[node name="Selected_Tex" type="TextureRect" parent="Control/AspectRatioContainer2/BoxContainer/Spell_Frame_R"]
+visible = false
 self_modulate = Color(0.141199, 0.456723, 1, 1)
 layout_mode = 2
 texture = ExtResource("1_e7vvy")
@@ -212,88 +311,7 @@ libraries = {
 "": SubResource("AnimationLibrary_mlxnd")
 }
 
-[node name="ScreenSpace_Effects" type="PanelContainer" parent="Control"]
-modulate = Color(1, 1, 1, 0)
-self_modulate = Color(1, 1, 1, 0)
-layout_mode = 1
-anchors_preset = 13
-anchor_left = 0.5
-anchor_right = 0.5
-anchor_bottom = 1.0
-offset_left = -324.0
-offset_right = 324.0
-grow_horizontal = 2
-grow_vertical = 2
-
-[node name="Fireball_Feedback" type="TextureRect" parent="Control/ScreenSpace_Effects"]
-visible = false
-self_modulate = Color(1, 1, 1, 0.235294)
-layout_mode = 2
-texture = ExtResource("6_866la")
-expand_mode = 4
-
-[node name="Lightning_Feedback" type="TextureRect" parent="Control/ScreenSpace_Effects"]
-visible = false
-self_modulate = Color(1, 1, 1, 0.235294)
-layout_mode = 2
-texture = ExtResource("9_10ud5")
-expand_mode = 4
-
-[node name="Wind_Feedback" type="TextureRect" parent="Control/ScreenSpace_Effects"]
-visible = false
-self_modulate = Color(1, 1, 1, 0.235294)
-layout_mode = 2
-texture = ExtResource("8_npk1c")
-expand_mode = 4
-
-[node name="Highjump_Feedback" type="TextureRect" parent="Control/ScreenSpace_Effects"]
-visible = false
-self_modulate = Color(1, 1, 1, 0.235294)
-layout_mode = 2
-texture = ExtResource("13_0c8d3")
-expand_mode = 4
-
-[node name="StickyLight_Feedback" type="TextureRect" parent="Control/ScreenSpace_Effects"]
-visible = false
-self_modulate = Color(1, 1, 1, 0.235294)
-layout_mode = 2
-texture = ExtResource("14_ujx24")
-expand_mode = 4
-
 [node name="Damage_fade" type="AnimationPlayer" parent="Control"]
 libraries = {
 "": SubResource("AnimationLibrary_s0y6u")
 }
-
-[node name="ScreenSpace_Effects2" type="PanelContainer" parent="Control"]
-modulate = Color(1, 1, 1, 0)
-self_modulate = Color(1, 1, 1, 0)
-layout_mode = 1
-anchors_preset = 13
-anchor_left = 0.5
-anchor_right = 0.5
-anchor_bottom = 1.0
-offset_left = -324.0
-offset_right = 324.0
-grow_horizontal = 2
-grow_vertical = 2
-
-[node name="Damage_Feedback" type="TextureRect" parent="Control/ScreenSpace_Effects2"]
-layout_mode = 2
-texture = ExtResource("5_yt1fo")
-expand_mode = 4
-
-[node name="ColorRect" type="ColorRect" parent="Control"]
-layout_mode = 1
-anchors_preset = 8
-anchor_left = 0.5
-anchor_top = 0.5
-anchor_right = 0.5
-anchor_bottom = 0.5
-offset_left = -1.0
-offset_top = -1.0
-offset_right = 1.0
-offset_bottom = 1.0
-grow_horizontal = 2
-grow_vertical = 2
-color = Color(1, 1, 1, 0.313726)
