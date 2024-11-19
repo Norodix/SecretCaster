@@ -1,6 +1,9 @@
-[gd_scene load_steps=2 format=3 uid="uid://b73q46no704v7"]
+[gd_scene load_steps=3 format=3 uid="uid://b73q46no704v7"]
 
 [ext_resource type="Script" path="res://Spells/Wind/wind_spell.gd" id="1_j23jl"]
+
+[sub_resource type="SphereShape3D" id="SphereShape3D_s8tex"]
+radius = 10.0
 
 [node name="WindSpell" type="Node3D"]
 script = ExtResource("1_j23jl")
@@ -10,9 +13,16 @@ visible = false
 layers = 5
 strength = 40.0
 directionality = 1.0
-radius = 5.0
+radius = 10.0
 
 [node name="Timeout" type="Timer" parent="."]
 one_shot = true
+
+[node name="BlowArea" type="Area3D" parent="."]
+collision_layer = 0
+collision_mask = 16
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="BlowArea"]
+shape = SubResource("SphereShape3D_s8tex")
 
 [connection signal="timeout" from="Timeout" to="." method="_on_timeout_timeout"]

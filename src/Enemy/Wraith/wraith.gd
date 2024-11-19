@@ -3,6 +3,7 @@ extends CharacterBody3D
 var target = Vector3.ZERO
 var speed = 5
 var health = 10
+var acceleration = 10
 @onready var player = get_tree().root.find_child("Player", true, false)
 enum STRATEGY {
 	DIRECT,
@@ -32,16 +33,22 @@ func destroy():
 
 func _physics_process(delta: float) -> void:
 	var nextpos = $NavigationAgent3D.get_next_path_position()
-	velocity = (nextpos - global_position).normalized() * speed
+	var desired_velocity = (nextpos - global_position).normalized() * speed
 	if $NavigationAgent3D.is_navigation_finished():
-		velocity = Vector3.ZERO
+		desired_velocity = Vector3.ZERO
+		pass
+	var v_error = desired_velocity - velocity
+	var dv = v_error.normalized() * acceleration * delta
+	dv = dv.limit_length(v_error.length())
+	velocity += dv
 	move_and_slide()
 	
 	# Generate a new transform that looks in movement direction
 	var z = Vector3.ZERO
-	if velocity.length() > 0.1:
+	var v = desired_velocity
+	if v.length() > 0.1:
 		animState.travel("Wraith_Movement")
-		z = - velocity
+		z = - v
 		z.y = 0
 		z = z.normalized()
 	else:
