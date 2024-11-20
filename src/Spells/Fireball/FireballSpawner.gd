@@ -10,4 +10,4 @@ func use_spell(player: CharacterBody3D):
 	var fireball_instance = fireball_resource.instantiate()
 	get_tree().root.add_child(fireball_instance, true)
 	fireball_instance.global_transform.basis = player.find_child("Camera3D").global_transform.basis
-	fireball_instance.global_transform.origin = player.global_transform.origin
+	fireball_instance.global_transform.origin = player.global_transform.origin + Vector3(0, 0.5, 0)
