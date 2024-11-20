@@ -1,9 +1,9 @@
 extends CharacterBody3D
 
 var target = Vector3.ZERO
-var speed = 5
+var speed = 8
 var health = 10
-var acceleration = 10
+var acceleration = 30
 @onready var player = get_tree().root.find_child("Player", true, false)
 enum STRATEGY {
 	DIRECT,
@@ -14,7 +14,53 @@ enum STRATEGY {
 }
 var strat = STRATEGY.DIRECT
 
-@onready var animState = $Wraith_Model/AnimationTree.get("parameters/StateMachine/playback")
+@onready var animState : AnimationNodeStateMachinePlayback = \
+		$Wraith_Model/AnimationTree.get("parameters/StateMachine/playback")
+
+# behavior state machine
+var states = {
+	"idle" = { # name of the state
+		"time" = 1.0, # reevaluation time
+		"next" = [ # possible next states and weights
+			{ "name" = "direct", "weight" = 0.1},
+		]
+	},
+	"direct" = { # name of the state
+		"time" = 0.2, # reevaluation time
+		"next" = [ # possible next states and weights
+			{ "name" = "direct", "weight" = 0.1},
+			{ "name" = "strafe", "weight" = 0.1},
+			{ "name" = "attack", "weight" = 0.9},
+			{ "name" = "flee"  , "weight" = 0.0},
+		]
+	},
+	"strafe" = { # name of the state
+		"time" = 0.2, # reevaluation time
+		"next" = [ # possible next states and weights
+			{ "name" = "direct", "weight" = 0.1},
+			{ "name" = "strafe", "weight" = 0.1},
+			{ "name" = "attack", "weight" = 0.9},
+			{ "name" = "flee"  , "weight" = 0.0},
+		]
+	},
+	"attack" = { # name of the state
+		"time" = 1.6667, # reevaluation time, must match attack animation
+		"next" = [ # possible next states and weights
+			{ "name" = "direct", "weight" = 0.4},
+			{ "name" = "strafe", "weight" = 0.4},
+			{ "name" = "flee"  , "weight" = 0.0},
+		]
+	},
+	"flee" = { # name of the state
+		"time" = 1.0, # reevaluation time
+		"next" = [ # possible next states and weights
+			{ "name" = "direct", "weight" = 0.5},
+			{ "name" = "strafe", "weight" = 0.5},
+			{ "name" = "flee"  , "weight" = 0.0},
+		]
+	},
+}
+var state = "idle"
 
 
 func damage(type : String):
@@ -33,6 +79,11 @@ func destroy():
 	self.queue_free()
 
 
+# called once when the agent enters the attack state
+func attack():
+	animState.travel("Wraith_Attack")
+
+
 func _physics_process(delta: float) -> void:
 	var nextpos = $NavigationAgent3D.get_next_path_position()
 	var desired_velocity = (nextpos - global_position).normalized() * speed
@@ -44,17 +95,14 @@ func _physics_process(delta: float) -> void:
 	dv = dv.limit_length(v_error.length())
 	velocity += dv
 	move_and_slide()
-	
 	# Generate a new transform that looks in movement direction
 	var z = Vector3.ZERO
 	var v = desired_velocity
 	if v.length() > 0.1:
-		animState.travel("Wraith_Movement")
 		z = - v
 		z.y = 0
 		z = z.normalized()
 	else:
-		animState.travel("Wraith_Idle")
 		z =  global_position - player.global_position
 		z.y = 0
 		z = z.normalized()
@@ -62,25 +110,71 @@ func _physics_process(delta: float) -> void:
 	var x = y.cross(z).normalized()
 	var new_basis = Basis(x, y, z).orthonormalized()
 	global_basis = global_basis.slerp(new_basis, 0.1)
+	var offset = global_position - player.global_position
+	if state == "direct" and offset.length() < 3:
+		trigger_state_transisiton("attack")
 
 
-func _on_timer_timeout() -> void:
+func random_with_weights(possiblities : Array):
+	var cumweights : Array[float]
+	for p in possiblities:
+		cumweights.append(p["weight"])
+	for i in range(1, cumweights.size()):
+		cumweights[i] += cumweights[i-1]
+	var f = randf() * cumweights[-1]
+	for i in range(cumweights.size()):
+		if cumweights[i] >= f:
+			return possiblities[i]["name"]
+
+
+# Trigger state transition to specific state
+# If not specified, a random state is returned based on the state transition table's weights
+func trigger_state_transisiton(to : String = ""):
+	var newstate : String
+	if to == "":
+		var next_possible : Array = states[state]["next"]
+		newstate = random_with_weights(next_possible)
+	else:
+		newstate = to
+	print(state, " -> ", newstate)
+	state = newstate
+	if state == "attack":
+		var offset = global_position - player.global_position
+		if offset.length() > 3:
+			state = "direct"
+		else:
+			attack()
+
+
+func _on_navigation_timer_timeout() -> void:
 	if not player:
 		var root = get_tree().root
 		player = root.find_child("Player", true, false)
 		return
 	# select new strategy
-	if randf() < 0.1:
-		strat = randi() % STRATEGY.MAX
+	# the next possible states
+
 	var offset = global_position - player.global_position
-	match strat:
-		STRATEGY.DIRECT:
+	match state:
+		"idle":
+			animState.travel("Wraith_Idle")
+		"direct":
 			$NavigationAgent3D.target_position = player.global_position
-		STRATEGY.FLEE:
+			animState.travel("Wraith_Movement")
+		"flee":
 			$NavigationAgent3D.target_position = player.global_position + offset.normalized() * 10
-		STRATEGY.SIDE_RIGHT:
+			animState.travel("Wraith_Movement")
+		"strafe":
 			var sidestep = offset.normalized().rotated(Vector3.UP, PI/2) * 10
 			$NavigationAgent3D.target_position = player.global_position + sidestep
-		STRATEGY.SIDE_LEFT:
-			var sidestep = offset.normalized().rotated(Vector3.UP, -PI/2) * 10
-			$NavigationAgent3D.target_position = player.global_position + sidestep
+			animState.travel("Wraith_Movement")
+		"attack":
+			$NavigationAgent3D.target_position = player.global_position
+		_:
+			pass
+
+
+func _on_state_timer_timeout() -> void:
+	trigger_state_transisiton()
+	$StateTimer.start(states[state]["time"])
+	pass # Replace with function body.
