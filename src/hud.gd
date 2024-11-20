@@ -10,9 +10,18 @@ enum ATTACK_MODE {
 @onready var slashLabel = find_child("Slash_Label")
 @onready var ammoLabel = find_child("Ammo_Label")
 @onready var hudAspect = find_child("16-9-aspect")
+@onready var chAmmo = find_child("Crosshair_Ammo")
+@onready var chSpell = find_child("Crosshair_SpellCD")
+
 
 func _physics_process(delta: float) -> void:
-	magLabel.text = str(self.get_parent().bullets)
+	var bullets = self.get_parent().bullets
+	var bullet_count = float(self.get_parent().bullet_count) + 1.0
+	
+	chAmmo.material.set_shader_parameter("fillLength", float(bullets / bullet_count))
+	chSpell.material.set_shader_parameter("fillLength", 1.0)
+	
+	magLabel.text = str(bullets)
 	ammoLabel.text = "∞"
 	magLabel.theme.default_font_size = int(hudAspect.size.y / 10.0)
 	slashLabel.theme.default_font_size = int(hudAspect.size.y / 16.2)

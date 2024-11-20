@@ -1,4 +1,4 @@
-[gd_scene load_steps=26 format=3 uid="uid://cvba5sgdncr8q"]
+[gd_scene load_steps=32 format=3 uid="uid://cvba5sgdncr8q"]
 
 [ext_resource type="Script" path="res://hud.gd" id="1_0n6rd"]
 [ext_resource type="Texture2D" uid="uid://blb6rjpwj6v0c" path="res://Textures/HUD/HUD_Spell_Selected.png" id="1_e7vvy"]
@@ -11,10 +11,22 @@
 [ext_resource type="Texture2D" uid="uid://dmj5yegf7xpi" path="res://Textures/HUD/HUD_Feedback_Fireball.png" id="6_866la"]
 [ext_resource type="Texture2D" uid="uid://1bpprt3hwwde" path="res://Textures/HUD/HUD_Feedback_Wind.png" id="8_npk1c"]
 [ext_resource type="Texture2D" uid="uid://bvuqp0y6dkj8c" path="res://Textures/HUD/HUD_Spell_Highjump.png" id="8_rosmi"]
+[ext_resource type="Texture2D" uid="uid://c04qqwb5y4tq7" path="res://Textures/HUD/Crosshair_Main.png" id="8_t6iki"]
 [ext_resource type="Texture2D" uid="uid://b3gx8jvaqkys7" path="res://Textures/HUD/HUD_Feedback_Lightning.png" id="9_10ud5"]
+[ext_resource type="Texture2D" uid="uid://bqlq5ev0htrhk" path="res://Textures/HUD/Crosshair_Ammo.png" id="9_axr18"]
+[ext_resource type="Shader" uid="uid://cir1sfmlqhuih" path="res://Crosshair_Shader.tres" id="9_bahp7"]
 [ext_resource type="Texture2D" uid="uid://ctrr43dl7txia" path="res://Textures/HUD/HUD_Spell_StickyLight.png" id="9_xigtq"]
+[ext_resource type="Texture2D" uid="uid://cwmyx233djjqh" path="res://Textures/HUD/Crosshair_SpellCD.png" id="10_htnnh"]
 [ext_resource type="Texture2D" uid="uid://bheu11ige543" path="res://Textures/HUD/HUD_Feedback_Highjump.png" id="13_0c8d3"]
 [ext_resource type="Texture2D" uid="uid://h8thu3omf7r5" path="res://Textures/HUD/HUD_Feedback_StickyLight.png" id="14_ujx24"]
+
+[sub_resource type="ShaderMaterial" id="ShaderMaterial_21lfs"]
+shader = ExtResource("9_bahp7")
+shader_parameter/fillLength = 0.0
+
+[sub_resource type="ShaderMaterial" id="ShaderMaterial_tcffb"]
+shader = ExtResource("9_bahp7")
+shader_parameter/fillLength = 0.0
 
 [sub_resource type="StyleBoxFlat" id="StyleBoxFlat_bxw4b"]
 bg_color = Color(1, 0.206578, 0.208542, 0.470588)
@@ -174,12 +186,41 @@ layout_mode = 2
 texture = ExtResource("5_yt1fo")
 expand_mode = 4
 
-[node name="ColorRect" type="ColorRect" parent="Control/1-1-aspect"]
-custom_minimum_size = Vector2(3, 3)
+[node name="Control" type="Control" parent="Control/1-1-aspect"]
 layout_mode = 2
-size_flags_horizontal = 4
-size_flags_vertical = 4
-color = Color(1, 1, 1, 0.313726)
+
+[node name="PanelContainer" type="PanelContainer" parent="Control/1-1-aspect/Control"]
+self_modulate = Color(1, 1, 1, 0)
+layout_mode = 1
+anchors_preset = -1
+anchor_left = 0.438272
+anchor_top = 0.438272
+anchor_right = 0.561728
+anchor_bottom = 0.561728
+metadata/_edit_use_anchors_ = true
+
+[node name="TextureRect" type="TextureRect" parent="Control/1-1-aspect/Control/PanelContainer"]
+self_modulate = Color(1, 1, 1, 0.498039)
+layout_mode = 2
+texture = ExtResource("8_t6iki")
+expand_mode = 1
+stretch_mode = 4
+
+[node name="Crosshair_Ammo" type="TextureRect" parent="Control/1-1-aspect/Control/PanelContainer"]
+self_modulate = Color(1, 1, 1, 0.498039)
+material = SubResource("ShaderMaterial_21lfs")
+layout_mode = 2
+texture = ExtResource("9_axr18")
+expand_mode = 1
+stretch_mode = 4
+
+[node name="Crosshair_SpellCD" type="TextureRect" parent="Control/1-1-aspect/Control/PanelContainer"]
+self_modulate = Color(1, 1, 1, 0.498039)
+material = SubResource("ShaderMaterial_tcffb")
+layout_mode = 2
+texture = ExtResource("10_htnnh")
+expand_mode = 1
+stretch_mode = 4
 
 [node name="16-9-aspect" type="AspectRatioContainer" parent="Control"]
 layout_mode = 1
@@ -189,54 +230,61 @@ anchor_bottom = 1.0
 grow_horizontal = 2
 grow_vertical = 2
 ratio = 1.7778
+alignment_vertical = 2
 
-[node name="VBoxContainer" type="VBoxContainer" parent="Control/16-9-aspect"]
+[node name="Control" type="Control" parent="Control/16-9-aspect"]
 layout_mode = 2
 
-[node name="PanelContainer" type="PanelContainer" parent="Control/16-9-aspect/VBoxContainer"]
+[node name="HealthBG" type="PanelContainer" parent="Control/16-9-aspect/Control"]
+layout_mode = 1
+anchors_preset = -1
+anchor_left = 0.0173611
+anchor_top = 0.817911
+anchor_right = 0.243056
+anchor_bottom = 0.842603
+metadata/_edit_use_anchors_ = true
+
+[node name="HealthPanel" type="PanelContainer" parent="Control/16-9-aspect/Control"]
 self_modulate = Color(1, 1, 1, 0)
-layout_mode = 2
-size_flags_vertical = 3
-size_flags_stretch_ratio = 5.0
+layout_mode = 1
+anchors_preset = -1
+anchor_left = 0.0225694
+anchor_top = 0.824084
+anchor_right = 0.239583
+anchor_bottom = 0.83643
+metadata/_edit_use_anchors_ = true
 
-[node name="HBoxContainer" type="HBoxContainer" parent="Control/16-9-aspect/VBoxContainer"]
+[node name="Healthbar" type="ProgressBar" parent="Control/16-9-aspect/Control/HealthPanel"]
 layout_mode = 2
-size_flags_vertical = 3
-
-[node name="PanelContainer" type="PanelContainer" parent="Control/16-9-aspect/VBoxContainer/HBoxContainer"]
-self_modulate = Color(1, 1, 1, 0)
-layout_mode = 2
-size_flags_horizontal = 3
-
-[node name="Healthbar" type="ProgressBar" parent="Control/16-9-aspect/VBoxContainer/HBoxContainer/PanelContainer"]
-layout_mode = 2
-size_flags_horizontal = 3
-size_flags_vertical = 4
-size_flags_stretch_ratio = 7.0
-theme_override_font_sizes/font_size = 20
+size_flags_vertical = 1
 theme_override_styles/fill = SubResource("StyleBoxFlat_bxw4b")
-value = 35.0
+value = 50.0
+show_percentage = false
 
-[node name="PanelContainer2" type="PanelContainer" parent="Control/16-9-aspect/VBoxContainer/HBoxContainer"]
+[node name="AmmoBG" type="PanelContainer" parent="Control/16-9-aspect/Control"]
+layout_mode = 1
+anchors_preset = -1
+anchor_left = 0.15191
+anchor_top = 0.848776
+anchor_right = 0.243056
+anchor_bottom = 0.964518
+metadata/_edit_use_anchors_ = true
+
+[node name="AmmoPanel" type="PanelContainer" parent="Control/16-9-aspect/Control"]
 self_modulate = Color(1, 1, 1, 0)
-layout_mode = 2
-size_flags_horizontal = 3
+layout_mode = 1
+anchors_preset = -1
+anchor_left = 0.157986
+anchor_top = 0.833344
+anchor_right = 0.260417
+anchor_bottom = 1.00001
+metadata/_edit_use_anchors_ = true
 
-[node name="MarginContainer" type="MarginContainer" parent="Control/16-9-aspect/VBoxContainer/HBoxContainer/PanelContainer2"]
+[node name="HBoxContainer" type="HBoxContainer" parent="Control/16-9-aspect/Control/AmmoPanel"]
 layout_mode = 2
-theme_override_constants/margin_left = 15
-theme_override_constants/margin_top = 15
-theme_override_constants/margin_right = 100
-theme_override_constants/margin_bottom = 29
+alignment = 1
 
-[node name="PanelContainer" type="PanelContainer" parent="Control/16-9-aspect/VBoxContainer/HBoxContainer/PanelContainer2/MarginContainer"]
-self_modulate = Color(1, 1, 1, 0.490196)
-layout_mode = 2
-
-[node name="HBoxContainer" type="HBoxContainer" parent="Control/16-9-aspect/VBoxContainer/HBoxContainer/PanelContainer2"]
-layout_mode = 2
-
-[node name="Magazine_Label" type="Label" parent="Control/16-9-aspect/VBoxContainer/HBoxContainer/PanelContainer2/HBoxContainer"]
+[node name="Magazine_Label" type="Label" parent="Control/16-9-aspect/Control/AmmoPanel/HBoxContainer"]
 layout_mode = 2
 size_flags_horizontal = 3
 size_flags_vertical = 1
@@ -248,7 +296,7 @@ theme_override_constants/shadow_outline_size = 15
 text = "7"
 horizontal_alignment = 2
 
-[node name="Slash_Label" type="Label" parent="Control/16-9-aspect/VBoxContainer/HBoxContainer/PanelContainer2/HBoxContainer"]
+[node name="Slash_Label" type="Label" parent="Control/16-9-aspect/Control/AmmoPanel/HBoxContainer"]
 layout_mode = 2
 size_flags_horizontal = 3
 size_flags_vertical = 1
@@ -259,7 +307,7 @@ text = "/"
 horizontal_alignment = 1
 vertical_alignment = 1
 
-[node name="Ammo_Label" type="Label" parent="Control/16-9-aspect/VBoxContainer/HBoxContainer/PanelContainer2/HBoxContainer"]
+[node name="Ammo_Label" type="Label" parent="Control/16-9-aspect/Control/AmmoPanel/HBoxContainer"]
 layout_mode = 2
 size_flags_horizontal = 3
 size_flags_vertical = 1
@@ -270,45 +318,32 @@ theme_override_colors/font_shadow_color = Color(0, 0, 0, 0.27451)
 text = "∞"
 vertical_alignment = 1
 
-[node name="PanelContainer3" type="PanelContainer" parent="Control/16-9-aspect/VBoxContainer/HBoxContainer"]
-self_modulate = Color(1, 1, 1, 0)
-layout_mode = 2
-size_flags_horizontal = 3
-size_flags_stretch_ratio = 2.0
+[node name="SpellPanel" type="PanelContainer" parent="Control/16-9-aspect/Control"]
+layout_mode = 1
+anchors_preset = -1
+anchor_left = 0.0173611
+anchor_top = 0.848776
+anchor_right = 0.147569
+anchor_bottom = 0.964518
+metadata/_edit_use_anchors_ = true
 
-[node name="PanelContainer4" type="PanelContainer" parent="Control/16-9-aspect/VBoxContainer/HBoxContainer"]
-self_modulate = Color(1, 1, 1, 0)
-layout_mode = 2
-size_flags_horizontal = 3
-
-[node name="MarginContainer" type="MarginContainer" parent="Control/16-9-aspect/VBoxContainer/HBoxContainer/PanelContainer4"]
-layout_mode = 2
-theme_override_constants/margin_left = 48
-theme_override_constants/margin_top = 5
-theme_override_constants/margin_right = 30
-theme_override_constants/margin_bottom = 30
-
-[node name="PanelContainer" type="PanelContainer" parent="Control/16-9-aspect/VBoxContainer/HBoxContainer/PanelContainer4/MarginContainer"]
-self_modulate = Color(1, 1, 1, 0.490196)
-layout_mode = 2
-
-[node name="HBoxContainer" type="HBoxContainer" parent="Control/16-9-aspect/VBoxContainer/HBoxContainer/PanelContainer4/MarginContainer"]
+[node name="HBoxContainer" type="HBoxContainer" parent="Control/16-9-aspect/Control/SpellPanel"]
 layout_mode = 2
 alignment = 1
 
-[node name="Spell_Frame_L" type="PanelContainer" parent="Control/16-9-aspect/VBoxContainer/HBoxContainer/PanelContainer4/MarginContainer/HBoxContainer"]
+[node name="Spell_Frame_L" type="PanelContainer" parent="Control/16-9-aspect/Control/SpellPanel/HBoxContainer"]
 self_modulate = Color(1, 1, 1, 0)
 layout_mode = 2
 size_flags_horizontal = 3
 
-[node name="Frame_Tex" type="TextureRect" parent="Control/16-9-aspect/VBoxContainer/HBoxContainer/PanelContainer4/MarginContainer/HBoxContainer/Spell_Frame_L"]
+[node name="Frame_Tex" type="TextureRect" parent="Control/16-9-aspect/Control/SpellPanel/HBoxContainer/Spell_Frame_L"]
 self_modulate = Color(1, 1, 1, 0.470588)
 layout_mode = 2
 texture = ExtResource("1_tkq8k")
 expand_mode = 1
 stretch_mode = 4
 
-[node name="Frame_Fireball_Tex" type="TextureRect" parent="Control/16-9-aspect/VBoxContainer/HBoxContainer/PanelContainer4/MarginContainer/HBoxContainer/Spell_Frame_L"]
+[node name="Frame_Fireball_Tex" type="TextureRect" parent="Control/16-9-aspect/Control/SpellPanel/HBoxContainer/Spell_Frame_L"]
 visible = false
 self_modulate = Color(1, 1, 1, 0.470588)
 layout_mode = 2
@@ -316,7 +351,7 @@ texture = ExtResource("4_sdbw8")
 expand_mode = 1
 stretch_mode = 4
 
-[node name="Frame_Lightning_Tex" type="TextureRect" parent="Control/16-9-aspect/VBoxContainer/HBoxContainer/PanelContainer4/MarginContainer/HBoxContainer/Spell_Frame_L"]
+[node name="Frame_Lightning_Tex" type="TextureRect" parent="Control/16-9-aspect/Control/SpellPanel/HBoxContainer/Spell_Frame_L"]
 visible = false
 self_modulate = Color(1, 1, 1, 0.470588)
 layout_mode = 2
@@ -324,7 +359,7 @@ texture = ExtResource("5_sy32u")
 expand_mode = 1
 stretch_mode = 4
 
-[node name="Frame_Wind_Tex" type="TextureRect" parent="Control/16-9-aspect/VBoxContainer/HBoxContainer/PanelContainer4/MarginContainer/HBoxContainer/Spell_Frame_L"]
+[node name="Frame_Wind_Tex" type="TextureRect" parent="Control/16-9-aspect/Control/SpellPanel/HBoxContainer/Spell_Frame_L"]
 visible = false
 self_modulate = Color(1, 1, 1, 0.470588)
 layout_mode = 2
@@ -332,7 +367,7 @@ texture = ExtResource("5_2em1o")
 expand_mode = 1
 stretch_mode = 4
 
-[node name="Frame_Highjump_Tex" type="TextureRect" parent="Control/16-9-aspect/VBoxContainer/HBoxContainer/PanelContainer4/MarginContainer/HBoxContainer/Spell_Frame_L"]
+[node name="Frame_Highjump_Tex" type="TextureRect" parent="Control/16-9-aspect/Control/SpellPanel/HBoxContainer/Spell_Frame_L"]
 visible = false
 self_modulate = Color(1, 1, 1, 0.470588)
 layout_mode = 2
@@ -340,7 +375,7 @@ texture = ExtResource("8_rosmi")
 expand_mode = 1
 stretch_mode = 4
 
-[node name="Frame_StickyLight_Tex" type="TextureRect" parent="Control/16-9-aspect/VBoxContainer/HBoxContainer/PanelContainer4/MarginContainer/HBoxContainer/Spell_Frame_L"]
+[node name="Frame_StickyLight_Tex" type="TextureRect" parent="Control/16-9-aspect/Control/SpellPanel/HBoxContainer/Spell_Frame_L"]
 visible = false
 self_modulate = Color(1, 1, 1, 0.470588)
 layout_mode = 2
@@ -348,33 +383,33 @@ texture = ExtResource("9_xigtq")
 expand_mode = 1
 stretch_mode = 4
 
-[node name="Spell_Selected_Tex" type="TextureRect" parent="Control/16-9-aspect/VBoxContainer/HBoxContainer/PanelContainer4/MarginContainer/HBoxContainer/Spell_Frame_L"]
+[node name="Spell_Selected_Tex" type="TextureRect" parent="Control/16-9-aspect/Control/SpellPanel/HBoxContainer/Spell_Frame_L"]
 self_modulate = Color(0.666667, 0.290196, 0.156863, 1)
 layout_mode = 2
 texture = ExtResource("1_e7vvy")
 expand_mode = 1
 stretch_mode = 4
 
-[node name="Spell_Frame_R" type="PanelContainer" parent="Control/16-9-aspect/VBoxContainer/HBoxContainer/PanelContainer4/MarginContainer/HBoxContainer"]
+[node name="Spell_Frame_R" type="PanelContainer" parent="Control/16-9-aspect/Control/SpellPanel/HBoxContainer"]
 self_modulate = Color(1, 1, 1, 0)
 layout_mode = 2
 size_flags_horizontal = 3
 
-[node name="Frame_Tex" type="TextureRect" parent="Control/16-9-aspect/VBoxContainer/HBoxContainer/PanelContainer4/MarginContainer/HBoxContainer/Spell_Frame_R"]
+[node name="Frame_Tex" type="TextureRect" parent="Control/16-9-aspect/Control/SpellPanel/HBoxContainer/Spell_Frame_R"]
 self_modulate = Color(1, 1, 1, 0.470588)
 layout_mode = 2
 texture = ExtResource("1_tkq8k")
 expand_mode = 1
 stretch_mode = 4
 
-[node name="Pistol_Tex" type="TextureRect" parent="Control/16-9-aspect/VBoxContainer/HBoxContainer/PanelContainer4/MarginContainer/HBoxContainer/Spell_Frame_R"]
+[node name="Pistol_Tex" type="TextureRect" parent="Control/16-9-aspect/Control/SpellPanel/HBoxContainer/Spell_Frame_R"]
 self_modulate = Color(1, 1, 1, 0.470588)
 layout_mode = 2
 texture = ExtResource("3_d7hq6")
 expand_mode = 1
 stretch_mode = 4
 
-[node name="Pistol_Selected_Tex" type="TextureRect" parent="Control/16-9-aspect/VBoxContainer/HBoxContainer/PanelContainer4/MarginContainer/HBoxContainer/Spell_Frame_R"]
+[node name="Pistol_Selected_Tex" type="TextureRect" parent="Control/16-9-aspect/Control/SpellPanel/HBoxContainer/Spell_Frame_R"]
 visible = false
 self_modulate = Color(0.666667, 0.290196, 0.156863, 1)
 layout_mode = 2
