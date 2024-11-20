@@ -6,6 +6,7 @@
 [sub_resource type="ShaderMaterial" id="ShaderMaterial_vajoe"]
 render_priority = 0
 shader = ExtResource("1_kbn1a")
+shader_parameter/DIstanceFade = Vector2(2, 5)
 
 [sub_resource type="SphereMesh" id="SphereMesh_fv70l"]
 material = SubResource("ShaderMaterial_vajoe")

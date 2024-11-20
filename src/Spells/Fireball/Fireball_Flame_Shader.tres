@@ -1,4 +1,4 @@
-[gd_resource type="VisualShader" load_steps=20 format=3 uid="uid://drtye41ma3rhg"]
+[gd_resource type="VisualShader" load_steps=22 format=3 uid="uid://drtye41ma3rhg"]
 
 [ext_resource type="Texture2D" uid="uid://dn6tqyqstgsk0" path="res://Spells/Fireball/Fireball_Gradient.png" id="1_ukoiq"]
 [ext_resource type="Texture2D" uid="uid://dbihtb7jeyanq" path="res://Spells/Fireball/Fireball_Flame.png" id="2_xuu5e"]
@@ -51,6 +51,12 @@ function = 1
 texture = ExtResource("2_xuu5e")
 
 [sub_resource type="VisualShaderNodeFloatOp" id="VisualShaderNodeFloatOp_kue0t"]
+operator = 2
+
+[sub_resource type="VisualShaderNodeDistanceFade" id="VisualShaderNodeDistanceFade_ld1br"]
+default_input_values = [0, 2.0, 1, 5.0]
+
+[sub_resource type="VisualShaderNodeFloatOp" id="VisualShaderNodeFloatOp_05nhx"]
 operator = 2
 
 [sub_resource type="VisualShaderNodeInput" id="VisualShaderNodeInput_phu5f"]
@@ -148,14 +154,24 @@ void fragment() {
 	float n_out14p0 = n_out9p0 * n_out15p0;
 
 
+// DistanceFade:33
+	float n_in33p0 = 2.00000;
+	float n_in33p1 = 5.00000;
+	float n_out33p0 = clamp(smoothstep(n_in33p0, n_in33p1, length(VERTEX)), 0.0, 1.0);
+
+
+// FloatOp:34
+	float n_out34p0 = n_out14p0 * n_out33p0;
+
+
 // Output:0
 	ALBEDO = n_out12p0;
-	ALPHA = n_out14p0;
+	ALPHA = n_out34p0;
 
 
 }
 "
-graph_offset = Vector2(-473.175, -120.068)
+graph_offset = Vector2(-819.195, 33.2398)
 modes/cull = 2
 flags/unshaded = true
 flags/shadows_disabled = true
@@ -165,7 +181,7 @@ nodes/fragment/2/position = Vector2(-1020, 560)
 nodes/fragment/5/node = SubResource("VisualShaderNodeInput_phu5f")
 nodes/fragment/5/position = Vector2(-2080, 540)
 nodes/fragment/9/node = SubResource("VisualShaderNodeFloatOp_f7vtp")
-nodes/fragment/9/position = Vector2(-220, 280)
+nodes/fragment/9/position = Vector2(-340, 320)
 nodes/fragment/11/node = SubResource("VisualShaderNodeColorConstant_0fyme")
 nodes/fragment/11/position = Vector2(-540, -140)
 nodes/fragment/12/node = SubResource("VisualShaderNodeVectorOp_aanf8")
@@ -173,9 +189,9 @@ nodes/fragment/12/position = Vector2(20, -60)
 nodes/fragment/13/node = SubResource("VisualShaderNodeTexture_h3vpl")
 nodes/fragment/13/position = Vector2(-1040, 220)
 nodes/fragment/14/node = SubResource("VisualShaderNodeFloatOp_c0ip0")
-nodes/fragment/14/position = Vector2(80, 400)
+nodes/fragment/14/position = Vector2(-100, 440)
 nodes/fragment/15/node = SubResource("VisualShaderNodeFloatOp_s6gls")
-nodes/fragment/15/position = Vector2(-220, 540)
+nodes/fragment/15/position = Vector2(-340, 580)
 nodes/fragment/16/node = SubResource("VisualShaderNodeColorConstant_8ujjf")
 nodes/fragment/16/position = Vector2(-540, -20)
 nodes/fragment/17/node = SubResource("VisualShaderNodeMix_0knov")
@@ -194,4 +210,8 @@ nodes/fragment/24/node = SubResource("VisualShaderNodeTexture_hnf4e")
 nodes/fragment/24/position = Vector2(-1040, 900)
 nodes/fragment/25/node = SubResource("VisualShaderNodeFloatOp_kue0t")
 nodes/fragment/25/position = Vector2(-697.988, 817.264)
-nodes/fragment/connections = PackedInt32Array(9, 0, 12, 0, 12, 0, 0, 0, 9, 0, 14, 0, 14, 0, 0, 1, 13, 0, 15, 0, 15, 0, 14, 1, 11, 0, 17, 0, 16, 0, 17, 1, 17, 0, 12, 1, 13, 0, 19, 0, 19, 0, 17, 2, 20, 0, 21, 0, 21, 0, 2, 0, 5, 0, 20, 2, 22, 0, 23, 0, 23, 0, 24, 0, 5, 0, 22, 2, 24, 0, 25, 1, 25, 0, 9, 0, 2, 0, 25, 0)
+nodes/fragment/33/node = SubResource("VisualShaderNodeDistanceFade_ld1br")
+nodes/fragment/33/position = Vector2(-60, 820)
+nodes/fragment/34/node = SubResource("VisualShaderNodeFloatOp_05nhx")
+nodes/fragment/34/position = Vector2(150.009, 447.175)
+nodes/fragment/connections = PackedInt32Array(9, 0, 12, 0, 9, 0, 14, 0, 13, 0, 15, 0, 15, 0, 14, 1, 11, 0, 17, 0, 16, 0, 17, 1, 17, 0, 12, 1, 13, 0, 19, 0, 19, 0, 17, 2, 20, 0, 21, 0, 21, 0, 2, 0, 5, 0, 20, 2, 22, 0, 23, 0, 23, 0, 24, 0, 5, 0, 22, 2, 24, 0, 25, 1, 25, 0, 9, 0, 2, 0, 25, 0, 12, 0, 0, 0, 14, 0, 34, 0, 33, 0, 34, 1, 34, 0, 0, 1)
