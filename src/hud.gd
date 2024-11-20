@@ -6,6 +6,18 @@ enum ATTACK_MODE {
 	MAX, # must be last and unused
 }
 
+@onready var magLabel = find_child("Magazine_Label")
+@onready var slashLabel = find_child("Slash_Label")
+@onready var ammoLabel = find_child("Ammo_Label")
+@onready var hudAspect = find_child("16-9-aspect")
+
+func _physics_process(delta: float) -> void:
+	magLabel.text = str(self.get_parent().bullets)
+	ammoLabel.text = "∞"
+	magLabel.theme.default_font_size = int(hudAspect.size.y / 10.0)
+	slashLabel.theme.default_font_size = int(hudAspect.size.y / 16.2)
+	ammoLabel.theme.default_font_size = int(hudAspect.size.y / 26.0)
+
 func select(spell : Node):
 	# Select selections
 	print("selecting ", spell)
@@ -25,12 +37,12 @@ func select(spell : Node):
 			$Control/Feedback_fade.play("Fade")
 
 func set_active_mode(mode):
-	for child in find_children("Selected_Tex"):
+	for child in find_children("*_Selected_Tex"):
 		child.visible = false
 	if mode == ATTACK_MODE.PISTOL:
-		$Control/AspectRatioContainer2/BoxContainer/Spell_Frame_R/Selected_Tex.visible = true
+		find_child("Pistol_Selected_Tex").visible = true
 	if mode == ATTACK_MODE.MAGIC:
-		$Control/AspectRatioContainer2/BoxContainer/Spell_Frame_L/Selected_Tex.visible = true
+		find_child("Spell_Selected_Tex").visible = true
 
 func damage():
 	$Control/Damage_fade.seek(0, true)
