@@ -1,8 +1,9 @@
-[gd_scene load_steps=26 format=3 uid="uid://cvba5sgdncr8q"]
+[gd_scene load_steps=28 format=3 uid="uid://cvba5sgdncr8q"]
 
 [ext_resource type="Script" path="res://hud.gd" id="1_0n6rd"]
 [ext_resource type="Texture2D" uid="uid://blb6rjpwj6v0c" path="res://Textures/HUD/HUD_Spell_Selected.png" id="1_e7vvy"]
 [ext_resource type="Texture2D" uid="uid://dbv013ab4xhim" path="res://Textures/HUD/HUD_Spell_Frame.png" id="1_tkq8k"]
+[ext_resource type="Texture2D" uid="uid://dep6fdmimpgrk" path="res://Textures/HUD/HUD_Feedback_Fireblast.png" id="3_8hmlg"]
 [ext_resource type="Texture2D" uid="uid://dax2xq4qkxcq" path="res://Textures/HUD/HUD_Spell_Colt.png" id="3_d7hq6"]
 [ext_resource type="Texture2D" uid="uid://bp7ebic5k2ovo" path="res://Textures/HUD/HUD_Spell_Fireball.png" id="4_sdbw8"]
 [ext_resource type="Texture2D" uid="uid://def5k81bn5sgp" path="res://Textures/HUD/HUD_Spell_Wind.png" id="5_2em1o"]
@@ -19,6 +20,7 @@
 [ext_resource type="Texture2D" uid="uid://cwmyx233djjqh" path="res://Textures/HUD/Crosshair_SpellCD.png" id="10_htnnh"]
 [ext_resource type="Texture2D" uid="uid://bheu11ige543" path="res://Textures/HUD/HUD_Feedback_Highjump.png" id="13_0c8d3"]
 [ext_resource type="Texture2D" uid="uid://h8thu3omf7r5" path="res://Textures/HUD/HUD_Feedback_StickyLight.png" id="14_ujx24"]
+[ext_resource type="Texture2D" uid="uid://b4pfbw7ejm6w8" path="res://Textures/HUD/HUD_Spell_Fireblast.png" id="15_swrlq"]
 
 [sub_resource type="ShaderMaterial" id="ShaderMaterial_21lfs"]
 shader = ExtResource("9_bahp7")
@@ -32,10 +34,10 @@ shader_parameter/fillLength = 0.0
 bg_color = Color(1, 0.206578, 0.208542, 0.470588)
 
 [sub_resource type="Theme" id="Theme_x65dp"]
-default_font_size = 65
+default_font_size = 40
 
 [sub_resource type="Theme" id="Theme_ewo4b"]
-default_font_size = 40
+default_font_size = 25
 
 [sub_resource type="Theme" id="Theme_7ccke"]
 default_font_size = 25
@@ -84,6 +86,13 @@ layout_mode = 2
 texture = ExtResource("6_866la")
 expand_mode = 4
 
+[node name="Fireblast_Feedback" type="TextureRect" parent="Control/1-1-aspect/Control2/ScreenSpace_Effects"]
+visible = false
+self_modulate = Color(1, 1, 1, 0.709804)
+layout_mode = 2
+texture = ExtResource("3_8hmlg")
+expand_mode = 4
+
 [node name="Lightning_Feedback" type="TextureRect" parent="Control/1-1-aspect/Control2/ScreenSpace_Effects"]
 visible = false
 self_modulate = Color(1, 1, 1, 0.709804)
@@ -117,6 +126,7 @@ self_modulate = Color(1, 1, 1, 0)
 layout_mode = 2
 
 [node name="Damage_Marker" type="TextureRect" parent="Control/1-1-aspect/ScreenSpace_Effects2"]
+self_modulate = Color(1, 1, 1, 0)
 layout_mode = 2
 texture = ExtResource("5_yt1fo")
 expand_mode = 4
@@ -173,20 +183,20 @@ layout_mode = 2
 [node name="HealthBG" type="PanelContainer" parent="Control/16-9-aspect/Control"]
 layout_mode = 1
 anchors_preset = -1
-anchor_left = 0.0173611
-anchor_top = 0.817911
-anchor_right = 0.243056
-anchor_bottom = 0.842603
+anchor_left = 0.0190972
+anchor_top = 0.847233
+anchor_right = 0.19184
+anchor_bottom = 0.871924
 metadata/_edit_use_anchors_ = true
 
 [node name="HealthPanel" type="PanelContainer" parent="Control/16-9-aspect/Control"]
 self_modulate = Color(1, 1, 1, 0)
 layout_mode = 1
 anchors_preset = -1
-anchor_left = 0.0225694
-anchor_top = 0.824084
-anchor_right = 0.239583
-anchor_bottom = 0.83643
+anchor_left = 0.0243056
+anchor_top = 0.853406
+anchor_right = 0.1875
+anchor_bottom = 0.865752
 metadata/_edit_use_anchors_ = true
 
 [node name="Healthbar" type="ProgressBar" parent="Control/16-9-aspect/Control/HealthPanel"]
@@ -199,9 +209,9 @@ show_percentage = false
 [node name="AmmoBG" type="PanelContainer" parent="Control/16-9-aspect/Control"]
 layout_mode = 1
 anchors_preset = -1
-anchor_left = 0.15191
-anchor_top = 0.848776
-anchor_right = 0.243056
+anchor_left = 0.125
+anchor_top = 0.876554
+anchor_right = 0.19184
 anchor_bottom = 0.964518
 metadata/_edit_use_anchors_ = true
 
@@ -209,10 +219,10 @@ metadata/_edit_use_anchors_ = true
 self_modulate = Color(1, 1, 1, 0)
 layout_mode = 1
 anchors_preset = -1
-anchor_left = 0.157986
-anchor_top = 0.833344
-anchor_right = 0.260417
-anchor_bottom = 1.00001
+anchor_left = 0.123264
+anchor_top = 0.875011
+anchor_right = 0.220486
+anchor_bottom = 0.981494
 metadata/_edit_use_anchors_ = true
 
 [node name="HBoxContainer" type="HBoxContainer" parent="Control/16-9-aspect/Control/AmmoPanel"]
@@ -250,15 +260,15 @@ size_flags_stretch_ratio = 9.0
 theme = SubResource("Theme_7ccke")
 theme_override_colors/font_color = Color(1, 1, 1, 0.509804)
 theme_override_colors/font_shadow_color = Color(0, 0, 0, 0.27451)
-text = "∞"
+text = "69"
 vertical_alignment = 1
 
 [node name="SpellPanel" type="PanelContainer" parent="Control/16-9-aspect/Control"]
 layout_mode = 1
 anchors_preset = -1
-anchor_left = 0.0173611
-anchor_top = 0.848776
-anchor_right = 0.147569
+anchor_left = 0.0190972
+anchor_top = 0.876554
+anchor_right = 0.121528
 anchor_bottom = 0.964518
 metadata/_edit_use_anchors_ = true
 
@@ -283,6 +293,14 @@ visible = false
 self_modulate = Color(1, 1, 1, 0.470588)
 layout_mode = 2
 texture = ExtResource("4_sdbw8")
+expand_mode = 1
+stretch_mode = 4
+
+[node name="Frame_Fireblast_Tex" type="TextureRect" parent="Control/16-9-aspect/Control/SpellPanel/HBoxContainer/Spell_Frame_L"]
+visible = false
+self_modulate = Color(1, 1, 1, 0.470588)
+layout_mode = 2
+texture = ExtResource("15_swrlq")
 expand_mode = 1
 stretch_mode = 4
 

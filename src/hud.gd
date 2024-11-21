@@ -19,15 +19,15 @@ func _physics_process(delta: float) -> void:
 	var bullet_count = float(self.get_parent().bullet_count) + 1.0
 	
 	chAmmo.material.set_shader_parameter("fillLength", float(bullets / bullet_count))
-	chSpell.material.set_shader_parameter("fillLength", 1.0)
+	chSpell.material.set_shader_parameter("fillLength", self.get_parent().get_cooldown_fraction())
 	
 	magLabel.text = str(bullets)
 	ammoLabel.text = "∞"
-	magLabel.theme.default_font_size = int(hudAspect.size.y / 10.0)
-	slashLabel.theme.default_font_size = int(hudAspect.size.y / 16.2)
+	magLabel.theme.default_font_size = int(hudAspect.size.y / 16.2)
+	slashLabel.theme.default_font_size = int(hudAspect.size.y / 26.0)
 	ammoLabel.theme.default_font_size = int(hudAspect.size.y / 26.0)
 	
-	find_child("Damage_Marker").self_modulate.a = 1.0
+	find_child("Damage_Marker").self_modulate.a *= 0.95
 	for child in find_children("*_Feedback"):
 		child.self_modulate.a *= 0.95
 

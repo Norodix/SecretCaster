@@ -2,8 +2,8 @@
 
 [ext_resource type="Script" path="res://player.gd" id="1_q4vdp"]
 [ext_resource type="PackedScene" uid="uid://cf64v5ohrm125" path="res://Hands/Magic_Hands.tscn" id="2_2eniw"]
-[ext_resource type="PackedScene" uid="uid://cqctc5q0a4orf" path="res://Spells/Burn.tscn" id="2_f00fj"]
-[ext_resource type="PackedScene" uid="uid://bmwg7beyffcb2" path="res://Spells/Highjump.tscn" id="3_eycb3"]
+[ext_resource type="PackedScene" uid="uid://cqctc5q0a4orf" path="res://Spells/Fireblast/Fireblast.tscn" id="2_f00fj"]
+[ext_resource type="PackedScene" uid="uid://bmwg7beyffcb2" path="res://Spells/Highjump/Highjump.tscn" id="3_eycb3"]
 [ext_resource type="PackedScene" uid="uid://cq5pk5lbvd77g" path="res://Spells/Fireball/FireballSpawner.tscn" id="4_27jl0"]
 [ext_resource type="PackedScene" uid="uid://ug7j6pbqwqfd" path="res://Spells/Colt/PistolThrow.tscn" id="5_d36p1"]
 [ext_resource type="PackedScene" uid="uid://cjws3vt5ts3tw" path="res://Spells/StickyLight/StickyLightSpawner.tscn" id="6_1hvy0"]
@@ -40,8 +40,7 @@ mesh = SubResource("CylinderMesh_20hgg")
 
 [node name="Spells" type="Node3D" parent="."]
 
-[node name="Burn" parent="Spells" instance=ExtResource("2_f00fj")]
-visible = false
+[node name="Fireblast" parent="Spells" instance=ExtResource("2_f00fj")]
 
 [node name="Highjump" parent="Spells" instance=ExtResource("3_eycb3")]
 
