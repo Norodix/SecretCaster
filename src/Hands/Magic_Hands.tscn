@@ -195,6 +195,10 @@ visible = false
 [node name="Wind_In-hand" parent="Armature/Skeleton3D/BoneAttachment3D" index="2" instance=ExtResource("6_hjw5w")]
 visible = false
 
+[node name="Colt-In-hand" parent="Armature/Skeleton3D/BoneAttachment3D" index="3" instance=ExtResource("5_fjyl6")]
+transform = Transform3D(-0.562418, 0.496791, 0.660973, 0.106758, 0.836322, -0.537744, -0.819932, -0.231873, -0.523399, 0.00207296, 0.0148898, 6.98492e-10)
+visible = false
+
 [node name="BoneAttachment3D2" type="BoneAttachment3D" parent="Armature/Skeleton3D" index="2"]
 transform = Transform3D(0.326998, -0.94346, -0.0543573, 0.35761, 0.176778, -0.916987, 0.87475, 0.280414, 0.395197, 0.0342167, 0.0566328, 0.0505661)
 bone_name = "Weapon_Pos"

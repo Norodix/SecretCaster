@@ -2,6 +2,7 @@ extends Node3D
 
 @onready var pistol = preload("res://Spells/Colt/ThrowingPistol.tscn")
 var pattern = ["right", "right", "right"]
+var hand_name = "Colt-In-hand"
 
 func use_spell(player: CharacterBody3D):
 	var pistol_instance = pistol.instantiate()
