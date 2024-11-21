@@ -5,10 +5,13 @@
 [sub_resource type="QuadMesh" id="QuadMesh_gtnlp"]
 
 [sub_resource type="Gradient" id="Gradient_y2gnp"]
-colors = PackedColorArray(1, 1, 1, 1, 0, 0, 0, 0)
+offsets = PackedFloat32Array(0.323009, 0.641593, 0.856932, 0.89233, 1)
+colors = PackedColorArray(1, 1, 1, 1, 0.678431, 0.678431, 0.678431, 0, 1, 1, 1, 0, 0.443137, 0.443137, 0.443137, 1, 0, 0, 0, 0)
 
-[sub_resource type="GradientTexture2D" id="GradientTexture2D_h1id1"]
+[sub_resource type="GradientTexture2D" id="GradientTexture2D_dbdyv"]
 gradient = SubResource("Gradient_y2gnp")
+width = 512
+height = 512
 fill = 1
 fill_from = Vector2(0.5, 0.5)
 fill_to = Vector2(1, 0.5)
@@ -16,9 +19,10 @@ fill_to = Vector2(1, 0.5)
 [sub_resource type="StandardMaterial3D" id="StandardMaterial3D_kww3e"]
 transparency = 1
 albedo_color = Color(1, 1, 0.666667, 1)
-albedo_texture = SubResource("GradientTexture2D_h1id1")
+albedo_texture = SubResource("GradientTexture2D_dbdyv")
 emission_enabled = true
 emission = Color(1, 1, 0.666667, 1)
+emission_energy_multiplier = 3.0
 billboard_mode = 1
 
 [sub_resource type="SphereShape3D" id="SphereShape3D_lx2ad"]

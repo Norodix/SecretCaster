@@ -9,6 +9,7 @@ var feedback_name = "Wind_Feedback"
 var hand_name = "Wind_In-hand"
 
 func use_spell(player: CharacterBody3D):
+	find_parent("Player").find_child("Wind_In-hand").blow()
 	$GPUParticlesAttractorSphere3D.visible = true
 	$Timeout.start()
 	var bodies = $BlowArea.get_overlapping_bodies()

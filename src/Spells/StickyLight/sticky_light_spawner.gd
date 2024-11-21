@@ -6,6 +6,7 @@ var cooldown = 500
 
 var select_name = "Frame_StickyLight_Tex"
 var feedback_name = "StickyLight_Feedback"
+var hand_name = "StickyLight-In-hand"
 
 func use_spell(player: CharacterBody3D):
 	var instance = resource.instantiate()

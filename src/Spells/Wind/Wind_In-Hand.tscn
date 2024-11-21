@@ -1,13 +1,22 @@
-[gd_scene load_steps=7 format=3 uid="uid://3a6yst3bfvdh"]
+[gd_scene load_steps=13 format=3 uid="uid://3a6yst3bfvdh"]
+
+[ext_resource type="Script" path="res://Spells/Wind/wind_in_hand.gd" id="1_4ehip"]
+
+[sub_resource type="Gradient" id="Gradient_sttk4"]
+offsets = PackedFloat32Array(0, 0.0632411)
+colors = PackedColorArray(1, 1, 1, 0.392157, 0.2175, 0.354571, 0.441552, 0.0196078)
+
+[sub_resource type="GradientTexture1D" id="GradientTexture1D_q4w0l"]
+gradient = SubResource("Gradient_sttk4")
 
 [sub_resource type="Gradient" id="Gradient_awr75"]
 offsets = PackedFloat32Array(0, 0.345455, 0.727273, 1)
-colors = PackedColorArray(0, 0, 0, 0, 0.525437, 0.807043, 0.901812, 1, 0.52549, 0.807843, 0.901961, 1, 1, 1, 1, 0)
+colors = PackedColorArray(0.52549, 0.807843, 0.901961, 0, 0.863981, 0.947055, 0.976839, 1, 0.862745, 0.945098, 0.976471, 1, 1, 1, 1, 0)
 
 [sub_resource type="GradientTexture1D" id="GradientTexture1D_75yub"]
 gradient = SubResource("Gradient_awr75")
 
-[sub_resource type="ParticleProcessMaterial" id="ParticleProcessMaterial_2jt6l"]
+[sub_resource type="ParticleProcessMaterial" id="ParticleProcessMaterial_8igah"]
 emission_shape = 6
 emission_ring_axis = Vector3(0, 1, 0)
 emission_ring_height = 0.05
@@ -15,10 +24,12 @@ emission_ring_radius = 0.03
 emission_ring_inner_radius = 0.02
 direction = Vector3(0, 1, 0)
 spread = 0.0
-initial_velocity_min = 0.5
+initial_velocity_min = 0.3
 initial_velocity_max = 0.5
 gravity = Vector3(0, 0, 0)
+attractor_interaction_enabled = false
 color_ramp = SubResource("GradientTexture1D_75yub")
+color_initial_ramp = SubResource("GradientTexture1D_q4w0l")
 turbulence_enabled = true
 turbulence_noise_strength = 6.17
 turbulence_noise_scale = 3.944
@@ -33,7 +44,8 @@ transparency = 1
 cull_mode = 2
 shading_mode = 0
 vertex_color_use_as_albedo = true
-albedo_color = Color(1, 1, 1, 0.196078)
+albedo_color = Color(0.776471, 0.921569, 1, 1)
+disable_receive_shadows = true
 use_particle_trails = true
 
 [sub_resource type="RibbonTrailMesh" id="RibbonTrailMesh_1sy61"]
@@ -42,11 +54,84 @@ size = 0.003
 sections = 3
 curve = SubResource("Curve_qrphj")
 
+[sub_resource type="ParticleProcessMaterial" id="ParticleProcessMaterial_vaat5"]
+emission_shape_scale = Vector3(0.05, 0, 0)
+emission_shape = 3
+emission_box_extents = Vector3(1, 1, 1)
+direction = Vector3(0, 0, -1)
+spread = 0.0
+initial_velocity_min = 1.0
+initial_velocity_max = 6.0
+radial_velocity_min = -2.23517e-05
+radial_velocity_max = 0.499978
+gravity = Vector3(0, 0, 0)
+attractor_interaction_enabled = false
+color_ramp = SubResource("GradientTexture1D_75yub")
+color_initial_ramp = SubResource("GradientTexture1D_q4w0l")
+turbulence_enabled = true
+turbulence_noise_speed = Vector3(1, 1, 1)
+turbulence_influence_min = 0.01
+turbulence_influence_max = 0.01
+sub_emitter_mode = 2
+sub_emitter_amount_at_end = 1
+sub_emitter_keep_velocity = true
+
+[sub_resource type="GradientTexture1D" id="GradientTexture1D_aona5"]
+gradient = SubResource("Gradient_sttk4")
+
+[sub_resource type="ParticleProcessMaterial" id="ParticleProcessMaterial_2jt6l"]
+emission_shape = 6
+emission_ring_axis = Vector3(0, 1, 0)
+emission_ring_height = 0.05
+emission_ring_radius = 0.03
+emission_ring_inner_radius = 0.02
+direction = Vector3(0, 0, -1)
+spread = 0.0
+initial_velocity_min = 5.0
+initial_velocity_max = 5.0
+gravity = Vector3(0, 0, 0)
+radial_accel_min = 15.0
+radial_accel_max = 30.0
+tangential_accel_min = -6.0
+tangential_accel_max = 6.0
+attractor_interaction_enabled = false
+color_ramp = SubResource("GradientTexture1D_75yub")
+color_initial_ramp = SubResource("GradientTexture1D_aona5")
+turbulence_enabled = true
+turbulence_noise_speed = Vector3(1, 1, 1)
+turbulence_influence_min = 0.001
+turbulence_influence_max = 0.01
+
 [node name="Wind_In-hand" type="Node3D"]
+script = ExtResource("1_4ehip")
 
 [node name="GPUParticles3D" type="GPUParticles3D" parent="."]
-amount = 5
+amount = 15
 lifetime = 0.3
+local_coords = true
+trail_enabled = true
+process_material = SubResource("ParticleProcessMaterial_8igah")
+draw_pass_1 = SubResource("RibbonTrailMesh_1sy61")
+
+[node name="GPUParticles3D2" type="GPUParticles3D" parent="."]
+emitting = false
+amount = 300
+sub_emitter = NodePath("../GPUParticles3D3")
+lifetime = 0.5
+one_shot = true
+fixed_fps = 60
+local_coords = true
+trail_enabled = true
+trail_lifetime = 0.2
+process_material = SubResource("ParticleProcessMaterial_vaat5")
+draw_pass_1 = SubResource("RibbonTrailMesh_1sy61")
+
+[node name="GPUParticles3D3" type="GPUParticles3D" parent="."]
+emitting = false
+amount = 500
+lifetime = 0.5
+one_shot = true
+fixed_fps = 60
 local_coords = true
 trail_enabled = true
 process_material = SubResource("ParticleProcessMaterial_2jt6l")
