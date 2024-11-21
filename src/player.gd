@@ -184,6 +184,12 @@ func reload_pistol():
 	return
 
 
+# return the fraction (0-1) of how much of the cooldown period passed already
+func get_cooldown_fraction() -> float:
+	var t = Time.get_ticks_msec()
+	return float(t - last_activate) / cooldown_time_ms
+
+
 # Check if the action history's last actions match the given pattern
 # Only the last actions are checked, any new action invalidates the pattern
 # eg. match_action_history(["right", "left", "right", "right"])
