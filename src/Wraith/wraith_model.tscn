@@ -27,7 +27,7 @@ radius = 0.1
 height = 0.2
 
 [sub_resource type="BoxShape3D" id="BoxShape3D_44cwj"]
-size = Vector3(0.187256, 2.44858, 0.344568)
+size = Vector3(0.187256, 1.70671, 0.344568)
 
 [sub_resource type="AnimationNodeAnimation" id="AnimationNodeAnimation_7pmwl"]
 animation = &"Wraith_Eye_Thingy"

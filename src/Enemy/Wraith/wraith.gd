@@ -39,7 +39,7 @@ var states = {
 		]
 	},
 	"attack" = { # name of the state
-		"time" = 1.6667, # reevaluation time, must match attack animation
+		"time" = 1.8, # reevaluation time, must match attack animation
 		"next" = [ # possible next states and weights
 			{ "name" = "direct", "weight" = 0.4},
 			{ "name" = "strafe", "weight" = 0.4},
@@ -79,6 +79,9 @@ func destroy():
 # called once when the agent enters the attack state
 func attack():
 	has_hit = false
+	# Clears the travel between idle and movement when it is currently in progress
+	# This is necessary to make sure the attack animation plays in time
+	animState.next()
 	animState.travel("Wraith_Attack")
 
 
@@ -151,6 +154,8 @@ func trigger_state_transisiton(to : String = ""):
 			attack()
 	if state == "strafe":
 		strafe_direction = randi() % 2
+	$StateTimer.stop()
+	$StateTimer.start(states[state]["time"])
 
 
 func _on_navigation_timer_timeout() -> void:
@@ -185,5 +190,4 @@ func _on_navigation_timer_timeout() -> void:
 
 func _on_state_timer_timeout() -> void:
 	trigger_state_transisiton()
-	$StateTimer.start(states[state]["time"])
 	pass # Replace with function body.
