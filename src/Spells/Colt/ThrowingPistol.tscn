@@ -1,9 +1,21 @@
-[gd_scene load_steps=3 format=3 uid="uid://c8na5etjtbasd"]
+[gd_scene load_steps=5 format=3 uid="uid://c8na5etjtbasd"]
 
 [ext_resource type="Script" path="res://Spells/Colt/throwing_pistol.gd" id="1_gjk8h"]
 [ext_resource type="PackedScene" uid="uid://bewc1hnbc3rf5" path="res://Colt/colt.tscn" id="2_2uofk"]
 
-[node name="ThrowingPistol" type="Node3D"]
+[sub_resource type="BoxShape3D" id="BoxShape3D_ey1tc"]
+size = Vector3(0.1, 0.219, 0.7)
+
+[sub_resource type="BoxShape3D" id="BoxShape3D_qocfq"]
+size = Vector3(0.1, 0.4, 0.2)
+
+[node name="ThrowingPistol" type="RigidBody3D"]
+collision_layer = 0
+collision_mask = 9
+can_sleep = false
+continuous_cd = true
+contact_monitor = true
+max_contacts_reported = 1
 script = ExtResource("1_gjk8h")
 
 [node name="Timer" type="Timer" parent="."]
@@ -12,5 +24,15 @@ one_shot = true
 autostart = true
 
 [node name="colt" parent="." instance=ExtResource("2_2uofk")]
+transform = Transform3D(3, 0, 0, 0, 3, 0, 0, 0, 3, 0, 0, 0)
 
+[node name="CollisionShape3D" type="CollisionShape3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 2.98023e-08, 0.0904785, -0.05)
+shape = SubResource("BoxShape3D_ey1tc")
+
+[node name="CollisionShape3D2" type="CollisionShape3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.000439458, 1.49012e-08, -0.3)
+shape = SubResource("BoxShape3D_qocfq")
+
+[connection signal="body_entered" from="." to="." method="_on_body_entered"]
 [connection signal="timeout" from="Timer" to="." method="_on_timer_timeout"]

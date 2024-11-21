@@ -5,14 +5,7 @@ var speed = 8
 var health = 10
 var acceleration = 30
 @onready var player = get_tree().root.find_child("Player", true, false)
-enum STRATEGY {
-	DIRECT,
-	FLEE,
-	SIDE_RIGHT,
-	SIDE_LEFT,
-	MAX, # should not be used and it must be the last enum
-}
-var strat = STRATEGY.DIRECT
+var strafe_direction = randi() % 2
 
 @onready var animState : AnimationNodeStateMachinePlayback = \
 		$Wraith_Model/AnimationTree.get("parameters/StateMachine/playback")
@@ -71,6 +64,8 @@ func damage(type : String):
 			health -= 2
 		"shock":
 			health -= 0.5
+		_:
+			health -= 1
 	if health <= 0:
 		destroy()
 
@@ -144,6 +139,8 @@ func trigger_state_transisiton(to : String = ""):
 			state = "direct"
 		else:
 			attack()
+	if state == "strafe":
+		strafe_direction = randi() % 2
 
 
 func _on_navigation_timer_timeout() -> void:
@@ -166,6 +163,8 @@ func _on_navigation_timer_timeout() -> void:
 			animState.travel("Wraith_Movement")
 		"strafe":
 			var sidestep = offset.normalized().rotated(Vector3.UP, PI/2) * 10
+			if strafe_direction:
+				sidestep *= -1
 			$NavigationAgent3D.target_position = player.global_position + sidestep
 			animState.travel("Wraith_Movement")
 		"attack":
