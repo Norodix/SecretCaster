@@ -1,6 +1,0 @@
-[gd_scene load_steps=2 format=3 uid="uid://bmwg7beyffcb2"]
-
-[ext_resource type="Script" path="res://Spells/highjump.gd" id="1_hx1wc"]
-
-[node name="Highjump" type="Node3D"]
-script = ExtResource("1_hx1wc")
