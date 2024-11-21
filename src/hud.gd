@@ -26,6 +26,10 @@ func _physics_process(delta: float) -> void:
 	magLabel.theme.default_font_size = int(hudAspect.size.y / 10.0)
 	slashLabel.theme.default_font_size = int(hudAspect.size.y / 16.2)
 	ammoLabel.theme.default_font_size = int(hudAspect.size.y / 26.0)
+	
+	find_child("Damage_Marker").self_modulate.a = 1.0
+	for child in find_children("*_Feedback"):
+		child.self_modulate.a *= 0.95
 
 func select(spell : Node):
 	# Select selections
@@ -43,7 +47,7 @@ func select(spell : Node):
 		var feedback_node = find_child(spell.feedback_name)
 		if feedback_node:
 			feedback_node.visible = true
-			$Control/Feedback_fade.play("Fade")
+			feedback_node.self_modulate.a = 0.9
 
 func set_active_mode(mode):
 	for child in find_children("*_Selected_Tex"):
@@ -54,5 +58,4 @@ func set_active_mode(mode):
 		find_child("Spell_Selected_Tex").visible = true
 
 func damage():
-	$Control/Damage_fade.seek(0, true)
-	$Control/Damage_fade.play("Fade")
+	find_child("Damage_Marker").self_modulate.a = 1.0

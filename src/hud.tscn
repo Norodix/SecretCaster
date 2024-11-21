@@ -1,4 +1,4 @@
-[gd_scene load_steps=32 format=3 uid="uid://cvba5sgdncr8q"]
+[gd_scene load_steps=26 format=3 uid="uid://cvba5sgdncr8q"]
 
 [ext_resource type="Script" path="res://hud.gd" id="1_0n6rd"]
 [ext_resource type="Texture2D" uid="uid://blb6rjpwj6v0c" path="res://Textures/HUD/HUD_Spell_Selected.png" id="1_e7vvy"]
@@ -40,80 +40,6 @@ default_font_size = 40
 [sub_resource type="Theme" id="Theme_7ccke"]
 default_font_size = 25
 
-[sub_resource type="Animation" id="Animation_rcuaw"]
-resource_name = "Fade"
-length = 0.5
-tracks/0/type = "value"
-tracks/0/imported = false
-tracks/0/enabled = true
-tracks/0/path = NodePath("1-1-aspect/ScreenSpace_Effects:modulate")
-tracks/0/interp = 1
-tracks/0/loop_wrap = true
-tracks/0/keys = {
-"times": PackedFloat32Array(0, 0.5),
-"transitions": PackedFloat32Array(1, 1),
-"update": 0,
-"values": [Color(1, 1, 1, 1), Color(1, 1, 1, 0)]
-}
-
-[sub_resource type="Animation" id="Animation_gseff"]
-length = 0.001
-tracks/0/type = "value"
-tracks/0/imported = false
-tracks/0/enabled = true
-tracks/0/path = NodePath("1-1-aspect/ScreenSpace_Effects:modulate")
-tracks/0/interp = 1
-tracks/0/loop_wrap = true
-tracks/0/keys = {
-"times": PackedFloat32Array(0),
-"transitions": PackedFloat32Array(1),
-"update": 0,
-"values": [Color(1, 1, 1, 0)]
-}
-
-[sub_resource type="AnimationLibrary" id="AnimationLibrary_mlxnd"]
-_data = {
-"Fade": SubResource("Animation_rcuaw"),
-"RESET": SubResource("Animation_gseff")
-}
-
-[sub_resource type="Animation" id="Animation_qymi8"]
-resource_name = "Fade"
-length = 0.5
-tracks/0/type = "value"
-tracks/0/imported = false
-tracks/0/enabled = true
-tracks/0/path = NodePath("1-1-aspect/ScreenSpace_Effects2:modulate")
-tracks/0/interp = 1
-tracks/0/loop_wrap = true
-tracks/0/keys = {
-"times": PackedFloat32Array(0, 0.5),
-"transitions": PackedFloat32Array(1, 1),
-"update": 0,
-"values": [Color(1, 1, 1, 1), Color(1, 1, 1, 0)]
-}
-
-[sub_resource type="Animation" id="Animation_o3age"]
-length = 0.001
-tracks/0/type = "value"
-tracks/0/imported = false
-tracks/0/enabled = true
-tracks/0/path = NodePath("1-1-aspect/ScreenSpace_Effects2:modulate")
-tracks/0/interp = 1
-tracks/0/loop_wrap = true
-tracks/0/keys = {
-"times": PackedFloat32Array(0),
-"transitions": PackedFloat32Array(1),
-"update": 0,
-"values": [Color(1, 1, 1, 0)]
-}
-
-[sub_resource type="AnimationLibrary" id="AnimationLibrary_s0y6u"]
-_data = {
-"Fade": SubResource("Animation_qymi8"),
-"RESET": SubResource("Animation_o3age")
-}
-
 [node name="HUD" type="CanvasLayer"]
 script = ExtResource("1_0n6rd")
 
@@ -135,53 +61,62 @@ anchor_bottom = 1.0
 grow_horizontal = 2
 grow_vertical = 2
 
-[node name="ScreenSpace_Effects" type="PanelContainer" parent="Control/1-1-aspect"]
-modulate = Color(1, 1, 1, 0)
-self_modulate = Color(1, 1, 1, 0)
+[node name="Control2" type="Control" parent="Control/1-1-aspect"]
 layout_mode = 2
 
-[node name="Fireball_Feedback" type="TextureRect" parent="Control/1-1-aspect/ScreenSpace_Effects"]
+[node name="ScreenSpace_Effects" type="PanelContainer" parent="Control/1-1-aspect/Control2"]
+self_modulate = Color(1, 1, 1, 0)
+layout_mode = 2
+anchor_left = 0.407407
+anchor_top = 0.407407
+anchor_right = 0.592593
+anchor_bottom = 0.592593
+offset_left = -3.99973
+offset_top = -3.99973
+offset_right = 3.99973
+offset_bottom = 3.99973
+metadata/_edit_use_anchors_ = true
+
+[node name="Fireball_Feedback" type="TextureRect" parent="Control/1-1-aspect/Control2/ScreenSpace_Effects"]
 visible = false
-self_modulate = Color(1, 1, 1, 0.235294)
+self_modulate = Color(1, 1, 1, 0.709804)
 layout_mode = 2
 texture = ExtResource("6_866la")
 expand_mode = 4
 
-[node name="Lightning_Feedback" type="TextureRect" parent="Control/1-1-aspect/ScreenSpace_Effects"]
+[node name="Lightning_Feedback" type="TextureRect" parent="Control/1-1-aspect/Control2/ScreenSpace_Effects"]
 visible = false
-self_modulate = Color(1, 1, 1, 0.235294)
+self_modulate = Color(1, 1, 1, 0.709804)
 layout_mode = 2
 texture = ExtResource("9_10ud5")
 expand_mode = 4
 
-[node name="Wind_Feedback" type="TextureRect" parent="Control/1-1-aspect/ScreenSpace_Effects"]
+[node name="Wind_Feedback" type="TextureRect" parent="Control/1-1-aspect/Control2/ScreenSpace_Effects"]
 visible = false
-self_modulate = Color(1, 1, 1, 0.235294)
+self_modulate = Color(1, 1, 1, 0.709804)
 layout_mode = 2
 texture = ExtResource("8_npk1c")
 expand_mode = 4
 
-[node name="Highjump_Feedback" type="TextureRect" parent="Control/1-1-aspect/ScreenSpace_Effects"]
+[node name="Highjump_Feedback" type="TextureRect" parent="Control/1-1-aspect/Control2/ScreenSpace_Effects"]
 visible = false
-self_modulate = Color(1, 1, 1, 0.235294)
+self_modulate = Color(1, 1, 1, 0.709804)
 layout_mode = 2
 texture = ExtResource("13_0c8d3")
 expand_mode = 4
 
-[node name="StickyLight_Feedback" type="TextureRect" parent="Control/1-1-aspect/ScreenSpace_Effects"]
+[node name="StickyLight_Feedback" type="TextureRect" parent="Control/1-1-aspect/Control2/ScreenSpace_Effects"]
 visible = false
-self_modulate = Color(1, 1, 1, 0.235294)
+self_modulate = Color(1, 1, 1, 0.709804)
 layout_mode = 2
 texture = ExtResource("14_ujx24")
 expand_mode = 4
 
 [node name="ScreenSpace_Effects2" type="PanelContainer" parent="Control/1-1-aspect"]
-modulate = Color(1, 1, 1, 0)
 self_modulate = Color(1, 1, 1, 0)
 layout_mode = 2
 
-[node name="Damage_Feedback" type="TextureRect" parent="Control/1-1-aspect/ScreenSpace_Effects2"]
-visible = false
+[node name="Damage_Marker" type="TextureRect" parent="Control/1-1-aspect/ScreenSpace_Effects2"]
 layout_mode = 2
 texture = ExtResource("5_yt1fo")
 expand_mode = 4
@@ -416,13 +351,3 @@ layout_mode = 2
 texture = ExtResource("1_e7vvy")
 expand_mode = 1
 stretch_mode = 4
-
-[node name="Feedback_fade" type="AnimationPlayer" parent="Control"]
-libraries = {
-"": SubResource("AnimationLibrary_mlxnd")
-}
-
-[node name="Damage_fade" type="AnimationPlayer" parent="Control"]
-libraries = {
-"": SubResource("AnimationLibrary_s0y6u")
-}
