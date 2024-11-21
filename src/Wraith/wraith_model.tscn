@@ -1,4 +1,4 @@
-[gd_scene load_steps=21 format=3 uid="uid://gx88hjnj8obd"]
+[gd_scene load_steps=22 format=3 uid="uid://gx88hjnj8obd"]
 
 [ext_resource type="PackedScene" uid="uid://r1rlbaulsag" path="res://Wraith/Wraith.glb" id="1_h34gq"]
 [ext_resource type="Material" uid="uid://dfgbimwco8vo7" path="res://Wraith/wraith_mat.tres" id="2_cntme"]
@@ -25,6 +25,9 @@ albedo_texture = ExtResource("5_jmb7i")
 material = SubResource("StandardMaterial3D_nhqvg")
 radius = 0.1
 height = 0.2
+
+[sub_resource type="BoxShape3D" id="BoxShape3D_44cwj"]
+size = Vector3(0.187256, 2.44858, 0.344568)
 
 [sub_resource type="AnimationNodeAnimation" id="AnimationNodeAnimation_7pmwl"]
 animation = &"Wraith_Eye_Thingy"
@@ -109,6 +112,19 @@ lifetime = 1.5
 local_coords = true
 process_material = SubResource("ParticleProcessMaterial_u70s2")
 draw_pass_1 = SubResource("SphereMesh_sc4gc")
+
+[node name="BoneAttachment3D2" type="BoneAttachment3D" parent="Armature/Skeleton3D" index="2"]
+transform = Transform3D(-0.498267, -0.0379138, 0.866194, 0.863696, 0.0657329, 0.499708, -0.0758833, 0.997117, -6.55651e-06, -0.0359607, 1.04623, 0.0452293)
+bone_name = "Weapon"
+bone_idx = 6
+
+[node name="SwordArea" type="Area3D" parent="Armature/Skeleton3D/BoneAttachment3D2" index="0"]
+collision_layer = 0
+collision_mask = 2
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="Armature/Skeleton3D/BoneAttachment3D2/SwordArea" index="0"]
+transform = Transform3D(0.853729, 0.084888, -0.513766, -0.00751933, 0.988538, 0.150839, 0.520683, -0.124911, 0.844567, 0.0115033, 1.05791, -0.0810635)
+shape = SubResource("BoxShape3D_44cwj")
 
 [node name="AnimationTree" type="AnimationTree" parent="." index="2"]
 tree_root = SubResource("AnimationNodeBlendTree_borp5")

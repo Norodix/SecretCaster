@@ -67,6 +67,9 @@ one_shot = true
 [node name="Pistol_Reload_Cooldown" type="Timer" parent="."]
 one_shot = true
 
+[node name="Damage_Cooldown" type="Timer" parent="."]
+one_shot = true
+
 [node name="HUD" parent="." instance=ExtResource("11_ntyv5")]
 
 [connection signal="timeout" from="Pistol_Visibility_Timer" to="." method="_on_timer_timeout"]

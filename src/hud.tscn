@@ -15,7 +15,7 @@
 [ext_resource type="Texture2D" uid="uid://c04qqwb5y4tq7" path="res://Textures/HUD/Crosshair_Main.png" id="8_t6iki"]
 [ext_resource type="Texture2D" uid="uid://b3gx8jvaqkys7" path="res://Textures/HUD/HUD_Feedback_Lightning.png" id="9_10ud5"]
 [ext_resource type="Texture2D" uid="uid://bqlq5ev0htrhk" path="res://Textures/HUD/Crosshair_Ammo.png" id="9_axr18"]
-[ext_resource type="Shader" uid="uid://cir1sfmlqhuih" path="res://Crosshair_Shader.tres" id="9_bahp7"]
+[ext_resource type="Shader" uid="uid://dh07spx4bv2pq" path="res://Crosshair_Shader.tres" id="9_bahp7"]
 [ext_resource type="Texture2D" uid="uid://ctrr43dl7txia" path="res://Textures/HUD/HUD_Spell_StickyLight.png" id="9_xigtq"]
 [ext_resource type="Texture2D" uid="uid://cwmyx233djjqh" path="res://Textures/HUD/Crosshair_SpellCD.png" id="10_htnnh"]
 [ext_resource type="Texture2D" uid="uid://bheu11ige543" path="res://Textures/HUD/HUD_Feedback_Highjump.png" id="13_0c8d3"]
@@ -203,7 +203,7 @@ metadata/_edit_use_anchors_ = true
 layout_mode = 2
 size_flags_vertical = 1
 theme_override_styles/fill = SubResource("StyleBoxFlat_bxw4b")
-value = 50.0
+value = 100.0
 show_percentage = false
 
 [node name="AmmoBG" type="PanelContainer" parent="Control/16-9-aspect/Control"]

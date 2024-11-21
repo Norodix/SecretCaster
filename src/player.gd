@@ -7,6 +7,7 @@ var speed = 7
 var vh_damping = 0.9
 var vh_acc = 100
 var mousespeed = 0.001
+var health = 100
 
 var action_history = PackedStringArray()
 var historysize = 10
@@ -124,6 +125,18 @@ func pistol_busy():
 	if not $Pistol_Reload_Cooldown.is_stopped():
 		return true
 	return false
+
+
+func damage(hit : float = 10):
+	print("damage")
+	if not $Damage_Cooldown.is_stopped():
+		# Player cannot be damaged so quickly again
+		return
+	self.health -= hit
+	$Damage_Cooldown.start()
+	$HUD.damage()
+	find_child("Healthbar").value = health # TODO ugly
+
 
 # Bingibungel shoots the pistol in the comment
 func shoot_pistol():

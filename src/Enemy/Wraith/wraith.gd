@@ -9,6 +9,8 @@ var strafe_direction = randi() % 2
 
 @onready var animState : AnimationNodeStateMachinePlayback = \
 		$Wraith_Model/AnimationTree.get("parameters/StateMachine/playback")
+@onready var swordArea : Area3D = find_child("SwordArea")
+var has_hit = false # indicates if the sword has hit the player in this swing
 
 # behavior state machine
 var states = {
@@ -76,6 +78,7 @@ func destroy():
 
 # called once when the agent enters the attack state
 func attack():
+	has_hit = false
 	animState.travel("Wraith_Attack")
 
 
@@ -108,6 +111,13 @@ func _physics_process(delta: float) -> void:
 	var offset = global_position - player.global_position
 	if state == "direct" and offset.length() < 3:
 		trigger_state_transisiton("attack")
+	if state == "attack":
+		# Check if the sword has hit the player
+		var bodies = swordArea.get_overlapping_bodies()
+		for body in bodies:
+			if body.has_method("damage") and not has_hit:
+				body.damage()
+				has_hit = true
 
 
 func random_with_weights(possiblities : Array):
