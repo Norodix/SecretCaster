@@ -1,10 +1,12 @@
-[gd_scene load_steps=23 format=3 uid="uid://j1em8finh0ke"]
+[gd_scene load_steps=45 format=3 uid="uid://j1em8finh0ke"]
 
 [ext_resource type="Texture2D" uid="uid://gdn7f3j47lcu" path="res://Textures/DEV/Dark/texture_04.png" id="1_b6514"]
 [ext_resource type="Texture2D" uid="uid://t44swfoj3fbp" path="res://Textures/DEV/Orange/texture_01.png" id="2_lpm4x"]
 [ext_resource type="PackedScene" uid="uid://b2nfwk1744el2" path="res://Levels/Aztec/Models/sarcophagus.tscn" id="3_a15g2"]
 [ext_resource type="Texture2D" uid="uid://b8ovdorxv0o2p" path="res://Textures/DEV/Dark/texture_08.png" id="3_kd8o1"]
 [ext_resource type="PackedScene" uid="uid://dl2vuwabcukwp" path="res://player.tscn" id="5_j28lp"]
+[ext_resource type="Texture2D" uid="uid://dgvet408c2xq8" path="res://Textures/DEV/Dark/texture_05.png" id="6_lddvf"]
+[ext_resource type="Texture2D" uid="uid://vawgrkwcyysj" path="res://Textures/DEV/Orange/texture_09.png" id="7_c66xg"]
 
 [sub_resource type="ProceduralSkyMaterial" id="ProceduralSkyMaterial_xe6os"]
 sky_horizon_color = Color(0.64625, 0.65575, 0.67075, 1)
@@ -74,6 +76,69 @@ size = Vector3(40, 0.2, 3)
 albedo_texture = ExtResource("1_b6514")
 uv1_triplanar = true
 
+[sub_resource type="BoxMesh" id="BoxMesh_fdrea"]
+size = Vector3(1.43, 0.2, 2.245)
+
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_xf5x0"]
+albedo_texture = ExtResource("2_lpm4x")
+uv1_triplanar = true
+
+[sub_resource type="BoxMesh" id="BoxMesh_3i61k"]
+size = Vector3(1.13, 0.2, 2)
+
+[sub_resource type="BoxMesh" id="BoxMesh_m7gtt"]
+size = Vector3(0.85, 0.2, 1.76)
+
+[sub_resource type="BoxMesh" id="BoxMesh_rf2wk"]
+size = Vector3(10, 1, 8)
+
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_xk2kc"]
+albedo_texture = ExtResource("6_lddvf")
+uv1_triplanar = true
+
+[sub_resource type="BoxMesh" id="BoxMesh_novcf"]
+size = Vector3(10, 0.2, 8)
+
+[sub_resource type="BoxMesh" id="BoxMesh_mpoet"]
+size = Vector3(4, 1, 5.75)
+
+[sub_resource type="BoxMesh" id="BoxMesh_2qmq2"]
+size = Vector3(4, 0.2, 5.75)
+
+[sub_resource type="BoxMesh" id="BoxMesh_b7tf6"]
+size = Vector3(10, 3.5, 0.1)
+
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_x37bf"]
+albedo_texture = ExtResource("7_c66xg")
+uv1_triplanar = true
+
+[sub_resource type="BoxMesh" id="BoxMesh_x2h31"]
+size = Vector3(10, 3.5, 0.1)
+
+[sub_resource type="BoxMesh" id="BoxMesh_jkgyu"]
+size = Vector3(10, 3.5, 0.1)
+
+[sub_resource type="BoxMesh" id="BoxMesh_hxmk4"]
+size = Vector3(8.2, 3.5, 0.1)
+
+[sub_resource type="BoxMesh" id="BoxMesh_i750d"]
+size = Vector3(5.8, 3.5, 0.1)
+
+[sub_resource type="BoxMesh" id="BoxMesh_k5oxx"]
+size = Vector3(4.1, 3.5, 0.1)
+
+[sub_resource type="BoxMesh" id="BoxMesh_gunfn"]
+size = Vector3(5.8, 1, 0.1)
+
+[sub_resource type="BoxMesh" id="BoxMesh_njolk"]
+size = Vector3(4.1, 1, 0.1)
+
+[sub_resource type="BoxMesh" id="BoxMesh_d1481"]
+size = Vector3(4.1, 1, 0.1)
+
+[sub_resource type="BoxMesh" id="BoxMesh_evexw"]
+size = Vector3(14, 3.5, 0.1)
+
 [node name="Aztec" type="Node3D"]
 
 [node name="DirectionalLight3D" type="DirectionalLight3D" parent="."]
@@ -141,6 +206,100 @@ mesh = SubResource("BoxMesh_m1fc7")
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 39.78, -28.8731, 0.32561)
 inner_radius = 30.0
 outer_radius = 100.0
+sides = 14
 
 [node name="Player" parent="." instance=ExtResource("5_j28lp")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 39.8815, 2.47424, -5.82104)
+
+[node name="House_wind" type="CSGCombiner3D" parent="."]
+use_collision = true
+
+[node name="CSGMesh3D6" type="CSGMesh3D" parent="House_wind"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.294978, 1.55047, -60.3667)
+mesh = SubResource("BoxMesh_fdrea")
+material = SubResource("StandardMaterial3D_xf5x0")
+
+[node name="CSGMesh3D7" type="CSGMesh3D" parent="House_wind"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.444902, 1.74417, -60.4907)
+mesh = SubResource("BoxMesh_3i61k")
+material = SubResource("StandardMaterial3D_xf5x0")
+
+[node name="CSGMesh3D8" type="CSGMesh3D" parent="House_wind"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.591698, 1.95809, -60.6184)
+mesh = SubResource("BoxMesh_m7gtt")
+material = SubResource("StandardMaterial3D_xf5x0")
+
+[node name="CSGMesh3D" type="CSGMesh3D" parent="House_wind"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 6.00686, 1.57479, -63.3443)
+mesh = SubResource("BoxMesh_rf2wk")
+material = SubResource("StandardMaterial3D_xk2kc")
+
+[node name="CSGMesh3D11" type="CSGMesh3D" parent="House_wind"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 6.00686, 5.05998, -63.3443)
+mesh = SubResource("BoxMesh_novcf")
+material = SubResource("StandardMaterial3D_xk2kc")
+
+[node name="CSGMesh3D2" type="CSGMesh3D" parent="House_wind"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.993793, 1.57479, -64.4668)
+mesh = SubResource("BoxMesh_mpoet")
+material = SubResource("StandardMaterial3D_xk2kc")
+
+[node name="CSGMesh3D12" type="CSGMesh3D" parent="House_wind"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.993793, 5.05703, -64.4668)
+mesh = SubResource("BoxMesh_2qmq2")
+material = SubResource("StandardMaterial3D_xk2kc")
+
+[node name="CSGMesh3D3" type="CSGMesh3D" parent="House_wind"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 6.02722, 3.20095, -59.298)
+mesh = SubResource("BoxMesh_b7tf6")
+material = SubResource("StandardMaterial3D_x37bf")
+
+[node name="CSGMesh3D13" type="CSGMesh3D" parent="House_wind"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 6.02722, 6.69112, -59.298)
+mesh = SubResource("BoxMesh_x2h31")
+material = SubResource("StandardMaterial3D_x37bf")
+
+[node name="CSGMesh3D14" type="CSGMesh3D" parent="House_wind"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 6.02722, 6.69112, -67.4123)
+mesh = SubResource("BoxMesh_jkgyu")
+material = SubResource("StandardMaterial3D_x37bf")
+
+[node name="CSGMesh3D5" type="CSGMesh3D" parent="House_wind"]
+transform = Transform3D(-4.37114e-08, 0, 1, 0, 1, 0, -1, 0, -4.37114e-08, 11.0324, 3.20095, -63.3613)
+mesh = SubResource("BoxMesh_hxmk4")
+material = SubResource("StandardMaterial3D_x37bf")
+
+[node name="CSGMesh3D15" type="CSGMesh3D" parent="House_wind"]
+transform = Transform3D(-4.37114e-08, 0, 1, 0, 1, 0, -1, 0, -4.37114e-08, 11.0324, 6.70357, -63.3613)
+mesh = SubResource("BoxMesh_hxmk4")
+material = SubResource("StandardMaterial3D_x37bf")
+
+[node name="CSGMesh3D9" type="CSGMesh3D" parent="House_wind"]
+transform = Transform3D(-4.37114e-08, 0, 1, 0, 1, 0, -1, 0, -4.37114e-08, -3.0624, 3.20095, -64.5306)
+mesh = SubResource("BoxMesh_i750d")
+material = SubResource("StandardMaterial3D_x37bf")
+
+[node name="CSGMesh3D10" type="CSGMesh3D" parent="House_wind"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -1.06321, 3.20065, -61.5998)
+mesh = SubResource("BoxMesh_k5oxx")
+material = SubResource("StandardMaterial3D_x37bf")
+
+[node name="CSGMesh3D16" type="CSGMesh3D" parent="House_wind"]
+transform = Transform3D(-4.37114e-08, 0, 1, 0, 1, 0, -1, 0, -4.37114e-08, -3.0624, 5.4512, -64.5306)
+mesh = SubResource("BoxMesh_gunfn")
+material = SubResource("StandardMaterial3D_x37bf")
+
+[node name="CSGMesh3D17" type="CSGMesh3D" parent="House_wind"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -1.06321, 5.44746, -61.5998)
+mesh = SubResource("BoxMesh_njolk")
+material = SubResource("StandardMaterial3D_x37bf")
+
+[node name="CSGMesh3D18" type="CSGMesh3D" parent="House_wind"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -1.06321, 5.44746, -67.4178)
+mesh = SubResource("BoxMesh_d1481")
+material = SubResource("StandardMaterial3D_x37bf")
+
+[node name="CSGMesh3D4" type="CSGMesh3D" parent="House_wind"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 3.98862, 3.20253, -67.3982)
+mesh = SubResource("BoxMesh_evexw")
+material = SubResource("StandardMaterial3D_x37bf")
