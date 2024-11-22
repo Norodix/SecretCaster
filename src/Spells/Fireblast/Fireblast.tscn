@@ -8,11 +8,12 @@ height = 3.0
 radius = 5.0
 
 [sub_resource type="Gradient" id="Gradient_nhjt3"]
-offsets = PackedFloat32Array(0.1, 0.209375, 0.27044, 0.396226, 0.754717)
-colors = PackedColorArray(0.311876, 0.00077168, 0.475605, 1, 0.91174, 0, 0.218416, 1, 0.842896, 0.654817, 0, 1, 0.752941, 0.0862745, 0, 1, 0, 0, 0, 1)
+offsets = PackedFloat32Array(0.222222, 0.362393, 0.589744, 0.733333, 0.844444)
+colors = PackedColorArray(0.311876, 0.00077168, 0.475605, 1, 0.708561, 0.155473, 0, 1, 0.913855, 0.51519, 7.70092e-07, 1, 0.734584, 0.0763002, 0, 1, 0, 0, 0, 1)
 
 [sub_resource type="GradientTexture1D" id="GradientTexture1D_uklf3"]
 gradient = SubResource("Gradient_nhjt3")
+width = 512
 
 [sub_resource type="Curve" id="Curve_myb53"]
 _data = [Vector2(0, 0), 0.0, 0.0, 0, 0, Vector2(0.173913, 0.67033), 2.22057, 2.22057, 0, 0, Vector2(0.5, 1), 0.0, 0.0, 0, 0, Vector2(0.782609, 0.659341), -2.17363, -2.17363, 0, 0, Vector2(1, 0), 0.0, 0.0, 0, 0]
@@ -25,13 +26,14 @@ curve = SubResource("Curve_myb53")
 emission_shape = 6
 emission_ring_axis = Vector3(0, 1, 0)
 emission_ring_height = 0.0
-emission_ring_radius = 0.7
-emission_ring_inner_radius = 0.7
+emission_ring_radius = 0.2
+emission_ring_inner_radius = 0.2
+inherit_velocity_ratio = 0.5
 direction = Vector3(0, 1, 0)
 spread = 0.0
-initial_velocity_max = 4.0
+initial_velocity_max = 1.0
 radial_velocity_min = 12.0
-radial_velocity_max = 12.0
+radial_velocity_max = 15.0
 gravity = Vector3(0, 0, 0)
 scale_curve = SubResource("CurveTexture_wmpmh")
 color_ramp = SubResource("GradientTexture1D_uklf3")
@@ -54,11 +56,12 @@ transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.5, 0)
 shape = SubResource("CylinderShape3D_g3p41")
 
 [node name="GPUParticles3D" type="GPUParticles3D" parent="."]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, -1, 0)
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, -0.5, 0)
 emitting = false
 amount = 500
 lifetime = 0.5
 one_shot = true
+explosiveness = 0.8
 fixed_fps = 60
 process_material = SubResource("ParticleProcessMaterial_3a345")
 draw_pass_1 = SubResource("QuadMesh_wbwyc")

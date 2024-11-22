@@ -4,6 +4,7 @@ var pattern = ["right", "forwards", "left", "left", "forwards", "right"]
 
 var select_name = "Frame_Fireblast_Tex"
 var feedback_name = "Fireblast_Feedback"
+var hand_name = "Fireblast-In-hand"
 
 const timeout_ms = 2000
 var starttime = - timeout_ms * 1000
