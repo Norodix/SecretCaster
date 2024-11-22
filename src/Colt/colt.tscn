@@ -1,4 +1,4 @@
-[gd_scene load_steps=38 format=3 uid="uid://bewc1hnbc3rf5"]
+[gd_scene load_steps=49 format=3 uid="uid://bewc1hnbc3rf5"]
 
 [ext_resource type="PackedScene" uid="uid://bjxwguwajbqgy" path="res://Colt/colt.glb" id="1_ukx1w"]
 [ext_resource type="Texture2D" uid="uid://6jnxya7dpijr" path="res://Colt/Muzzleflash_Tex.png" id="1_utavs"]
@@ -12,32 +12,43 @@ roughness = 0.2
 normal_enabled = true
 normal_texture = ExtResource("3_pnyne")
 
-[sub_resource type="Gradient" id="Gradient_m25re"]
-colors = PackedColorArray(0.798871, 0.548393, 0.148593, 1, 0.959469, 0.774627, 0, 1)
+[sub_resource type="Gradient" id="Gradient_gxljm"]
+colors = PackedColorArray(1, 1, 1, 1, 0.72247, 0.25974, 0, 1)
 
-[sub_resource type="GradientTexture1D" id="GradientTexture1D_ghu78"]
-gradient = SubResource("Gradient_m25re")
+[sub_resource type="GradientTexture1D" id="GradientTexture1D_0t27s"]
+gradient = SubResource("Gradient_gxljm")
+
+[sub_resource type="Curve" id="Curve_ex1rg"]
+min_value = 1.0
+max_value = 5.0
+_data = [Vector2(0, 5), 0.0, 0.0, 0, 0, Vector2(0.25266, 1), 0.0, 0.0, 0, 0, Vector2(1, 1), 0.0, 0.0, 0, 0]
+point_count = 3
+
+[sub_resource type="CurveTexture" id="CurveTexture_5nhcv"]
+curve = SubResource("Curve_ex1rg")
 
 [sub_resource type="Curve" id="Curve_jm2hc"]
-_data = [Vector2(0, 0), 0.0, 0.0, 0, 0, Vector2(0.246377, 0.56044), -12.1319, -12.1319, 0, 0, Vector2(0.528986, 0.923077), 0.0184936, 0.0184936, 0, 0, Vector2(0.84058, 0.582418), -3.12775, -3.12775, 0, 0, Vector2(1, 0), 0.0, 0.0, 0, 0]
+max_value = 2.0
+_data = [Vector2(0, 0), 0.0, 0.0, 0, 0, Vector2(0.111702, 1.98665), -6.48941, -6.48941, 0, 0, Vector2(0.356383, 0.732033), 13.048, 13.048, 0, 0, Vector2(0.579787, 0.358316), -0.752773, -0.752773, 0, 0, Vector2(1, 0), 0.0, 0.0, 0, 0]
 point_count = 5
 
 [sub_resource type="CurveTexture" id="CurveTexture_j58qx"]
 curve = SubResource("Curve_jm2hc")
 
 [sub_resource type="ParticleProcessMaterial" id="ParticleProcessMaterial_j0fmq"]
-angle_min = -532.5
-angle_max = 45.0
 direction = Vector3(0, 0, -1)
 spread = 0.0
-initial_velocity_min = 1.0
-initial_velocity_max = 1.0
+initial_velocity_min = 1.2
+initial_velocity_max = 1.2
 gravity = Vector3(0, 0, 0)
 scale_curve = SubResource("CurveTexture_j58qx")
-color_initial_ramp = SubResource("GradientTexture1D_ghu78")
+color = Color(1, 0.892208, 0.585278, 1)
+color_ramp = SubResource("GradientTexture1D_0t27s")
+emission_curve = SubResource("CurveTexture_5nhcv")
 
 [sub_resource type="StandardMaterial3D" id="StandardMaterial3D_0sgny"]
 transparency = 4
+shading_mode = 0
 vertex_color_use_as_albedo = true
 albedo_texture = ExtResource("1_utavs")
 
@@ -64,6 +75,53 @@ bottom_radius = 0.003
 height = 0.015
 radial_segments = 8
 rings = 1
+
+[sub_resource type="Curve" id="Curve_5703k"]
+_data = [Vector2(0, 0), 0.0, 0.0, 0, 0, Vector2(0.0957447, 0.325975), 0.0, 0.0, 0, 0, Vector2(0.797872, 0), 0.0, 0.0, 0, 0]
+point_count = 3
+
+[sub_resource type="CurveTexture" id="CurveTexture_5bqbl"]
+curve = SubResource("Curve_5703k")
+
+[sub_resource type="Curve" id="Curve_b1d0v"]
+_data = [Vector2(0, 0), 0.0, 0.0, 0, 0, Vector2(0.404255, 1), 0.0, 0.0, 0, 0, Vector2(1, 1), 0.0, 0.0, 0, 0]
+point_count = 3
+
+[sub_resource type="CurveTexture" id="CurveTexture_u0foh"]
+curve = SubResource("Curve_b1d0v")
+
+[sub_resource type="ParticleProcessMaterial" id="ParticleProcessMaterial_oxf7v"]
+direction = Vector3(1, 1, 1)
+spread = 180.0
+radial_velocity_min = 0.0199776
+radial_velocity_max = 0.0199776
+gravity = Vector3(0, 0, 0)
+attractor_interaction_enabled = false
+scale_curve = SubResource("CurveTexture_u0foh")
+alpha_curve = SubResource("CurveTexture_5bqbl")
+
+[sub_resource type="Gradient" id="Gradient_43bgy"]
+colors = PackedColorArray(0.158472, 0.158472, 0.158472, 1, 0.521141, 0.521141, 0.521141, 0)
+
+[sub_resource type="GradientTexture2D" id="GradientTexture2D_n1gqj"]
+gradient = SubResource("Gradient_43bgy")
+fill = 1
+fill_from = Vector2(0.5, 0.5)
+fill_to = Vector2(1, 0.5)
+
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_m8ogb"]
+transparency = 1
+vertex_color_use_as_albedo = true
+albedo_texture = SubResource("GradientTexture2D_n1gqj")
+backlight_enabled = true
+backlight = Color(1, 1, 1, 1)
+uv2_world_triplanar = true
+billboard_mode = 1
+billboard_keep_scale = true
+
+[sub_resource type="QuadMesh" id="QuadMesh_0283x"]
+material = SubResource("StandardMaterial3D_m8ogb")
+size = Vector2(0.1, 0.1)
 
 [sub_resource type="Animation" id="Animation_7wcky"]
 length = 0.001
@@ -133,6 +191,18 @@ tracks/5/keys = {
 "transitions": PackedFloat32Array(1),
 "update": 0,
 "values": [Vector3(-1.44717, 0, 0)]
+}
+tracks/6/type = "value"
+tracks/6/imported = false
+tracks/6/enabled = true
+tracks/6/path = NodePath("Particle_Smoke:emitting")
+tracks/6/interp = 1
+tracks/6/loop_wrap = true
+tracks/6/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [false]
 }
 
 [sub_resource type="Animation" id="Animation_ccw3f"]
@@ -314,6 +384,18 @@ tracks/5/keys = {
 "update": 0,
 "values": [Vector3(-1.44717, 0, 0), Vector3(0, 0, 0), Vector3(-1.44717, 0, 0), Vector3(-1.44717, 0, 0)]
 }
+tracks/6/type = "value"
+tracks/6/imported = false
+tracks/6/enabled = true
+tracks/6/path = NodePath("Particle_Smoke:emitting")
+tracks/6/interp = 1
+tracks/6/loop_wrap = true
+tracks/6/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [true]
+}
 
 [sub_resource type="AnimationLibrary" id="AnimationLibrary_i6nod"]
 _data = {
@@ -413,12 +495,15 @@ transform = Transform3D(1, 0, 0, 0, 0.123312, 0.992368, 0, -0.992368, 0.123312, 
 surface_material_override/0 = SubResource("StandardMaterial3D_rmrym")
 
 [node name="Particle_Muzzle" type="GPUParticles3D" parent="." index="3"]
-transform = Transform3D(-1, 0, -8.74228e-08, 0, 1, 0, 8.74228e-08, 0, -1, 0, 0.0557561, 0.0987032)
+transform = Transform3D(-1, 0, -8.74228e-08, 0, 1, 0, 8.74228e-08, 0, -1, 0, 0.056, 0.1)
 emitting = false
-amount = 500
-lifetime = 0.05
+amount = 30
+lifetime = 0.15
 one_shot = true
+speed_scale = 4.0
+fixed_fps = 60
 local_coords = true
+draw_order = 1
 process_material = SubResource("ParticleProcessMaterial_j0fmq")
 draw_pass_1 = SubResource("QuadMesh_rhtx0")
 
@@ -431,20 +516,28 @@ one_shot = true
 process_material = SubResource("ParticleProcessMaterial_exhii")
 draw_pass_1 = SubResource("CylinderMesh_6j83l")
 
-[node name="Muzzle_Light" type="OmniLight3D" parent="." index="5"]
+[node name="Particle_Smoke" type="GPUParticles3D" parent="." index="5"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.0504822, 0.130605)
+emitting = false
+amount = 300
+lifetime = 3.0
+fixed_fps = 60
+process_material = SubResource("ParticleProcessMaterial_oxf7v")
+draw_pass_1 = SubResource("QuadMesh_0283x")
+
+[node name="Muzzle_Light" type="OmniLight3D" parent="." index="6"]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.0686209, 0.132468)
 visible = false
 light_color = Color(0.96167, 0.897709, 0.638196, 1)
-light_energy = 2.0
+light_energy = 0.5
 light_size = 0.05
 omni_range = 30.0
-omni_attenuation = 2.0
 
-[node name="AnimationPlayer" type="AnimationPlayer" parent="." index="6"]
+[node name="AnimationPlayer" type="AnimationPlayer" parent="." index="7"]
 libraries = {
 "": SubResource("AnimationLibrary_i6nod")
 }
 
-[node name="AnimationTree" type="AnimationTree" parent="." index="7"]
+[node name="AnimationTree" type="AnimationTree" parent="." index="8"]
 tree_root = SubResource("AnimationNodeStateMachine_tiuuc")
 anim_player = NodePath("../AnimationPlayer")
