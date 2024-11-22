@@ -67,6 +67,7 @@ func _physics_process(delta: float) -> void:
 
 
 func _process(delta: float) -> void:
+	parse_controller_camera()
 	var b = Basis()
 	b = b.rotated(Vector3.UP, facing_angle)
 	b = b.rotated(b.x, tilt)
@@ -106,6 +107,15 @@ func _process(delta: float) -> void:
 		$Pistol_Visibility_Timer.start()
 		hud.set_active_mode(attack_mode)
 	return
+
+
+func parse_controller_camera():
+	# Camera handling for controller
+	var sensitivity = 0.05
+	var vec = Input.get_vector("cam_left", "cam_right", "cam_up", "cam_down") * -1
+	tilt += vec.y * sensitivity
+	facing_angle += vec.x * sensitivity
+	pass
 
 
 func activate_spell(spell : Node):
@@ -224,8 +234,12 @@ func match_action_history(pattern: PackedStringArray):
 func get_action_from_event(event: InputEvent):
 	var actions = InputMap.get_actions()
 	for a in actions:
+		if "ui_" in a:
+			continue
 		if InputMap.action_has_event(a, event):
+			#print("action found: ", a)
 			return a
+	#print("no matching action found for event: ", event)
 	return null
 
 
@@ -240,12 +254,18 @@ func _input(event: InputEvent) -> void:
 	if event.is_action_type() and event.is_pressed() and not event.is_echo():
 		#print(event.action)
 		var action = get_action_from_event(event)
+		#print(event.get_action_strength(action))
 		if action:
-			#print(action)
+			# Append only if the joystick fully moves to a direction
+			if event.get_action_strength(action) != 1.0:
+				return
+			# Filter out camera actions, since they only happen on controller
+			if "cam_" in action:
+				return
+			print(action)
 			action_history.append(action)
 			if action_history.size() > historysize:
 				action_history.remove_at(0)
-		#print(action_history)
 
 
 func _on_timer_timeout() -> void:
