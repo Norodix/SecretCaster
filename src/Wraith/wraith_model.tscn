@@ -4,7 +4,7 @@
 [ext_resource type="Material" uid="uid://dfgbimwco8vo7" path="res://Wraith/wraith_mat.tres" id="2_cntme"]
 
 [sub_resource type="Curve" id="Curve_kwklu"]
-_data = [Vector2(0, 0), 0.0, 1.54721, 0, 0, Vector2(0.5, 1), 0.0, 0.0, 0, 0, Vector2(1, 0), -3.5556, 0.0, 0, 0]
+_data = [Vector2(0, 0), 0.0, 1.54721, 0, 0, Vector2(0.5, 0.245893), 0.0, 0.0, 0, 0, Vector2(1, 0), -1.28094, 0.0, 0, 0]
 point_count = 3
 
 [sub_resource type="CurveTexture" id="CurveTexture_u0l0i"]
@@ -130,20 +130,20 @@ nodes/StateMachine/position = Vector2(-60, -40)
 nodes/output/position = Vector2(520, 120)
 node_connections = [&"Blend2", 0, &"StateMachine", &"Blend2", 1, &"Animation", &"output", 0, &"Blend2"]
 
-[node name="Wraith2" instance=ExtResource("1_h34gq")]
+[node name="Wraith_Model" instance=ExtResource("1_h34gq")]
 
 [node name="Skeleton3D" parent="Armature" index="0"]
-bones/1/position = Vector3(0.0253159, 0.351695, -6.03579e-09)
-bones/4/rotation = Quaternion(0.0106115, 1.16476e-11, 0.0345654, 0.999346)
+bones/1/position = Vector3(0.000406057, 0.36415, -9.68115e-11)
+bones/4/rotation = Quaternion(0.000129651, -2.64613e-14, 0.00042232, 1)
 bones/5/rotation = Quaternion(0.707107, -3.09086e-08, -3.09086e-08, 0.707107)
-bones/6/position = Vector3(0.0218352, 0.704186, 0.269779)
-bones/6/rotation = Quaternion(0.136188, -0.000454829, 0.321033, 0.937225)
+bones/6/position = Vector3(-0.0458864, 0.750271, 0.269704)
+bones/6/rotation = Quaternion(0.154505, 0.0677419, 0.287087, 0.942932)
 
-[node name="Wraith" parent="Armature/Skeleton3D" index="0"]
+[node name="Wraith_Cape" parent="Armature/Skeleton3D" index="0"]
 surface_material_override/0 = ExtResource("2_cntme")
 
 [node name="BoneAttachment3D" type="BoneAttachment3D" parent="Armature/Skeleton3D" index="1"]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.0253159, 1.24703, -6.03579e-09)
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.000406057, 1.25948, -9.68115e-11)
 bone_name = "Neck"
 bone_idx = 3
 
@@ -157,7 +157,7 @@ process_material = SubResource("ParticleProcessMaterial_u70s2")
 draw_pass_1 = SubResource("QuadMesh_svl0o")
 
 [node name="BoneAttachment3D2" type="BoneAttachment3D" parent="Armature/Skeleton3D" index="2"]
-transform = Transform3D(0.793876, -0.601884, 0.086589, 0.601636, 0.756782, -0.25557, 0.0882941, 0.254986, 0.962905, 0.0218352, 0.704186, 0.269779)
+transform = Transform3D(0.825984, -0.520474, 0.216464, 0.56234, 0.787419, -0.252479, -0.0390395, 0.33027, 0.943079, -0.0458864, 0.750271, 0.269704)
 bone_name = "Weapon"
 bone_idx = 6
 
@@ -168,6 +168,15 @@ collision_mask = 2
 [node name="CollisionShape3D" type="CollisionShape3D" parent="Armature/Skeleton3D/BoneAttachment3D2/SwordArea" index="0"]
 transform = Transform3D(0.853729, 0.084888, -0.513766, -0.00751933, 0.988538, 0.150839, 0.520683, -0.124911, 0.844567, 0.0115033, 1.05791, -0.0810635)
 shape = SubResource("BoxShape3D_44cwj")
+
+[node name="Wraith_Eye" parent="Armature/Skeleton3D" index="3"]
+surface_material_override/0 = ExtResource("2_cntme")
+
+[node name="Wraith_Skull" parent="Armature/Skeleton3D" index="4"]
+surface_material_override/0 = ExtResource("2_cntme")
+
+[node name="Wraith_Sword" parent="Armature/Skeleton3D" index="5"]
+surface_material_override/0 = ExtResource("2_cntme")
 
 [node name="AnimationTree" type="AnimationTree" parent="." index="2"]
 tree_root = SubResource("AnimationNodeBlendTree_borp5")
