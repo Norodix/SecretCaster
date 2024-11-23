@@ -1,0 +1,40 @@
+[gd_scene load_steps=8 format=3 uid="uid://njfw08gvqe3q"]
+
+[ext_resource type="PackedScene" uid="uid://cqpkbm7ivqydr" path="res://Props/Streetlamp/Streetlamp.glb" id="1_1w6ug"]
+[ext_resource type="Texture2D" uid="uid://bs5yi1nuloibr" path="res://Props/Streetlamp/Streetlamp_Tex.png" id="2_56qku"]
+[ext_resource type="Texture2D" uid="uid://ddu3oundt0m1s" path="res://Props/Streetlamp/Streetlamp_Emiss.png" id="3_bf7cl"]
+[ext_resource type="Texture2D" uid="uid://bdgriwytd6ehj" path="res://Props/Streetlamp/Streetlamp_Nrm.png" id="4_bx0in"]
+[ext_resource type="Texture2D" uid="uid://cdgq04idrckxe" path="res://Props/Streetlamp/Streetlamp_Rough.png" id="5_smkdk"]
+
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_h5b2v"]
+albedo_texture = ExtResource("2_56qku")
+roughness_texture = ExtResource("5_smkdk")
+emission_enabled = true
+emission_energy_multiplier = 6.0
+emission_texture = ExtResource("3_bf7cl")
+normal_enabled = true
+normal_texture = ExtResource("4_bx0in")
+
+[sub_resource type="CylinderShape3D" id="CylinderShape3D_8s6dl"]
+height = 8.0
+radius = 0.6
+
+[node name="Streetlamp2" instance=ExtResource("1_1w6ug")]
+
+[node name="Streetlamp" parent="." index="0"]
+surface_material_override/0 = SubResource("StandardMaterial3D_h5b2v")
+
+[node name="OmniLight3D" type="OmniLight3D" parent="." index="1"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 7.215, 0)
+light_color = Color(0.821565, 0.770675, 0.539433, 1)
+light_energy = 5.0
+light_size = 0.2
+shadow_enabled = true
+shadow_blur = 5.0
+omni_range = 30.0
+
+[node name="StaticBody3D" type="StaticBody3D" parent="." index="2"]
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="StaticBody3D" index="0"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 4, 0)
+shape = SubResource("CylinderShape3D_8s6dl")
