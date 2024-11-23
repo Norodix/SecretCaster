@@ -4,12 +4,12 @@ importer="scene"
 importer_version=1
 type="PackedScene"
 uid="uid://dmxu4gsu0jjxt"
-path="res://.godot/imported/sarcophagus.fbx-e7b6691d6941ecb6ee58e254085592d7.scn"
+path="res://.godot/imported/sarcophagus.fbx-99667d5330883cd1aa9c18349ad74547.scn"
 
 [deps]
 
-source_file="res://Levels/Aztec/Models/sarcophagus.fbx"
-dest_files=["res://.godot/imported/sarcophagus.fbx-e7b6691d6941ecb6ee58e254085592d7.scn"]
+source_file="res://Levels/Cuba/Models/sarcophagus.fbx"
+dest_files=["res://.godot/imported/sarcophagus.fbx-99667d5330883cd1aa9c18349ad74547.scn"]
 
 [params]
 
