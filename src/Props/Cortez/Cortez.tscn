@@ -1,4 +1,4 @@
-[gd_scene load_steps=9 format=3 uid="uid://kb7il64chu13"]
+[gd_scene load_steps=11 format=3 uid="uid://kb7il64chu13"]
 
 [ext_resource type="PackedScene" uid="uid://ves5xoy4dht7" path="res://Props/Cortez/Cortez.glb" id="1_5tuym"]
 [ext_resource type="Script" path="res://Props/Cortez/cortez.gd" id="2_1qrlw"]
@@ -18,8 +18,22 @@ shader_parameter/Color_Mask = ExtResource("4_kj7e3")
 shader_parameter/Roughness = ExtResource("6_4ehxa")
 shader_parameter/Normalmap = ExtResource("5_2y82k")
 
+[sub_resource type="ConvexPolygonShape3D" id="ConvexPolygonShape3D_shm5i"]
+points = PackedVector3Array(-0.837881, 0.309866, 1.10114, -0.858743, 0.967525, 1.08391, -0.76285, 0.442836, 2.37936, 0.822219, -0.0328333, 1.42849, 0.584334, 1.15617, 1.03207, -0.76285, 0.997532, 2.30019, -0.842086, -0.0328333, 1.82446, 0.505277, 0.442836, 2.45867, 0.901633, 0.20506, 1.03207, 0.822219, 0.997532, 2.30019, 0.822219, -0.0328333, 1.82446, -0.604379, 1.15617, 1.03207, -0.525143, 0.284435, 2.45867, -0.842086, -0.0328333, 1.42849, 0.822219, 1.07679, 1.98309, 0.901633, 0.442836, 2.30019, -0.842086, 1.07679, 1.90392, 0.811673, 1.02596, 1.10638, -0.208022, 0.442836, 2.53813, -0.789478, 0.227604, 1.07967, 0.584334, 1.15617, 1.27001, 0.0243497, 0.940548, 2.37061, 0.187977, 0.442836, 2.53813, -0.76285, 1.07679, 1.98309, 0.158711, 0.32543, 2.42678, -0.818698, 0.3157, 2.17187, -0.604379, 1.15617, 1.19084, 0.649781, 0.318753, 2.3058, 0.0918972, 1.07178, 2.02304, -0.525143, 0.442836, 2.45867, 0.742984, 0.442836, 2.37936, 0.795078, 0.316841, 2.23998)
+
+[sub_resource type="ConvexPolygonShape3D" id="ConvexPolygonShape3D_uyphp"]
+points = PackedVector3Array(-0.322355, 1.52874, -0.578002, 0.821971, 0.284249, -2.45499, -0.80049, 0.234603, 0.943092, -0.784954, 0.319478, -2.33851, 0.821971, -0.0328333, -1.1871, -1.08003, 1.15614, 0.714395, 0.742991, 0.997439, -2.2965, -0.762858, 0.997439, -2.2965, 0.819744, 0.258425, 0.871628, -0.841838, -0.0328333, -1.1871, 0.386394, 1.5561, 0.292982, 0.663802, 1.15614, 1.03172, 1.06017, 1.23533, 0.635152, -0.60427, 1.15614, 1.03172, 0.575118, 1.4533, -0.648366, -0.207906, 0.20506, -2.45499, -0.618371, 1.47944, 0.357639, 0.901579, 0.44279, -2.2965, 1.06017, 0.997439, 0.714395, -0.601498, 1.46058, -0.57764, -0.128717, 0.997439, -2.37575, -0.841838, 0.997439, -2.13802, 0.821971, 0.997439, -2.21726, -1.08003, 0.997439, 0.635152, 0.0940474, 1.52805, -0.647534, -0.263075, 1.55906, 0.369387, -0.921446, 1.15614, 0.952125, -0.856469, 0.320976, -1.7448, -0.683669, 0.20506, -2.37575, 0.742991, 0.20506, -2.37575, 0.901579, 1.15614, 0.952125, 0.24619, 1.49474, 0.528935)
+
 [node name="Cortez2" instance=ExtResource("1_5tuym")]
 script = ExtResource("2_1qrlw")
 
 [node name="Cortez" parent="." index="0"]
 surface_material_override/0 = SubResource("ShaderMaterial_mirq8")
+
+[node name="StaticBody3D" type="StaticBody3D" parent="." index="1"]
+
+[node name="CollisionShape3D2" type="CollisionShape3D" parent="StaticBody3D" index="0"]
+shape = SubResource("ConvexPolygonShape3D_shm5i")
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="StaticBody3D" index="1"]
+shape = SubResource("ConvexPolygonShape3D_uyphp")
