@@ -42,6 +42,7 @@ shader_parameter/emission_shape_offset = Vector3(0, 0, 0)
 shader_parameter/emission_shape_scale = Vector3(1, 1, 1)
 shader_parameter/velocity_pivot = Vector3(0, 0, 0)
 shader_parameter/emission_box_extents = Vector3(2, 1, 2)
+shader_parameter/emission_sphere_radius = 20.0
 shader_parameter/color_value = Color(1, 1, 1, 1)
 shader_parameter/gravity = Vector3(0, -10, 0)
 shader_parameter/collision_friction = 0.0

@@ -38,7 +38,7 @@ uniform float lifetime_randomness;
 uniform vec3 emission_shape_offset = vec3(0.0);
 uniform vec3 emission_shape_scale = vec3(1.0);
 uniform vec3 velocity_pivot = vec3(0.0);
-uniform vec3 emission_box_extents;
+uniform float emission_sphere_radius = 20.0;
 uniform vec4 color_value : source_color;
 uniform vec3 gravity;
 uniform float collision_friction;
@@ -156,7 +156,10 @@ vec3 calculate_initial_position(inout uint alt_seed) {
 	float pi = 3.14159;
 	vec3 pos = vec3(0.0);
 	{ // Emission shape.
-		pos = vec3(rand_from_seed(alt_seed) * 2.0 - 1.0, rand_from_seed(alt_seed) * 2.0 - 1.0, rand_from_seed(alt_seed) * 2.0 - 1.0) * emission_box_extents;
+		float theta = rand_from_seed(alt_seed) * 2.0 * pi; // yaw angle 0 - 2PI
+		float phi = (rand_from_seed(alt_seed) - 0.5) * pi; // pitch angle -PI/2 - PI/2
+		pos = vec3(cos(theta) * cos(phi), sin(phi), sin(theta) * cos(phi));
+		pos *= emission_sphere_radius * pow(rand_from_seed(alt_seed), 1.0/3.0);
 	}
 	return pos * emission_shape_scale + emission_shape_offset;
 }
