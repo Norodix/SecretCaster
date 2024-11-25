@@ -1,0 +1,25 @@
+[gd_scene load_steps=9 format=3 uid="uid://kb7il64chu13"]
+
+[ext_resource type="PackedScene" uid="uid://ves5xoy4dht7" path="res://Props/Cortez/Cortez.glb" id="1_5tuym"]
+[ext_resource type="Script" path="res://Props/Cortez/cortez.gd" id="2_1qrlw"]
+[ext_resource type="Shader" uid="uid://basv2nt2trmke" path="res://Props/Cortez/Cortez_Mask_Shader.tres" id="2_358gd"]
+[ext_resource type="Texture2D" uid="uid://b21yvic60nivc" path="res://Props/Cortez/Cortez_Tex.png" id="3_f3bg6"]
+[ext_resource type="Texture2D" uid="uid://byr3421migv3c" path="res://Props/Cortez/Cortez_Mask.png" id="4_kj7e3"]
+[ext_resource type="Texture2D" uid="uid://co3l108u3qmkk" path="res://Props/Cortez/Cortez_Nrm.png" id="5_2y82k"]
+[ext_resource type="Texture2D" uid="uid://bwopcok8kovki" path="res://Props/Cortez/Cortez_Rough.png" id="6_4ehxa"]
+
+[sub_resource type="ShaderMaterial" id="ShaderMaterial_mirq8"]
+resource_local_to_scene = true
+render_priority = 0
+shader = ExtResource("2_358gd")
+shader_parameter/Color = 0
+shader_parameter/Albedo = ExtResource("3_f3bg6")
+shader_parameter/Color_Mask = ExtResource("4_kj7e3")
+shader_parameter/Roughness = ExtResource("6_4ehxa")
+shader_parameter/Normalmap = ExtResource("5_2y82k")
+
+[node name="Cortez2" instance=ExtResource("1_5tuym")]
+script = ExtResource("2_1qrlw")
+
+[node name="Cortez" parent="." index="0"]
+surface_material_override/0 = SubResource("ShaderMaterial_mirq8")
