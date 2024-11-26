@@ -12,6 +12,9 @@ var strafe_direction = randi() % 2
 @onready var swordArea : Area3D = find_child("SwordArea")
 var has_hit = false # indicates if the sword has hit the player in this swing
 
+func _ready() -> void:
+	$NavigationTimer.wait_time = randf()
+
 # behavior state machine
 var states = {
 	"idle" = { # name of the state
