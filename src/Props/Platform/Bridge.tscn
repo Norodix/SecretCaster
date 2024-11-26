@@ -1,0 +1,67 @@
+[gd_scene load_steps=3 format=3 uid="uid://fsnxrnurofnw"]
+
+[ext_resource type="PackedScene" uid="uid://4q7jctaucve2" path="res://Props/Platform/Platform.tscn" id="1_wk2ye"]
+
+[sub_resource type="BoxShape3D" id="BoxShape3D_muth2"]
+size = Vector3(4.48915, 0.189301, 3.33252)
+
+[node name="Bridge" type="Node3D"]
+
+[node name="Platform" parent="." instance=ExtResource("1_wk2ye")]
+
+[node name="Platform4" parent="." instance=ExtResource("1_wk2ye")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.9, 0, 0)
+
+[node name="Platform5" parent="." instance=ExtResource("1_wk2ye")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -1.8, 0, 0)
+
+[node name="Platform2" parent="." instance=ExtResource("1_wk2ye")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.9, 0, 0)
+
+[node name="Platform6" parent="." instance=ExtResource("1_wk2ye")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.450418, 0, -0.777979)
+
+[node name="Platform7" parent="." instance=ExtResource("1_wk2ye")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.449582, 0, -0.777979)
+
+[node name="Platform8" parent="." instance=ExtResource("1_wk2ye")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -1.34958, 0, -0.777979)
+
+[node name="Platform9" parent="." instance=ExtResource("1_wk2ye")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 1.35042, 0, -0.777979)
+
+[node name="Platform3" parent="." instance=ExtResource("1_wk2ye")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 1.8, 0, 0)
+
+[node name="Platform10" parent="." instance=ExtResource("1_wk2ye")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, -1.55898)
+
+[node name="Platform11" parent="." instance=ExtResource("1_wk2ye")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.9, 0, -1.55898)
+
+[node name="Platform12" parent="." instance=ExtResource("1_wk2ye")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -1.8, 0, -1.55898)
+
+[node name="Platform13" parent="." instance=ExtResource("1_wk2ye")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.9, 0, -1.55898)
+
+[node name="Platform14" parent="." instance=ExtResource("1_wk2ye")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.450418, 0, -2.33696)
+
+[node name="Platform15" parent="." instance=ExtResource("1_wk2ye")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.449582, 0, -2.33696)
+
+[node name="Platform16" parent="." instance=ExtResource("1_wk2ye")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -1.34958, 0, -2.33696)
+
+[node name="Platform17" parent="." instance=ExtResource("1_wk2ye")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 1.35042, 0, -2.33696)
+
+[node name="Platform18" parent="." instance=ExtResource("1_wk2ye")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 1.8, 0, -1.55898)
+
+[node name="StaticBody3D" type="StaticBody3D" parent="."]
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="StaticBody3D"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.000999451, -0.0502777, -1.16626)
+shape = SubResource("BoxShape3D_muth2")
