@@ -44,15 +44,14 @@ outer_radius = 0.4
 script = ExtResource("2_k6vyh")
 
 [node name="Cylinder" parent="." index="0"]
-visibility_range_end = 5.0
-visibility_range_end_margin = 1.0
 surface_material_override/0 = SubResource("StandardMaterial3D_ddh3o")
 
 [node name="GPUParticles3D" type="GPUParticles3D" parent="Cylinder" index="0"]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, -0.0500759, 0)
-visibility_range_end = 5.0
+visibility_range_end = 10.0
 visibility_range_end_margin = 1.0
 amount = 10
 lifetime = 2.0
+local_coords = true
 process_material = SubResource("ParticleProcessMaterial_sjopp")
 draw_pass_1 = SubResource("TorusMesh_nmjy2")
