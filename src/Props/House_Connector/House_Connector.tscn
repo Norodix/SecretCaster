@@ -1,0 +1,20 @@
+[gd_scene load_steps=4 format=3 uid="uid://deiy8d2pbtik8"]
+
+[ext_resource type="Script" path="res://Props/House_Connector/house_connector.gd" id="1_81a3p"]
+[ext_resource type="PackedScene" uid="uid://7425vs5xcpok" path="res://Props/House_Connector/House_Connector.glb" id="1_c61d8"]
+[ext_resource type="Material" uid="uid://4um07eb1vjf0" path="res://Props/House_Connector/House_Connector_Mat.tres" id="3_sco2s"]
+
+[node name="House_Connector" instance=ExtResource("1_c61d8")]
+script = ExtResource("1_81a3p")
+
+[node name="Balkon" parent="." index="0"]
+surface_material_override/0 = ExtResource("3_sco2s")
+
+[node name="floor" parent="." index="1"]
+surface_material_override/0 = ExtResource("3_sco2s")
+
+[node name="ground" parent="." index="2"]
+surface_material_override/0 = ExtResource("3_sco2s")
+
+[node name="Railing_roof" parent="." index="3"]
+surface_material_override/0 = ExtResource("3_sco2s")
