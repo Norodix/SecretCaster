@@ -4,10 +4,13 @@ extends CharacterBody3D
 var facing_angle = 0.0
 var tilt = 0.0
 var speed = 7
+var crouch_speed = 5
 var vh_damping = 0.9
 var vh_acc = 100
 var mousespeed = 0.001
 var health = 100
+var crouch_max = 0.85
+var crouch_min = 0.45
 
 var action_history = PackedStringArray()
 var historysize = 10
@@ -23,6 +26,8 @@ var last_activate = - cooldown_time_ms_default * 1000
 @onready var pistol = $Camera3D/Magic_Hands/Armature/Skeleton3D/BoneAttachment3D2/colt
 @onready var hud = $HUD
 @onready var handspell_parent = $Camera3D/Magic_Hands/Armature/Skeleton3D/BoneAttachment3D
+@onready var colBasic = $CollisionShape3D
+@onready var colCrouch = $CollisionShape3D_crouch
 
 var pistol_trail = preload("res://Colt/TrailRender.tscn")
 
@@ -77,6 +82,18 @@ func _process(delta: float) -> void:
 		if match_action_history(spell.pattern):
 			if spell != activespell:
 				activate_spell(spell)
+	
+	if Input.is_action_pressed("crouch"):
+		speed = crouch_speed
+		$CollisionShape3D_crouch.show()
+		$CollisionShape3D.hide()
+		if $Camera3D.position.y > 0.45:
+			$Camera3D.position.y = $Camera3D.position.y - 0.4
+	if Input.is_action_just_released("crouch"):
+		$CollisionShape3D.show()
+		$CollisionShape3D_crouch.hide()
+		if $Camera3D.position.y < 0.85:
+			$Camera3D.position.y = $Camera3D.position.y + 0.4
 	
 	if attack_mode == ATTACK_MODE.MAGIC:
 		if Input.is_action_just_pressed("use_spell") and activespell != null:
