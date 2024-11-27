@@ -1,9 +1,20 @@
-[gd_scene load_steps=3 format=3 uid="uid://fsnxrnurofnw"]
+[gd_scene load_steps=7 format=3 uid="uid://fsnxrnurofnw"]
 
 [ext_resource type="PackedScene" uid="uid://4q7jctaucve2" path="res://Props/Platform/Platform.tscn" id="1_wk2ye"]
+[ext_resource type="Shader" uid="uid://bh81m0daajxq4" path="res://Props/Platform/Bridge_Energy_Shader.tres" id="2_7ovkr"]
 
 [sub_resource type="BoxShape3D" id="BoxShape3D_muth2"]
 size = Vector3(4.48915, 0.189301, 40.6726)
+
+[sub_resource type="PlaneMesh" id="PlaneMesh_k0wu2"]
+size = Vector2(2, 12)
+
+[sub_resource type="ShaderMaterial" id="ShaderMaterial_k20j7"]
+render_priority = 0
+shader = ExtResource("2_7ovkr")
+
+[sub_resource type="PlaneMesh" id="PlaneMesh_av0tk"]
+size = Vector2(2.19, 12)
 
 [node name="Bridge" type="Node3D"]
 
@@ -732,3 +743,33 @@ collision_layer = 32
 [node name="CollisionShape3D" type="CollisionShape3D" parent="StaticBody3D"]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.000999451, -0.0502777, -20.3308)
 shape = SubResource("BoxShape3D_muth2")
+
+[node name="MeshInstance3D" type="MeshInstance3D" parent="."]
+transform = Transform3D(0.906308, 0.422618, 0, -0.410364, 0.88003, 0.239059, 0.101031, -0.216661, 0.971005, 2, -2.06596, -5.9649)
+mesh = SubResource("PlaneMesh_k0wu2")
+surface_material_override/0 = SubResource("ShaderMaterial_k20j7")
+
+[node name="MeshInstance3D2" type="MeshInstance3D" parent="."]
+transform = Transform3D(0.906308, -0.422618, 0, 0.410364, 0.88003, 0.239059, -0.101031, -0.216661, 0.971005, -2, -2.06596, -5.9649)
+mesh = SubResource("PlaneMesh_k0wu2")
+surface_material_override/0 = SubResource("ShaderMaterial_k20j7")
+
+[node name="MeshInstance3D3" type="MeshInstance3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, 0.971005, 0.239059, 0, -0.239059, 0.971005, 0, -1.63821, -6.07021)
+mesh = SubResource("PlaneMesh_av0tk")
+surface_material_override/0 = SubResource("ShaderMaterial_k20j7")
+
+[node name="MeshInstance3D4" type="MeshInstance3D" parent="."]
+transform = Transform3D(-0.90634, -0.42255, -0.000305055, -0.410364, 0.88003, 0.239059, -0.100746, 0.216794, -0.971005, -2.00001, -2.06596, -35.0298)
+mesh = SubResource("PlaneMesh_k0wu2")
+surface_material_override/0 = SubResource("ShaderMaterial_k20j7")
+
+[node name="MeshInstance3D5" type="MeshInstance3D" parent="."]
+transform = Transform3D(-0.906276, 0.422686, -0.000305024, 0.410364, 0.88003, 0.239059, 0.101315, 0.216528, -0.971005, 1.99999, -2.06596, -35.031)
+mesh = SubResource("PlaneMesh_k0wu2")
+surface_material_override/0 = SubResource("ShaderMaterial_k20j7")
+
+[node name="MeshInstance3D6" type="MeshInstance3D" parent="."]
+transform = Transform3D(-1, 7.50999e-05, -0.00030504, 0, 0.971005, 0.239059, 0.000314148, 0.239059, -0.971005, 2.20562e-05, -1.63821, -34.9251)
+mesh = SubResource("PlaneMesh_av0tk")
+surface_material_override/0 = SubResource("ShaderMaterial_k20j7")
