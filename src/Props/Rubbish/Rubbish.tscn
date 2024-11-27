@@ -1,4 +1,4 @@
-[gd_scene load_steps=7 format=3 uid="uid://btg3grrvoe7r"]
+[gd_scene load_steps=6 format=3 uid="uid://btg3grrvoe7r"]
 
 [ext_resource type="PackedScene" uid="uid://ciq2l610d0v4g" path="res://Props/Rubbish/Rubbish.glb" id="1_qucyx"]
 [ext_resource type="Texture2D" uid="uid://6of6sdittfbt" path="res://Props/Rubbish/Rubbish_Tex.png" id="2_ig82n"]
@@ -11,15 +11,7 @@ roughness_texture = ExtResource("4_u2he8")
 normal_enabled = true
 normal_texture = ExtResource("3_2i8dg")
 
-[sub_resource type="ConvexPolygonShape3D" id="ConvexPolygonShape3D_ni8mb"]
-points = PackedVector3Array(-1.5, -0.134542, -1.5, -1.5, -0.134542, 1.5, -0.49863, 0.347641, -0.134495, 0.370595, 0.304548, -0.431969, 0.584965, 0.131045, -0.881852, 1.5, -0.134542, -1.5, -0.169734, 0.301292, 0.362666, 1.5, -0.134542, 1.5, 0.0328896, 0.136756, 1.08183, 0.316269, 0.340278, 0.36296, 0.623434, 0.326496, 0.110415, 0.666601, 0.288689, -0.444009, 1.15995, 0.246541, -0.4537, 1.09534, 0.197407, 0.476605, 0.283966, 0.233278, 0.767326)
-
 [node name="Rubbish" instance=ExtResource("1_qucyx")]
 
 [node name="Rubbish" parent="." index="0"]
 surface_material_override/0 = SubResource("StandardMaterial3D_jp5iq")
-
-[node name="StaticBody3D" type="StaticBody3D" parent="." index="1"]
-
-[node name="CollisionShape3D" type="CollisionShape3D" parent="StaticBody3D" index="0"]
-shape = SubResource("ConvexPolygonShape3D_ni8mb")
