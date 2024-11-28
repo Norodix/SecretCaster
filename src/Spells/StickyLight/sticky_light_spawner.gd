@@ -13,4 +13,4 @@ func use_spell(player: CharacterBody3D):
 	get_tree().root.add_child(instance, true)
 	instance.global_transform.basis = player.find_child("Camera3D").global_transform.basis
 	instance.global_transform.origin = player.global_transform.origin
-	instance.velocity = instance.global_transform.basis * 20 * Vector3(0, 0, -1)
+	instance.velocity = instance.global_transform.basis * 20 * Vector3(0, 0.25, -1).normalized()

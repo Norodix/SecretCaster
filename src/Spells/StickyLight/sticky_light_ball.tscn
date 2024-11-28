@@ -1,6 +1,7 @@
-[gd_scene load_steps=7 format=3 uid="uid://d1gqwjnh8rvnv"]
+[gd_scene load_steps=8 format=3 uid="uid://d1gqwjnh8rvnv"]
 
 [ext_resource type="Script" path="res://Spells/StickyLight/sticky_light_ball.gd" id="1_38vcp"]
+[ext_resource type="AudioStream" uid="uid://da0y2d483llxk" path="res://Spells/StickyLight/Audio/682635__bastianhallo__magic-spell.mp3" id="2_ka2ms"]
 
 [sub_resource type="QuadMesh" id="QuadMesh_gtnlp"]
 
@@ -49,5 +50,9 @@ layers = 33
 light_color = Color(1, 1, 0.666667, 1)
 light_energy = 5.0
 omni_range = 20.0
+
+[node name="AudioStreamPlayer3D" type="AudioStreamPlayer3D" parent="."]
+stream = ExtResource("2_ka2ms")
+autoplay = true
 
 [connection signal="timeout" from="Timer" to="." method="_on_timer_timeout"]
