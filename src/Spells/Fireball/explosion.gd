@@ -11,7 +11,7 @@ func _ready() -> void:
 		if burnable.has_method("burn"):
 			burnable.burn()
 		if burnable.has_method("damage"):
-			burnable.damage("fire")
+			burnable.damage(2, "fire")
 
 
 func _on_timeout_timeout() -> void:

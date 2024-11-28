@@ -57,7 +57,7 @@ func _process(delta: float) -> void:
 	if is_instance_valid(end_node) and damage_time:
 		damage_time = false
 		if end_node.has_method("damage"):
-			end_node.damage("shock")
+			end_node.damage(1, "shock")
 
 
 func _on_timer_timeout() -> void:

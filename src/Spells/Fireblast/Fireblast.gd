@@ -15,4 +15,4 @@ func use_spell(player: CharacterBody3D):
 		if burnable.has_method("burn"):
 			burnable.burn()
 		if burnable.has_method("damage"):
-			burnable.damage("fire")
+			burnable.damage(3, "fire")

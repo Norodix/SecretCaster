@@ -25,7 +25,7 @@ func _on_body_entered(body: Node) -> void:
 		return
 	has_contacted = true
 	if body.has_method("damage"):
-		body.damage("physical")
+		body.damage(1, "physical")
 		print("damaging: ", body)
 	pass # Replace with function body.
 
