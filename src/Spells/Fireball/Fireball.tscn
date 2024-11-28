@@ -1,7 +1,8 @@
-[gd_scene load_steps=6 format=3 uid="uid://btfj5niavvr2d"]
+[gd_scene load_steps=7 format=3 uid="uid://btfj5niavvr2d"]
 
 [ext_resource type="Script" path="res://Spells/Fireball/fireball.gd" id="1_qsea5"]
 [ext_resource type="PackedScene" uid="uid://de27h0u0r183d" path="res://Spells/Fireball/fireball_Flying.tscn" id="2_dfcna"]
+[ext_resource type="AudioStream" uid="uid://j75ahni8hldd" path="res://Spells/Fireball/Audio/burn_looped.mp3" id="3_7pui5"]
 
 [sub_resource type="SphereMesh" id="SphereMesh_w8wnu"]
 
@@ -29,3 +30,7 @@ transform = Transform3D(-1, 0, 8.74228e-08, 0, 1, 0, -8.74228e-08, 0, -1, 0, 0, 
 
 [node name="CollisionShape3D" type="CollisionShape3D" parent="."]
 shape = SubResource("SphereShape3D_svuhh")
+
+[node name="AudioStreamPlayer3D" type="AudioStreamPlayer3D" parent="."]
+stream = ExtResource("3_7pui5")
+parameters/looping = false

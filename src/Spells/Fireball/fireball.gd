@@ -7,6 +7,10 @@ const lifetime_ms = 5000
 @onready var explosion_scene : Resource = preload("res://Spells/Fireball/Explosion.tscn")
 
 
+func _ready() -> void:
+	$AudioStreamPlayer3D.play(randf()*100)
+
+
 func _physics_process(delta: float) -> void:
 	if birthtime + lifetime_ms < Time.get_ticks_msec():
 		self.queue_free()

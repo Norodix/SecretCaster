@@ -1,7 +1,8 @@
-[gd_scene load_steps=4 format=3 uid="uid://b6rxvp2nt4hh8"]
+[gd_scene load_steps=5 format=3 uid="uid://b6rxvp2nt4hh8"]
 
 [ext_resource type="Script" path="res://Spells/Fireball/explosion.gd" id="1_2eth2"]
-[ext_resource type="PackedScene" uid="uid://clbtiqgtcfe82" path="res://Spells/Fireball/Explosion_VFX.tscn" id="2_wkdjp"]
+[ext_resource type="PackedScene" uid="uid://bh67b4puflnkx" path="res://Spells/Fireball/Explosion_VFX.tscn" id="2_wkdjp"]
+[ext_resource type="AudioStream" uid="uid://p1pb7430vbd4" path="res://Spells/Fireball/Audio/explosion.mp3" id="3_iw4vh"]
 
 [sub_resource type="SphereShape3D" id="SphereShape3D_j14nd"]
 radius = 2.0
@@ -22,5 +23,9 @@ shape = SubResource("SphereShape3D_j14nd")
 wait_time = 5.0
 one_shot = true
 autostart = true
+
+[node name="AudioStreamPlayer3D" type="AudioStreamPlayer3D" parent="."]
+stream = ExtResource("3_iw4vh")
+autoplay = true
 
 [connection signal="timeout" from="Timeout" to="." method="_on_timeout_timeout"]
