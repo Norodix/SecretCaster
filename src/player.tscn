@@ -14,7 +14,7 @@
 
 [sub_resource type="CapsuleShape3D" id="CapsuleShape3D_7wisv"]
 radius = 0.4
-height = 0.8
+height = 1.6
 
 [sub_resource type="SeparationRayShape3D" id="SeparationRayShape3D_8qhtv"]
 length = 0.9
@@ -37,10 +37,6 @@ transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, -0.2, -0.3)
 
 [node name="CollisionShape3D" type="CollisionShape3D" parent="."]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.2, 0)
-shape = SubResource("CapsuleShape3D_7wisv")
-
-[node name="CollisionShape3D_crouch" type="CollisionShape3D" parent="."]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, -0.104965, 0)
 shape = SubResource("CapsuleShape3D_7wisv")
 
 [node name="StairDetectorRay" type="CollisionShape3D" parent="."]
