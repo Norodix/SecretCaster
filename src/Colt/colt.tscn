@@ -1,9 +1,13 @@
-[gd_scene load_steps=49 format=3 uid="uid://bewc1hnbc3rf5"]
+[gd_scene load_steps=53 format=3 uid="uid://bewc1hnbc3rf5"]
 
 [ext_resource type="PackedScene" uid="uid://bjxwguwajbqgy" path="res://Colt/colt.glb" id="1_ukx1w"]
 [ext_resource type="Texture2D" uid="uid://6jnxya7dpijr" path="res://Colt/Muzzleflash_Tex.png" id="1_utavs"]
 [ext_resource type="Texture2D" uid="uid://cxft0psktqy3e" path="res://Colt/Colt_Tex.png" id="2_48r4l"]
 [ext_resource type="Texture2D" uid="uid://cvxjmob5pc1b8" path="res://Colt/Colt_Nrm.png" id="3_pnyne"]
+[ext_resource type="AudioStream" uid="uid://cunap48gxr44i" path="res://Colt/Audio/shot.mp3" id="5_yo1k2"]
+[ext_resource type="AudioStream" uid="uid://0n1p6mgoq451" path="res://Colt/Audio/reload.mp3" id="6_ijq73"]
+[ext_resource type="AudioStream" uid="uid://cy88e25i84gkd" path="res://Colt/Audio/goes_empty.mp3" id="7_vyih7"]
+[ext_resource type="AudioStream" uid="uid://k3tk5h2geapm" path="res://Colt/Audio/empty_click.mp3" id="8_88aqk"]
 
 [sub_resource type="StandardMaterial3D" id="StandardMaterial3D_rmrym"]
 albedo_texture = ExtResource("2_48r4l")
@@ -541,3 +545,15 @@ libraries = {
 [node name="AnimationTree" type="AnimationTree" parent="." index="8"]
 tree_root = SubResource("AnimationNodeStateMachine_tiuuc")
 anim_player = NodePath("../AnimationPlayer")
+
+[node name="AudioStreamPlayer3D_Shoot" type="AudioStreamPlayer3D" parent="." index="9"]
+stream = ExtResource("5_yo1k2")
+
+[node name="AudioStreamPlayer3D_Reload" type="AudioStreamPlayer3D" parent="." index="10"]
+stream = ExtResource("6_ijq73")
+
+[node name="AudioStreamPlayer3D_Empty" type="AudioStreamPlayer3D" parent="." index="11"]
+stream = ExtResource("7_vyih7")
+
+[node name="AudioStreamPlayer3D_Click" type="AudioStreamPlayer3D" parent="." index="12"]
+stream = ExtResource("8_88aqk")

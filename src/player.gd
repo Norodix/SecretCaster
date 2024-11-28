@@ -168,16 +168,19 @@ func damage(hit : float = 10):
 
 # Bingibungel shoots the pistol in the comment
 func shoot_pistol():
+	if pistol_busy():
+		return
 	if bullets == 0:
 		print("Bangol says haha")
 		# Play clicky sound
-		return
-	if pistol_busy():
+		pistol.find_child("AudioStreamPlayer3D_Click", true, false).play()
 		return
 	bullets -= 1
 	playerAnimState.travel("Hands_Pistol_Fire")
+	pistol.find_child("AudioStreamPlayer3D_Shoot", true, false).play()
 	if bullets == 0:
 		pistolAnimState.travel("colt_lastshot")
+		pistol.find_child("AudioStreamPlayer3D_Empty", true, false).play()
 	else:
 		pistolAnimState.travel("colt_shoot")
 	$Pistol_Shoot_Cooldown.start()
@@ -217,6 +220,7 @@ func reload_pistol():
 		return
 	pistolAnimState.travel("RESET")
 	playerAnimState.travel("Hands_Pistol_Reload")
+	pistol.find_child("AudioStreamPlayer3D_Reload", true, false).play()
 	if bullets == 0:
 		bullets = bullet_count
 	else:
