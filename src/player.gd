@@ -155,14 +155,16 @@ func pistol_busy():
 	return false
 
 
-func damage(hit : float = 10):
-	print("damage")
+func damage(hit : float = 10, type : String = "physical"):
 	if not $Damage_Cooldown.is_stopped():
 		# Player cannot be damaged so quickly again
+		print("damage on cooldown")
 		return
+	print("damage")
 	self.health -= hit
 	$Damage_Cooldown.start()
 	$HUD.damage()
+	$AudioStreamPlayer3D_Damage.play()
 	find_child("Healthbar").value = health # TODO ugly
 
 
@@ -204,7 +206,7 @@ func shoot_pistol():
 		#print(raycast_result.collider)
 		var body = raycast_result.collider
 		if body.has_method("damage"):
-			body.damage("colt")
+			body.damage(1, "colt")
 		trail_end = raycast_result.position
 	# draw pistol trail
 	var pt = pistol_trail.instantiate()

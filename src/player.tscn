@@ -1,4 +1,4 @@
-[gd_scene load_steps=16 format=3 uid="uid://dl2vuwabcukwp"]
+[gd_scene load_steps=17 format=3 uid="uid://dl2vuwabcukwp"]
 
 [ext_resource type="Script" path="res://player.gd" id="1_q4vdp"]
 [ext_resource type="PackedScene" uid="uid://cf64v5ohrm125" path="res://Hands/Magic_Hands.tscn" id="2_2eniw"]
@@ -11,6 +11,7 @@
 [ext_resource type="PackedScene" uid="uid://bdl3aa3dar438" path="res://Spells/Snowing/SnowSpawner.tscn" id="8_foarl"]
 [ext_resource type="PackedScene" uid="uid://b73q46no704v7" path="res://Spells/Wind/WindSpell.tscn" id="9_bi7b6"]
 [ext_resource type="PackedScene" uid="uid://cvba5sgdncr8q" path="res://hud.tscn" id="11_ntyv5"]
+[ext_resource type="AudioStream" uid="uid://ba3chnbxisywp" path="res://SoundFX/damage.mp3" id="12_56bjc"]
 
 [sub_resource type="CapsuleShape3D" id="CapsuleShape3D_7wisv"]
 radius = 0.4
@@ -92,5 +93,8 @@ one_shot = true
 one_shot = true
 
 [node name="HUD" parent="." instance=ExtResource("11_ntyv5")]
+
+[node name="AudioStreamPlayer3D_Damage" type="AudioStreamPlayer3D" parent="."]
+stream = ExtResource("12_56bjc")
 
 [connection signal="timeout" from="Pistol_Visibility_Timer" to="." method="_on_timer_timeout"]
