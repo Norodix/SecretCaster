@@ -1,7 +1,7 @@
 extends CharacterBody3D
 
 var target = Vector3.ZERO
-var speed = 8
+var speed = 3
 var health = 10
 var acceleration = 30
 @onready var player = get_tree().root.find_child("Player", true, false)
@@ -61,21 +61,28 @@ var states = {
 var state = "idle"
 
 
-func damage(type : String):
+func damage(value : float, type : String):
+	var val = value
 	match type:
 		"fire":
-			health -= 5
-		"colt":
-			health -= 2
+			val *= 2
 		"shock":
-			health -= 0.5
-		_:
-			health -= 1
+			val *= 1.5
+	health -= val
+	if not $AudioStreamPlayer3D_Damage.playing:
+		$AudioStreamPlayer3D_Damage.play()
 	if health <= 0:
 		destroy()
 
 
 func destroy():
+	trigger_state_transisiton("idle")
+	$NavigationTimer.stop()
+	animState.next()
+	animState.travel("Wraith_Idle")
+	$CollisionShape3D.set_deferred("disabled", true)
+	$AudioStreamPlayer3D_Death.play()
+	await $AudioStreamPlayer3D_Death.finished
 	self.queue_free()
 
 
@@ -89,6 +96,8 @@ func attack():
 
 
 func _physics_process(delta: float) -> void:
+	if health <= 0:
+		return
 	var nextpos = $NavigationAgent3D.get_next_path_position()
 	var desired_velocity = (nextpos - global_position).normalized() * speed
 	if $NavigationAgent3D.is_navigation_finished():
@@ -141,6 +150,9 @@ func random_with_weights(possiblities : Array):
 # Trigger state transition to specific state
 # If not specified, a random state is returned based on the state transition table's weights
 func trigger_state_transisiton(to : String = ""):
+	if health <= 0:
+		state = "idle"
+		return
 	var newstate : String
 	if to == "":
 		var next_possible : Array = states[state]["next"]

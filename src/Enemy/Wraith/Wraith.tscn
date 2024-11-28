@@ -1,9 +1,12 @@
-[gd_scene load_steps=4 format=3 uid="uid://dv2yjy0vw0c3e"]
+[gd_scene load_steps=6 format=3 uid="uid://dv2yjy0vw0c3e"]
 
 [ext_resource type="Script" path="res://Enemy/Wraith/wraith.gd" id="1_qdwke"]
 [ext_resource type="PackedScene" uid="uid://gx88hjnj8obd" path="res://Wraith/wraith_model.tscn" id="2_e58ul"]
+[ext_resource type="AudioStream" uid="uid://btqmjjhnwlme2" path="res://Enemy/Wraith/Audio/damage.mp3" id="3_hm0j4"]
+[ext_resource type="AudioStream" uid="uid://b8qkdpedsvjfj" path="res://Enemy/Wraith/Audio/death.mp3" id="4_nlfsu"]
 
 [sub_resource type="CapsuleShape3D" id="CapsuleShape3D_buykj"]
+radius = 0.3
 
 [node name="Wraith" type="CharacterBody3D"]
 collision_layer = 28
@@ -27,6 +30,12 @@ transform = Transform3D(-1, 0, 0, 0, 1, 0, 0, 0, -1, 0, 0, 0)
 
 [node name="StateTimer" type="Timer" parent="."]
 autostart = true
+
+[node name="AudioStreamPlayer3D_Damage" type="AudioStreamPlayer3D" parent="."]
+stream = ExtResource("3_hm0j4")
+
+[node name="AudioStreamPlayer3D_Death" type="AudioStreamPlayer3D" parent="."]
+stream = ExtResource("4_nlfsu")
 
 [connection signal="timeout" from="NavigationTimer" to="." method="_on_navigation_timer_timeout"]
 [connection signal="timeout" from="StateTimer" to="." method="_on_state_timer_timeout"]
