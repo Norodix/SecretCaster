@@ -4,3 +4,5 @@
 
 [node name="PistolThrow" type="Node3D"]
 script = ExtResource("1_8646j")
+
+[node name="AudioStreamPlayer3D" type="AudioStreamPlayer3D" parent="."]
