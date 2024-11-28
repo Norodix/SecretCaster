@@ -13,3 +13,4 @@ func _physics_process(delta: float) -> void:
 func use_spell(player: CharacterBody3D):
 	player.velocity.y = 10
 	$GPUParticles3D.emitting = true
+	$AudioStreamPlayer3D.play()
