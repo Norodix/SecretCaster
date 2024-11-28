@@ -12,12 +12,16 @@ func use_spell(player: CharacterBody3D):
 	find_parent("Player").find_child("Wind_In-hand").blow()
 	$GPUParticlesAttractorSphere3D.visible = true
 	$Timeout.start()
+	$AudioStreamPlayer3D.play()
 	var bodies = $BlowArea.get_overlapping_bodies()
 	for body in bodies:
 		var d = body.global_position - global_position
 		var power = remap(d.length(), 3, 10, 1, 0)
 		power = clamp(power, 0, 1)
 		body.velocity = d.normalized() * 20 * power
+	var areas = $BlowArea.get_overlapping_areas()
+	if not areas.is_empty():
+		$AudioStreamPlayer3D_Rustle.play()
 
 
 func _process(delta: float) -> void:

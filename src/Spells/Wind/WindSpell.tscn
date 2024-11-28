@@ -1,6 +1,8 @@
-[gd_scene load_steps=3 format=3 uid="uid://b73q46no704v7"]
+[gd_scene load_steps=5 format=3 uid="uid://b73q46no704v7"]
 
 [ext_resource type="Script" path="res://Spells/Wind/wind_spell.gd" id="1_j23jl"]
+[ext_resource type="AudioStream" uid="uid://i4e8wx1pv2u7" path="res://Spells/Wind/Audio/wind.mp3" id="2_t2yvc"]
+[ext_resource type="AudioStream" uid="uid://dvmbln6dac0n6" path="res://Spells/Wind/Audio/rustle.mp3" id="3_hpnol"]
 
 [sub_resource type="SphereShape3D" id="SphereShape3D_s8tex"]
 radius = 10.0
@@ -24,5 +26,12 @@ collision_mask = 16
 
 [node name="CollisionShape3D" type="CollisionShape3D" parent="BlowArea"]
 shape = SubResource("SphereShape3D_s8tex")
+
+[node name="AudioStreamPlayer3D" type="AudioStreamPlayer3D" parent="."]
+stream = ExtResource("2_t2yvc")
+
+[node name="AudioStreamPlayer3D_Rustle" type="AudioStreamPlayer3D" parent="."]
+stream = ExtResource("3_hpnol")
+max_db = 0.0
 
 [connection signal="timeout" from="Timeout" to="." method="_on_timeout_timeout"]
