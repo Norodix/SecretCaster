@@ -1,4 +1,4 @@
-[gd_scene load_steps=15 format=3 uid="uid://dl2vuwabcukwp"]
+[gd_scene load_steps=16 format=3 uid="uid://dl2vuwabcukwp"]
 
 [ext_resource type="Script" path="res://player.gd" id="1_q4vdp"]
 [ext_resource type="PackedScene" uid="uid://cf64v5ohrm125" path="res://Hands/Magic_Hands.tscn" id="2_2eniw"]
@@ -14,7 +14,10 @@
 
 [sub_resource type="CapsuleShape3D" id="CapsuleShape3D_7wisv"]
 radius = 0.4
-height = 1.6
+height = 1.2
+
+[sub_resource type="SphereShape3D" id="SphereShape3D_6dedm"]
+radius = 0.4
 
 [sub_resource type="SeparationRayShape3D" id="SeparationRayShape3D_8qhtv"]
 length = 0.9
@@ -35,9 +38,18 @@ fov = 60.0
 [node name="Magic_Hands" parent="Camera3D" instance=ExtResource("2_2eniw")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, -0.2, -0.3)
 
-[node name="CollisionShape3D" type="CollisionShape3D" parent="."]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.2, 0)
+[node name="CollisionShape3D_Body" type="CollisionShape3D" parent="."]
 shape = SubResource("CapsuleShape3D_7wisv")
+
+[node name="CollisionShape3D_Head" type="CollisionShape3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.6, 0)
+shape = SubResource("SphereShape3D_6dedm")
+
+[node name="Area3D_Head" type="Area3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.6, 0)
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="Area3D_Head"]
+shape = SubResource("SphereShape3D_6dedm")
 
 [node name="StairDetectorRay" type="CollisionShape3D" parent="."]
 transform = Transform3D(1, 0, 0, 0, -4.37114e-08, -1, 0, 1, -4.37114e-08, 0, 0, 0)

@@ -9,6 +9,7 @@ var vh_damping = 0.9
 var vh_acc = 100
 var mousespeed = 0.001
 var health = 100
+var crouching = false
 
 var action_history = PackedStringArray()
 var historysize = 10
@@ -57,7 +58,7 @@ func _physics_process(delta: float) -> void:
 	var input_move_vec = Vector3(inputvector.x, 0, inputvector.y).rotated(Vector3.UP, facing_angle)
 	vh += input_move_vec * vh_acc * delta
 	# select speed based on player state
-	var s = crouch_speed if Input.is_action_pressed("crouch") else speed
+	var s = crouch_speed if crouching else speed
 	vh = vh.limit_length(s)
 	
 	velocity = vh + Vector3(0, vy, 0)
@@ -82,9 +83,18 @@ func _process(delta: float) -> void:
 				activate_spell(spell)
 	
 	if Input.is_action_pressed("crouch"):
+		crouching = true
+	else:
+		var bodies = $Area3D_Head.get_overlapping_bodies()
+		if bodies.is_empty():
+			crouching = false
+	
+	if crouching:
 		$Camera3D.position.y = lerp($Camera3D.position.y, 0.45, 0.5)
+		$CollisionShape3D_Head.disabled = true
 	else:
 		$Camera3D.position.y = lerp($Camera3D.position.y, 0.85, 0.5)
+		$CollisionShape3D_Head.disabled = false
 	
 	if attack_mode == ATTACK_MODE.MAGIC:
 		if Input.is_action_just_pressed("use_spell") and activespell != null:
