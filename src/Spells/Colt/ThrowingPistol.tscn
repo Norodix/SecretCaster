@@ -1,7 +1,8 @@
-[gd_scene load_steps=5 format=3 uid="uid://c8na5etjtbasd"]
+[gd_scene load_steps=6 format=3 uid="uid://c8na5etjtbasd"]
 
 [ext_resource type="Script" path="res://Spells/Colt/throwing_pistol.gd" id="1_gjk8h"]
 [ext_resource type="PackedScene" uid="uid://bewc1hnbc3rf5" path="res://Colt/colt.tscn" id="2_2uofk"]
+[ext_resource type="AudioStream" uid="uid://c4t8ny87ouhi6" path="res://Spells/Colt/Audio/hit.mp3" id="3_yhuiw"]
 
 [sub_resource type="BoxShape3D" id="BoxShape3D_ey1tc"]
 size = Vector3(0.1, 0.219, 0.7)
@@ -33,6 +34,11 @@ shape = SubResource("BoxShape3D_ey1tc")
 [node name="CollisionShape3D2" type="CollisionShape3D" parent="."]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.000439458, 1.49012e-08, -0.3)
 shape = SubResource("BoxShape3D_qocfq")
+
+[node name="AudioStreamPlayer3D" type="AudioStreamPlayer3D" parent="."]
+stream = ExtResource("3_yhuiw")
+attenuation_model = 1
+max_db = 0.0
 
 [connection signal="body_entered" from="." to="." method="_on_body_entered"]
 [connection signal="timeout" from="Timer" to="." method="_on_timer_timeout"]
