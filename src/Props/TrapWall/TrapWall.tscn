@@ -1,0 +1,32 @@
+[gd_scene load_steps=5 format=3 uid="uid://bsybgdqugq5ur"]
+
+[ext_resource type="PackedScene" uid="uid://81er2fdr7vdp" path="res://Props/TrapWall/hurtwall.tscn" id="1_js1n5"]
+[ext_resource type="Script" path="res://Props/TrapWall/trap_wall.gd" id="1_nfhqc"]
+
+[sub_resource type="BoxShape3D" id="BoxShape3D_kgc40"]
+size = Vector3(3.5, 1.6, 0.626709)
+
+[sub_resource type="BoxShape3D" id="BoxShape3D_lnrkw"]
+size = Vector3(4, 2, 0.5)
+
+[node name="Trap" type="Node3D"]
+script = ExtResource("1_nfhqc")
+
+[node name="Hurtwall" parent="." instance=ExtResource("1_js1n5")]
+
+[node name="Area3D" type="Area3D" parent="."]
+collision_layer = 0
+collision_mask = 10
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="Area3D"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.05, 1, 0.313354)
+shape = SubResource("BoxShape3D_kgc40")
+
+[node name="StaticBody3D" type="StaticBody3D" parent="."]
+collision_mask = 0
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="StaticBody3D"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 1, -0.25)
+shape = SubResource("BoxShape3D_lnrkw")
+
+[connection signal="body_entered" from="Area3D" to="." method="_on_area_3d_body_entered"]
