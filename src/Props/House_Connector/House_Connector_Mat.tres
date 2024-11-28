@@ -1,8 +1,0 @@
-[gd_resource type="StandardMaterial3D" load_steps=2 format=3 uid="uid://4um07eb1vjf0"]
-
-[ext_resource type="Texture2D" uid="uid://bq21ebt6di7ii" path="res://Props/House_Connector/House_Connector_Tex.png" id="1_c5o0g"]
-
-[resource]
-resource_local_to_scene = true
-albedo_texture = ExtResource("1_c5o0g")
-metallic = 0.65

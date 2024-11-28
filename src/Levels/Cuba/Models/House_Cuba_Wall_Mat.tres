@@ -1,0 +1,10 @@
+[gd_resource type="StandardMaterial3D" load_steps=3 format=3 uid="uid://btr55dj30j5q6"]
+
+[ext_resource type="Texture2D" uid="uid://badjswlqys74w" path="res://Levels/Cuba/Models/House_Cuba_Tex.png" id="1_sy7tk"]
+[ext_resource type="Texture2D" uid="uid://com8tsgi8skxt" path="res://Levels/Cuba/Models/House_Cuba_Nrm.png" id="2_ba8c7"]
+
+[resource]
+resource_local_to_scene = true
+albedo_texture = ExtResource("1_sy7tk")
+normal_enabled = true
+normal_texture = ExtResource("2_ba8c7")

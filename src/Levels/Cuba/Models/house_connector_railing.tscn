@@ -1,0 +1,21 @@
+[gd_scene load_steps=4 format=3 uid="uid://c4aw3uk8lpe1o"]
+
+[ext_resource type="PackedScene" uid="uid://7425vs5xcpok" path="res://Props/House_Connector/House_Connector.glb" id="1_8mdm7"]
+[ext_resource type="Material" uid="uid://btr55dj30j5q6" path="res://Levels/Cuba/Models/House_Cuba_Wall_Mat.tres" id="2_ygsaj"]
+[ext_resource type="Material" uid="uid://xn0hn6hhbhhf" path="res://Levels/Cuba/Models/House_Cuba_Doors_Mat.tres" id="3_jkmlx"]
+
+[node name="house_connector_railing" instance=ExtResource("1_8mdm7")]
+
+[node name="Storey_Connector" parent="." index="0"]
+visible = false
+surface_material_override/0 = ExtResource("2_ygsaj")
+surface_material_override/1 = ExtResource("3_jkmlx")
+
+[node name="Ground_Connector" parent="." index="1"]
+visible = false
+surface_material_override/0 = ExtResource("2_ygsaj")
+surface_material_override/1 = ExtResource("3_jkmlx")
+
+[node name="Railing_Roof_Connector" parent="." index="2"]
+surface_material_override/0 = ExtResource("2_ygsaj")
+surface_material_override/1 = ExtResource("3_jkmlx")

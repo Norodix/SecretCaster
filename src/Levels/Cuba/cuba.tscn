@@ -1,4 +1,4 @@
-[gd_scene load_steps=32 format=3 uid="uid://j1em8finh0ke"]
+[gd_scene load_steps=31 format=3 uid="uid://j1em8finh0ke"]
 
 [ext_resource type="Texture2D" uid="uid://t44swfoj3fbp" path="res://Textures/DEV/Orange/texture_01.png" id="1_v2ig0"]
 [ext_resource type="PackedScene" uid="uid://b2nfwk1744el2" path="res://Levels/Cuba/Models/sarcophagus.tscn" id="2_hvnxm"]
@@ -6,7 +6,6 @@
 [ext_resource type="PackedScene" uid="uid://xpcvbbtrf3cw" path="res://Props/Road_Circle/Road_Circle.tscn" id="4_ylwab"]
 [ext_resource type="PackedScene" uid="uid://dl2vuwabcukwp" path="res://player.tscn" id="6_5cxfi"]
 [ext_resource type="PackedScene" uid="uid://mht8ss75f18u" path="res://Levels/Cuba/Models/house_cuba_prefab.tscn" id="11_b778h"]
-[ext_resource type="PackedScene" uid="uid://deiy8d2pbtik8" path="res://Props/House_Connector/House_Connector.tscn" id="12_a8c8i"]
 [ext_resource type="PackedScene" uid="uid://kb7il64chu13" path="res://Props/Cortez/Cortez.tscn" id="12_jrse6"]
 [ext_resource type="PackedScene" uid="uid://njfw08gvqe3q" path="res://Props/Streetlamp/Streetlamp.tscn" id="13_oxlf2"]
 [ext_resource type="PackedScene" uid="uid://btg3grrvoe7r" path="res://Props/Rubbish/Rubbish.tscn" id="14_u8712"]
@@ -282,220 +281,15 @@ transform = Transform3D(0.480224, 0, 0.877146, 0, 1, 0, -0.877146, 0, 0.480224, 
 [node name="Non_explorable_Houses" type="Node3D" parent="."]
 
 [node name="house_cuba_prefab" parent="Non_explorable_Houses" instance=ExtResource("11_b778h")]
-transform = Transform3D(0.995869, 0, 0.0908064, 0, 1, 0, -0.0908064, 0, 0.995869, -66.6916, 0, 6.31761)
-wall_color = Color(0.478431, 0.533333, 0.509804, 1)
-
-[node name="house_cuba_prefab2" parent="Non_explorable_Houses" instance=ExtResource("11_b778h")]
-transform = Transform3D(0.995889, 0, -0.0905804, 0, 1, 0, 0.0905804, 0, 0.995889, -66.7638, 1.90735e-06, -5.34648)
-wall_color = Color(0.478431, 0.533333, 0.509804, 1)
-
-[node name="House_Connector" parent="Non_explorable_Houses" instance=ExtResource("12_a8c8i")]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -67, 0, 0)
-wall_color = Color(0.477711, 0.532874, 0.508124, 1)
-
-[node name="house_cuba_prefab5" parent="Non_explorable_Houses" instance=ExtResource("11_b778h")]
-transform = Transform3D(0.959874, 0, -0.280432, 0, 1, 0, 0.280432, 0, 0.959874, -64.3222, 0, -18.7853)
-wall_color = Color(0.723167, 0.998852, 1, 1)
-
-[node name="house_cuba_prefab6" parent="Non_explorable_Houses" instance=ExtResource("11_b778h")]
-transform = Transform3D(0.893427, 0, -0.44921, 0, 1, 0, 0.44921, 0, 0.893427, -60.1152, 1.90735e-06, -29.6645)
-wall_color = Color(0.721569, 1, 1, 1)
-
-[node name="House_Connector3" parent="Non_explorable_Houses" instance=ExtResource("12_a8c8i")]
-transform = Transform3D(0.930443, 0, -0.366436, 0, 1, 0, 0.366436, 0, 0.930443, -62.2941, 0, -24.7765)
-wall_color = Color(0.721569, 1, 1, 1)
-
-[node name="house_cuba_prefab3" parent="Non_explorable_Houses" instance=ExtResource("11_b778h")]
-transform = Transform3D(0.995869, 0, 0.0908064, 0, 1, 0, -0.0908064, 0, 0.995869, -81.917, 0, 6.31761)
-wall_color = Color(0.878431, 0.72549, 0.74902, 1)
-
-[node name="house_cuba_prefab4" parent="Non_explorable_Houses" instance=ExtResource("11_b778h")]
-transform = Transform3D(0.995889, 0, -0.0905804, 0, 1, 0, 0.0905804, 0, 0.995889, -81.9892, 1.90735e-06, -5.34648)
-wall_color = Color(0.879775, 0.726069, 0.747994, 1)
-
-[node name="House_Connector2" parent="Non_explorable_Houses" instance=ExtResource("12_a8c8i")]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -82.2254, 0, 0)
-wall_color = Color(0.878431, 0.72549, 0.74902, 1)
-
-[node name="house_cuba_prefab7" parent="Non_explorable_Houses" instance=ExtResource("11_b778h")]
-transform = Transform3D(0.955521, 0, -0.294924, 0, 1, 0, 0.294924, 0, 0.955521, -78.8747, 0, -23.6685)
-wall_color = Color(0.784314, 0.819608, 0.745098, 1)
-
-[node name="house_cuba_prefab8" parent="Non_explorable_Houses" instance=ExtResource("11_b778h")]
-transform = Transform3D(0.886527, 0, -0.462677, 0, 1, 0, 0.462677, 0, 0.886527, -74.5036, 1.90735e-06, -34.4828)
-wall_color = Color(0.783501, 0.820575, 0.747048, 1)
-
-[node name="House_Connector4" parent="Non_explorable_Houses" instance=ExtResource("12_a8c8i")]
-transform = Transform3D(0.924792, 0, -0.380473, 0, 1, 0, 0.380473, 0, 0.924792, -76.7562, 0, -29.6283)
-wall_color = Color(0.784314, 0.819608, 0.745098, 1)
-
-[node name="house_cuba_prefab9" parent="Non_explorable_Houses" instance=ExtResource("11_b778h")]
-transform = Transform3D(0.895952, 0, 0.444151, 0, 1, 0, -0.444151, 0, 0.895952, -59.7056, 0, 30.0849)
-wall_color = Color(0.723167, 0.998852, 1, 1)
-
-[node name="house_cuba_prefab10" parent="Non_explorable_Houses" instance=ExtResource("11_b778h")]
-transform = Transform3D(0.961445, 0, 0.275, 0, 1, 0, -0.275, 0, 0.961445, -63.9831, 1.90735e-06, 19.2332)
-wall_color = Color(0.721569, 1, 1, 1)
-
-[node name="House_Connector5" parent="Non_explorable_Houses" instance=ExtResource("12_a8c8i")]
-transform = Transform3D(0.932582, 0, 0.360957, 0, 1, 0, -0.360957, 0, 0.932582, -62.2736, 0, 24.3045)
-wall_color = Color(0.721569, 1, 1, 1)
-
-[node name="house_cuba_prefab11" parent="Non_explorable_Houses" instance=ExtResource("11_b778h")]
-transform = Transform3D(0.90257, 0, 0.430543, 0, 1, 0, -0.430543, 0, 0.90257, -73.7169, 0, 36.3541)
-wall_color = Color(0.784314, 0.819608, 0.745098, 1)
-
-[node name="house_cuba_prefab12" parent="Non_explorable_Houses" instance=ExtResource("11_b778h")]
-transform = Transform3D(0.965495, 0, 0.260421, 0, 1, 0, -0.260421, 0, 0.965495, -77.8298, 1.90735e-06, 25.4389)
-wall_color = Color(0.783501, 0.820575, 0.747048, 1)
-
-[node name="House_Connector6" parent="Non_explorable_Houses" instance=ExtResource("12_a8c8i")]
-transform = Transform3D(0.937937, 0, 0.346805, 0, 1, 0, -0.346805, 0, 0.937937, -76.1972, 0, 30.5355)
-wall_color = Color(0.784314, 0.819608, 0.745098, 1)
-
-[node name="house_cuba_prefab13" parent="Non_explorable_Houses" instance=ExtResource("11_b778h")]
-transform = Transform3D(0.122597, 0, 0.992457, 0, 1, 0, -0.992457, 0, 0.122597, -7.55196, 3.8147e-06, 66.3464)
-wall_color = Color(0.478431, 0.533333, 0.509804, 1)
-
-[node name="house_cuba_prefab14" parent="Non_explorable_Houses" instance=ExtResource("11_b778h")]
-transform = Transform3D(0.299857, 0, 0.953984, 0, 1, 0, -0.953984, 0, 0.299857, -18.9657, 5.72205e-06, 63.9417)
-wall_color = Color(0.478431, 0.533333, 0.509804, 1)
-
-[node name="House_Connector7" parent="Non_explorable_Houses" instance=ExtResource("12_a8c8i")]
-transform = Transform3D(0.212212, 0, 0.977224, 0, 1, 0, -0.977224, 0, 0.212212, -13.7911, 3.8147e-06, 65.3071)
-wall_color = Color(0.477711, 0.532874, 0.508124, 1)
-
-[node name="house_cuba_prefab15" parent="Non_explorable_Houses" instance=ExtResource("11_b778h")]
-transform = Transform3D(0.477741, 0, 0.878501, 0, 1, 0, -0.878501, 0, 0.477741, -31.5803, 3.8147e-06, 58.7039)
-wall_color = Color(0.723167, 0.998852, 1, 1)
-
-[node name="house_cuba_prefab16" parent="Non_explorable_Houses" instance=ExtResource("11_b778h")]
-transform = Transform3D(0.628574, 0, 0.77775, 0, 1, 0, -0.77775, 0, 0.628574, -41.3189, 5.72205e-06, 52.284)
-wall_color = Color(0.721569, 1, 1, 1)
-
-[node name="House_Connector8" parent="Non_explorable_Houses" instance=ExtResource("12_a8c8i")]
-transform = Transform3D(0.555541, 0, 0.831489, 0, 1, 0, -0.831489, 0, 0.555541, -37.0047, 3.8147e-06, 55.4506)
-wall_color = Color(0.721569, 1, 1, 1)
-
-[node name="house_cuba_prefab17" parent="Non_explorable_Houses" instance=ExtResource("11_b778h")]
-transform = Transform3D(0.122597, 0, 0.992457, 0, 1, 0, -0.992457, 0, 0.122597, -10.783, 3.8147e-06, 81.2251)
-wall_color = Color(0.878431, 0.72549, 0.74902, 1)
-
-[node name="house_cuba_prefab18" parent="Non_explorable_Houses" instance=ExtResource("11_b778h")]
-transform = Transform3D(0.299857, 0, 0.953984, 0, 1, 0, -0.953984, 0, 0.299857, -22.1967, 5.72205e-06, 78.8204)
-wall_color = Color(0.879775, 0.726069, 0.747994, 1)
-
-[node name="House_Connector9" parent="Non_explorable_Houses" instance=ExtResource("12_a8c8i")]
-transform = Transform3D(0.212212, 0, 0.977224, 0, 1, 0, -0.977224, 0, 0.212212, -17.0221, 3.8147e-06, 80.1858)
-wall_color = Color(0.878431, 0.72549, 0.74902, 1)
-
-[node name="house_cuba_prefab19" parent="Non_explorable_Houses" instance=ExtResource("11_b778h")]
-transform = Transform3D(0.49098, 0, 0.871171, 0, 1, 0, -0.871171, 0, 0.49098, -39.4405, 3.8147e-06, 71.8886)
-wall_color = Color(0.784314, 0.819608, 0.745098, 1)
-
-[node name="house_cuba_prefab20" parent="Non_explorable_Houses" instance=ExtResource("11_b778h")]
-transform = Transform3D(0.64027, 0, 0.76815, 0, 1, 0, -0.76815, 0, 0.64027, -49.0809, 5.72205e-06, 65.3222)
-wall_color = Color(0.783501, 0.820575, 0.747048, 1)
-
-[node name="House_Connector10" parent="Non_explorable_Houses" instance=ExtResource("12_a8c8i")]
-transform = Transform3D(0.568059, 0, 0.822988, 0, 1, 0, -0.822988, 0, 0.568059, -44.815, 3.8147e-06, 68.5537)
-wall_color = Color(0.784314, 0.819608, 0.745098, 1)
-
-[node name="house_cuba_prefab21" parent="Non_explorable_Houses" instance=ExtResource("11_b778h")]
-transform = Transform3D(-0.243903, 0, 0.9698, 0, 1, 0, -0.9698, 0, -0.243903, 17.1565, 3.8147e-06, 64.5632)
-wall_color = Color(0.723167, 0.998852, 1, 1)
-
-[node name="house_cuba_prefab22" parent="Non_explorable_Houses" instance=ExtResource("11_b778h")]
-transform = Transform3D(-0.0647066, 0, 0.997905, 0, 1, 0, -0.997905, 0, -0.0647066, 5.64426, 5.72205e-06, 66.4405)
-wall_color = Color(0.721569, 1, 1, 1)
-
-[node name="House_Connector11" parent="Non_explorable_Houses" instance=ExtResource("12_a8c8i")]
-transform = Transform3D(-0.154831, 0, 0.987941, 0, 1, 0, -0.987941, 0, -0.154831, 10.9628, 3.8147e-06, 65.846)
-wall_color = Color(0.721569, 1, 1, 1)
-
-[node name="house_cuba_prefab23" parent="Non_explorable_Houses" instance=ExtResource("11_b778h")]
-transform = Transform3D(-0.229201, 0, 0.973379, 0, 1, 0, -0.973379, 0, -0.229201, 20.3095, 3.8147e-06, 79.5859)
-wall_color = Color(0.784314, 0.819608, 0.745098, 1)
-
-[node name="house_cuba_prefab24" parent="Non_explorable_Houses" instance=ExtResource("11_b778h")]
-transform = Transform3D(-0.0495996, 0, 0.998769, 0, 1, 0, -0.998769, 0, -0.0495996, 8.7702, 5.72205e-06, 81.2887)
-wall_color = Color(0.783501, 0.820575, 0.747048, 1)
-
-[node name="House_Connector12" parent="Non_explorable_Houses" instance=ExtResource("12_a8c8i")]
-transform = Transform3D(-0.139865, 0, 0.990171, 0, 1, 0, -0.990171, 0, -0.139865, 14.0971, 3.8147e-06, 80.7748)
-wall_color = Color(0.784314, 0.819608, 0.745098, 1)
-
-[node name="house_cuba_prefab25" parent="Non_explorable_Houses" instance=ExtResource("11_b778h")]
-transform = Transform3D(0.281052, 0, -0.959693, 0, 1, 0, 0.959693, 0, 0.281052, -19.2584, 3.8147e-06, -64.308)
-wall_color = Color(0.478431, 0.533333, 0.509804, 1)
-
-[node name="house_cuba_prefab26" parent="Non_explorable_Houses" instance=ExtResource("11_b778h")]
-transform = Transform3D(0.10307, 0, -0.994674, 0, 1, 0, 0.994674, 0, 0.10307, -7.82695, 5.72205e-06, -66.627)
-wall_color = Color(0.478431, 0.533333, 0.509804, 1)
-
-[node name="House_Connector13" parent="Non_explorable_Houses" instance=ExtResource("12_a8c8i")]
-transform = Transform3D(0.192744, 0, -0.981249, 0, 1, 0, 0.981249, 0, 0.192744, -13.1187, 3.8147e-06, -65.8283)
-wall_color = Color(0.477711, 0.532874, 0.508124, 1)
-
-[node name="house_cuba_prefab27" parent="Non_explorable_Houses" instance=ExtResource("11_b778h")]
-transform = Transform3D(-0.0901632, 0, -0.995927, 0, 1, 0, 0.995927, 0, -0.0901632, 5.83048, 3.8147e-06, -66.8215)
-wall_color = Color(0.723167, 0.998852, 1, 1)
-
-[node name="house_cuba_prefab28" parent="Non_explorable_Houses" instance=ExtResource("11_b778h")]
-transform = Transform3D(-0.268584, 0, -0.963257, 0, 1, 0, 0.963257, 0, -0.268584, 17.3166, 5.72205e-06, -64.7903)
-wall_color = Color(0.721569, 1, 1, 1)
-
-[node name="House_Connector14" parent="Non_explorable_Houses" instance=ExtResource("12_a8c8i")]
-transform = Transform3D(-0.180227, 0, -0.983625, 0, 1, 0, 0.983625, 0, -0.180227, 12.1002, 3.8147e-06, -65.9862)
-wall_color = Color(0.721569, 1, 1, 1)
-
-[node name="house_cuba_prefab29" parent="Non_explorable_Houses" instance=ExtResource("11_b778h")]
-transform = Transform3D(0.281052, 0, -0.959693, 0, 1, 0, 0.959693, 0, 0.281052, -22.193, 3.8147e-06, -79.2479)
-wall_color = Color(0.878431, 0.72549, 0.74902, 1)
-
-[node name="house_cuba_prefab30" parent="Non_explorable_Houses" instance=ExtResource("11_b778h")]
-transform = Transform3D(0.10307, 0, -0.994674, 0, 1, 0, 0.994674, 0, 0.10307, -10.7616, 5.72205e-06, -81.5669)
-wall_color = Color(0.879775, 0.726069, 0.747994, 1)
-
-[node name="House_Connector15" parent="Non_explorable_Houses" instance=ExtResource("12_a8c8i")]
-transform = Transform3D(0.192744, 0, -0.981249, 0, 1, 0, 0.981249, 0, 0.192744, -16.0533, 3.8147e-06, -80.7682)
-wall_color = Color(0.878431, 0.72549, 0.74902, 1)
-
-[node name="house_cuba_prefab31" parent="Non_explorable_Houses" instance=ExtResource("11_b778h")]
-transform = Transform3D(-0.105222, 0, -0.994449, 0, 1, 0, 0.994449, 0, -0.105222, 7.81721, 3.8147e-06, -82.0423)
-wall_color = Color(0.784314, 0.819608, 0.745098, 1)
-
-[node name="house_cuba_prefab32" parent="Non_explorable_Houses" instance=ExtResource("11_b778h")]
-transform = Transform3D(-0.283128, 0, -0.959082, 0, 1, 0, 0.959082, 0, -0.283128, 19.2712, 5.72205e-06, -79.8376)
-wall_color = Color(0.783501, 0.820575, 0.747048, 1)
-
-[node name="House_Connector16" parent="Non_explorable_Houses" instance=ExtResource("12_a8c8i")]
-transform = Transform3D(-0.19509, 0, -0.980785, 0, 1, 0, 0.980785, 0, -0.19509, 14.0736, 3.8147e-06, -81.1123)
-wall_color = Color(0.784314, 0.819608, 0.745098, 1)
-
-[node name="house_cuba_prefab33" parent="Non_explorable_Houses" instance=ExtResource("11_b778h")]
-transform = Transform3D(0.608512, 0, -0.793545, 0, 1, 0, 0.793545, 0, 0.608512, -41.2335, 3.8147e-06, -52.872)
-wall_color = Color(0.723167, 0.998852, 1, 1)
-
-[node name="house_cuba_prefab34" parent="Non_explorable_Houses" instance=ExtResource("11_b778h")]
-transform = Transform3D(0.455157, 0, -0.890412, 0, 1, 0, 0.890412, 0, 0.455157, -31.4098, 5.72205e-06, -59.1609)
-wall_color = Color(0.721569, 1, 1, 1)
-
-[node name="House_Connector17" parent="Non_explorable_Houses" instance=ExtResource("12_a8c8i")]
-transform = Transform3D(0.533939, 0, -0.845523, 0, 1, 0, 0.845523, 0, 0.533939, -36.0564, 3.8147e-06, -56.5059)
-wall_color = Color(0.721569, 1, 1, 1)
-
-[node name="house_cuba_prefab35" parent="Non_explorable_Houses" instance=ExtResource("11_b778h")]
-transform = Transform3D(0.596435, 0, -0.802661, 0, 1, 0, 0.802661, 0, 0.596435, -50.0858, 3.8147e-06, -65.4123)
-wall_color = Color(0.784314, 0.819608, 0.745098, 1)
-
-[node name="house_cuba_prefab36" parent="Non_explorable_Houses" instance=ExtResource("11_b778h")]
-transform = Transform3D(0.441631, 0, -0.897197, 0, 1, 0, 0.897197, 0, 0.441631, -40.168, 5.72205e-06, -71.5518)
-wall_color = Color(0.783501, 0.820575, 0.747048, 1)
-
-[node name="House_Connector18" parent="Non_explorable_Houses" instance=ExtResource("12_a8c8i")]
-transform = Transform3D(0.521084, 0, -0.853505, 0, 1, 0, 0.853505, 0, 0.521084, -44.8543, 3.8147e-06, -68.9674)
-wall_color = Color(0.784314, 0.819608, 0.745098, 1)
+transform = Transform3D(0.996041, 0, 0.0888943, 0, 1, 0, -0.0888943, 0, 0.996041, -66.6916, 0, 6.31761)
+firstStoreyCount = 3
+firstWallColor = Color(1, 0, 0, 1)
+firstDoorColor = Color(0, 1, 0, 1)
+secondWallColor = Color(0, 1, 0, 1)
+secondDoorColor = Color(0, 0, 1, 1)
+thirdStoreyCount = 2
+thirdWallColor = Color(0, 0, 1, 1)
+thirdDoorColor = Color(1, 0, 0, 1)
 
 [node name="Cars" type="Node3D" parent="."]
 
