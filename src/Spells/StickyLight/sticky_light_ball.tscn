@@ -29,7 +29,7 @@ billboard_mode = 1
 radius = 0.05
 
 [node name="StickyLightBall" type="CharacterBody3D"]
-collision_layer = 32
+collision_layer = 64
 script = ExtResource("1_38vcp")
 
 [node name="MeshInstance3D" type="MeshInstance3D" parent="."]

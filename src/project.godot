@@ -111,3 +111,4 @@ crouch={
 3d_physics/layer_4="Enemy"
 3d_physics/layer_5="WindAffected"
 3d_physics/layer_6="FloatingBridge"
+3d_physics/layer_7="LightAffected"

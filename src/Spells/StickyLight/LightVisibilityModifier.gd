@@ -1,6 +1,6 @@
 extends Node3D
 
-var maxd = 5 # TODO this should not be hardcoded
+var maxd = 10 # TODO this should not be hardcoded
 
 func _process(delta: float) -> void:
 	var bodies = $Area3D.get_overlapping_bodies()
