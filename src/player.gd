@@ -43,6 +43,8 @@ func _ready() -> void:
 	$Pistol_Visibility_Timer.wait_time =  playerAnim.get_animation("Hands_Swap").length / 2.0
 
 func _physics_process(delta: float) -> void:
+	if global_position.y < -50:
+		defeat()
 	var inputvector = Input.get_vector("left", "right", "forwards", "backwards")
 	var vy = velocity.y
 	var vh = velocity - Vector3(0, vy, 0)
@@ -166,6 +168,12 @@ func damage(hit : float = 10, type : String = "physical"):
 	$HUD.damage()
 	$AudioStreamPlayer3D_Damage.play()
 	find_child("Healthbar").value = health # TODO ugly
+	if health <= 0:
+		defeat()
+
+
+func defeat():
+	get_tree().change_scene_to_file("res://Menu/MainMenu.tscn")
 
 
 # Bingibungel shoots the pistol in the comment
