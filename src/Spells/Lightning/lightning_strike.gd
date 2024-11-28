@@ -4,21 +4,36 @@ extends Node3D
 var start = Vector3(0, 0, 0)
 var end = Vector3(0, 0, 10)
 var end_node : Node3D = null
-var end_loc = Vector3(0, 0, 0)
+var end_loc = Vector3(0, 0, 0) # end in target node's local coordinate system
 var sections = 10.0
 var damage_time = true
 @export var offset_scale = 0.3
+@onready var cam : Camera3D = get_tree().root.get_camera_3d()
 
 func _ready() -> void:
 	$AnimationPlayer.play("Grow")
 
+
+# Position audio stream player to closest point to player
+func position_audio():
+	if Engine.is_editor_hint():
+		return
+	var cam_local = global_transform.inverse() * cam.global_position
+	var dir = (end-start).normalized()
+	var cam_local_dot = dir.dot(cam_local)
+	cam_local_dot = clamp(cam_local_dot, 0, (end-start).length())
+	$AudioStreamPlayer3D.position = dir * cam_local_dot
+
+
 func _process(delta: float) -> void:
+	position_audio()
 	if randf() > 0.4:
 		return
 	if end_node != null:
 		# end is relative to end_node
 		var end_global = end_node.global_transform * end_loc
 		end = global_transform.inverse() * end_global
+	retarget()
 	var sections = round((end-start).length() * 0.5)
 	sections = max(sections, 5)
 	var im : ImmediateMesh = $MeshInstance3D.mesh
@@ -49,7 +64,7 @@ func _on_timer_timeout() -> void:
 	self.queue_free()
 
 
-func _on_retarget_timeout() -> void:
+func retarget() -> void:
 	var space = get_world_3d().direct_space_state
 	var ray_query = PhysicsRayQueryParameters3D.new()
 	ray_query.from = global_position
