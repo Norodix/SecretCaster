@@ -25,10 +25,13 @@ func get_shit_done():
 	for child in self.get_children():
 		for grandchild in child.get_children():
 			grandchild.visible = true
+	for child in self.find_children("CollisionShape3D*"):
+		child.disabled = false
 	
 	var a = 0
 	for child in $Row1.find_children("house_cuba_storey*"):
 		child.visible = clamp(firstStoreyCount - a, 0, 1)
+		child.find_child("CollisionShape3D*").disabled = 1 - clamp(firstStoreyCount - a, 0, 1)
 		a += 1
 	$Row1/house_cuba_railing.global_position = $Row1/house_cuba_ground.global_position + Vector3(0, (firstStoreyCount - 1) * 5, 0)
 	
@@ -36,6 +39,7 @@ func get_shit_done():
 	if secondStoreyCount: 
 		for child in $Row2.find_children("house_cuba_storey*"):
 			child.visible = clamp(secondStoreyCount - a, 0, 1)
+			child.find_child("CollisionShape3D*").disabled = 1 - clamp(secondStoreyCount - a, 0, 1)
 			a += 1
 		$Row2/house_cuba_railing.global_position = $Row2/house_cuba_ground.global_position + Vector3(0, (secondStoreyCount - 1) * 5, 0)
 		
@@ -46,18 +50,22 @@ func get_shit_done():
 		a = 0
 		for child in $Row2.find_children("house_connector_storey*"):
 			child.visible = clamp(firstConnector - a, 0, 1)
+			child.find_child("CollisionShape3D*").disabled = 1 - clamp(firstConnector - a, 0, 1)
 			a += 1
 		$Row2/house_connector_railing.global_position = $Row2/house_connector_ground.global_position + Vector3(0, (firstConnector - 1) * 5, 0)
 	else:
 		for child in $Row2.get_children():
 			child.visible = false
+			child.find_child("CollisionShape3D*").disabled = true
 		for child in $Row3.find_children("house_connector*"):
 			child.visible = false
+			child.find_child("CollisionShape3D*").disabled = true
 	
 	a = 0
 	if thirdStoreyCount:
 		for child in $Row3.find_children("house_cuba_storey*"):
 			child.visible = clamp(thirdStoreyCount - a, 0, 1)
+			child.find_child("CollisionShape3D*").disabled = 1 - clamp(thirdStoreyCount - a, 0, 1)
 			a += 1
 		$Row3/house_cuba_railing.global_position = $Row3/house_cuba_ground.global_position + Vector3(0, (thirdStoreyCount - 1) * 5, 0)
 		
@@ -68,11 +76,13 @@ func get_shit_done():
 		a = 0
 		for child in $Row3.find_children("house_connector_storey*"):
 			child.visible = clamp(secondConnector - a, 0, 1)
+			child.find_child("CollisionShape3D*").disabled = 1 - clamp(secondConnector - a, 0, 1)
 			a += 1
 		$Row3/house_connector_railing.global_position = $Row3/house_connector_ground.global_position + Vector3(0, (secondConnector - 1) * 5, 0)
 	else:
 		for child in $Row3.get_children():
 			child.visible = false
+			child.find_child("CollisionShape3D*").disabled = true
 	
 	var houses: Array
 	var connectors: Array

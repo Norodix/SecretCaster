@@ -1,8 +1,11 @@
-[gd_scene load_steps=4 format=3 uid="uid://c4aw3uk8lpe1o"]
+[gd_scene load_steps=5 format=3 uid="uid://c4aw3uk8lpe1o"]
 
 [ext_resource type="PackedScene" uid="uid://7425vs5xcpok" path="res://Props/House_Connector/House_Connector.glb" id="1_8mdm7"]
 [ext_resource type="Material" uid="uid://btr55dj30j5q6" path="res://Levels/Cuba/Models/House_Cuba_Wall_Mat.tres" id="2_ygsaj"]
 [ext_resource type="Material" uid="uid://xn0hn6hhbhhf" path="res://Levels/Cuba/Models/House_Cuba_Doors_Mat.tres" id="3_jkmlx"]
+
+[sub_resource type="ConcavePolygonShape3D" id="ConcavePolygonShape3D_iy7qd"]
+data = PackedVector3Array(0.5165, 11.05, -0.7975, 0.5165, 10.925, 0.7975, 0.5165, 10.925, -0.7975, 0.5165, 11.05, -0.7975, 0.5165, 11.05, 0.7975, 0.5165, 10.925, 0.7975, 0.8154, 10.925, 0.7713, 0.5165, 10.05, 0.7975, 0.5165, 10.925, 0.7975, 0.8154, 10.925, 0.7713, 0.8154, 10.05, 0.7713, 0.5165, 10.05, 0.7975, 0.5165, 11.05, -0.7975, 0.8154, 10.925, -0.7713, 0.8652, 11.05, -0.767, 0.5165, 11.05, -0.7975, 0.5165, 10.925, -0.7975, 0.8154, 10.925, -0.7713, 0.8652, 11.05, -0.767, 0.8154, 10.925, 0.7713, 0.8652, 11.05, 0.7669, 0.8652, 11.05, -0.767, 0.8154, 10.925, -0.7713, 0.8154, 10.925, 0.7713, 0.5165, 11.05, -0.7975, 0.8652, 11.05, 0.7669, 0.5165, 11.05, 0.7975, 0.5165, 11.05, -0.7975, 0.8652, 11.05, -0.767, 0.8652, 11.05, 0.7669, 0.8154, 10.925, -0.7713, 0.5165, 10.05, -0.7975, 0.8154, 10.05, -0.7713, 0.8154, 10.925, -0.7713, 0.5165, 10.925, -0.7975, 0.5165, 10.05, -0.7975, 0.5165, 11.05, 0.7975, 0.8154, 10.925, 0.7713, 0.5165, 10.925, 0.7975, 0.5165, 11.05, 0.7975, 0.8652, 11.05, 0.7669, 0.8154, 10.925, 0.7713, 0.8154, 10.05, -0.7713, 0.8154, 10.925, 0.7713, 0.8154, 10.925, -0.7713, 0.8154, 10.05, -0.7713, 0.8154, 10.05, 0.7713, 0.8154, 10.925, 0.7713, 0.5165, 10.05, -0.7975, 0.5165, 10.925, 0.7975, 0.5165, 10.05, 0.7975, 0.5165, 10.05, -0.7975, 0.5165, 10.925, -0.7975, 0.5165, 10.925, 0.7975, 0.5165, 10.05, -0.7975, 0.8154, 10.05, 0.7713, 0.8154, 10.05, -0.7713, 0.5165, 10.05, -0.7975, 0.5165, 10.05, 0.7975, 0.8154, 10.05, 0.7713)
 
 [node name="house_connector_railing" instance=ExtResource("1_8mdm7")]
 
@@ -19,3 +22,8 @@ surface_material_override/1 = ExtResource("3_jkmlx")
 [node name="Railing_Roof_Connector" parent="." index="2"]
 surface_material_override/0 = ExtResource("2_ygsaj")
 surface_material_override/1 = ExtResource("3_jkmlx")
+
+[node name="StaticBody3D" type="StaticBody3D" parent="." index="3"]
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="StaticBody3D" index="0"]
+shape = SubResource("ConcavePolygonShape3D_iy7qd")

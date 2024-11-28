@@ -1,8 +1,11 @@
-[gd_scene load_steps=4 format=3 uid="uid://dvya7n55gdsm2"]
+[gd_scene load_steps=5 format=3 uid="uid://dvya7n55gdsm2"]
 
 [ext_resource type="PackedScene" uid="uid://7425vs5xcpok" path="res://Props/House_Connector/House_Connector.glb" id="1_tmyew"]
 [ext_resource type="Material" uid="uid://btr55dj30j5q6" path="res://Levels/Cuba/Models/House_Cuba_Wall_Mat.tres" id="2_fp07v"]
 [ext_resource type="Material" uid="uid://xn0hn6hhbhhf" path="res://Levels/Cuba/Models/House_Cuba_Doors_Mat.tres" id="3_o35ay"]
+
+[sub_resource type="ConcavePolygonShape3D" id="ConcavePolygonShape3D_toxoc"]
+data = PackedVector3Array(-7.1542, -0.1, -1.4686, -2.1732, 5, -1.0328, -7.1542, 5, -1.4686, -7.1542, -0.1, -1.4686, -2.1732, -0.1, -1.0328, -2.1732, 5, -1.0328, -7.1542, 5, -1.4686, -7.1542, -0.1, 1.4686, -7.1542, -0.1, -1.4686, -7.1542, 5, -1.4686, -7.1542, 5, 1.4686, -7.1542, -0.1, 1.4686, -7.1542, -0.1, 1.4686, -2.1732, 5, 1.0327, -2.1732, -0.1, 1.0327, -7.1542, -0.1, 1.4686, -7.1542, 5, 1.4686, -2.1732, 5, 1.0327, -7.1542, -0.1, -1.4686, -2.1732, -0.1, 1.0327, -2.1732, -0.1, -1.0328, -7.1542, -0.1, -1.4686, -7.1542, -0.1, 1.4686, -2.1732, -0.1, 1.0327, -2.1732, -0.1, -1.0328, -2.1732, 5, 1.0327, -2.1732, 5, -1.0328, -2.1732, -0.1, -1.0328, -2.1732, -0.1, 1.0327, -2.1732, 5, 1.0327, -7.1542, 5, -1.4686, -2.1732, 5, 1.0327, -7.1542, 5, 1.4686, -7.1542, 5, -1.4686, -2.1732, 5, -1.0328, -2.1732, 5, 1.0327)
 
 [node name="house_connector_ground" instance=ExtResource("1_tmyew")]
 
@@ -19,3 +22,8 @@ surface_material_override/1 = ExtResource("3_o35ay")
 visible = false
 surface_material_override/0 = ExtResource("2_fp07v")
 surface_material_override/1 = ExtResource("3_o35ay")
+
+[node name="StaticBody3D" type="StaticBody3D" parent="." index="3"]
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="StaticBody3D" index="0"]
+shape = SubResource("ConcavePolygonShape3D_toxoc")
