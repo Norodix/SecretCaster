@@ -1,0 +1,18 @@
+[gd_resource type="StandardMaterial3D" load_steps=4 format=3 uid="uid://cxhrmv4wjvc0k"]
+
+[ext_resource type="Texture2D" uid="uid://dlqn3ua30sjkn" path="res://Wraith_Claws/Wraith_Claws_Tex.png" id="1_ppdtf"]
+[ext_resource type="Texture2D" uid="uid://b6iyh8kdm21n0" path="res://Wraith_Claws/Wraith_Claws_Emiss.png" id="2_nwste"]
+[ext_resource type="Texture2D" uid="uid://bca5h4utvjod7" path="res://Wraith/Wraith_Nrm.png" id="3_7oce4"]
+
+[resource]
+transparency = 2
+alpha_scissor_threshold = 0.1
+alpha_antialiasing_mode = 0
+cull_mode = 2
+albedo_texture = ExtResource("1_ppdtf")
+metallic_specular = 0.0
+emission_enabled = true
+emission_energy_multiplier = 8.0
+emission_texture = ExtResource("2_nwste")
+normal_enabled = true
+normal_texture = ExtResource("3_7oce4")
