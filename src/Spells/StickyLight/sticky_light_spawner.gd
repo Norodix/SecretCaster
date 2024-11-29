@@ -14,3 +14,4 @@ func use_spell(player: CharacterBody3D):
 	instance.global_transform.basis = player.find_child("Camera3D").global_transform.basis
 	instance.global_transform.origin = player.global_transform.origin
 	instance.velocity = instance.global_transform.basis * 20 * Vector3(0, 0.25, -1).normalized()
+	SignalBus.spell_used.emit(SignalBus.SpellTypes.LIGHT)

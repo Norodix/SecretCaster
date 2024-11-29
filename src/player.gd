@@ -173,7 +173,7 @@ func damage(hit : float = 10, type : String = "physical"):
 
 
 func defeat():
-	get_tree().change_scene_to_file("res://Menu/MainMenu.tscn")
+	get_tree().call_deferred("change_scene_to_file", "res://Menu/MainMenu.tscn")
 
 
 # Bingibungel shoots the pistol in the comment

@@ -22,6 +22,7 @@ func use_spell(player: CharacterBody3D):
 	var areas = $BlowArea.get_overlapping_areas()
 	if not areas.is_empty():
 		$AudioStreamPlayer3D_Rustle.play()
+	SignalBus.spell_used.emit(SignalBus.SpellTypes.WIND)
 
 
 func _process(delta: float) -> void:

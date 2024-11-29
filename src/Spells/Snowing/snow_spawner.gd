@@ -20,3 +20,4 @@ func use_spell(player: CharacterBody3D):
 	if not raycast_result.is_empty():
 		get_tree().root.add_child(instance, true)
 		instance.global_transform.origin = raycast_result.position
+	SignalBus.spell_used.emit(SignalBus.SpellTypes.SNOW)

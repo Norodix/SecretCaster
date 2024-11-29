@@ -22,3 +22,4 @@ func use_spell(player: CharacterBody3D):
 	var i = randi_range(0, sounds.size() - 1)
 	$AudioStreamPlayer3D.stream = sounds[i]
 	$AudioStreamPlayer3D.play()
+	SignalBus.spell_used.emit(SignalBus.SpellTypes.COLT)

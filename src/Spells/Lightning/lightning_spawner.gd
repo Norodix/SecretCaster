@@ -28,4 +28,5 @@ func use_spell(player: CharacterBody3D):
 		instance.end = instance.global_transform.inverse() * raycast_result.position
 		instance.end_node = raycast_result.collider
 		instance.end_loc = raycast_result.collider.global_transform.inverse() * raycast_result.position
+	SignalBus.spell_used.emit(SignalBus.SpellTypes.LIGHTNING)
 	

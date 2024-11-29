@@ -16,3 +16,4 @@ func use_spell(player: CharacterBody3D):
 			burnable.burn()
 		if burnable.has_method("damage"):
 			burnable.damage(3, "fire")
+	SignalBus.spell_used.emit(SignalBus.SpellTypes.FIREBLAST)

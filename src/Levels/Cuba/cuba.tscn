@@ -1,4 +1,4 @@
-[gd_scene load_steps=31 format=3 uid="uid://j1em8finh0ke"]
+[gd_scene load_steps=32 format=3 uid="uid://j1em8finh0ke"]
 
 [ext_resource type="Texture2D" uid="uid://t44swfoj3fbp" path="res://Textures/DEV/Orange/texture_01.png" id="1_v2ig0"]
 [ext_resource type="PackedScene" uid="uid://b2nfwk1744el2" path="res://Levels/Cuba/Models/sarcophagus.tscn" id="2_hvnxm"]
@@ -8,6 +8,7 @@
 [ext_resource type="PackedScene" uid="uid://mht8ss75f18u" path="res://Levels/Cuba/Models/house_cuba_prefab.tscn" id="11_b778h"]
 [ext_resource type="PackedScene" uid="uid://kb7il64chu13" path="res://Props/Cortez/Cortez.tscn" id="12_jrse6"]
 [ext_resource type="PackedScene" uid="uid://njfw08gvqe3q" path="res://Props/Streetlamp/Streetlamp.tscn" id="13_oxlf2"]
+[ext_resource type="PackedScene" uid="uid://v6gp2of3k5ta" path="res://Enemy/enemy_spawner.tscn" id="14_nde5q"]
 [ext_resource type="PackedScene" uid="uid://btg3grrvoe7r" path="res://Props/Rubbish/Rubbish.tscn" id="14_u8712"]
 [ext_resource type="PackedScene" uid="uid://fsnxrnurofnw" path="res://Props/Platform/Bridge.tscn" id="17_tcabb"]
 [ext_resource type="PackedScene" uid="uid://nvca7nxs2ybx" path="res://Props/Palm/Palm.tscn" id="18_rhsa0"]
@@ -425,3 +426,8 @@ transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 2.56847, -18.5331, 1.54033)
 size = Vector3(110.538, 2, 105.171)
 shape = 0
 material = SubResource("FogMaterial_qd4r1")
+
+[node name="EnemySpawner" parent="." instance=ExtResource("14_nde5q")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -66.9772, 1.09619, 29.9172)
+EnemyScene = "res://Enemy/Wraith/Wraith.tscn"
+trigger_spell = 1
