@@ -1,4 +1,4 @@
-[gd_scene load_steps=28 format=3 uid="uid://cvba5sgdncr8q"]
+[gd_scene load_steps=29 format=3 uid="uid://cvba5sgdncr8q"]
 
 [ext_resource type="Script" path="res://hud.gd" id="1_0n6rd"]
 [ext_resource type="Texture2D" uid="uid://blb6rjpwj6v0c" path="res://Textures/HUD/HUD_Spell_Selected.png" id="1_e7vvy"]
@@ -15,12 +15,13 @@
 [ext_resource type="Texture2D" uid="uid://c04qqwb5y4tq7" path="res://Textures/HUD/Crosshair_Main.png" id="8_t6iki"]
 [ext_resource type="Texture2D" uid="uid://b3gx8jvaqkys7" path="res://Textures/HUD/HUD_Feedback_Lightning.png" id="9_10ud5"]
 [ext_resource type="Texture2D" uid="uid://bqlq5ev0htrhk" path="res://Textures/HUD/Crosshair_Ammo.png" id="9_axr18"]
-[ext_resource type="Shader" uid="uid://dh07spx4bv2pq" path="res://Crosshair_Shader.tres" id="9_bahp7"]
+[ext_resource type="Shader" uid="uid://cir1sfmlqhuih" path="res://Crosshair_Shader.tres" id="9_bahp7"]
 [ext_resource type="Texture2D" uid="uid://ctrr43dl7txia" path="res://Textures/HUD/HUD_Spell_StickyLight.png" id="9_xigtq"]
 [ext_resource type="Texture2D" uid="uid://cwmyx233djjqh" path="res://Textures/HUD/Crosshair_SpellCD.png" id="10_htnnh"]
 [ext_resource type="Texture2D" uid="uid://bheu11ige543" path="res://Textures/HUD/HUD_Feedback_Highjump.png" id="13_0c8d3"]
 [ext_resource type="Texture2D" uid="uid://h8thu3omf7r5" path="res://Textures/HUD/HUD_Feedback_StickyLight.png" id="14_ujx24"]
 [ext_resource type="Texture2D" uid="uid://b4pfbw7ejm6w8" path="res://Textures/HUD/HUD_Spell_Fireblast.png" id="15_swrlq"]
+[ext_resource type="PackedScene" uid="uid://2ya8jrwfnyam" path="res://Menu/Escape.tscn" id="22_4vj47"]
 
 [sub_resource type="ShaderMaterial" id="ShaderMaterial_21lfs"]
 shader = ExtResource("9_bahp7")
@@ -369,3 +370,6 @@ layout_mode = 2
 texture = ExtResource("1_e7vvy")
 expand_mode = 1
 stretch_mode = 4
+
+[node name="Escape" parent="Control" instance=ExtResource("22_4vj47")]
+layout_mode = 1

@@ -21,5 +21,6 @@ func _on_button_4_pressed() -> void:
 
 
 func _on_button_3_pressed() -> void:
-	get_tree().change_scene_to_file("res://Menu/Settings.tscn")
+	var scene = load("res://Menu/Settings.tscn")
+	self.add_child(scene.instantiate())
 	pass # Replace with function body.
