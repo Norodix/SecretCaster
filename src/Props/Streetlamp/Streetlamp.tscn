@@ -1,7 +1,8 @@
-[gd_scene load_steps=8 format=3 uid="uid://njfw08gvqe3q"]
+[gd_scene load_steps=9 format=3 uid="uid://njfw08gvqe3q"]
 
 [ext_resource type="PackedScene" uid="uid://cqpkbm7ivqydr" path="res://Props/Streetlamp/Streetlamp.glb" id="1_1w6ug"]
 [ext_resource type="Texture2D" uid="uid://bs5yi1nuloibr" path="res://Props/Streetlamp/Streetlamp_Tex.png" id="2_56qku"]
+[ext_resource type="Script" path="res://Props/Streetlamp/streetlamp.gd" id="2_g275k"]
 [ext_resource type="Texture2D" uid="uid://ddu3oundt0m1s" path="res://Props/Streetlamp/Streetlamp_Emiss.png" id="3_bf7cl"]
 [ext_resource type="Texture2D" uid="uid://bdgriwytd6ehj" path="res://Props/Streetlamp/Streetlamp_Nrm.png" id="4_bx0in"]
 [ext_resource type="Texture2D" uid="uid://cdgq04idrckxe" path="res://Props/Streetlamp/Streetlamp_Rough.png" id="5_smkdk"]
@@ -34,6 +35,7 @@ shadow_blur = 5.0
 omni_range = 30.0
 
 [node name="StaticBody3D" type="StaticBody3D" parent="." index="2"]
+script = ExtResource("2_g275k")
 
 [node name="CollisionShape3D" type="CollisionShape3D" parent="StaticBody3D" index="0"]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 4, 0)

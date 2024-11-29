@@ -122,3 +122,4 @@ crouch={
 3d_physics/layer_5="WindAffected"
 3d_physics/layer_6="FloatingBridge"
 3d_physics/layer_7="LightAffected"
+3d_physics/layer_8="ElectricityAffected"

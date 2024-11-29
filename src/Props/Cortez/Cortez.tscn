@@ -1,4 +1,4 @@
-[gd_scene load_steps=11 format=3 uid="uid://kb7il64chu13"]
+[gd_scene load_steps=12 format=3 uid="uid://kb7il64chu13"]
 
 [ext_resource type="PackedScene" uid="uid://ves5xoy4dht7" path="res://Props/Cortez/Cortez.glb" id="1_5tuym"]
 [ext_resource type="Script" path="res://Props/Cortez/cortez.gd" id="2_1qrlw"]
@@ -7,6 +7,7 @@
 [ext_resource type="Texture2D" uid="uid://byr3421migv3c" path="res://Props/Cortez/Cortez_Mask.png" id="4_kj7e3"]
 [ext_resource type="Texture2D" uid="uid://co3l108u3qmkk" path="res://Props/Cortez/Cortez_Nrm.png" id="5_2y82k"]
 [ext_resource type="Texture2D" uid="uid://bwopcok8kovki" path="res://Props/Cortez/Cortez_Rough.png" id="6_4ehxa"]
+[ext_resource type="Script" path="res://Props/Cortez/cortez_collision.gd" id="8_25j34"]
 
 [sub_resource type="ShaderMaterial" id="ShaderMaterial_mirq8"]
 resource_local_to_scene = true
@@ -31,9 +32,24 @@ script = ExtResource("2_1qrlw")
 surface_material_override/0 = SubResource("ShaderMaterial_mirq8")
 
 [node name="StaticBody3D" type="StaticBody3D" parent="." index="1"]
+script = ExtResource("8_25j34")
 
 [node name="CollisionShape3D2" type="CollisionShape3D" parent="StaticBody3D" index="0"]
 shape = SubResource("ConvexPolygonShape3D_shm5i")
 
 [node name="CollisionShape3D" type="CollisionShape3D" parent="StaticBody3D" index="1"]
 shape = SubResource("ConvexPolygonShape3D_uyphp")
+
+[node name="OmniLight3D" type="OmniLight3D" parent="." index="2"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.67909, 0.810798, 2.41069)
+
+[node name="OmniLight3D2" type="OmniLight3D" parent="." index="3"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.679, 0.811, 2.411)
+
+[node name="OmniLight3D3" type="OmniLight3D" parent="." index="4"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.67909, 0.767322, -2.40731)
+light_color = Color(1, 0, 0, 1)
+
+[node name="OmniLight3D4" type="OmniLight3D" parent="." index="5"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.679, 0.767524, -2.407)
+light_color = Color(1, 0, 0, 1)

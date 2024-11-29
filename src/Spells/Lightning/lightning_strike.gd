@@ -69,7 +69,7 @@ func retarget() -> void:
 	var ray_query = PhysicsRayQueryParameters3D.new()
 	ray_query.from = global_position
 	ray_query.to = global_transform * (end.normalized() * 100)
-	ray_query.collision_mask = 1 | 1 << 3
+	ray_query.collision_mask = 1 | 1 << 3 | 1 << 7
 	var raycast_result = space.intersect_ray(ray_query)
 	if not raycast_result.is_empty():
 		end_node = raycast_result.collider
