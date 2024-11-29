@@ -1,8 +1,9 @@
-[gd_scene load_steps=6 format=3 uid="uid://dv2yjy0vw0c3e"]
+[gd_scene load_steps=7 format=3 uid="uid://dv2yjy0vw0c3e"]
 
 [ext_resource type="Script" path="res://Enemy/Wraith/wraith.gd" id="1_qdwke"]
 [ext_resource type="PackedScene" uid="uid://gx88hjnj8obd" path="res://Wraith/wraith_model.tscn" id="2_e58ul"]
 [ext_resource type="AudioStream" uid="uid://btqmjjhnwlme2" path="res://Enemy/Wraith/Audio/damage.mp3" id="3_hm0j4"]
+[ext_resource type="PackedScene" uid="uid://7vowt0xy1otf" path="res://Wraith_Claws/wraith_claws_model.tscn" id="3_u32dw"]
 [ext_resource type="AudioStream" uid="uid://b8qkdpedsvjfj" path="res://Enemy/Wraith/Audio/death.mp3" id="4_nlfsu"]
 
 [sub_resource type="CapsuleShape3D" id="CapsuleShape3D_buykj"]
@@ -27,6 +28,9 @@ autostart = true
 
 [node name="Wraith_Model" parent="." instance=ExtResource("2_e58ul")]
 transform = Transform3D(-1, 0, 0, 0, 1, 0, 0, 0, -1, 0, 0, 0)
+
+[node name="Wraith_Claws2" parent="." instance=ExtResource("3_u32dw")]
+transform = Transform3D(-1, 0, -8.74228e-08, 0, 1, 0, 8.74228e-08, 0, -1, 0, 0, 0)
 
 [node name="StateTimer" type="Timer" parent="."]
 autostart = true

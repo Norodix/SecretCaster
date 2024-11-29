@@ -7,13 +7,34 @@ var acceleration = 30
 @onready var player = get_tree().root.find_child("Player", true, false)
 var strafe_direction = randi() % 2
 
-@onready var animState : AnimationNodeStateMachinePlayback = \
-		$Wraith_Model/AnimationTree.get("parameters/StateMachine/playback")
-@onready var swordArea : Area3D = find_child("SwordArea")
+var model : Node3D
+var capedrop : PackedScene
+var animState : AnimationNodeStateMachinePlayback
+var swordAreas : Array[Area3D]
 var has_hit = false # indicates if the sword has hit the player in this swing
+
+
+# Select a random wraith model to use, free the others
+func select_model():
+	if randf() > 0.5:
+		# Claws
+		model = $Wraith_Claws2
+		$Wraith_Model.queue_free()
+		capedrop = load("res://Wraith_Claws/wraith_claws_cape_drop.tscn")
+	else:
+		# Swordsd
+		model = $Wraith_Model
+		$Wraith_Claws2.queue_free()
+		capedrop = load("res://Wraith/wraith_cape_drop.tscn")
+
 
 func _ready() -> void:
 	$NavigationTimer.wait_time = randf()
+	select_model()
+	animState = model.get_node("AnimationTree").get("parameters/StateMachine/playback")
+	for child in model.find_children("*SwordArea*"):
+		if child is Area3D:
+			swordAreas.append(child)
 
 # behavior state machine
 var states = {
@@ -80,8 +101,8 @@ func destroy():
 	$NavigationTimer.stop()
 	animState.next()
 	animState.travel("Wraith_Idle")
-	$Wraith_Model.visible = false
-	self.add_child(load("res://Wraith/wraith_cape_drop.tscn").instantiate())
+	model.visible = false
+	self.add_child(capedrop.instantiate())
 	$CollisionShape3D.set_deferred("disabled", true)
 	$AudioStreamPlayer3D_Death.play()
 	await $AudioStreamPlayer3D_Death.finished
@@ -130,11 +151,12 @@ func _physics_process(delta: float) -> void:
 		trigger_state_transisiton("attack")
 	if state == "attack":
 		# Check if the sword has hit the player
-		var bodies = swordArea.get_overlapping_bodies()
-		for body in bodies:
-			if body.has_method("damage") and not has_hit:
-				body.damage()
-				has_hit = true
+		for swordArea in swordAreas:
+			var bodies = swordArea.get_overlapping_bodies()
+			for body in bodies:
+				if body.has_method("damage") and not has_hit:
+					body.damage()
+					has_hit = true
 
 
 func random_with_weights(possiblities : Array):
