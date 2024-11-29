@@ -54,5 +54,6 @@ omni_range = 20.0
 [node name="AudioStreamPlayer3D" type="AudioStreamPlayer3D" parent="."]
 stream = ExtResource("2_ka2ms")
 autoplay = true
+bus = &"Effects"
 
 [connection signal="timeout" from="Timer" to="." method="_on_timer_timeout"]

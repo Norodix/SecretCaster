@@ -96,5 +96,6 @@ one_shot = true
 
 [node name="AudioStreamPlayer3D_Damage" type="AudioStreamPlayer3D" parent="."]
 stream = ExtResource("12_56bjc")
+bus = &"Effects"
 
 [connection signal="timeout" from="Pistol_Visibility_Timer" to="." method="_on_timer_timeout"]

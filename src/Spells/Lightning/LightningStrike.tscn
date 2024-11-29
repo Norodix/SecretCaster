@@ -112,6 +112,7 @@ autostart = true
 stream = ExtResource("5_74a1b")
 autoplay = true
 parameters/looping = true
+bus = &"Effects"
 
 [connection signal="timeout" from="Timer" to="." method="_on_timer_timeout"]
 [connection signal="timeout" from="DamageTick" to="." method="_on_damage_tick_timeout"]

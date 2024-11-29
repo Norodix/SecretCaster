@@ -27,5 +27,6 @@ autostart = true
 [node name="AudioStreamPlayer3D" type="AudioStreamPlayer3D" parent="."]
 stream = ExtResource("3_iw4vh")
 autoplay = true
+bus = &"Effects"
 
 [connection signal="timeout" from="Timeout" to="." method="_on_timeout_timeout"]

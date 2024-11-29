@@ -33,9 +33,11 @@ autostart = true
 
 [node name="AudioStreamPlayer3D_Damage" type="AudioStreamPlayer3D" parent="."]
 stream = ExtResource("3_hm0j4")
+bus = &"Effects"
 
 [node name="AudioStreamPlayer3D_Death" type="AudioStreamPlayer3D" parent="."]
 stream = ExtResource("4_nlfsu")
+bus = &"Effects"
 
 [connection signal="timeout" from="NavigationTimer" to="." method="_on_navigation_timer_timeout"]
 [connection signal="timeout" from="StateTimer" to="." method="_on_state_timer_timeout"]
