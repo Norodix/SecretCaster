@@ -30,7 +30,7 @@ alpha_curve = SubResource("CurveTexture_u0l0i")
 
 [sub_resource type="Gradient" id="Gradient_7j7rm"]
 offsets = PackedFloat32Array(0, 0.471591, 1)
-colors = PackedColorArray(0.304233, 0.107816, 0, 1, 0, 0, 0, 0.443137, 0, 0, 0, 0)
+colors = PackedColorArray(0, 0.624673, 0.448943, 1, 0, 0, 0, 0.443137, 0, 0, 0, 0)
 
 [sub_resource type="GradientTexture2D" id="GradientTexture2D_ltw5x"]
 gradient = SubResource("Gradient_7j7rm")
@@ -133,19 +133,19 @@ node_connections = [&"Blend2", 0, &"StateMachine", &"Blend2", 1, &"Animation", &
 [node name="Wraith_Claws2" instance=ExtResource("1_0m1v7")]
 
 [node name="Skeleton3D" parent="Armature" index="0"]
-bones/1/position = Vector3(-0.0540325, 0.404227, 1.24677e-08)
-bones/4/rotation = Quaternion(-0.0161381, -0.00312817, -0.0527538, 0.998472)
-bones/5/rotation = Quaternion(0.539494, -0.0957856, 0.149187, 0.823113)
-bones/6/position = Vector3(-0.303036, 1.17083, 0.271829)
-bones/6/rotation = Quaternion(-0.328735, 0.706805, 0.617249, 0.106604)
-bones/7/position = Vector3(0.189774, 1.16404, 0.258331)
-bones/7/rotation = Quaternion(0.217666, 0.661551, 0.697442, -0.168955)
+bones/1/position = Vector3(0.0293279, 0.350238, -4.66888e-09)
+bones/4/rotation = Quaternion(0.0156998, 5.37693e-11, 0.0511398, 0.998568)
+bones/5/rotation = Quaternion(0.707107, -3.09086e-08, -3.09086e-08, 0.707107)
+bones/6/position = Vector3(-0.226417, 1.20714, 0.178128)
+bones/6/rotation = Quaternion(-0.0979979, 0.646829, 0.718699, 0.235543)
+bones/7/position = Vector3(0.259173, 1.21516, 0.212408)
+bones/7/rotation = Quaternion(0.232199, 0.656591, 0.700998, -0.153537)
 
 [node name="Wraith_Cape" parent="Armature/Skeleton3D" index="0"]
 surface_material_override/0 = ExtResource("2_ii20f")
 
 [node name="BoneAttachment3D" type="BoneAttachment3D" parent="Armature/Skeleton3D" index="1"]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.0540325, 1.29956, 1.24677e-08)
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.0293279, 1.24557, -4.66888e-09)
 bone_name = "Neck"
 bone_idx = 3
 
@@ -162,7 +162,7 @@ draw_pass_1 = SubResource("QuadMesh_xbafl")
 surface_material_override/0 = ExtResource("2_ii20f")
 
 [node name="BoneAttachment3D2" type="BoneAttachment3D" parent="Armature/Skeleton3D" index="3"]
-transform = Transform3D(-0.761138, -0.596305, -0.255125, -0.3331, 0.0218751, 0.942638, -0.556519, 0.802459, -0.21528, -0.303036, 1.17083, 0.271829)
+transform = Transform3D(-0.869832, -0.465344, 0.16385, 0.211793, -0.0522632, 0.975916, -0.445574, 0.883585, 0.144017, -0.226417, 1.20714, 0.178128)
 bone_name = "Weapon_R"
 bone_idx = 6
 
@@ -175,7 +175,7 @@ transform = Transform3D(0.85373, 0.0848875, -0.513768, -0.00751936, 0.988539, 0.
 shape = SubResource("BoxShape3D_ugj0b")
 
 [node name="BoneAttachment3D3" type="BoneAttachment3D" parent="Armature/Skeleton3D" index="4"]
-transform = Transform3D(-0.848151, 0.523668, 0.0800735, 0.0523207, -0.0676088, 0.996339, 0.527164, 0.849236, 0.0299438, 0.189774, 1.16404, 0.258331)
+transform = Transform3D(-0.84502, 0.520178, 0.123919, 0.0896604, -0.0906291, 0.99184, 0.527164, 0.849236, 0.029944, 0.259173, 1.21516, 0.212408)
 bone_name = "Weapon_L"
 bone_idx = 7
 
