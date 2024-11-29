@@ -6,4 +6,5 @@
 script = ExtResource("1_8646j")
 
 [node name="AudioStreamPlayer3D" type="AudioStreamPlayer3D" parent="."]
+volume_db = -30.0
 bus = &"Effects"

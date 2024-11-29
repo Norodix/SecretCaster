@@ -69,4 +69,5 @@ draw_pass_1 = SubResource("QuadMesh_wbwyc")
 
 [node name="AudioStreamPlayer3D" type="AudioStreamPlayer3D" parent="."]
 stream = ExtResource("3_cianf")
+volume_db = -20.0
 bus = &"Effects"

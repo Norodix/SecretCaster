@@ -110,9 +110,11 @@ autostart = true
 
 [node name="AudioStreamPlayer3D" type="AudioStreamPlayer3D" parent="."]
 stream = ExtResource("5_74a1b")
+volume_db = -35.0
+unit_size = 50.0
 autoplay = true
-parameters/looping = true
 bus = &"Effects"
+parameters/looping = true
 
 [connection signal="timeout" from="Timer" to="." method="_on_timer_timeout"]
 [connection signal="timeout" from="DamageTick" to="." method="_on_damage_tick_timeout"]

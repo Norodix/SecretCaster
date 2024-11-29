@@ -29,10 +29,12 @@ shape = SubResource("SphereShape3D_s8tex")
 
 [node name="AudioStreamPlayer3D" type="AudioStreamPlayer3D" parent="."]
 stream = ExtResource("2_t2yvc")
+volume_db = -30.0
 bus = &"Effects"
 
 [node name="AudioStreamPlayer3D_Rustle" type="AudioStreamPlayer3D" parent="."]
 stream = ExtResource("3_hpnol")
+volume_db = -15.0
 max_db = 0.0
 bus = &"Effects"
 

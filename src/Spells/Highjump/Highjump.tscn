@@ -45,4 +45,5 @@ draw_pass_2 = SubResource("CapsuleMesh_fs6gv")
 
 [node name="AudioStreamPlayer3D" type="AudioStreamPlayer3D" parent="."]
 stream = ExtResource("3_yvmfa")
+volume_db = -40.0
 bus = &"Effects"
