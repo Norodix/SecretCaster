@@ -53,6 +53,7 @@ func _physics_process(delta: float) -> void:
 	vy *= 0.9999
 	
 	if Input.is_action_just_pressed("jump") and is_on_floor():
+		$AudioStreamPlayer3D_Jump.play()
 		vy += 5
 	
 	if inputvector.length() < 0.1:
@@ -305,4 +306,26 @@ func _on_timer_timeout() -> void:
 		pistol.visible = true
 	else:
 		pistol.visible = false
+	pass # Replace with function body.
+
+
+func _on_timer_steps_timeout() -> void:
+	var timer = $Timer_Steps
+	var player = $AudioStreamPlayer3D_Steps
+	if not is_on_floor():
+		timer.stop()
+		timer.start(0.01)
+		return
+	if crouching:
+		player.volume_db = 0.0
+		timer.stop()
+		timer.wait_time = 0.65
+		timer.start()
+	else:
+		player.volume_db = 2.0
+		timer.stop()
+		timer.wait_time = 0.4
+		timer.start()
+	if velocity.length() > 0.2:
+		player.play()
 	pass # Replace with function body.

@@ -1,4 +1,4 @@
-[gd_scene load_steps=17 format=3 uid="uid://dl2vuwabcukwp"]
+[gd_scene load_steps=31 format=3 uid="uid://dl2vuwabcukwp"]
 
 [ext_resource type="Script" path="res://player.gd" id="1_q4vdp"]
 [ext_resource type="PackedScene" uid="uid://cf64v5ohrm125" path="res://Hands/Magic_Hands.tscn" id="2_2eniw"]
@@ -12,6 +12,18 @@
 [ext_resource type="PackedScene" uid="uid://b73q46no704v7" path="res://Spells/Wind/WindSpell.tscn" id="9_bi7b6"]
 [ext_resource type="PackedScene" uid="uid://cvba5sgdncr8q" path="res://hud.tscn" id="11_ntyv5"]
 [ext_resource type="AudioStream" uid="uid://ba3chnbxisywp" path="res://SoundFX/damage.mp3" id="12_56bjc"]
+[ext_resource type="AudioStream" uid="uid://c7g8mhjn2ebts" path="res://SoundFX/Steps/Step_01.mp3" id="13_1faum"]
+[ext_resource type="AudioStream" uid="uid://85akslbv0xau" path="res://SoundFX/Steps/Step_02.mp3" id="14_qdtas"]
+[ext_resource type="AudioStream" uid="uid://dji88y3ga7k6v" path="res://SoundFX/Steps/Step_11.mp3" id="15_rxcvb"]
+[ext_resource type="AudioStream" uid="uid://cqb5obe73qvne" path="res://SoundFX/Steps/Step_03.mp3" id="16_1wglp"]
+[ext_resource type="AudioStream" uid="uid://bb0frsddox6y5" path="res://SoundFX/Steps/Step_04.mp3" id="17_77hvt"]
+[ext_resource type="AudioStream" uid="uid://c0txm8sd78fxf" path="res://SoundFX/Steps/Step_05.mp3" id="18_2jfx2"]
+[ext_resource type="AudioStream" uid="uid://6ljkbygryp85" path="res://SoundFX/Steps/Step_06.mp3" id="19_darjh"]
+[ext_resource type="AudioStream" uid="uid://cn3pad3sat1ep" path="res://SoundFX/Steps/Step_07.mp3" id="20_00afr"]
+[ext_resource type="AudioStream" uid="uid://bvtmovnkt3s67" path="res://SoundFX/Steps/Step_08.mp3" id="21_utvdc"]
+[ext_resource type="AudioStream" uid="uid://dcjy78f0ieoc3" path="res://SoundFX/Steps/Step_09.mp3" id="22_r6wsx"]
+[ext_resource type="AudioStream" uid="uid://cu25u45pql4k3" path="res://SoundFX/Steps/Step_10.mp3" id="23_6f8uw"]
+[ext_resource type="AudioStream" uid="uid://xuxc70hao61g" path="res://SoundFX/jump.mp3" id="24_j7q30"]
 
 [sub_resource type="CapsuleShape3D" id="CapsuleShape3D_7wisv"]
 radius = 0.4
@@ -25,6 +37,27 @@ length = 0.9
 
 [sub_resource type="CylinderMesh" id="CylinderMesh_20hgg"]
 height = 1.8
+
+[sub_resource type="AudioStreamRandomizer" id="AudioStreamRandomizer_k0n3r"]
+random_pitch = 1.2
+streams_count = 11
+stream_0/stream = ExtResource("13_1faum")
+stream_1/stream = ExtResource("14_qdtas")
+stream_2/stream = ExtResource("16_1wglp")
+stream_3/stream = ExtResource("17_77hvt")
+stream_4/stream = ExtResource("18_2jfx2")
+stream_5/stream = ExtResource("19_darjh")
+stream_6/stream = ExtResource("20_00afr")
+stream_7/stream = ExtResource("21_utvdc")
+stream_8/stream = ExtResource("22_r6wsx")
+stream_9/stream = ExtResource("23_6f8uw")
+stream_10/stream = ExtResource("15_rxcvb")
+
+[sub_resource type="AudioStreamRandomizer" id="AudioStreamRandomizer_ixw7y"]
+random_pitch = 1.1
+random_volume_offset_db = 0.2
+streams_count = 1
+stream_0/stream = ExtResource("24_j7q30")
 
 [node name="Player" type="CharacterBody3D"]
 collision_layer = 2
@@ -98,4 +131,18 @@ one_shot = true
 stream = ExtResource("12_56bjc")
 bus = &"Effects"
 
+[node name="AudioStreamPlayer3D_Steps" type="AudioStreamPlayer3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, -0.9, 0)
+stream = SubResource("AudioStreamRandomizer_k0n3r")
+volume_db = 2.0
+bus = &"Effects"
+
+[node name="Timer_Steps" type="Timer" parent="."]
+wait_time = 0.5
+autostart = true
+
+[node name="AudioStreamPlayer3D_Jump" type="AudioStreamPlayer3D" parent="."]
+stream = SubResource("AudioStreamRandomizer_ixw7y")
+
 [connection signal="timeout" from="Pistol_Visibility_Timer" to="." method="_on_timer_timeout"]
+[connection signal="timeout" from="Timer_Steps" to="." method="_on_timer_steps_timeout"]
