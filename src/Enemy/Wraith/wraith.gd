@@ -80,6 +80,8 @@ func destroy():
 	$NavigationTimer.stop()
 	animState.next()
 	animState.travel("Wraith_Idle")
+	$Wraith_Model.visible = false
+	self.add_child(load("res://Wraith/wraith_cape_drop.tscn").instantiate())
 	$CollisionShape3D.set_deferred("disabled", true)
 	$AudioStreamPlayer3D_Death.play()
 	await $AudioStreamPlayer3D_Death.finished
