@@ -350,6 +350,10 @@ void process() {
 	TRANSFORM[2].xyz *= sign(params.scale.z) * max(abs(params.scale.z), 0.001);
 
 	//CUSTOM.z = params.animation_offset + lifetime_percent * params.animation_speed;
+	if (origin.y < -5.0) {
+		// reset leaves to inital position when it fell too low
+		TRANSFORM[3].xyz = calculate_initial_position(alt_seed);
+	}
 
 	if (CUSTOM.y > CUSTOM.w) {
 		ACTIVE = false;
