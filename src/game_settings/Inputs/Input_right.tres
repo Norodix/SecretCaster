@@ -1,0 +1,16 @@
+[gd_resource type="Resource" script_class="settingInput" load_steps=2 format=3 uid="uid://d3vetax6yi16d"]
+
+[ext_resource type="Script" path="res://addons/ggs/templates/setting_input.gd" id="1_obtvi"]
+
+[resource]
+resource_name = "input_right"
+script = ExtResource("1_obtvi")
+action = "right"
+event_idx = 0
+read_only_properties = PackedStringArray("default", "type", "value_type", "value_hint", "value_hint_string")
+default = [1, 68, -1]
+section = "input"
+key = "input_right"
+value_type = 28
+value_hint = 0
+value_hint_string = ""

@@ -1,0 +1,222 @@
+[gd_scene load_steps=16 format=3 uid="uid://ctwrao3bwedd7"]
+
+[ext_resource type="PackedScene" uid="uid://ds06mwhee8ygm" path="res://addons/ggs/components/slider/component_slider.tscn" id="1_cqwaq"]
+[ext_resource type="Script" path="res://Menu/settings.gd" id="1_x5a85"]
+[ext_resource type="Resource" uid="uid://b5neoouvqv240" path="res://game_settings/VolumeEffects.tres" id="2_mnemx"]
+[ext_resource type="Resource" uid="uid://bh7h784xp21wv" path="res://game_settings/VolumeMaster.tres" id="3_l58rl"]
+[ext_resource type="Resource" uid="uid://d4fc4s3v2ifls" path="res://game_settings/VolumeMusic.tres" id="4_k7xs2"]
+[ext_resource type="PackedScene" uid="uid://dm1av7skxvp1j" path="res://addons/ggs/components/input_btn/component_input_btn.tscn" id="6_apuvp"]
+[ext_resource type="Resource" uid="uid://bbu3huhek70lo" path="res://game_settings/Inputs/Input_forwards.tres" id="7_0qmmq"]
+[ext_resource type="Resource" uid="uid://cijers25nfhsr" path="res://game_settings/Inputs/Input_backwards.tres" id="8_xg80f"]
+[ext_resource type="Resource" uid="uid://ba3r031i155fq" path="res://game_settings/Inputs/Input_left.tres" id="9_15k20"]
+[ext_resource type="Resource" uid="uid://d3vetax6yi16d" path="res://game_settings/Inputs/Input_right.tres" id="10_rsfmw"]
+[ext_resource type="Resource" uid="uid://c4hcydcrfpte0" path="res://game_settings/Inputs/Input_jump.tres" id="11_a2dfb"]
+[ext_resource type="Resource" uid="uid://dukumn21xdpit" path="res://game_settings/Inputs/Input_crouch.tres" id="12_k240q"]
+[ext_resource type="Resource" uid="uid://rrucorrtkhfw" path="res://game_settings/Inputs/Input_reload.tres" id="13_luqbj"]
+[ext_resource type="Resource" uid="uid://dsknyjk5mc0f8" path="res://game_settings/Inputs/Input_usespell.tres" id="14_6gvmf"]
+[ext_resource type="Resource" uid="uid://8dfvak6hox5e" path="res://game_settings/Inputs/Input_attackmode.tres" id="15_brey7"]
+
+[node name="Control" type="Control"]
+layout_mode = 3
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+script = ExtResource("1_x5a85")
+
+[node name="CenterContainer" type="CenterContainer" parent="."]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+
+[node name="VBoxContainer" type="VBoxContainer" parent="CenterContainer"]
+layout_mode = 2
+theme_override_constants/separation = 12
+
+[node name="GridContainer" type="GridContainer" parent="CenterContainer/VBoxContainer"]
+layout_mode = 2
+theme_override_constants/v_separation = 6
+columns = 3
+
+[node name="Label" type="Label" parent="CenterContainer/VBoxContainer/GridContainer"]
+layout_mode = 2
+text = "Master Volume"
+
+[node name="VSeparator" type="VSeparator" parent="CenterContainer/VBoxContainer/GridContainer"]
+custom_minimum_size = Vector2(40, 0)
+layout_mode = 2
+
+[node name="Slider" parent="CenterContainer/VBoxContainer/GridContainer" instance=ExtResource("1_cqwaq")]
+layout_mode = 2
+setting = ExtResource("3_l58rl")
+apply_on_changed = true
+
+[node name="Label2" type="Label" parent="CenterContainer/VBoxContainer/GridContainer"]
+layout_mode = 2
+text = "Effects Volume"
+
+[node name="VSeparator2" type="VSeparator" parent="CenterContainer/VBoxContainer/GridContainer"]
+layout_mode = 2
+
+[node name="Slider2" parent="CenterContainer/VBoxContainer/GridContainer" instance=ExtResource("1_cqwaq")]
+layout_mode = 2
+setting = ExtResource("2_mnemx")
+apply_on_changed = true
+
+[node name="Label3" type="Label" parent="CenterContainer/VBoxContainer/GridContainer"]
+layout_mode = 2
+text = "Music Volume"
+
+[node name="VSeparator3" type="VSeparator" parent="CenterContainer/VBoxContainer/GridContainer"]
+layout_mode = 2
+
+[node name="Slider3" parent="CenterContainer/VBoxContainer/GridContainer" instance=ExtResource("1_cqwaq")]
+layout_mode = 2
+setting = ExtResource("4_k7xs2")
+apply_on_changed = true
+
+[node name="Label" type="Label" parent="CenterContainer/VBoxContainer"]
+layout_mode = 2
+text = "Inputs"
+horizontal_alignment = 1
+
+[node name="GridContainer2" type="GridContainer" parent="CenterContainer/VBoxContainer"]
+layout_mode = 2
+columns = 3
+
+[node name="Label" type="Label" parent="CenterContainer/VBoxContainer/GridContainer2"]
+layout_mode = 2
+text = "Forwards"
+
+[node name="HSeparator" type="HSeparator" parent="CenterContainer/VBoxContainer/GridContainer2"]
+layout_mode = 2
+size_flags_horizontal = 3
+
+[node name="InputBtn" parent="CenterContainer/VBoxContainer/GridContainer2" instance=ExtResource("6_apuvp")]
+layout_mode = 2
+_accepted_types = 15
+setting = ExtResource("7_0qmmq")
+apply_on_changed = true
+
+[node name="Label2" type="Label" parent="CenterContainer/VBoxContainer/GridContainer2"]
+layout_mode = 2
+text = "Backwards"
+
+[node name="HSeparator2" type="HSeparator" parent="CenterContainer/VBoxContainer/GridContainer2"]
+layout_mode = 2
+size_flags_horizontal = 3
+
+[node name="InputBtn2" parent="CenterContainer/VBoxContainer/GridContainer2" instance=ExtResource("6_apuvp")]
+layout_mode = 2
+_accepted_types = 15
+setting = ExtResource("8_xg80f")
+apply_on_changed = true
+
+[node name="Label3" type="Label" parent="CenterContainer/VBoxContainer/GridContainer2"]
+layout_mode = 2
+text = "Left"
+
+[node name="HSeparator3" type="HSeparator" parent="CenterContainer/VBoxContainer/GridContainer2"]
+layout_mode = 2
+size_flags_horizontal = 3
+
+[node name="InputBtn3" parent="CenterContainer/VBoxContainer/GridContainer2" instance=ExtResource("6_apuvp")]
+layout_mode = 2
+_accepted_types = 15
+setting = ExtResource("9_15k20")
+apply_on_changed = true
+
+[node name="Label4" type="Label" parent="CenterContainer/VBoxContainer/GridContainer2"]
+layout_mode = 2
+text = "Right"
+
+[node name="HSeparator4" type="HSeparator" parent="CenterContainer/VBoxContainer/GridContainer2"]
+layout_mode = 2
+size_flags_horizontal = 3
+
+[node name="InputBtn4" parent="CenterContainer/VBoxContainer/GridContainer2" instance=ExtResource("6_apuvp")]
+layout_mode = 2
+_accepted_types = 15
+setting = ExtResource("10_rsfmw")
+apply_on_changed = true
+
+[node name="Label5" type="Label" parent="CenterContainer/VBoxContainer/GridContainer2"]
+layout_mode = 2
+text = "Jump"
+
+[node name="HSeparator5" type="HSeparator" parent="CenterContainer/VBoxContainer/GridContainer2"]
+layout_mode = 2
+size_flags_horizontal = 3
+
+[node name="InputBtn5" parent="CenterContainer/VBoxContainer/GridContainer2" instance=ExtResource("6_apuvp")]
+layout_mode = 2
+_accepted_types = 15
+setting = ExtResource("11_a2dfb")
+apply_on_changed = true
+
+[node name="Label6" type="Label" parent="CenterContainer/VBoxContainer/GridContainer2"]
+layout_mode = 2
+text = "Crouch"
+
+[node name="HSeparator6" type="HSeparator" parent="CenterContainer/VBoxContainer/GridContainer2"]
+layout_mode = 2
+size_flags_horizontal = 3
+
+[node name="InputBtn6" parent="CenterContainer/VBoxContainer/GridContainer2" instance=ExtResource("6_apuvp")]
+layout_mode = 2
+_accepted_types = 15
+setting = ExtResource("12_k240q")
+apply_on_changed = true
+
+[node name="Label7" type="Label" parent="CenterContainer/VBoxContainer/GridContainer2"]
+layout_mode = 2
+text = "Reload"
+
+[node name="HSeparator7" type="HSeparator" parent="CenterContainer/VBoxContainer/GridContainer2"]
+layout_mode = 2
+size_flags_horizontal = 3
+
+[node name="InputBtn7" parent="CenterContainer/VBoxContainer/GridContainer2" instance=ExtResource("6_apuvp")]
+layout_mode = 2
+_accepted_types = 15
+setting = ExtResource("13_luqbj")
+apply_on_changed = true
+
+[node name="Label8" type="Label" parent="CenterContainer/VBoxContainer/GridContainer2"]
+layout_mode = 2
+text = "Shoot/use"
+
+[node name="HSeparator8" type="HSeparator" parent="CenterContainer/VBoxContainer/GridContainer2"]
+layout_mode = 2
+size_flags_horizontal = 3
+
+[node name="InputBtn8" parent="CenterContainer/VBoxContainer/GridContainer2" instance=ExtResource("6_apuvp")]
+layout_mode = 2
+_accepted_types = 15
+setting = ExtResource("14_6gvmf")
+apply_on_changed = true
+
+[node name="Label9" type="Label" parent="CenterContainer/VBoxContainer/GridContainer2"]
+layout_mode = 2
+text = "Attack mode"
+
+[node name="HSeparator9" type="HSeparator" parent="CenterContainer/VBoxContainer/GridContainer2"]
+layout_mode = 2
+size_flags_horizontal = 3
+
+[node name="InputBtn9" parent="CenterContainer/VBoxContainer/GridContainer2" instance=ExtResource("6_apuvp")]
+layout_mode = 2
+_accepted_types = 15
+setting = ExtResource("15_brey7")
+apply_on_changed = true
+
+[node name="Button" type="Button" parent="CenterContainer/VBoxContainer"]
+layout_mode = 2
+size_flags_horizontal = 4
+text = "Back"
+
+[connection signal="pressed" from="CenterContainer/VBoxContainer/Button" to="." method="_on_button_pressed"]

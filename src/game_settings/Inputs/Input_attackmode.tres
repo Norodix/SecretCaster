@@ -1,0 +1,16 @@
+[gd_resource type="Resource" script_class="settingInput" load_steps=2 format=3 uid="uid://8dfvak6hox5e"]
+
+[ext_resource type="Script" path="res://addons/ggs/templates/setting_input.gd" id="1_5b1gu"]
+
+[resource]
+resource_name = "input_attackmode"
+script = ExtResource("1_5b1gu")
+action = "attack_mode"
+event_idx = 0
+read_only_properties = PackedStringArray("default", "type", "value_type", "value_hint", "value_hint_string")
+default = [2, 2, -1]
+section = "input"
+key = "input_attackmode"
+value_type = 28
+value_hint = 0
+value_hint_string = ""

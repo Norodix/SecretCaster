@@ -1,0 +1,3 @@
+[submodule "src/addons/ggs"]
+	path = src/addons/ggs
+	url = https://github.com/Norodix/godot-game-settings.git
