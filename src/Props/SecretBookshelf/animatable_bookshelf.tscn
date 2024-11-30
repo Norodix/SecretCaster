@@ -1,0 +1,14 @@
+[gd_scene load_steps=3 format=3 uid="uid://6x8gd51ag83m"]
+
+[ext_resource type="PackedScene" uid="uid://mdm2qix72rgk" path="res://Props/SecretBookshelf/bookshelf.tscn" id="1_smn8w"]
+
+[sub_resource type="BoxShape3D" id="BoxShape3D_mw7xt"]
+size = Vector3(2, 2.1, 0.4)
+
+[node name="AnimatableBookshelf" type="AnimatableBody3D"]
+
+[node name="Bookshelf" parent="." instance=ExtResource("1_smn8w")]
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 1, 1.05, 0.1)
+shape = SubResource("BoxShape3D_mw7xt")

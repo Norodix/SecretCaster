@@ -1,0 +1,17 @@
+[gd_scene load_steps=4 format=3 uid="uid://mdm2qix72rgk"]
+
+[ext_resource type="PackedScene" uid="uid://tsmy2uug5flc" path="res://Props/SecretBookshelf/Bookshelf.glb" id="1_o4qlu"]
+
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_s34i7"]
+albedo_color = Color(0.55, 0.402417, 0.165, 1)
+
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_pmjj6"]
+albedo_color = Color(0.55, 0.402417, 0.165, 1)
+
+[node name="Bookshelf" instance=ExtResource("1_o4qlu")]
+
+[node name="Cube" parent="." index="0"]
+surface_material_override/0 = SubResource("StandardMaterial3D_s34i7")
+
+[node name="Cube_001" parent="." index="1"]
+surface_material_override/0 = SubResource("StandardMaterial3D_pmjj6")

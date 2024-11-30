@@ -1,0 +1,23 @@
+[gd_scene load_steps=6 format=3 uid="uid://crn7rja68guwi"]
+
+[ext_resource type="Texture2D" uid="uid://b4ivq1iu3rvfe" path="res://Props/SecretBookshelf/Panel.png" id="1_iacxo"]
+[ext_resource type="Script" path="res://Props/SecretBookshelf/control_panel.gd" id="1_qiqld"]
+
+[sub_resource type="QuadMesh" id="QuadMesh_8vvo6"]
+size = Vector2(0.105, 0.166)
+
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_slpm8"]
+albedo_texture = ExtResource("1_iacxo")
+
+[sub_resource type="BoxShape3D" id="BoxShape3D_wqb8o"]
+size = Vector3(0.114151, 0.176025, 0.0222473)
+
+[node name="ControlPanel" type="StaticBody3D"]
+script = ExtResource("1_qiqld")
+
+[node name="MeshInstance3D" type="MeshInstance3D" parent="."]
+mesh = SubResource("QuadMesh_8vvo6")
+surface_material_override/0 = SubResource("StandardMaterial3D_slpm8")
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="."]
+shape = SubResource("BoxShape3D_wqb8o")
