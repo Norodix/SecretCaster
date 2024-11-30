@@ -108,7 +108,7 @@ func destroy():
 	model.visible = false
 	var instance = capedrop.instantiate()
 	self.add_child(instance)
-	instance.global_basis = Basis.IDENTITY.rotated(Vector3.UP, deg_to_rad(180))
+	instance.basis = Basis.IDENTITY.rotated(Vector3.UP, deg_to_rad(180))
 	$CollisionShape3D.set_deferred("disabled", true)
 	$AudioStreamPlayer3D_Death.play()
 	await $AudioStreamPlayer3D_Death.finished
