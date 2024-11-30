@@ -1,7 +1,8 @@
 extends Node3D
 
 @onready var pistol = preload("res://Spells/Colt/ThrowingPistol.tscn")
-var pattern = ["right", "right", "right"]
+# var pattern = ["right", "right", "right"]
+@onready var pattern = Utils.generate_pattern(3)
 var hand_name = "Colt-In-hand"
 var sounds : Array[AudioStream]
 const path = "res://Spells/Colt/Audio/"

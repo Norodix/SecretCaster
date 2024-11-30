@@ -1,6 +1,7 @@
 extends Node3D
 
-var pattern = ["left", "right", "left", "right", "left", "right"]
+# var pattern = ["left", "right", "left", "right", "left", "right"]
+@onready var pattern = Utils.generate_pattern(8)
 @onready var resource = preload("res://Spells/Snowing/SnowPatch.tscn")
 var cooldown = 1000
 

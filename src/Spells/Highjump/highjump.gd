@@ -1,6 +1,7 @@
 extends Node3D
 
-var pattern = ["forwards", "forwards", "forwards", "backwards", "forwards"]
+# var pattern = ["forwards", "forwards", "forwards", "backwards", "forwards"]
+@onready var pattern = Utils.generate_pattern(8)
 
 var select_name = "Frame_Highjump_Tex"
 var feedback_name = "Highjump_Feedback"

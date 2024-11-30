@@ -1,6 +1,7 @@
 extends Node3D
 
-var pattern = ["forwards", "right", "backwards", "left", "forwards", "right", "backwards", "left"]
+# var pattern = ["forwards", "right", "backwards", "left", "forwards", "right", "backwards", "left"]
+@onready var pattern = Utils.generate_pattern(8)
 var cooldown = 1000
 @onready var player = get_parent().get_parent()
 @onready var cam = player.find_child("Camera3D")

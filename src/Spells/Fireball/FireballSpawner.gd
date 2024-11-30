@@ -1,6 +1,7 @@
 extends Node3D
 
-var pattern = ["forwards", "right", "forwards", "left", "forwards"]
+# var pattern = ["forwards", "right", "forwards", "left", "forwards"]
+@onready var pattern = Utils.generate_pattern(8)
 @onready var fireball_resource = preload("res://Spells/Fireball/Fireball.tscn")
 var select_name = "Frame_Fireball_Tex"
 var feedback_name = "Fireball_Feedback"

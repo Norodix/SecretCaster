@@ -19,7 +19,7 @@ config/icon="res://icon.svg"
 
 SignalBus="*res://signal_bus.gd"
 GGS="*res://addons/ggs/plugin/singleton/ggs.tscn"
-
+Utils="*res://utils.gd"
 
 [editor_plugins]
 

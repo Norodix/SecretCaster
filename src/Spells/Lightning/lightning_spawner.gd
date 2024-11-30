@@ -1,6 +1,7 @@
 extends Node3D
 
-var pattern = ["backwards", "backwards", "backwards"]
+# var pattern = ["backwards", "backwards", "backwards"]
+@onready var pattern = Utils.generate_pattern(8)
 @onready var resource = preload("res://Spells/Lightning/LightningStrike.tscn")
 var select_name = "Frame_Lightning_Tex"
 var feedback_name = "Lightning_Feedback"

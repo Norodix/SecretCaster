@@ -1,6 +1,7 @@
 extends Area3D
 
-var pattern = ["right", "forwards", "left", "left", "forwards", "right"]
+# var pattern = ["right", "forwards", "left", "left", "forwards", "right"]
+@onready var pattern = Utils.generate_pattern(8)
 
 var select_name = "Frame_Fireblast_Tex"
 var feedback_name = "Fireblast_Feedback"

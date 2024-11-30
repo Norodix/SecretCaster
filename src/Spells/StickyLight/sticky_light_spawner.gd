@@ -1,6 +1,7 @@
 extends Node3D
 
-var pattern = ["left", "left", "left"]
+# var pattern = ["left", "left", "left"]
+@onready var pattern = Utils.generate_pattern(8)
 var cooldown = 500
 @onready var resource = preload("res://Spells/StickyLight/sticky_light_ball.tscn")
 
