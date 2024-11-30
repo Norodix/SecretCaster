@@ -45,6 +45,7 @@ func _ready() -> void:
 func _physics_process(delta: float) -> void:
 	if global_position.y < -50:
 		defeat()
+		return
 	var inputvector = Input.get_vector("left", "right", "forwards", "backwards")
 	var vy = velocity.y
 	var vh = velocity - Vector3(0, vy, 0)
@@ -174,7 +175,8 @@ func damage(hit : float = 10, type : String = "physical"):
 
 
 func defeat():
-	get_tree().call_deferred("change_scene_to_file", "res://Menu/MainMenu.tscn")
+	SignalBus.emit_signal("defeat")
+	self.process_mode = Node.PROCESS_MODE_DISABLED
 
 
 # Bingibungel shoots the pistol in the comment
@@ -328,4 +330,3 @@ func _on_timer_steps_timeout() -> void:
 		timer.start()
 	if velocity.length() > 0.2:
 		player.play()
-	pass # Replace with function body.

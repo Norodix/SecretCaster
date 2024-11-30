@@ -14,6 +14,10 @@ enum ATTACK_MODE {
 @onready var chSpell = find_child("Crosshair_SpellCD")
 
 
+func _ready() -> void:
+	SignalBus.defeat.connect(defeat)
+
+
 func _physics_process(delta: float) -> void:
 	var bullets = self.get_parent().bullets
 	var bullet_count = float(self.get_parent().bullet_count) + 1.0
@@ -30,6 +34,7 @@ func _physics_process(delta: float) -> void:
 	find_child("Damage_Marker").self_modulate.a *= 0.95
 	for child in find_children("*_Feedback"):
 		child.self_modulate.a *= 0.95
+
 
 func select(spell : Node):
 	# Select selections
@@ -49,6 +54,7 @@ func select(spell : Node):
 			feedback_node.visible = true
 			feedback_node.self_modulate.a = 0.9
 
+
 func set_active_mode(mode):
 	for child in find_children("*_Selected_Tex"):
 		child.visible = false
@@ -57,5 +63,12 @@ func set_active_mode(mode):
 	if mode == ATTACK_MODE.MAGIC:
 		find_child("Spell_Selected_Tex").visible = true
 
+
 func damage():
 	find_child("Damage_Marker").self_modulate.a = 1.0
+
+
+func defeat():
+	Input.mouse_mode = Input.MOUSE_MODE_VISIBLE
+	$Control.queue_free()
+	$Defeat.visible = true

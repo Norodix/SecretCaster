@@ -13,3 +13,4 @@ enum SpellTypes {
 }
 
 signal spell_used(type : int)
+signal defeat # signals to all relevant components the end of the game
