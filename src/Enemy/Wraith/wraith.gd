@@ -96,7 +96,11 @@ func damage(value : float, type : String):
 		destroy()
 
 
+var is_destroying = false # lock out, sometimes it was possible to call this multiple times
 func destroy():
+	if is_destroying:
+		return
+	is_destroying = true
 	trigger_state_transisiton("idle")
 	$NavigationTimer.stop()
 	animState.next()
