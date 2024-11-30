@@ -1,8 +1,13 @@
 extends Node3D
 
+## The enemy scene that will be added when the node is triggered
 @export_file("*.tscn") var EnemyScene
+## The radius of the enemy's collision shape.
+## This is used to space out the spawned enemies to distribute them without overlap.
 @export var EnemyRadius : float = 0.5
+## The spell that triggers this node. Leave invalid if the node is triggered manually.
 @export var trigger_spell = SignalBus.SpellTypes.INVALID
+## The number of enemies to spawn on the first cast of the selected spell.
 @export var trigger_enemy_number = 1
 
 var scene : Resource

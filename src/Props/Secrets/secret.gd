@@ -1,6 +1,7 @@
 extends Node3D
 class_name secret
 
+## This spell name should match the node name of the player node
 @export var spell_name : String
 
 var display_text = {
