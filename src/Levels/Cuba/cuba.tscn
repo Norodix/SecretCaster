@@ -492,7 +492,7 @@ light_color = Color(0.875547, 3.85046e-07, 0.463665, 1)
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.567276, -0.928823, 17.7161)
 EnemyScene = "res://Enemy/Wraith/Wraith.tscn"
 trigger_spell = 5
-trigger_enemy_number = 15
+trigger_enemy_number = 10
 
 [node name="Fireball" type="Node3D" parent="."]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -77.0147, 2.5421, 8.03077)
@@ -515,7 +515,7 @@ light_color = Color(0.875547, 3.85046e-07, 0.463665, 1)
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 13.9025, -0.928822, 29.8554)
 EnemyScene = "res://Enemy/Wraith/Wraith.tscn"
 trigger_spell = 2
-trigger_enemy_number = 30
+trigger_enemy_number = 20
 
 [node name="StickyLight" type="Node3D" parent="."]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -66.9166, 2.5421, -26.3836)
