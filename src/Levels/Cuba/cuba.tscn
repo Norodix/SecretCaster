@@ -705,7 +705,7 @@ transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 54.1649, 5.7052, -45.9913)
 transform = Transform3D(0.557817, 0, -0.829963, 0, 1, 0, 0.829963, 0, 0.557817, 4.84452, -1.79775, -4.37881)
 
 [node name="ControlPanel" parent="Fireball/OpeningBookshelf" instance=ExtResource("18_ccllr")]
-transform = Transform3D(2, 0, 0, 0, 2, 0, 0, 0, 2, -0.402325, 1.00858, -0.11158)
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.402325, 1.00858, -0.11158)
 
 [node name="SpotLight3D" type="SpotLight3D" parent="Fireball/OpeningBookshelf"]
 transform = Transform3D(0.999885, 0, 0.0152011, 0, 1, 0, -0.0152011, 0, 0.999885, -0.772881, 1.93547, 1.31176)
@@ -798,7 +798,7 @@ transform = Transform3D(-0.025514, 0, 0.999674, 0, 1, 0, -0.999674, 0, -0.025514
 script = ExtResource("27_b4qm5")
 
 [node name="Camera3D" type="Camera3D" parent="Cutscene"]
-transform = Transform3D(-4.37114e-08, 0, 1, 0, 1, 0, -1, 0, -4.37114e-08, 10.6626, 2.98109, 0)
+transform = Transform3D(-3.61999e-06, 0, 1, 0, 1, 0, -1, 0, -3.61999e-06, 10.6626, 2.98109, 0)
 
 [node name="AnimationPlayer" type="AnimationPlayer" parent="Cutscene"]
 libraries = {
