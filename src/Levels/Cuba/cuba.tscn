@@ -678,11 +678,11 @@ text = "The ending is a secret.
 You win!"
 
 [node name="radio_havana" parent="." instance=ExtResource("21_cwxvy")]
-transform = Transform3D(0.584731, 0, 0.811227, 0, 1, 0, -0.811227, 0, 0.584731, 57.2485, 0.515174, 46.4857)
+transform = Transform3D(0.584731, 0, 0.811227, 0, 1, 0, -0.811227, 0, 0.584731, 58.2227, 0.789627, 47.2493)
 
 [node name="radio_havana_tower" parent="." instance=ExtResource("22_tmcl6")]
-transform = Transform3D(0.83809, 0, -0.545532, 0, 1, 0, 0.545532, 0, 0.83809, 61.8163, 0.318124, 38.1146)
+transform = Transform3D(0.83809, 0, -0.545532, 0, 1, 0, 0.545532, 0, 0.83809, 62.7906, 0.592577, 38.8782)
 
 [node name="MeshInstance3D" type="MeshInstance3D" parent="."]
-transform = Transform3D(0.988218, 0, 0.153055, 0, 1, 0, -0.153055, 0, 0.988218, 60.6824, -0.211117, 44.6784)
+transform = Transform3D(0.988218, 0, 0.153055, 0, 1, 0, -0.153055, 0, 0.988218, 61.6567, 0.0633357, 45.442)
 mesh = SubResource("CylinderMesh_4rwms")
