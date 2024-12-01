@@ -5,6 +5,7 @@ extends Node3D
 
 var select_name = "Frame_Highjump_Tex"
 var feedback_name = "Highjump_Feedback"
+var hand_name = "Spring-In-hand"
 
 
 func _physics_process(delta: float) -> void:
@@ -12,6 +13,7 @@ func _physics_process(delta: float) -> void:
 		$GPUParticles3D.emitting = false
 
 func use_spell(player: CharacterBody3D):
+	find_parent("Player").find_child("Spring-In-hand").spring()
 	player.velocity.y = 10
 	$GPUParticles3D.emitting = true
 	$AudioStreamPlayer3D.play()
