@@ -1,7 +1,6 @@
 shader_type spatial;
 
 //render_mode unshaded;
-render_mode unshaded;
 
 uniform sampler2D albedo_tex : source_color;
 uniform sampler2D secretPattern : source_color;

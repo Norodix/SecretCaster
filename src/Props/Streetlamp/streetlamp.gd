@@ -5,8 +5,8 @@ extends StaticBody3D
 
 func damage(_amount, type):
 	if type == "shock":
-		light.light_energy = 50
+		light.light_energy = 100
 
 
 func _process(delta: float) -> void:
-	light.light_energy = lerp(light.light_energy, 5.0, 0.01)
+	light.light_energy = lerp(light.light_energy, 5.0, 0.05)
