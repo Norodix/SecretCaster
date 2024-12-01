@@ -1,0 +1,16 @@
+[gd_resource type="StandardMaterial3D" load_steps=2 format=3 uid="uid://bi5srmui0nqed"]
+
+[ext_resource type="Texture2D" uid="uid://bgmrq5nbh01go" path="res://Props/Grass/Grass_Tex.png" id="1_8a7j3"]
+
+[resource]
+transparency = 2
+alpha_scissor_threshold = 0.8
+alpha_antialiasing_mode = 0
+cull_mode = 2
+albedo_color = Color(0.887532, 0.962967, 0.790002, 1)
+albedo_texture = ExtResource("1_8a7j3")
+metallic = 0.5
+subsurf_scatter_enabled = true
+subsurf_scatter_strength = 0.1
+backlight_enabled = true
+backlight = Color(1, 1, 1, 1)

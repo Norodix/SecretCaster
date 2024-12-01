@@ -1,0 +1,13 @@
+[gd_resource type="StandardMaterial3D" load_steps=2 format=3 uid="uid://cqbqocs4lcyvw"]
+
+[ext_resource type="Texture2D" uid="uid://cmoembonqfh4s" path="res://Props/Donut_Terrain/Terrain_Asphalt_Nrm.png" id="1_q3pnw"]
+
+[resource]
+albedo_color = Color(0.334574, 0.454992, 0.1348, 1)
+metallic_specular = 0.1
+normal_enabled = true
+normal_scale = 0.5
+normal_texture = ExtResource("1_q3pnw")
+uv1_scale = Vector3(0.1, 0.1, 0.1)
+uv1_triplanar = true
+uv1_world_triplanar = true
