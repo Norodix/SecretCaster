@@ -94,6 +94,7 @@ volumetric_fog_density = 0.01
 volumetric_fog_length = 128.0
 
 [sub_resource type="FogMaterial" id="FogMaterial_qd4r1"]
+density = 0.5
 albedo = Color(0.314242, 0.00121983, 0.583491, 1)
 
 [sub_resource type="NavigationMesh" id="NavigationMesh_vqrfs"]
@@ -549,8 +550,8 @@ transform = Transform3D(0.254045, 0, -0.967192, 0, 1, 0, 0.967192, 0, 0.254045, 
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -5.78198, -0.151, 63.2063)
 
 [node name="FogVolume" type="FogVolume" parent="."]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 2.56847, -18.5331, 1.54033)
-size = Vector3(110.538, 2, 105.171)
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 2.56847, -50.2677, 1.54033)
+size = Vector3(400, 15, 400)
 shape = 0
 material = SubResource("FogMaterial_qd4r1")
 
