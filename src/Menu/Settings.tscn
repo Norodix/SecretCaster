@@ -1,4 +1,4 @@
-[gd_scene load_steps=16 format=3 uid="uid://ctwrao3bwedd7"]
+[gd_scene load_steps=18 format=3 uid="uid://ctwrao3bwedd7"]
 
 [ext_resource type="PackedScene" uid="uid://ds06mwhee8ygm" path="res://addons/ggs/components/slider/component_slider.tscn" id="1_cqwaq"]
 [ext_resource type="Script" path="res://Menu/settings.gd" id="1_x5a85"]
@@ -15,6 +15,8 @@
 [ext_resource type="Resource" uid="uid://rrucorrtkhfw" path="res://game_settings/Inputs/Input_reload.tres" id="13_luqbj"]
 [ext_resource type="Resource" uid="uid://dsknyjk5mc0f8" path="res://game_settings/Inputs/Input_usespell.tres" id="14_6gvmf"]
 [ext_resource type="Resource" uid="uid://8dfvak6hox5e" path="res://game_settings/Inputs/Input_attackmode.tres" id="15_brey7"]
+[ext_resource type="Resource" uid="uid://qgpdvagm0o4p" path="res://game_settings/Inputs/Input_pageleft.tres" id="16_7ukji"]
+[ext_resource type="Resource" uid="uid://da65lo8vt0m08" path="res://game_settings/Inputs/Input_pageright.tres" id="17_0v464"]
 
 [node name="Control" type="Control"]
 layout_mode = 3
@@ -221,6 +223,34 @@ size_flags_horizontal = 3
 layout_mode = 2
 _accepted_types = 15
 setting = ExtResource("15_brey7")
+apply_on_changed = true
+
+[node name="Label10" type="Label" parent="CenterContainer/VBoxContainer/GridContainer2"]
+layout_mode = 2
+text = "Page left"
+
+[node name="HSeparator10" type="HSeparator" parent="CenterContainer/VBoxContainer/GridContainer2"]
+layout_mode = 2
+size_flags_horizontal = 3
+
+[node name="InputBtn10" parent="CenterContainer/VBoxContainer/GridContainer2" instance=ExtResource("6_apuvp")]
+layout_mode = 2
+_accepted_types = 15
+setting = ExtResource("16_7ukji")
+apply_on_changed = true
+
+[node name="Label11" type="Label" parent="CenterContainer/VBoxContainer/GridContainer2"]
+layout_mode = 2
+text = "Page right"
+
+[node name="HSeparator11" type="HSeparator" parent="CenterContainer/VBoxContainer/GridContainer2"]
+layout_mode = 2
+size_flags_horizontal = 3
+
+[node name="InputBtn11" parent="CenterContainer/VBoxContainer/GridContainer2" instance=ExtResource("6_apuvp")]
+layout_mode = 2
+_accepted_types = 15
+setting = ExtResource("17_0v464")
 apply_on_changed = true
 
 [node name="Button" type="Button" parent="CenterContainer/VBoxContainer"]
