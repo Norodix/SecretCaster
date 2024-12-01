@@ -12,6 +12,7 @@ enum ATTACK_MODE {
 @onready var hudAspect = find_child("16-9-aspect")
 @onready var chAmmo = find_child("Crosshair_Ammo")
 @onready var chSpell = find_child("Crosshair_SpellCD")
+@onready var spellLegend = find_child("spellbookLabel")
 
 
 func _ready() -> void:
@@ -30,6 +31,7 @@ func _physics_process(delta: float) -> void:
 	magLabel.theme.default_font_size = int(hudAspect.size.y / 16.2)
 	slashLabel.theme.default_font_size = int(hudAspect.size.y / 26.0)
 	ammoLabel.theme.default_font_size = int(hudAspect.size.y / 26.0)
+	spellLegend.theme.default_font_size = int(hudAspect.size.y / 64.8)
 	
 	find_child("Damage_Marker").self_modulate.a *= 0.95
 	for child in find_children("*_Feedback"):

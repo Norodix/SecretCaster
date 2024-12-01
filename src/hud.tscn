@@ -1,4 +1,4 @@
-[gd_scene load_steps=31 format=3 uid="uid://cvba5sgdncr8q"]
+[gd_scene load_steps=32 format=3 uid="uid://cvba5sgdncr8q"]
 
 [ext_resource type="Script" path="res://hud.gd" id="1_0n6rd"]
 [ext_resource type="Texture2D" uid="uid://blb6rjpwj6v0c" path="res://Textures/HUD/HUD_Spell_Selected.png" id="1_e7vvy"]
@@ -44,6 +44,9 @@ default_font_size = 25
 
 [sub_resource type="Theme" id="Theme_7ccke"]
 default_font_size = 25
+
+[sub_resource type="Theme" id="Theme_5xkbi"]
+default_font_size = 10
 
 [node name="HUD" type="CanvasLayer"]
 script = ExtResource("1_0n6rd")
@@ -373,26 +376,46 @@ texture = ExtResource("1_e7vvy")
 expand_mode = 1
 stretch_mode = 4
 
-[node name="SpellBook" type="Control" parent="Control/16-9-aspect/Control"]
+[node name="PanelContainer" type="PanelContainer" parent="Control/16-9-aspect/Control"]
+self_modulate = Color(1, 1, 1, 0.733333)
 layout_mode = 1
-anchor_left = 0.95
-anchor_top = 0.05
-anchor_right = 0.95
-anchor_bottom = 0.95
-offset_left = -200.0
-grow_horizontal = 0
-grow_vertical = 0
+anchors_preset = -1
+anchor_left = 0.815104
+anchor_top = 0.0385807
+anchor_right = 0.969618
+anchor_bottom = 0.334881
+metadata/_edit_use_anchors_ = true
 
-[node name="Label" type="Label" parent="Control/16-9-aspect/Control/SpellBook"]
+[node name="Control" type="Control" parent="Control/16-9-aspect/Control/PanelContainer"]
+layout_mode = 2
+
+[node name="PanelContainer" type="PanelContainer" parent="Control/16-9-aspect/Control/PanelContainer/Control"]
+self_modulate = Color(1, 1, 1, 0.254902)
+layout_mode = 2
+anchor_left = 0.0561798
+anchor_top = 0.0520833
+anchor_right = 0.938202
+anchor_bottom = 0.947917
+metadata/_edit_use_anchors_ = true
+
+[node name="SpellBook" type="Control" parent="Control/16-9-aspect/Control/PanelContainer/Control/PanelContainer"]
+layout_mode = 2
+
+[node name="spellbookLabel" type="Label" parent="Control/16-9-aspect/Control/PanelContainer/Control/PanelContainer/SpellBook"]
 layout_mode = 0
 offset_right = 40.0
 offset_bottom = 23.0
+theme = SubResource("Theme_5xkbi")
 text = "asdféljkaf
 
 asdélfjaélksdf
 kléajsdfélkja
 sgfélkjhnbéjnas
 aélhgélakj
+c
+o
+c
+k
 "
 script = ExtResource("22_214bv")
 
