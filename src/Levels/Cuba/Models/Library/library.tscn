@@ -1,0 +1,225 @@
+[gd_scene load_steps=24 format=3 uid="uid://bupl10qdqgli5"]
+
+[ext_resource type="PackedScene" uid="uid://cld2cshdusldd" path="res://Levels/Cuba/Models/Library/library.glb" id="1_1lach"]
+[ext_resource type="Texture2D" uid="uid://ci4r1msgdej4p" path="res://Levels/Cuba/Models/Library/library_t.png" id="2_chupj"]
+
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_tee14"]
+albedo_texture = ExtResource("2_chupj")
+
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_kxaq8"]
+albedo_texture = ExtResource("2_chupj")
+
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_0ad84"]
+albedo_color = Color(0.220744, 0.522977, 0.77194, 1)
+albedo_texture = ExtResource("2_chupj")
+
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_b1w0w"]
+albedo_color = Color(0.713524, 0.407826, 0, 1)
+albedo_texture = ExtResource("2_chupj")
+
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_lajab"]
+albedo_color = Color(0.219608, 0.521569, 0.772549, 1)
+albedo_texture = ExtResource("2_chupj")
+
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_dprxv"]
+albedo_texture = ExtResource("2_chupj")
+
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_dgkcx"]
+albedo_color = Color(0, 0.444553, 0.313452, 1)
+albedo_texture = ExtResource("2_chupj")
+
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_tr2fm"]
+albedo_texture = ExtResource("2_chupj")
+
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_vfjka"]
+albedo_texture = ExtResource("2_chupj")
+
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_77o0l"]
+albedo_texture = ExtResource("2_chupj")
+
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_6xsvr"]
+albedo_texture = ExtResource("2_chupj")
+
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_6x8th"]
+albedo_texture = ExtResource("2_chupj")
+
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_10oee"]
+albedo_texture = ExtResource("2_chupj")
+
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_g870r"]
+albedo_texture = ExtResource("2_chupj")
+
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_bwent"]
+albedo_color = Color(0, 0.443137, 0.313726, 1)
+albedo_texture = ExtResource("2_chupj")
+
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_61x4e"]
+albedo_texture = ExtResource("2_chupj")
+
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_7uqju"]
+albedo_texture = ExtResource("2_chupj")
+
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_f3aut"]
+albedo_texture = ExtResource("2_chupj")
+
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_5sc3f"]
+albedo_texture = ExtResource("2_chupj")
+
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_rikfy"]
+albedo_texture = ExtResource("2_chupj")
+
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_kvdpu"]
+albedo_texture = ExtResource("2_chupj")
+
+[node name="library" instance=ExtResource("1_1lach")]
+
+[node name="Building" parent="." index="0"]
+surface_material_override/0 = SubResource("StandardMaterial3D_tee14")
+surface_material_override/1 = SubResource("StandardMaterial3D_kxaq8")
+
+[node name="Room" parent="." index="1"]
+surface_material_override/0 = SubResource("StandardMaterial3D_0ad84")
+surface_material_override/1 = SubResource("StandardMaterial3D_b1w0w")
+surface_material_override/2 = SubResource("StandardMaterial3D_lajab")
+
+[node name="Balkon" parent="." index="2"]
+surface_material_override/0 = SubResource("StandardMaterial3D_dprxv")
+
+[node name="Cylinder" parent="." index="3"]
+surface_material_override/0 = SubResource("StandardMaterial3D_dgkcx")
+
+[node name="Window" parent="." index="4"]
+surface_material_override/0 = SubResource("StandardMaterial3D_tr2fm")
+surface_material_override/1 = SubResource("StandardMaterial3D_vfjka")
+
+[node name="Door" parent="." index="5"]
+surface_material_override/0 = SubResource("StandardMaterial3D_77o0l")
+surface_material_override/1 = SubResource("StandardMaterial3D_6xsvr")
+
+[node name="Pillar" parent="." index="6"]
+surface_material_override/0 = SubResource("StandardMaterial3D_6x8th")
+
+[node name="Pillar_001" parent="." index="7"]
+surface_material_override/0 = SubResource("StandardMaterial3D_10oee")
+
+[node name="Balkon_001" parent="." index="8"]
+surface_material_override/0 = SubResource("StandardMaterial3D_g870r")
+
+[node name="Cylinder_001" parent="." index="9"]
+surface_material_override/0 = SubResource("StandardMaterial3D_bwent")
+
+[node name="Window_001" parent="." index="10"]
+surface_material_override/0 = SubResource("StandardMaterial3D_61x4e")
+surface_material_override/1 = SubResource("StandardMaterial3D_7uqju")
+
+[node name="Window_002" parent="." index="11"]
+surface_material_override/0 = SubResource("StandardMaterial3D_61x4e")
+surface_material_override/1 = SubResource("StandardMaterial3D_7uqju")
+
+[node name="Window_003" parent="." index="12"]
+surface_material_override/0 = SubResource("StandardMaterial3D_61x4e")
+surface_material_override/1 = SubResource("StandardMaterial3D_7uqju")
+
+[node name="Window_004" parent="." index="13"]
+surface_material_override/0 = SubResource("StandardMaterial3D_61x4e")
+surface_material_override/1 = SubResource("StandardMaterial3D_7uqju")
+
+[node name="Window_005" parent="." index="14"]
+surface_material_override/0 = SubResource("StandardMaterial3D_61x4e")
+surface_material_override/1 = SubResource("StandardMaterial3D_7uqju")
+
+[node name="Window_006" parent="." index="15"]
+surface_material_override/0 = SubResource("StandardMaterial3D_61x4e")
+surface_material_override/1 = SubResource("StandardMaterial3D_7uqju")
+
+[node name="Window_007" parent="." index="16"]
+surface_material_override/0 = SubResource("StandardMaterial3D_61x4e")
+surface_material_override/1 = SubResource("StandardMaterial3D_7uqju")
+
+[node name="Window_008" parent="." index="17"]
+surface_material_override/0 = SubResource("StandardMaterial3D_61x4e")
+surface_material_override/1 = SubResource("StandardMaterial3D_7uqju")
+
+[node name="Window_009" parent="." index="18"]
+surface_material_override/0 = SubResource("StandardMaterial3D_61x4e")
+surface_material_override/1 = SubResource("StandardMaterial3D_7uqju")
+
+[node name="Window_010" parent="." index="19"]
+surface_material_override/0 = SubResource("StandardMaterial3D_61x4e")
+surface_material_override/1 = SubResource("StandardMaterial3D_7uqju")
+
+[node name="Window_011" parent="." index="20"]
+surface_material_override/0 = SubResource("StandardMaterial3D_61x4e")
+surface_material_override/1 = SubResource("StandardMaterial3D_7uqju")
+
+[node name="Window_012" parent="." index="21"]
+surface_material_override/0 = SubResource("StandardMaterial3D_61x4e")
+surface_material_override/1 = SubResource("StandardMaterial3D_7uqju")
+
+[node name="Window_013" parent="." index="22"]
+surface_material_override/0 = SubResource("StandardMaterial3D_61x4e")
+surface_material_override/1 = SubResource("StandardMaterial3D_7uqju")
+
+[node name="Window_014" parent="." index="23"]
+surface_material_override/0 = SubResource("StandardMaterial3D_61x4e")
+surface_material_override/1 = SubResource("StandardMaterial3D_7uqju")
+
+[node name="Window_015" parent="." index="24"]
+surface_material_override/0 = SubResource("StandardMaterial3D_61x4e")
+surface_material_override/1 = SubResource("StandardMaterial3D_7uqju")
+
+[node name="Window_016" parent="." index="25"]
+surface_material_override/0 = SubResource("StandardMaterial3D_61x4e")
+surface_material_override/1 = SubResource("StandardMaterial3D_7uqju")
+
+[node name="Window_017" parent="." index="26"]
+surface_material_override/0 = SubResource("StandardMaterial3D_61x4e")
+surface_material_override/1 = SubResource("StandardMaterial3D_7uqju")
+
+[node name="Window_018" parent="." index="27"]
+surface_material_override/0 = SubResource("StandardMaterial3D_61x4e")
+surface_material_override/1 = SubResource("StandardMaterial3D_7uqju")
+
+[node name="Window_019" parent="." index="28"]
+surface_material_override/0 = SubResource("StandardMaterial3D_61x4e")
+surface_material_override/1 = SubResource("StandardMaterial3D_7uqju")
+
+[node name="Window_020" parent="." index="29"]
+surface_material_override/0 = SubResource("StandardMaterial3D_61x4e")
+surface_material_override/1 = SubResource("StandardMaterial3D_7uqju")
+
+[node name="Window_021" parent="." index="30"]
+surface_material_override/0 = SubResource("StandardMaterial3D_61x4e")
+surface_material_override/1 = SubResource("StandardMaterial3D_7uqju")
+
+[node name="Window_022" parent="." index="31"]
+surface_material_override/0 = SubResource("StandardMaterial3D_61x4e")
+surface_material_override/1 = SubResource("StandardMaterial3D_7uqju")
+
+[node name="Window_023" parent="." index="32"]
+surface_material_override/0 = SubResource("StandardMaterial3D_61x4e")
+surface_material_override/1 = SubResource("StandardMaterial3D_7uqju")
+
+[node name="Window_024" parent="." index="33"]
+surface_material_override/0 = SubResource("StandardMaterial3D_61x4e")
+surface_material_override/1 = SubResource("StandardMaterial3D_7uqju")
+
+[node name="Window_025" parent="." index="34"]
+surface_material_override/0 = SubResource("StandardMaterial3D_61x4e")
+surface_material_override/1 = SubResource("StandardMaterial3D_7uqju")
+
+[node name="Window_026" parent="." index="35"]
+surface_material_override/0 = SubResource("StandardMaterial3D_61x4e")
+surface_material_override/1 = SubResource("StandardMaterial3D_7uqju")
+
+[node name="Pillar_002" parent="." index="36"]
+surface_material_override/0 = SubResource("StandardMaterial3D_f3aut")
+
+[node name="Pillar_003" parent="." index="37"]
+surface_material_override/0 = SubResource("StandardMaterial3D_5sc3f")
+
+[node name="Pillar_004" parent="." index="38"]
+surface_material_override/0 = SubResource("StandardMaterial3D_rikfy")
+
+[node name="Pillar_005" parent="." index="39"]
+surface_material_override/0 = SubResource("StandardMaterial3D_kvdpu")
