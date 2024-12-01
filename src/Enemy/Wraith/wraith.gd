@@ -1,7 +1,7 @@
 extends CharacterBody3D
 
 var target = Vector3.ZERO
-var speed = 3
+var speed = 7
 var health = 10
 var acceleration = 30
 @onready var player = get_tree().root.find_child("Player", true, false)
@@ -140,6 +140,7 @@ func _physics_process(delta: float) -> void:
 	# Generate a new transform that looks in movement direction
 	var z = Vector3.ZERO
 	var v = desired_velocity
+	v.y = 0 # fix downwards movement singularity
 	if v.length() > 0.1:
 		z = - v
 		z.y = 0
@@ -152,6 +153,10 @@ func _physics_process(delta: float) -> void:
 	var x = y.cross(z).normalized()
 	var new_basis = Basis(x, y, z).orthonormalized()
 	global_basis = global_basis.slerp(new_basis, 0.1)
+	if global_basis.x == Vector3.ZERO:
+		pass
+	if new_basis.x == Vector3.ZERO:
+		pass
 	var offset = global_position - player.global_position
 	if state == "direct" and offset.length() < 3:
 		trigger_state_transisiton("attack")
@@ -189,7 +194,7 @@ func trigger_state_transisiton(to : String = ""):
 		newstate = random_with_weights(next_possible)
 	else:
 		newstate = to
-	print(state, " -> ", newstate)
+	#print(state, " -> ", newstate)
 	state = newstate
 	if state == "attack":
 		var offset = global_position - player.global_position
