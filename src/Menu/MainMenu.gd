@@ -3,6 +3,7 @@ extends Control
 
 func _ready() -> void:
 	Input.mouse_mode = Input.MOUSE_MODE_VISIBLE
+	Utils.clear_existing()
 
 
 func _on_button_pressed() -> void:
