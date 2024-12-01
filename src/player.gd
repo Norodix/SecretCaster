@@ -144,6 +144,7 @@ func activate_spell(spell : Node):
 	activespell = spell
 	print("Selecting: " + spell.name)
 	hud.select(spell)
+	$AudioStreamPlayer3D_SpellActivate.play()
 	for child in handspell_parent.get_children():
 		child.visible = false
 	if "hand_name" in spell:

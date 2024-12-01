@@ -1,4 +1,4 @@
-[gd_scene load_steps=31 format=3 uid="uid://dl2vuwabcukwp"]
+[gd_scene load_steps=32 format=3 uid="uid://dl2vuwabcukwp"]
 
 [ext_resource type="Script" path="res://player.gd" id="1_q4vdp"]
 [ext_resource type="PackedScene" uid="uid://cf64v5ohrm125" path="res://Hands/Magic_Hands.tscn" id="2_2eniw"]
@@ -24,6 +24,7 @@
 [ext_resource type="AudioStream" uid="uid://dcjy78f0ieoc3" path="res://SoundFX/Steps/Step_09.mp3" id="22_r6wsx"]
 [ext_resource type="AudioStream" uid="uid://cu25u45pql4k3" path="res://SoundFX/Steps/Step_10.mp3" id="23_6f8uw"]
 [ext_resource type="AudioStream" uid="uid://xuxc70hao61g" path="res://SoundFX/jump.mp3" id="24_j7q30"]
+[ext_resource type="AudioStream" uid="uid://bee8x04hcui0k" path="res://SoundFX/success.mp3" id="25_itocs"]
 
 [sub_resource type="CapsuleShape3D" id="CapsuleShape3D_7wisv"]
 radius = 0.4
@@ -145,6 +146,11 @@ autostart = true
 [node name="AudioStreamPlayer3D_Jump" type="AudioStreamPlayer3D" parent="."]
 stream = SubResource("AudioStreamRandomizer_ixw7y")
 volume_db = -80.0
+bus = &"Effects"
+
+[node name="AudioStreamPlayer3D_SpellActivate" type="AudioStreamPlayer3D" parent="."]
+stream = ExtResource("25_itocs")
+volume_db = -20.0
 bus = &"Effects"
 
 [connection signal="timeout" from="Pistol_Visibility_Timer" to="." method="_on_timer_timeout"]
