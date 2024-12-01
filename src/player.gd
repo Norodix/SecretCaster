@@ -271,6 +271,8 @@ func get_action_from_event(event: InputEvent):
 	for a in actions:
 		if "ui_" in a:
 			continue
+		if "page_" in a:
+			continue
 		if InputMap.action_has_event(a, event):
 			#print("action found: ", a)
 			return a
