@@ -1,0 +1,9 @@
+[gd_resource type="StandardMaterial3D" load_steps=3 format=3 uid="uid://cixbefo06m0bk"]
+
+[ext_resource type="Texture2D" uid="uid://iyuwgcqemmhx" path="res://Props/Nightclub/Nightclub_Tex.png" id="1_15wnf"]
+[ext_resource type="Texture2D" uid="uid://c1p6sw461hawt" path="res://Props/Nightclub/Nightclub_Nrm.png" id="2_acbm6"]
+
+[resource]
+albedo_texture = ExtResource("1_15wnf")
+normal_enabled = true
+normal_texture = ExtResource("2_acbm6")

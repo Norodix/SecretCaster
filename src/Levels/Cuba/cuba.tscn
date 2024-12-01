@@ -1,4 +1,4 @@
-[gd_scene load_steps=43 format=3 uid="uid://j1em8finh0ke"]
+[gd_scene load_steps=44 format=3 uid="uid://j1em8finh0ke"]
 
 [ext_resource type="Texture2D" uid="uid://t44swfoj3fbp" path="res://Textures/DEV/Orange/texture_01.png" id="1_v2ig0"]
 [ext_resource type="PackedScene" uid="uid://b2nfwk1744el2" path="res://Levels/Cuba/Models/sarcophagus.tscn" id="2_hvnxm"]
@@ -23,6 +23,7 @@
 [ext_resource type="PackedScene" uid="uid://b4b5xpgu0xhh" path="res://Levels/Cuba/Models/Radio/radio_havana.tscn" id="21_cwxvy"]
 [ext_resource type="PackedScene" uid="uid://w335vuvynasa" path="res://Levels/Cuba/Models/Radio/radio_havana_tower.tscn" id="22_tmcl6"]
 [ext_resource type="Material" uid="uid://b7chmpto4yb8l" path="res://Props/Donut_Terrain/Terrain_Asphalt_Mat.tres" id="23_cysww"]
+[ext_resource type="PackedScene" uid="uid://4i7nxw883vlr" path="res://Props/Nightclub/nightclub.tscn" id="24_5s67g"]
 
 [sub_resource type="StandardMaterial3D" id="StandardMaterial3D_cam4f"]
 albedo_color = Color(0.25587, 0.290518, 0.105818, 1)
@@ -352,14 +353,6 @@ thirdStoreyCount = 2
 thirdWallColor = Color(0.741779, 0.756044, 0.67829, 1)
 thirdDoorColor = Color(0.8, 0.682353, 0.529412, 1)
 
-[node name="house_cuba_prefab5" parent="Non_explorable_Houses" instance=ExtResource("11_b778h")]
-transform = Transform3D(0.449319, 0, -0.893371, 0, 1, 0, 0.893371, 0, 0.449319, -30.5192, 1.90735e-06, -59.505)
-firstStoreyCount = 2
-firstDoorColor = Color(0.8, 0.682353, 0.529412, 1)
-secondStoreyCount = 3
-secondDoorColor = Color(0.8, 0.682353, 0.529412, 1)
-thirdDoorColor = Color(0.8, 0.682353, 0.529412, 1)
-
 [node name="house_cuba_prefab6" parent="Non_explorable_Houses" instance=ExtResource("11_b778h")]
 transform = Transform3D(0.99416, 0, 0.107913, 0, 1, 0, -0.107913, 0, 0.99416, -82.8581, 0, 5.56644)
 firstStoreyCount = 3
@@ -416,7 +409,7 @@ firstDoorColor = Color(0.8, 0.682353, 0.529412, 1)
 secondStoreyCount = 3
 secondWallColor = Color(0.690435, 0.856066, 0.759732, 1)
 secondDoorColor = Color(0.8, 0.682353, 0.529412, 1)
-thirdStoreyCount = 3
+thirdStoreyCount = 0
 thirdWallColor = Color(0.881733, 0.768014, 0.785532, 1)
 thirdDoorColor = Color(0.8, 0.682353, 0.529412, 1)
 
@@ -439,6 +432,21 @@ transform = Transform3D(-0.158537, 0, -0.987353, 0, 1, 0, 0.987353, 0, -0.158537
 
 [node name="Cortez7" parent="Cars" instance=ExtResource("12_jrse6")]
 transform = Transform3D(-0.42246, 0, 0.906381, 0, 1, 0, -0.906381, 0, -0.42246, -17.9022, -0.151001, -57.2049)
+
+[node name="Cortez9" parent="Cars" instance=ExtResource("12_jrse6")]
+transform = Transform3D(-0.978498, 0, 0.206255, 0, 1, 0, -0.206255, 0, -0.978498, -22.2927, -0.0148177, -70.6611)
+
+[node name="Cortez10" parent="Cars" instance=ExtResource("12_jrse6")]
+transform = Transform3D(-0.978498, 0, 0.206255, 0, 1, 0, -0.206255, 0, -0.978498, -25.4944, -0.0148177, -69.5755)
+
+[node name="Cortez11" parent="Cars" instance=ExtResource("12_jrse6")]
+transform = Transform3D(-0.978498, 0, 0.206255, 0, 1, 0, -0.206255, 0, -0.978498, -29.109, -0.0148177, -68.3633)
+
+[node name="Cortez12" parent="Cars" instance=ExtResource("12_jrse6")]
+transform = Transform3D(-0.978498, 0, 0.206255, 0, 1, 0, -0.206255, 0, -0.978498, -32.9102, -0.0148177, -66.5741)
+
+[node name="Cortez13" parent="Cars" instance=ExtResource("12_jrse6")]
+transform = Transform3D(-0.978498, 0, 0.206255, 0, 1, 0, -0.206255, 0, -0.978498, -36.3164, -0.0148177, -65.0374)
 
 [node name="Cortez8" parent="Cars" instance=ExtResource("12_jrse6")]
 transform = Transform3D(0.992067, -0.125714, 0, 0.125714, 0.992067, 0, 0, 0, 1, 64.0086, -0.0785677, -0.12251)
@@ -687,3 +695,6 @@ transform = Transform3D(0.83809, 0, -0.545532, 0, 1, 0, 0.545532, 0, 0.83809, 62
 [node name="MeshInstance3D" type="MeshInstance3D" parent="."]
 transform = Transform3D(0.988218, 0, 0.153055, 0, 1, 0, -0.153055, 0, 0.988218, 61.6567, 0.0633357, 45.442)
 mesh = SubResource("CylinderMesh_4rwms")
+
+[node name="nightclub" parent="." instance=ExtResource("24_5s67g")]
+transform = Transform3D(-0.025514, 0, 0.999674, 0, 1, 0, -0.999674, 0, -0.025514, -2.43313, 0.0981145, -77.0511)
