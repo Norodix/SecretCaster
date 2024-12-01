@@ -3,12 +3,12 @@
 [ext_resource type="PackedScene" uid="uid://mdm2qix72rgk" path="res://Props/SecretBookshelf/bookshelf.tscn" id="1_smn8w"]
 
 [sub_resource type="BoxShape3D" id="BoxShape3D_mw7xt"]
-size = Vector3(2, 2.1, 0.4)
+size = Vector3(1.5, 2.31843, 0.4)
 
 [node name="AnimatableBookshelf" type="AnimatableBody3D"]
 
 [node name="Bookshelf" parent="." instance=ExtResource("1_smn8w")]
 
 [node name="CollisionShape3D" type="CollisionShape3D" parent="."]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 1, 1.05, 0.1)
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.750488, 1.15922, 0.1)
 shape = SubResource("BoxShape3D_mw7xt")
