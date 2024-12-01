@@ -16,12 +16,12 @@ var display_text = {
 	"reload"      = "Reload",
 }
 
-func get_action_array() -> Array:
+func get_action_array(s = spell_name) -> Array:
 	var ret = []
 	var player = get_tree().root.find_child("Player", true, false)
 	if not player:
 		return ret
-	var spell = player.find_child(spell_name, true, false)
+	var spell = player.find_child(s, true, false)
 	if not spell:
 		return ret
 	if not "pattern" in spell:

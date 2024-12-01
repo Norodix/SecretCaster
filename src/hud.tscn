@@ -373,6 +373,7 @@ expand_mode = 1
 stretch_mode = 4
 
 [node name="Escape" parent="Control" instance=ExtResource("22_4vj47")]
+visible = false
 layout_mode = 1
 
 [node name="Defeat" parent="." instance=ExtResource("23_papdo")]
