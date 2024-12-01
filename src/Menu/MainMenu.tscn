@@ -28,27 +28,20 @@ text = "Main menu"
 horizontal_alignment = 1
 
 [node name="Button" type="Button" parent="CenterContainer/VBoxContainer"]
+visible = false
 layout_mode = 2
-size_flags_horizontal = 4
-size_flags_vertical = 4
 text = "Play TestWorld"
 
 [node name="Button2" type="Button" parent="CenterContainer/VBoxContainer"]
 layout_mode = 2
-size_flags_horizontal = 4
-size_flags_vertical = 4
-text = "Play Cuba"
+text = "Play"
 
 [node name="Button3" type="Button" parent="CenterContainer/VBoxContainer"]
 layout_mode = 2
-size_flags_horizontal = 4
-size_flags_vertical = 4
 text = "Options"
 
 [node name="Button4" type="Button" parent="CenterContainer/VBoxContainer"]
 layout_mode = 2
-size_flags_horizontal = 4
-size_flags_vertical = 4
 text = "Exit"
 
 [connection signal="pressed" from="CenterContainer/VBoxContainer/Button" to="." method="_on_button_pressed"]
