@@ -24,7 +24,8 @@ void fragment() {
 	vec4 texture_col = texture(albedo_tex, UV);
 	ALBEDO = grad_col.rgb * albedo.rgb * texture_col.rgb;
 	//ALBEDO = texture_col.rgb;
-	ALPHA = grad_col.a;
+	ALPHA = texture_col.a;
+	ALPHA *= grad_col.a;
 	SPECULAR = 0.0;
 	ROUGHNESS = 1.0;
 }
