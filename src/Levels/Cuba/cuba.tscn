@@ -9,7 +9,7 @@
 [ext_resource type="PackedScene" uid="uid://kb7il64chu13" path="res://Props/Cortez/Cortez.tscn" id="12_jrse6"]
 [ext_resource type="PackedScene" uid="uid://njfw08gvqe3q" path="res://Props/Streetlamp/Streetlamp.tscn" id="13_oxlf2"]
 [ext_resource type="PackedScene" uid="uid://do8vid3c17fm0" path="res://Props/Secrets/Secret_Location.tscn" id="14_2g01o"]
-[ext_resource type="PackedScene" path="res://Enemy/enemy_spawner.tscn" id="14_nde5q"]
+[ext_resource type="PackedScene" uid="uid://v6gp2of3k5ta" path="res://Enemy/enemy_spawner.tscn" id="14_nde5q"]
 [ext_resource type="PackedScene" uid="uid://btg3grrvoe7r" path="res://Props/Rubbish/Rubbish.tscn" id="14_u8712"]
 [ext_resource type="Texture2D" uid="uid://l1kda654rhpx" path="res://SecretLight.png" id="15_ecgwg"]
 [ext_resource type="PackedScene" uid="uid://btfrrgibgwubs" path="res://Props/Secrets/Secret_Fire.tscn" id="16_tavwn"]
@@ -24,7 +24,7 @@
 [ext_resource type="PackedScene" uid="uid://bsybgdqugq5ur" path="res://Props/TrapWall/TrapWall.tscn" id="20_ffh0v"]
 [ext_resource type="PackedScene" uid="uid://b4b5xpgu0xhh" path="res://Levels/Cuba/Models/Radio/radio_havana.tscn" id="21_cwxvy"]
 [ext_resource type="PackedScene" uid="uid://w335vuvynasa" path="res://Levels/Cuba/Models/Radio/radio_havana_tower.tscn" id="22_tmcl6"]
-[ext_resource type="Material" uid="uid://b7chmpto4yb8l" path="res://Props/Donut_Terrain/Terrain_Asphalt_Mat.tres" id="23_cysww"]
+[ext_resource type="Material" path="res://Props/Donut_Terrain/Terrain_Asphalt_Mat.tres" id="23_cysww"]
 [ext_resource type="PackedScene" uid="uid://4i7nxw883vlr" path="res://Props/Nightclub/nightclub.tscn" id="24_5s67g"]
 [ext_resource type="Script" path="res://Levels/Cuba/cutscene.gd" id="27_b4qm5"]
 
@@ -778,8 +778,7 @@ spell_name = "Colt"
 
 [node name="Label3D" type="Label3D" parent="."]
 transform = Transform3D(1.91069e-15, -1, -4.37114e-08, -4.37114e-08, -4.37114e-08, 1, -1, 0, -4.37114e-08, 2.643, -0.298, 0)
-text = "The ending is a secret.
-You win!"
+text = "Cast any 4 different spells to win the game!"
 
 [node name="radio_havana" parent="." instance=ExtResource("21_cwxvy")]
 transform = Transform3D(0.584731, 0, 0.811227, 0, 1, 0, -0.811227, 0, 0.584731, 58.2227, 0.789627, 47.2493)

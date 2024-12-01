@@ -15,7 +15,7 @@ func spell_used_callback(type : int):
 		return
 	if not type in types_used:
 		types_used.append(type)
-	if types_used.size() >= 7:
+	if types_used.size() >= 4:
 		can_be_called = false
 		$AnimationPlayer.play("lid_open")
 		await $AnimationPlayer.animation_finished
