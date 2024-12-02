@@ -12,7 +12,7 @@ func _process(delta: float) -> void:
 		return
 	var d = global_position.distance_to(player.global_position)
 	t_target = 0 if d < distance_max else 1
-	t += sign(t_target - t) * 0.02
+	t += sign(t_target - t) * (1.2 * delta)
 	t = clamp(t, 0, 1)
 	var y = ease(t, -2) * offset_max * -1
 	visible = (y > - offset_max * 0.9)

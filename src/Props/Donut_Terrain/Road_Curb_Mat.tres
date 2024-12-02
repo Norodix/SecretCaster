@@ -1,0 +1,10 @@
+[gd_resource type="StandardMaterial3D" load_steps=3 format=3 uid="uid://vbsjsa5o4pc5"]
+
+[ext_resource type="Texture2D" uid="uid://co5titm7awk6m" path="res://Props/Donut_Terrain/Road_Curb_Tex.png" id="1_uyf6g"]
+[ext_resource type="Texture2D" uid="uid://cmd2tfj1y52a2" path="res://Props/Donut_Terrain/Road_Curb_Nrm.png" id="2_ex0w5"]
+
+[resource]
+albedo_color = Color(0.473348, 0.497425, 0.432103, 1)
+albedo_texture = ExtResource("1_uyf6g")
+normal_enabled = true
+normal_texture = ExtResource("2_ex0w5")

@@ -10,7 +10,6 @@ cull_mode = 2
 albedo_color = Color(0.887532, 0.962967, 0.790002, 1)
 albedo_texture = ExtResource("1_8a7j3")
 metallic = 0.5
-subsurf_scatter_enabled = true
 subsurf_scatter_strength = 0.1
 backlight_enabled = true
 backlight = Color(1, 1, 1, 1)
