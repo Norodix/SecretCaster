@@ -1,4 +1,4 @@
-[gd_scene load_steps=33 format=3 uid="uid://cvba5sgdncr8q"]
+[gd_scene load_steps=34 format=3 uid="uid://cvba5sgdncr8q"]
 
 [ext_resource type="Script" path="res://hud.gd" id="1_0n6rd"]
 [ext_resource type="Texture2D" uid="uid://blb6rjpwj6v0c" path="res://Textures/HUD/HUD_Spell_Selected.png" id="1_e7vvy"]
@@ -25,6 +25,7 @@
 [ext_resource type="Script" path="res://spellbook_turner.gd" id="22_214bv"]
 [ext_resource type="Texture2D" uid="uid://wpx7nphcp6x0" path="res://speelbookarrow.png" id="23_d2pdd"]
 [ext_resource type="PackedScene" uid="uid://b5gs33qtjry75" path="res://Menu/defeat.tscn" id="23_papdo"]
+[ext_resource type="Script" path="res://FPS_Counter.gd" id="24_onj21"]
 
 [sub_resource type="ShaderMaterial" id="ShaderMaterial_21lfs"]
 shader = ExtResource("9_bahp7")
@@ -440,6 +441,13 @@ texture = ExtResource("23_d2pdd")
 expand_mode = 2
 stretch_mode = 4
 flip_h = true
+metadata/_edit_use_anchors_ = true
+
+[node name="Label" type="Label" parent="Control/16-9-aspect/Control"]
+layout_mode = 0
+anchor_right = 0.105469
+anchor_bottom = 0.109724
+script = ExtResource("24_onj21")
 metadata/_edit_use_anchors_ = true
 
 [node name="Escape" parent="Control" instance=ExtResource("22_4vj47")]
