@@ -1,8 +1,8 @@
 [gd_scene load_steps=7 format=3 uid="uid://c0qltkbajpxto"]
 
 [ext_resource type="PackedScene" uid="uid://jlol84te6lga" path="res://Levels/Cuba/Models/house_cuba_prefab.glb" id="1_vqnd5"]
-[ext_resource type="Material" uid="uid://btr55dj30j5q6" path="res://Levels/Cuba/Models/House_Cuba_Wall_Mat.tres" id="3_j0q1v"]
-[ext_resource type="Material" uid="uid://xn0hn6hhbhhf" path="res://Levels/Cuba/Models/House_Cuba_Doors_Mat.tres" id="4_ndaqn"]
+[ext_resource type="Material" uid="uid://cnn3y0gwk22ga" path="res://Levels/Cuba/Models/House_Cuba_LOD0_Mat.tres" id="2_ou5v7"]
+[ext_resource type="Material" uid="uid://0xjk4x221icr" path="res://Levels/Cuba/Models/House_Cuba_LOD1_Mat.tres" id="4_f6sq3"]
 
 [sub_resource type="BoxShape3D" id="BoxShape3D_4taxi"]
 size = Vector3(5, 5, 10)
@@ -15,21 +15,36 @@ size = Vector3(1, 1, 10)
 
 [node name="house_cuba_ground" instance=ExtResource("1_vqnd5")]
 
-[node name="Storey" parent="." index="0"]
+[node name="Mesh_Storey_LOD0" parent="." index="0"]
 visible = false
-surface_material_override/0 = ExtResource("3_j0q1v")
-surface_material_override/1 = ExtResource("4_ndaqn")
+surface_material_override/0 = ExtResource("2_ou5v7")
 
-[node name="Ground" parent="." index="1"]
-surface_material_override/0 = ExtResource("3_j0q1v")
-surface_material_override/1 = ExtResource("4_ndaqn")
+[node name="Mesh_Ground_LOD0" parent="." index="1"]
+visibility_range_end = 25.0
+visibility_range_end_margin = 3.0
+visibility_range_fade_mode = 2
+surface_material_override/0 = ExtResource("2_ou5v7")
 
-[node name="Railing_Roof" parent="." index="2"]
+[node name="Mesh_Railing_Roof_LOD0" parent="." index="2"]
 visible = false
-surface_material_override/0 = ExtResource("3_j0q1v")
-surface_material_override/1 = ExtResource("4_ndaqn")
+surface_material_override/0 = ExtResource("2_ou5v7")
 
-[node name="StaticBody3D" type="StaticBody3D" parent="." index="3"]
+[node name="Mesh_Storey_LOD1" parent="." index="3"]
+visible = false
+surface_material_override/0 = ExtResource("4_f6sq3")
+
+[node name="Mesh_Ground_LOD1" parent="." index="4"]
+cast_shadow = 0
+visibility_range_begin = 25.0
+visibility_range_begin_margin = 3.0
+visibility_range_fade_mode = 2
+surface_material_override/0 = ExtResource("4_f6sq3")
+
+[node name="Mesh_Railing_Roof_LOD1" parent="." index="5"]
+visible = false
+surface_material_override/0 = ExtResource("4_f6sq3")
+
+[node name="StaticBody3D" type="StaticBody3D" parent="." index="6"]
 
 [node name="CollisionShape3D" type="CollisionShape3D" parent="StaticBody3D" index="0"]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -4.5, 2.5, -0.5)

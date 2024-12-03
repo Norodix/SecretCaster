@@ -1,0 +1,113 @@
+[gd_resource type="VisualShader" load_steps=11 format=3 uid="uid://bkxhom2jajp6p"]
+
+[sub_resource type="VisualShaderNodeMix" id="VisualShaderNodeMix_0ln6r"]
+default_input_values = [0, Vector3(0, 0, 0), 1, Vector3(1, 1, 1), 2, Vector3(0.5, 0.5, 0.5)]
+op_type = 3
+
+[sub_resource type="VisualShaderNodeVectorOp" id="VisualShaderNodeVectorOp_3fx1d"]
+operator = 2
+
+[sub_resource type="VisualShaderNodeTexture2DParameter" id="VisualShaderNodeTexture2DParameter_o2n3u"]
+parameter_name = "Albedo"
+texture_type = 1
+
+[sub_resource type="VisualShaderNodeTexture2DParameter" id="VisualShaderNodeTexture2DParameter_twnwk"]
+parameter_name = "Normalmap"
+texture_type = 2
+
+[sub_resource type="VisualShaderNodeTexture2DParameter" id="VisualShaderNodeTexture2DParameter_i8344"]
+parameter_name = "Mask"
+texture_type = 1
+
+[sub_resource type="VisualShaderNodeColorParameter" id="VisualShaderNodeColorParameter_4yrvw"]
+parameter_name = "wallColor"
+default_value_enabled = true
+
+[sub_resource type="VisualShaderNodeColorParameter" id="VisualShaderNodeColorParameter_i7vqo"]
+parameter_name = "doorColor"
+default_value_enabled = true
+
+[sub_resource type="VisualShaderNodeTexture" id="VisualShaderNodeTexture_erkj1"]
+source = 5
+texture_type = 1
+
+[sub_resource type="VisualShaderNodeTexture" id="VisualShaderNodeTexture_dxsu4"]
+source = 5
+
+[sub_resource type="VisualShaderNodeTexture" id="VisualShaderNodeTexture_6bvyc"]
+source = 5
+texture_type = 1
+
+[resource]
+code = "shader_type spatial;
+render_mode blend_mix, depth_draw_opaque, cull_back, diffuse_lambert, specular_schlick_ggx;
+
+uniform sampler2D Albedo : source_color;
+uniform vec4 doorColor : source_color = vec4(1.000000, 1.000000, 1.000000, 1.000000);
+uniform vec4 wallColor : source_color = vec4(1.000000, 1.000000, 1.000000, 1.000000);
+uniform sampler2D Mask : source_color;
+uniform sampler2D Normalmap : hint_normal;
+
+
+
+void fragment() {
+	vec4 n_out7p0;
+// Texture2D:7
+	n_out7p0 = texture(Albedo, UV);
+
+
+// ColorParameter:6
+	vec4 n_out6p0 = doorColor;
+
+
+// ColorParameter:5
+	vec4 n_out5p0 = wallColor;
+
+
+	vec4 n_out9p0;
+// Texture2D:9
+	n_out9p0 = texture(Mask, UV);
+
+
+// Mix:10
+	vec3 n_out10p0 = mix(vec3(n_out6p0.xyz), vec3(n_out5p0.xyz), vec3(n_out9p0.xyz));
+
+
+// VectorOp:11
+	vec3 n_out11p0 = vec3(n_out7p0.xyz) * n_out10p0;
+
+
+	vec4 n_out8p0;
+// Texture2D:8
+	n_out8p0 = texture(Normalmap, UV);
+
+
+// Output:0
+	ALBEDO = n_out11p0;
+	NORMAL_MAP = vec3(n_out8p0.xyz);
+
+
+}
+"
+graph_offset = Vector2(-792.969, -489.959)
+nodes/fragment/2/node = SubResource("VisualShaderNodeTexture2DParameter_o2n3u")
+nodes/fragment/2/position = Vector2(-1240, 40)
+nodes/fragment/3/node = SubResource("VisualShaderNodeTexture2DParameter_twnwk")
+nodes/fragment/3/position = Vector2(-1240, 400)
+nodes/fragment/4/node = SubResource("VisualShaderNodeTexture2DParameter_i8344")
+nodes/fragment/4/position = Vector2(-1240, -320)
+nodes/fragment/5/node = SubResource("VisualShaderNodeColorParameter_4yrvw")
+nodes/fragment/5/position = Vector2(-800, -500)
+nodes/fragment/6/node = SubResource("VisualShaderNodeColorParameter_i7vqo")
+nodes/fragment/6/position = Vector2(-800, -720)
+nodes/fragment/7/node = SubResource("VisualShaderNodeTexture_erkj1")
+nodes/fragment/7/position = Vector2(-820, 180)
+nodes/fragment/8/node = SubResource("VisualShaderNodeTexture_dxsu4")
+nodes/fragment/8/position = Vector2(-820, 500)
+nodes/fragment/9/node = SubResource("VisualShaderNodeTexture_6bvyc")
+nodes/fragment/9/position = Vector2(-820, -180)
+nodes/fragment/10/node = SubResource("VisualShaderNodeMix_0ln6r")
+nodes/fragment/10/position = Vector2(-260, -20)
+nodes/fragment/11/node = SubResource("VisualShaderNodeVectorOp_3fx1d")
+nodes/fragment/11/position = Vector2(0, 80)
+nodes/fragment/connections = PackedInt32Array(2, 0, 7, 2, 3, 0, 8, 2, 8, 0, 0, 9, 4, 0, 9, 2, 9, 0, 10, 2, 7, 0, 11, 0, 10, 0, 11, 1, 11, 0, 0, 0, 6, 0, 10, 0, 5, 0, 10, 1)

@@ -1,0 +1,16 @@
+[gd_resource type="ShaderMaterial" load_steps=5 format=3 uid="uid://cnn3y0gwk22ga"]
+
+[ext_resource type="Shader" uid="uid://bkxhom2jajp6p" path="res://Levels/Cuba/Models/house_cuba_masked_shader.tres" id="1_071ux"]
+[ext_resource type="Texture2D" uid="uid://badjswlqys74w" path="res://Levels/Cuba/Models/House_Cuba_Tex.png" id="2_htjaa"]
+[ext_resource type="Texture2D" uid="uid://bdjfjnta2q5b1" path="res://Levels/Cuba/Models/House_Cuba_Mask.png" id="3_a17y3"]
+[ext_resource type="Texture2D" uid="uid://com8tsgi8skxt" path="res://Levels/Cuba/Models/House_Cuba_Nrm.png" id="4_po0tl"]
+
+[resource]
+resource_local_to_scene = true
+render_priority = 0
+shader = ExtResource("1_071ux")
+shader_parameter/doorColor = Color(0.8, 0.682353, 0.529412, 1)
+shader_parameter/wallColor = Color(0.698783, 0.731369, 0.787622, 1)
+shader_parameter/Albedo = ExtResource("2_htjaa")
+shader_parameter/Mask = ExtResource("3_a17y3")
+shader_parameter/Normalmap = ExtResource("4_po0tl")

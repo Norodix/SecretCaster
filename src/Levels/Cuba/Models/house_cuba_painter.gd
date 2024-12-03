@@ -90,7 +90,6 @@ func get_shit_done():
 	var houses: Array
 	var connectors: Array
 	var wMaterials: Array
-	var dMaterials: Array
 	var wConMaterials: Array
 	var dConMaterials: Array
 	var colors: Array
@@ -108,20 +107,12 @@ func get_shit_done():
 	
 	a = 0
 	for row in self.get_children():
-		for child in row.find_children("Storey"):
-			houses.append(child)
-		for child in row.find_children("Ground"):
-			houses.append(child)
-		for child in row.find_children("Railing_Roof"):
-			houses.append(child)
-		for child in houses:
+		for child in row.find_children("*LOD*"):
 			if child is MeshInstance3D:
 				wMaterials.append(child.get_surface_override_material(0))
-				dMaterials.append(child.get_surface_override_material(1))
 		for material in wMaterials:
-			material.albedo_color = colors[a]
-		for material in dMaterials:
-			material.albedo_color = colors[a + 3]
+			material.set_shader_parameter("doorColor", colors[a + 3])
+			material.set_shader_parameter("wallColor", colors[a])
 			
 		for child in row.find_children("Storey_C*"):
 			connectors.append(child)
@@ -148,7 +139,6 @@ func get_shit_done():
 		houses.clear()
 		connectors.clear()
 		wMaterials.clear()
-		dMaterials.clear()
 		wConMaterials.clear()
 		dConMaterials.clear()
 
