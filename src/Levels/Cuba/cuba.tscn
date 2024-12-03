@@ -1,9 +1,10 @@
-[gd_scene load_steps=49 format=3 uid="uid://j1em8finh0ke"]
+[gd_scene load_steps=50 format=3 uid="uid://j1em8finh0ke"]
 
 [ext_resource type="Texture2D" uid="uid://t44swfoj3fbp" path="res://Textures/DEV/Orange/texture_01.png" id="1_v2ig0"]
 [ext_resource type="PackedScene" uid="uid://b2nfwk1744el2" path="res://Levels/Cuba/Models/sarcophagus.tscn" id="2_hvnxm"]
 [ext_resource type="PackedScene" uid="uid://bwror0umjp86i" path="res://Props/Middle_Rock/Middle_Rock.tscn" id="3_uquii"]
 [ext_resource type="PackedScene" uid="uid://dl2vuwabcukwp" path="res://player.tscn" id="6_5cxfi"]
+[ext_resource type="Material" uid="uid://cnodtgbu6u5s3" path="res://Props/Donut_Terrain/Mechabase_Mat.tres" id="6_yn5jq"]
 [ext_resource type="PackedScene" uid="uid://mht8ss75f18u" path="res://Levels/Cuba/Models/house_cuba_prefab.tscn" id="11_b778h"]
 [ext_resource type="PackedScene" uid="uid://kb7il64chu13" path="res://Props/Cortez/Cortez.tscn" id="12_jrse6"]
 [ext_resource type="PackedScene" uid="uid://njfw08gvqe3q" path="res://Props/Streetlamp/Streetlamp.tscn" id="13_oxlf2"]
@@ -217,6 +218,7 @@ transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.2, 0)
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.0123024, -0.50237, 0.0591163)
 mesh = SubResource("BoxMesh_mkctu")
 skeleton = NodePath("../..")
+surface_material_override/0 = ExtResource("6_yn5jq")
 
 [node name="StaticBody3D" type="StaticBody3D" parent="sarcophagus/MeshInstance3D"]
 
@@ -227,6 +229,7 @@ shape = SubResource("ConcavePolygonShape3D_lk80q")
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.0100021, -0.30074, 0.0544307)
 mesh = SubResource("BoxMesh_wwfij")
 skeleton = NodePath("../..")
+surface_material_override/0 = ExtResource("6_yn5jq")
 
 [node name="StaticBody3D" type="StaticBody3D" parent="sarcophagus/MeshInstance3D2"]
 
@@ -237,6 +240,7 @@ shape = SubResource("ConcavePolygonShape3D_syauq")
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.0100021, -0.0999999, 0.0544307)
 mesh = SubResource("BoxMesh_hlndt")
 skeleton = NodePath("../..")
+surface_material_override/0 = ExtResource("6_yn5jq")
 
 [node name="StaticBody3D" type="StaticBody3D" parent="sarcophagus/MeshInstance3D3"]
 
@@ -256,7 +260,6 @@ transform = Transform3D(-4.37114e-08, 0, 1, 0, 1, 0, -1, 0, -4.37114e-08, -9.094
 transform = Transform3D(-4.37114e-08, 0, -1, 0, 1, 0, 1, 0, -4.37114e-08, 9.094, -0.395, 0)
 
 [node name="Maple_Bark" parent="." instance=ExtResource("19_b13mj")]
-visible = false
 
 [node name="WorldEnvironment" type="WorldEnvironment" parent="."]
 environment = SubResource("Environment_nded0")
@@ -824,3 +827,12 @@ transform = Transform3D(-3.61999e-06, 0, 1, 0, 1, 0, -1, 0, -3.61999e-06, 10.662
 libraries = {
 "": SubResource("AnimationLibrary_4t2g6")
 }
+
+[node name="OmniLight3D" type="OmniLight3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 32.5815, 0)
+light_color = Color(0.726675, 0.497053, 0.352264, 1)
+light_size = 10.0
+shadow_bias = 0.2
+shadow_blur = 0.5
+omni_range = 128.0
+omni_attenuation = 0.1
