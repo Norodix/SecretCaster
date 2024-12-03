@@ -13,8 +13,12 @@ func damage(_amount, type):
 	for light in lights:
 		if type == "shock":
 			light.light_energy = 5
+			light.visible = true
 
 
 func _process(delta: float) -> void:
 	for light in lights:
-		light.light_energy = lerp(light.light_energy, 0.0, 0.05)
+		if light.visible:
+			light.light_energy = lerp(light.light_energy, 0.0, 0.05)
+		if light.light_energy < 0.1:
+			light.visible = false
