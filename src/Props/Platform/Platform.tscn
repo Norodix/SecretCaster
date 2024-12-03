@@ -1,49 +1,59 @@
-[gd_scene load_steps=10 format=3 uid="uid://4q7jctaucve2"]
+[gd_scene load_steps=11 format=3 uid="uid://4q7jctaucve2"]
 
 [ext_resource type="PackedScene" uid="uid://cp2ffftbkamb5" path="res://Props/Platform/Platform.glb" id="1_jhpyc"]
-[ext_resource type="Shader" uid="uid://cckaslie15ta1" path="res://Props/Platform/Platform_Shader.tres" id="2_ax7py"]
-[ext_resource type="Shader" uid="uid://klf75i7epsx3" path="res://Spells/Lightning/Lightning_Ball_Shader.tres" id="5_pn2ng"]
+[ext_resource type="Shader" path="res://Props/Platform/Platform_Shader.gdshader" id="2_gys08"]
+[ext_resource type="Texture2D" uid="uid://bgjb71522lx7i" path="res://Props/Platform/Platform_Tex.png" id="3_dsq7i"]
+[ext_resource type="Texture2D" uid="uid://6uglelm2ant3" path="res://Props/Platform/Platform_Nrm.png" id="4_xkc1y"]
+[ext_resource type="Texture2D" uid="uid://dluf41jkesauk" path="res://Props/Platform/Platform_Rough.png" id="5_hcyx3"]
+[ext_resource type="Shader" uid="uid://bh81m0daajxq4" path="res://Props/Platform/Bridge_Energy_Shader.tres" id="6_hgc6a"]
 
 [sub_resource type="ShaderMaterial" id="ShaderMaterial_bo1hj"]
+resource_local_to_scene = true
 render_priority = 0
-shader = ExtResource("2_ax7py")
+shader = ExtResource("2_gys08")
+shader_parameter/albedo = ExtResource("3_dsq7i")
+shader_parameter/normalmap = ExtResource("4_xkc1y")
+shader_parameter/roughness = ExtResource("5_hcyx3")
 
-[sub_resource type="Curve" id="Curve_4rrp7"]
-_data = [Vector2(0, 1), 0.0, 0.0, 0, 0, Vector2(0.460106, 0.366016), -0.552033, -0.552033, 0, 0, Vector2(1, 0), -0.329267, 0.0, 0, 0]
-point_count = 3
+[sub_resource type="CylinderMesh" id="CylinderMesh_77wnj"]
+top_radius = 0.2
+bottom_radius = 0.4
+height = 0.5
+radial_segments = 12
+rings = 1
+cap_top = false
+cap_bottom = false
 
-[sub_resource type="CurveTexture" id="CurveTexture_hffja"]
-curve = SubResource("Curve_4rrp7")
-
-[sub_resource type="ParticleProcessMaterial" id="ParticleProcessMaterial_sjopp"]
-direction = Vector3(0, -1, 0)
-spread = 0.0
-initial_velocity_min = 0.5
-initial_velocity_max = 0.5
-gravity = Vector3(0, 0, 0)
-attractor_interaction_enabled = false
-scale_curve = SubResource("CurveTexture_hffja")
-
-[sub_resource type="ShaderMaterial" id="ShaderMaterial_lxl6d"]
+[sub_resource type="ShaderMaterial" id="ShaderMaterial_yo0mv"]
+resource_local_to_scene = true
 render_priority = 0
-shader = ExtResource("5_pn2ng")
+shader = ExtResource("6_hgc6a")
+shader_parameter/Direction = true
 
-[sub_resource type="TorusMesh" id="TorusMesh_nmjy2"]
-material = SubResource("ShaderMaterial_lxl6d")
-inner_radius = 0.35
-outer_radius = 0.4
+[sub_resource type="CylinderMesh" id="CylinderMesh_rswwc"]
+top_radius = 0.1
+bottom_radius = 0.2
+height = 1.0
+radial_segments = 12
+rings = 1
+cap_top = false
+cap_bottom = false
 
 [node name="Platform" instance=ExtResource("1_jhpyc")]
 
 [node name="Cylinder" parent="." index="0"]
+visibility_range_end = 15.0
+visibility_range_end_margin = 1.0
 surface_material_override/0 = SubResource("ShaderMaterial_bo1hj")
 
-[node name="GPUParticles3D" type="GPUParticles3D" parent="Cylinder" index="0"]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, -0.0500759, 0)
+[node name="MeshInstance3D" type="MeshInstance3D" parent="Cylinder" index="0"]
+transform = Transform3D(1, 0, 0, 0, -1, 8.74228e-08, 0, -8.74228e-08, -1, 0, -0.267724, 0)
 visibility_range_end = 10.0
-visibility_range_end_margin = 1.0
-amount = 10
-lifetime = 2.0
-local_coords = true
-process_material = SubResource("ParticleProcessMaterial_sjopp")
-draw_pass_1 = SubResource("TorusMesh_nmjy2")
+mesh = SubResource("CylinderMesh_77wnj")
+surface_material_override/0 = SubResource("ShaderMaterial_yo0mv")
+
+[node name="MeshInstance3D2" type="MeshInstance3D" parent="Cylinder" index="1"]
+transform = Transform3D(1, 0, 0, 0, -1, 8.74228e-08, 0, -8.74228e-08, -1, 0, -0.468484, 0)
+visibility_range_end = 10.0
+mesh = SubResource("CylinderMesh_rswwc")
+surface_material_override/0 = SubResource("ShaderMaterial_yo0mv")

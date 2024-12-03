@@ -10,8 +10,10 @@ size = Vector3(4.48915, 0.189301, 40.6726)
 size = Vector2(2, 12)
 
 [sub_resource type="ShaderMaterial" id="ShaderMaterial_k20j7"]
+resource_local_to_scene = true
 render_priority = 0
 shader = ExtResource("2_7ovkr")
+shader_parameter/Direction = true
 
 [sub_resource type="PlaneMesh" id="PlaneMesh_av0tk"]
 size = Vector2(2.19, 12)
