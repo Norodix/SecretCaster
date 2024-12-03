@@ -1,19 +1,12 @@
-[gd_scene load_steps=13 format=3 uid="uid://4q7jctaucve2"]
+[gd_scene load_steps=10 format=3 uid="uid://4q7jctaucve2"]
 
 [ext_resource type="PackedScene" uid="uid://cp2ffftbkamb5" path="res://Props/Platform/Platform.glb" id="1_jhpyc"]
-[ext_resource type="Script" path="res://Props/Platform/platform.gd" id="2_k6vyh"]
-[ext_resource type="Texture2D" uid="uid://bgjb71522lx7i" path="res://Props/Platform/Platform_Tex.png" id="2_syrpa"]
-[ext_resource type="Texture2D" uid="uid://6uglelm2ant3" path="res://Props/Platform/Platform_Nrm.png" id="3_vanqq"]
-[ext_resource type="Texture2D" uid="uid://dluf41jkesauk" path="res://Props/Platform/Platform_Rough.png" id="4_5guem"]
+[ext_resource type="Shader" uid="uid://cckaslie15ta1" path="res://Props/Platform/Platform_Shader.tres" id="2_ax7py"]
 [ext_resource type="Shader" uid="uid://klf75i7epsx3" path="res://Spells/Lightning/Lightning_Ball_Shader.tres" id="5_pn2ng"]
 
-[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_ddh3o"]
-albedo_color = Color(0.65834, 0.65834, 0.65834, 1)
-albedo_texture = ExtResource("2_syrpa")
-metallic = 0.5
-roughness_texture = ExtResource("4_5guem")
-normal_enabled = true
-normal_texture = ExtResource("3_vanqq")
+[sub_resource type="ShaderMaterial" id="ShaderMaterial_bo1hj"]
+render_priority = 0
+shader = ExtResource("2_ax7py")
 
 [sub_resource type="Curve" id="Curve_4rrp7"]
 _data = [Vector2(0, 1), 0.0, 0.0, 0, 0, Vector2(0.460106, 0.366016), -0.552033, -0.552033, 0, 0, Vector2(1, 0), -0.329267, 0.0, 0, 0]
@@ -41,10 +34,9 @@ inner_radius = 0.35
 outer_radius = 0.4
 
 [node name="Platform" instance=ExtResource("1_jhpyc")]
-script = ExtResource("2_k6vyh")
 
 [node name="Cylinder" parent="." index="0"]
-surface_material_override/0 = SubResource("StandardMaterial3D_ddh3o")
+surface_material_override/0 = SubResource("ShaderMaterial_bo1hj")
 
 [node name="GPUParticles3D" type="GPUParticles3D" parent="Cylinder" index="0"]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, -0.0500759, 0)
