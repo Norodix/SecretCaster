@@ -1,34 +1,25 @@
-[gd_scene load_steps=7 format=3 uid="uid://ckwgs1v3k8rxg"]
+[gd_scene load_steps=5 format=3 uid="uid://ckwgs1v3k8rxg"]
 
 [ext_resource type="PackedScene" uid="uid://cjs3n5cx20wi2" path="res://Props/Maple/Maple_Leaves.glb" id="1_3c21c"]
 [ext_resource type="Texture2D" uid="uid://cfaslawpdi76q" path="res://Props/Maple/Maple_Leaves_Tex.png" id="2_w7604"]
 [ext_resource type="Texture2D" uid="uid://7nmfh4wqucwq" path="res://Props/Maple/Maple_Leaves_Nrm.png" id="3_ecwdc"]
 
-[sub_resource type="Gradient" id="Gradient_4p74n"]
-offsets = PackedFloat32Array(0.35, 1)
-
-[sub_resource type="GradientTexture2D" id="GradientTexture2D_y53gd"]
-gradient = SubResource("Gradient_4p74n")
-fill = 1
-fill_from = Vector2(0.5, 0.5)
-fill_to = Vector2(1, 0.5)
-
 [sub_resource type="StandardMaterial3D" id="StandardMaterial3D_d4bhd"]
 transparency = 2
 alpha_scissor_threshold = 0.5
 alpha_antialiasing_mode = 0
-albedo_color = Color(0.310617, 0.310617, 0.310617, 1)
+albedo_color = Color(0, 0, 0, 1)
 albedo_texture = ExtResource("2_w7604")
+emission_enabled = true
+emission = Color(0.733333, 0, 1, 1)
+emission_energy_multiplier = 4.0
+emission_operator = 1
+emission_texture = ExtResource("2_w7604")
 normal_enabled = true
-normal_scale = 0.5
 normal_texture = ExtResource("3_ecwdc")
 subsurf_scatter_strength = 0.3
 backlight_enabled = true
 backlight = Color(1, 1, 1, 1)
-detail_enabled = true
-detail_mask = SubResource("GradientTexture2D_y53gd")
-detail_albedo = ExtResource("2_w7604")
-detail_normal = ExtResource("3_ecwdc")
 disable_receive_shadows = true
 billboard_mode = 1
 billboard_keep_scale = true

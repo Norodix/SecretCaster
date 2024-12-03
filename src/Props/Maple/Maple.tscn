@@ -8,7 +8,10 @@
 
 [sub_resource type="StandardMaterial3D" id="StandardMaterial3D_h6spf"]
 albedo_texture = ExtResource("2_8a32d")
+metallic = 0.2
+roughness = 0.7
 normal_enabled = true
+normal_scale = 8.0
 normal_texture = ExtResource("3_t4wna")
 
 [sub_resource type="ConcavePolygonShape3D" id="ConcavePolygonShape3D_sho8i"]
