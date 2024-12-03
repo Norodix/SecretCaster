@@ -830,7 +830,7 @@ libraries = {
 
 [node name="OmniLight3D" type="OmniLight3D" parent="."]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 32.5815, 0)
-light_color = Color(0.726675, 0.497053, 0.352264, 1)
+light_color = Color(0.745001, 0.359123, 0.883446, 1)
 light_size = 10.0
 shadow_bias = 0.2
 shadow_blur = 0.5
