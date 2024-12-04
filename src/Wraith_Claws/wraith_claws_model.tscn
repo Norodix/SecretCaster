@@ -1,71 +1,32 @@
-[gd_scene load_steps=29 format=3 uid="uid://7vowt0xy1otf"]
+[gd_scene load_steps=24 format=3 uid="uid://7vowt0xy1otf"]
 
 [ext_resource type="PackedScene" uid="uid://b2hg57riy7yfc" path="res://Wraith_Claws/Wraith_Claws.glb" id="1_0m1v7"]
 [ext_resource type="Material" uid="uid://cxhrmv4wjvc0k" path="res://Wraith_Claws/wraith_claws_mat.tres" id="2_ii20f"]
+[ext_resource type="Shader" uid="uid://c3k6xwws720aa" path="res://Wraith/Wraith_Smoke_Shader.tres" id="3_252go"]
 
-[sub_resource type="Curve" id="Curve_kwklu"]
-_data = [Vector2(0, 0), 0.0, 1.54721, 0, 0, Vector2(0.5, 0.245893), 0.0, 0.0, 0, 0, Vector2(1, 0), -1.28094, 0.0, 0, 0]
+[sub_resource type="Curve" id="Curve_1pemo"]
+_data = [Vector2(0, 0), 0.0, 4.45372, 0, 0, Vector2(0.49734, 1), 0.0, 0.0, 0, 0, Vector2(1, 0.526181), -2.44892, 0.0, 0, 0]
 point_count = 3
 
-[sub_resource type="CurveTexture" id="CurveTexture_u0l0i"]
-curve = SubResource("Curve_kwklu")
+[sub_resource type="CurveTexture" id="CurveTexture_jji7u"]
+curve = SubResource("Curve_1pemo")
 
-[sub_resource type="Curve" id="Curve_3kuxf"]
-max_value = 3.0
-_data = [Vector2(0, 0), 0.0, 0.0, 0, 0, Vector2(0.5, 3), 0.0, 0.0, 0, 0, Vector2(1, 1.49846), 0.0, 0.0, 0, 0]
-point_count = 3
-
-[sub_resource type="CurveTexture" id="CurveTexture_0616b"]
-curve = SubResource("Curve_3kuxf")
-
-[sub_resource type="ParticleProcessMaterial" id="ParticleProcessMaterial_8cn4p"]
+[sub_resource type="ParticleProcessMaterial" id="ParticleProcessMaterial_akoff"]
 direction = Vector3(0, -1, 0)
 spread = 15.0
-initial_velocity_min = 1.0
-initial_velocity_max = 3.0
+initial_velocity_min = 0.5
+initial_velocity_max = 1.0
 gravity = Vector3(0, -0.3, 0)
 attractor_interaction_enabled = false
-scale_curve = SubResource("CurveTexture_0616b")
-alpha_curve = SubResource("CurveTexture_u0l0i")
+scale_curve = SubResource("CurveTexture_jji7u")
 
-[sub_resource type="Gradient" id="Gradient_7j7rm"]
-offsets = PackedFloat32Array(0, 0.471591, 1)
-colors = PackedColorArray(0, 0.624673, 0.448943, 1, 0, 0, 0, 0.443137, 0, 0, 0, 0)
+[sub_resource type="ShaderMaterial" id="ShaderMaterial_s1p62"]
+render_priority = 0
+shader = ExtResource("3_252go")
+shader_parameter/smokeColor = Color(0, 0.33506, 0.121361, 1)
 
-[sub_resource type="GradientTexture2D" id="GradientTexture2D_ltw5x"]
-gradient = SubResource("Gradient_7j7rm")
-width = 128
-height = 128
-fill = 1
-fill_from = Vector2(0.5, 0.5)
-fill_to = Vector2(1, 0.5)
-
-[sub_resource type="Gradient" id="Gradient_0qxj8"]
-offsets = PackedFloat32Array(0, 0.0568182)
-colors = PackedColorArray(0.720772, 0.319858, 2.88785e-07, 1, 0, 0, 0, 1)
-
-[sub_resource type="GradientTexture2D" id="GradientTexture2D_7my8t"]
-gradient = SubResource("Gradient_0qxj8")
-fill = 1
-fill_from = Vector2(0.5, 0.5)
-fill_to = Vector2(1, 0.5)
-
-[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_7l7mm"]
-transparency = 1
-vertex_color_use_as_albedo = true
-albedo_texture = SubResource("GradientTexture2D_ltw5x")
-metallic_specular = 0.0
-emission_enabled = true
-emission_texture = SubResource("GradientTexture2D_7my8t")
-subsurf_scatter_strength = 1.0
-backlight_enabled = true
-backlight = Color(1, 1, 1, 1)
-billboard_mode = 1
-billboard_keep_scale = true
-
-[sub_resource type="QuadMesh" id="QuadMesh_xbafl"]
-material = SubResource("StandardMaterial3D_7l7mm")
-size = Vector2(0.2, 0.2)
+[sub_resource type="QuadMesh" id="QuadMesh_xtm28"]
+material = SubResource("ShaderMaterial_s1p62")
 
 [sub_resource type="BoxShape3D" id="BoxShape3D_ugj0b"]
 size = Vector3(0.187256, 0.662761, 0.344568)
@@ -133,36 +94,36 @@ node_connections = [&"Blend2", 0, &"StateMachine", &"Blend2", 1, &"Animation", &
 [node name="Wraith_Claws2" instance=ExtResource("1_0m1v7")]
 
 [node name="Skeleton3D" parent="Armature" index="0"]
-bones/1/position = Vector3(0.0293279, 0.350238, -4.66888e-09)
-bones/4/rotation = Quaternion(0.0156998, 5.37693e-11, 0.0511398, 0.998568)
-bones/5/rotation = Quaternion(0.707107, -3.09086e-08, -3.09086e-08, 0.707107)
-bones/6/position = Vector3(-0.226417, 1.20714, 0.178128)
-bones/6/rotation = Quaternion(-0.0979979, 0.646829, 0.718699, 0.235543)
-bones/7/position = Vector3(0.259173, 1.21516, 0.212408)
-bones/7/rotation = Quaternion(0.232199, 0.656591, 0.700998, -0.153537)
+bones/1/position = Vector3(0.00133679, 0.363684, -3.18715e-10)
+bones/4/rotation = Quaternion(0.000426826, -8.71138e-14, 0.00139033, 0.999999)
+bones/5/rotation = Quaternion(0.838451, -0.0132944, -0.14545, 0.525041)
+bones/6/position = Vector3(-0.24823, 1.16697, 0.289834)
+bones/6/rotation = Quaternion(-0.152222, 0.676945, 0.681464, 0.232767)
+bones/7/position = Vector3(0.24935, 1.16783, 0.289835)
+bones/7/rotation = Quaternion(0.158546, 0.678153, 0.679849, -0.229734)
 
 [node name="Wraith_Cape" parent="Armature/Skeleton3D" index="0"]
 surface_material_override/0 = ExtResource("2_ii20f")
 
 [node name="BoneAttachment3D" type="BoneAttachment3D" parent="Armature/Skeleton3D" index="1"]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.0293279, 1.24557, -4.66888e-09)
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.00133679, 1.25902, -3.18715e-10)
 bone_name = "Neck"
 bone_idx = 3
 
 [node name="GPUParticles3D" type="GPUParticles3D" parent="Armature/Skeleton3D/BoneAttachment3D" index="0"]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.0161642, 0.486375, -5.471e-09)
-amount = 250
-lifetime = 0.7
+amount = 50
+lifetime = 1.6
 fixed_fps = 60
 local_coords = true
-process_material = SubResource("ParticleProcessMaterial_8cn4p")
-draw_pass_1 = SubResource("QuadMesh_xbafl")
+process_material = SubResource("ParticleProcessMaterial_akoff")
+draw_pass_1 = SubResource("QuadMesh_xtm28")
 
 [node name="Wraith_Claws" parent="Armature/Skeleton3D" index="2"]
 surface_material_override/0 = ExtResource("2_ii20f")
 
 [node name="BoneAttachment3D2" type="BoneAttachment3D" parent="Armature/Skeleton3D" index="3"]
-transform = Transform3D(-0.869832, -0.465344, 0.16385, 0.211793, -0.0522632, 0.975916, -0.445574, 0.883585, 0.144017, -0.226417, 1.20714, 0.178128)
+transform = Transform3D(-0.845296, -0.523336, 0.107675, 0.111154, 0.0248709, 0.993492, -0.522609, 0.851763, 0.0371476, -0.24823, 1.16697, 0.289834)
 bone_name = "Weapon_R"
 bone_idx = 6
 
@@ -175,7 +136,7 @@ transform = Transform3D(0.85373, 0.0848875, -0.513768, -0.00751936, 0.988539, 0.
 shape = SubResource("BoxShape3D_ugj0b")
 
 [node name="BoneAttachment3D3" type="BoneAttachment3D" parent="Armature/Skeleton3D" index="4"]
-transform = Transform3D(-0.84502, 0.520178, 0.123919, 0.0896604, -0.0906291, 0.99184, 0.527164, 0.849236, 0.029944, 0.259173, 1.21516, 0.212408)
+transform = Transform3D(-0.844171, 0.527406, -0.0960155, -0.0973326, 0.0253379, 0.994929, 0.527164, 0.849235, 0.0299442, 0.24935, 1.16783, 0.289835)
 bone_name = "Weapon_L"
 bone_idx = 7
 

@@ -1,6 +1,7 @@
-[gd_scene load_steps=14 format=4 uid="uid://cpwsth0pqi3u2"]
+[gd_scene load_steps=11 format=4 uid="uid://cpwsth0pqi3u2"]
 
 [ext_resource type="Material" uid="uid://dfgbimwco8vo7" path="res://Wraith/wraith_mat.tres" id="1_w1der"]
+[ext_resource type="Shader" uid="uid://c3k6xwws720aa" path="res://Wraith/Wraith_Smoke_Shader.tres" id="2_qb7al"]
 
 [sub_resource type="StandardMaterial3D" id="StandardMaterial3D_673fb"]
 
@@ -48,50 +49,29 @@ bind/6/name = &"Weapon"
 bind/6/bone = -1
 bind/6/pose = Transform3D(0.826116, 0.562091, -0.0398289, -0.519939, 0.787596, 0.330691, 0.217247, -0.25248, 0.942898, -0.372884, -0.704411, -0.0547386)
 
-[sub_resource type="Curve" id="Curve_u7rh8"]
-_data = [Vector2(0, 0), 0.0, 2.70226, 0, 0, Vector2(0.50266, 0.499487), 0.0, 0.0, 0, 0, Vector2(1, 0), 0.0, 0.0, 0, 0]
+[sub_resource type="Curve" id="Curve_ijc2j"]
+_data = [Vector2(0, 0), 0.0, 4.45372, 0, 0, Vector2(0.49734, 1), 0.0, 0.0, 0, 0, Vector2(1, 0.526181), -2.44892, 0.0, 0, 0]
 point_count = 3
 
-[sub_resource type="CurveTexture" id="CurveTexture_xwuhi"]
-curve = SubResource("Curve_u7rh8")
+[sub_resource type="CurveTexture" id="CurveTexture_jji7u"]
+curve = SubResource("Curve_ijc2j")
 
-[sub_resource type="Curve" id="Curve_w3gg3"]
-_data = [Vector2(0, 0), 0.0, 6.18262, 0, 0, Vector2(0.5, 1), 0.0, 0.0, 0, 0, Vector2(1, 0), -6.14149, 0.0, 0, 0]
-point_count = 3
+[sub_resource type="ParticleProcessMaterial" id="ParticleProcessMaterial_anw2a"]
+direction = Vector3(0, -1, 0)
+spread = 15.0
+initial_velocity_min = 0.5
+initial_velocity_max = 1.0
+gravity = Vector3(0, -0.3, 0)
+attractor_interaction_enabled = false
+scale_curve = SubResource("CurveTexture_jji7u")
 
-[sub_resource type="CurveTexture" id="CurveTexture_fcmky"]
-curve = SubResource("Curve_w3gg3")
+[sub_resource type="ShaderMaterial" id="ShaderMaterial_bwe08"]
+render_priority = 0
+shader = ExtResource("2_qb7al")
+shader_parameter/smokeColor = Color(0.421593, 0.178209, 0, 1)
 
-[sub_resource type="ParticleProcessMaterial" id="ParticleProcessMaterial_c5c1k"]
-emission_shape = 3
-emission_box_extents = Vector3(0.1, 0.6, 0.1)
-direction = Vector3(1, 1, 1)
-spread = 180.0
-initial_velocity_min = 0.3
-initial_velocity_max = 0.3
-gravity = Vector3(0, 0, 0)
-scale_curve = SubResource("CurveTexture_fcmky")
-alpha_curve = SubResource("CurveTexture_xwuhi")
-
-[sub_resource type="Gradient" id="Gradient_sq4c1"]
-offsets = PackedFloat32Array(0, 0.241477, 1)
-colors = PackedColorArray(0.895759, 0.393917, 0, 1, 0, 0, 0, 0.758523, 0, 0, 0, 0)
-
-[sub_resource type="GradientTexture2D" id="GradientTexture2D_upcng"]
-gradient = SubResource("Gradient_sq4c1")
-fill = 1
-fill_from = Vector2(0.5, 0.5)
-fill_to = Vector2(1, 0.5)
-
-[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_ygn6s"]
-transparency = 1
-vertex_color_use_as_albedo = true
-albedo_texture = SubResource("GradientTexture2D_upcng")
-billboard_mode = 1
-billboard_keep_scale = true
-
-[sub_resource type="QuadMesh" id="QuadMesh_rse3l"]
-material = SubResource("StandardMaterial3D_ygn6s")
+[sub_resource type="QuadMesh" id="QuadMesh_vw87j"]
+material = SubResource("ShaderMaterial_bwe08")
 
 [node name="Wraith_Cape_Drop" type="Node3D"]
 
@@ -101,9 +81,11 @@ skin = SubResource("Skin_khpg8")
 surface_material_override/0 = ExtResource("1_w1der")
 
 [node name="GPUParticles3D" type="GPUParticles3D" parent="."]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 1.09456, 0)
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.0161642, 1.73245, -5.471e-09)
 amount = 50
-lifetime = 2.0
-explosiveness = 0.5
-process_material = SubResource("ParticleProcessMaterial_c5c1k")
-draw_pass_1 = SubResource("QuadMesh_rse3l")
+lifetime = 1.6
+explosiveness = 1.0
+fixed_fps = 60
+local_coords = true
+process_material = SubResource("ParticleProcessMaterial_anw2a")
+draw_pass_1 = SubResource("QuadMesh_vw87j")

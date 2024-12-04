@@ -1,21 +1,29 @@
-[gd_scene load_steps=22 format=3 uid="uid://gx88hjnj8obd"]
+[gd_scene load_steps=24 format=3 uid="uid://gx88hjnj8obd"]
 
 [ext_resource type="PackedScene" uid="uid://r1rlbaulsag" path="res://Wraith/Wraith.glb" id="1_h34gq"]
 [ext_resource type="Material" uid="uid://dfgbimwco8vo7" path="res://Wraith/wraith_mat.tres" id="2_cntme"]
 [ext_resource type="Shader" uid="uid://c3k6xwws720aa" path="res://Wraith/Wraith_Smoke_Shader.tres" id="3_x7hxd"]
 
+[sub_resource type="Curve" id="Curve_au2hk"]
+_data = [Vector2(0, 0), 0.0, 4.45372, 0, 0, Vector2(0.49734, 1), 0.0, 0.0, 0, 0, Vector2(1, 0.526181), -2.44892, 0.0, 0, 0]
+point_count = 3
+
+[sub_resource type="CurveTexture" id="CurveTexture_jji7u"]
+curve = SubResource("Curve_au2hk")
+
 [sub_resource type="ParticleProcessMaterial" id="ParticleProcessMaterial_u70s2"]
 direction = Vector3(0, -1, 0)
 spread = 15.0
-initial_velocity_min = 1.0
-initial_velocity_max = 3.0
+initial_velocity_min = 0.5
+initial_velocity_max = 1.0
 gravity = Vector3(0, -0.3, 0)
 attractor_interaction_enabled = false
+scale_curve = SubResource("CurveTexture_jji7u")
 
 [sub_resource type="ShaderMaterial" id="ShaderMaterial_bwe08"]
 render_priority = 0
 shader = ExtResource("3_x7hxd")
-shader_parameter/smokeColor = Color(0.660614, 0.031305, 0, 1)
+shader_parameter/smokeColor = Color(0.421593, 0.178209, 0, 1)
 
 [sub_resource type="QuadMesh" id="QuadMesh_svl0o"]
 material = SubResource("ShaderMaterial_bwe08")
@@ -86,31 +94,31 @@ node_connections = [&"Blend2", 0, &"StateMachine", &"Blend2", 1, &"Animation", &
 [node name="Wraith_Model" instance=ExtResource("1_h34gq")]
 
 [node name="Skeleton3D" parent="Armature" index="0"]
-bones/1/position = Vector3(-0.0484791, 0.399904, 3.84181e-09)
-bones/4/rotation = Quaternion(-0.0121632, -0.00235769, -0.0397603, 0.999133)
-bones/5/rotation = Quaternion(0.707107, -3.09086e-08, -3.09086e-08, 0.707107)
-bones/6/position = Vector3(-0.0149863, 0.781892, 0.269703)
-bones/6/rotation = Quaternion(0.102852, 0.229946, 0.278344, 0.926861)
+bones/1/position = Vector3(0.0264312, 0.384728, -1.2639e-09)
+bones/4/rotation = Quaternion(0.0188881, -0.000197261, 0.0615138, 0.997928)
+bones/5/rotation = Quaternion(0.752458, -0.00404327, -0.0442359, 0.65714)
+bones/6/position = Vector3(0.0997593, 0.657818, 0.269675)
+bones/6/rotation = Quaternion(0.148678, 0.0878438, 0.283471, 0.943304)
 
 [node name="Wraith_Cape" parent="Armature/Skeleton3D" index="0"]
 surface_material_override/0 = ExtResource("2_cntme")
 
 [node name="BoneAttachment3D" type="BoneAttachment3D" parent="Armature/Skeleton3D" index="1"]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.0484791, 1.29524, 3.84181e-09)
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.0264312, 1.28006, -1.2639e-09)
 bone_name = "Neck"
 bone_idx = 3
 
 [node name="GPUParticles3D" type="GPUParticles3D" parent="Armature/Skeleton3D/BoneAttachment3D" index="0"]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.0161642, 0.486375, -5.471e-09)
 amount = 50
-lifetime = 0.7
+lifetime = 1.6
 fixed_fps = 60
 local_coords = true
 process_material = SubResource("ParticleProcessMaterial_u70s2")
 draw_pass_1 = SubResource("QuadMesh_svl0o")
 
 [node name="BoneAttachment3D2" type="BoneAttachment3D" parent="Armature/Skeleton3D" index="2"]
-transform = Transform3D(0.7393, -0.468671, 0.483512, 0.563272, 0.823893, -0.062652, -0.368999, 0.318667, 0.873093, -0.0149863, 0.781892, 0.269703)
+transform = Transform3D(0.823856, -0.508677, 0.250018, 0.560919, 0.795079, -0.230694, -0.0814354, 0.330299, 0.940357, 0.0997593, 0.657818, 0.269675)
 bone_name = "Weapon"
 bone_idx = 6
 
