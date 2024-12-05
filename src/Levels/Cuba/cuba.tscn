@@ -9,7 +9,7 @@
 [ext_resource type="PackedScene" uid="uid://kb7il64chu13" path="res://Props/Cortez/Cortez.tscn" id="12_jrse6"]
 [ext_resource type="PackedScene" uid="uid://njfw08gvqe3q" path="res://Props/Streetlamp/Streetlamp.tscn" id="13_oxlf2"]
 [ext_resource type="PackedScene" uid="uid://do8vid3c17fm0" path="res://Props/Secrets/Secret_Location.tscn" id="14_2g01o"]
-[ext_resource type="PackedScene" uid="uid://v6gp2of3k5ta" path="res://Enemy/enemy_spawner.tscn" id="14_nde5q"]
+[ext_resource type="PackedScene" path="res://Enemy/enemy_spawner.tscn" id="14_nde5q"]
 [ext_resource type="PackedScene" uid="uid://btg3grrvoe7r" path="res://Props/Rubbish/Rubbish.tscn" id="14_u8712"]
 [ext_resource type="Texture2D" uid="uid://l1kda654rhpx" path="res://SecretLight.png" id="15_ecgwg"]
 [ext_resource type="PackedScene" uid="uid://btfrrgibgwubs" path="res://Props/Secrets/Secret_Fire.tscn" id="16_tavwn"]
@@ -94,8 +94,11 @@ background_mode = 2
 sky = SubResource("Sky_1fsb8")
 ambient_light_source = 2
 ambient_light_color = Color(0.470361, 0.266075, 0.580887, 1)
-ambient_light_energy = 3.0
+ssao_enabled = true
+glow_enabled = true
+volumetric_fog_enabled = true
 volumetric_fog_density = 0.01
+volumetric_fog_albedo = Color(0.700058, 0.551046, 1, 1)
 volumetric_fog_length = 128.0
 
 [sub_resource type="FogMaterial" id="FogMaterial_qd4r1"]
@@ -832,6 +835,7 @@ libraries = {
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 32.5815, 0)
 light_color = Color(0.745001, 0.359123, 0.883446, 1)
 light_size = 10.0
+shadow_enabled = true
 shadow_bias = 0.2
 shadow_blur = 0.5
 omni_range = 128.0
